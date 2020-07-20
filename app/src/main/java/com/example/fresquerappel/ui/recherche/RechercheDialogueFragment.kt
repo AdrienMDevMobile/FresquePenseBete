@@ -14,6 +14,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.fresquerappel.MainViewModel
 import com.example.fresquerappel.R
 import kotlinx.android.synthetic.main.dialogue_fragment_recherche.*
 
@@ -23,6 +25,7 @@ class RechercheDialogueFragment : DialogFragment() {
     companion object{
         val maxLengthNumber = 2
     }
+    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,16 +33,27 @@ class RechercheDialogueFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+
         //here fragment_my_dialog is the UI of Custom Dialog
 
         return inflater.inflate(R.layout.dialogue_fragment_recherche, container, false)
     }
 
+    fun startSearch(){
+        val carte1 = ETcarte1.text.toString().toInt()
+        val carte2 = ETcarte2.text.toString().toInt()
+        mainViewModel.changeCards(carte1, carte2)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ETcarte1.addTextChangedListener(TextWatcherGoTo(ETcarte2))
+        //Nous definissons le ViewModel
+        mainViewModel = MainViewModel.getInstance(this)!!
+            //ViewModelProvider(this).get(MainViewModel::class.java)
 
+        ETcarte1.addTextChangedListener(TextWatcherGoTo(ETcarte2))
+        ETcarte2.addTextChangedListener(TextWatcherStartSearch(this))
         /*
         ETcarte1.setFocusable(true)
         ETcarte1.setFocusableInTouchMode(true)
@@ -116,19 +130,24 @@ class RechercheDialogueFragment : DialogFragment() {
     }
 
 
-    class TextWatcherStartSearch : TextWatcher {
+    class TextWatcherStartSearch(val rechercheDialogueFragment: RechercheDialogueFragment) : TextWatcher {
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            if(s?.length!! >= maxLengthNumber) {
+                //Log.d("test", "2")
+                rechercheDialogueFragment.startSearch()
+                rechercheDialogueFragment.dismiss()
+            }
+        }
+
         override fun afterTextChanged(s: Editable?) {
-            Log.d("test", "Nous sommes APRES le textChanged")
+            //Log.d("test", "Nous sommes APRES le textChanged")
         }
 
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            Log.d("test", "Nous sommes AVANT le textChanged")
+            //Log.d("test", "Nous sommes AVANT le textChanged")
         }
 
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            //if(ETcarte1.text.length)
-            Log.d("test", "Nous sommes dans le textChanged")
-        }
+
     }
 
 }

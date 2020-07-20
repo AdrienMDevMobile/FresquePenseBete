@@ -5,16 +5,22 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@id/id_climat"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:id="@+id/nav_climat"
+            android:icon="@drawable/menu_climat"
+            android:title="@string/menu_climat" />
+
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_expert"
+            android:icon="@drawable/menu_expert"
+            android:title="@string/menu_expert" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_oceanne"
+            android:icon="@drawable/menu_oceanne"
+            android:title="@string/menu_oceanne" />
+        <item
+        android:id="@+id/nav_numerique"
+        android:icon="@drawable/menu_numerique"
+        android:title="@string/menu_numerique" />
+
     </group>
 </menu>
