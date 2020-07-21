@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.fresquerappel.MainFragment"
+        android:name="com.example.fresquerappel.ui.recherche.MainFragment"
         tools:layout="@layout/fragment_main" />
 
 

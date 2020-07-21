@@ -1,6 +1,5 @@
-package com.example.fresquerappel
+package com.example.fresquerappel.ui.recherche
 
-import android.util.Log
 import androidx.lifecycle.*
 
 
@@ -26,7 +25,8 @@ class MainViewModel : ViewModel() {
             if (instance == null) {
                 synchronized(MainViewModel()::class.java) {
                     if (instance == null) {
-                        instance = ViewModelProvider(owner).get(MainViewModel::class.java)
+                        instance = ViewModelProvider(owner).get(
+                            MainViewModel::class.java)
                     }
                 }
             }
@@ -42,16 +42,32 @@ class MainViewModel : ViewModel() {
     }
     private val _carte1 = MutableLiveData<Int>()
     private val _carte2 = MutableLiveData<Int>()
+    private val _relation = MutableLiveData<RelationDirection>()
 
     val name : LiveData<String> = _name
     val text: LiveData<String> = _text
     val carte1 : LiveData<Int> = _carte1
     val carte2 : LiveData<Int> = _carte2
+    val relation : MutableLiveData<RelationDirection> = _relation
 
     fun changeCards(carte1:Int, carte2:Int){
 
         _carte1.apply {  value = carte1 }
         _carte2.value = carte2
+    }
+
+    fun research(){
+        if(_carte1.value != null && _carte2.value != null){
+            if(_name.value == null){
+                _name.value = "Climat"
+            }
+            val relationModel = RelationModel.research(_carte1.value!!, _carte2.value!!, _name.value!!)
+
+            _relation.apply { value =  relationModel.relationDirection }
+
+            _text.apply{ value  = relationModel.explanation }
+
+        }
     }
 
     fun changeCollage(name:String){

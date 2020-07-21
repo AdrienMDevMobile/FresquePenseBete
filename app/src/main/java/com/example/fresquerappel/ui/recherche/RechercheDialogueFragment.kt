@@ -1,21 +1,13 @@
 package com.example.fresquerappel.ui.recherche
 
-import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.fresquerappel.MainViewModel
 import com.example.fresquerappel.R
 import kotlinx.android.synthetic.main.dialogue_fragment_recherche.*
 
@@ -43,6 +35,7 @@ class RechercheDialogueFragment : DialogFragment() {
         val carte1 = ETcarte1.text.toString().toInt()
         val carte2 = ETcarte2.text.toString().toInt()
         mainViewModel.changeCards(carte1, carte2)
+        mainViewModel.research()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -26,5 +26,9 @@
     <string name="prompt_carte2">Carte 2</string>
     <string name="action_valider">Valider</string>
 
+    <string name="relation_up">-&gt;</string>
+    <string name="relation_down">&lt;-</string>
+    <string name="relation_incorrect">X</string>
+    <string name="relation_none"><b>·</b></string>
 
 </resources>
