@@ -2,6 +2,7 @@ package com.example.fresquerappel.ui.recherche
 
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
@@ -31,11 +32,33 @@ class RechercheDialogueFragment : DialogFragment() {
         return inflater.inflate(R.layout.dialogue_fragment_recherche, container, false)
     }
 
-    fun startSearch(){
-        val carte1 = ETcarte1.text.toString().toInt()
-        val carte2 = ETcarte2.text.toString().toInt()
-        mainViewModel.changeCards(carte1, carte2)
-        mainViewModel.research()
+    fun startSearch():Boolean{
+
+        if(checkNumbers()){
+            val carte1 = ETcarte1.text.toString().toInt()
+            val carte2 = ETcarte2.text.toString().toInt()
+            mainViewModel.changeCards(carte1, carte2)
+            mainViewModel.research()
+
+            return true
+        }
+        else
+            return false
+
+    }
+
+    //Vérifie que les numéros de cartes ont bien étés entrés
+    fun checkNumbers():Boolean{
+        if (TextUtils.isEmpty(ETcarte1.text.toString())) {
+            ETcarte1.error = getString(R.string.warning_missing_carte_num)
+            return false
+        }
+        if (TextUtils.isEmpty(ETcarte2.text.toString())) {
+            ETcarte2.error = getString(R.string.warning_missing_carte_num)
+            return false
+        }
+
+        return true
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -106,9 +129,7 @@ class RechercheDialogueFragment : DialogFragment() {
     class TextWatcherGoTo(val editTextGoTo: EditText) : TextWatcher {
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            //if(ETcarte1.text.length)
             if(s?.length!! >= maxLengthNumber) {
-                //Log.d("test", "2")
                 editTextGoTo.requestFocus()
             }
         }
@@ -126,9 +147,8 @@ class RechercheDialogueFragment : DialogFragment() {
     class TextWatcherStartSearch(val rechercheDialogueFragment: RechercheDialogueFragment) : TextWatcher {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             if(s?.length!! >= maxLengthNumber) {
-                //Log.d("test", "2")
-                rechercheDialogueFragment.startSearch()
-                rechercheDialogueFragment.dismiss()
+                if(rechercheDialogueFragment.startSearch())
+                    rechercheDialogueFragment.dismiss()
             }
         }
 

@@ -21,10 +21,11 @@
     <string name="menu_oceanne"><i>Oceanne</i></string>
     <string name="menu_numerique"><i>Numerique</i></string>
 
-    <!-- Strings related to login -->
+    <!-- Search -->
     <string name="prompt_carte1">Carte 1</string>
     <string name="prompt_carte2">Carte 2</string>
     <string name="action_valider">Valider</string>
+    <string name="warning_missing_carte_num">Rentrez le numéro de carte</string>
 
     <string name="relation_up">-&gt;</string>
     <string name="relation_down">&lt;-</string>

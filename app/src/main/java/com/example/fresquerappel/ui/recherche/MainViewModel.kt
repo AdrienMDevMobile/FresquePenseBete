@@ -1,5 +1,6 @@
 package com.example.fresquerappel.ui.recherche
 
+import android.util.Log
 import androidx.lifecycle.*
 
 
@@ -52,8 +53,16 @@ class MainViewModel : ViewModel() {
 
     fun changeCards(carte1:Int, carte2:Int){
 
-        _carte1.apply {  value = carte1 }
-        _carte2.value = carte2
+        if(carte1 > carte2){
+            _carte1.value = carte1
+            _carte2.value = carte2
+        }
+        else {
+            _carte1.value = carte2
+            _carte2.value = carte1
+        }
+
+
     }
 
     fun research(){
@@ -67,6 +76,9 @@ class MainViewModel : ViewModel() {
 
             _text.apply{ value  = relationModel.explanation }
 
+        }
+        else {
+            Log.d("adr1", "pas bon")
         }
     }
 
