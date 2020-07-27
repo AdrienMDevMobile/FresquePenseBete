@@ -22,9 +22,11 @@ class MainFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mainViewModel = MainViewModel.getInstance(
-            this
-        )!!
+        mainViewModel = context?.let {
+            MainViewModel.getInstance(
+                this, it
+            )
+        }!!
 
         val root = inflater.inflate(R.layout.fragment_main, container, false)
 

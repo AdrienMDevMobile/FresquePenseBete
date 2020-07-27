@@ -1,5 +1,7 @@
 package com.example.fresquerappel.ui.recherche
 
+import android.content.Context
+import android.provider.ContactsContract
 import android.util.Log
 import androidx.lifecycle.*
 
@@ -22,12 +24,13 @@ class MainViewModel : ViewModel() {
     companion object {
         private var  instance: MainViewModel? = null
 
-        fun getInstance(owner: ViewModelStoreOwner): MainViewModel? {
+        fun getInstance(owner: ViewModelStoreOwner, context: Context): MainViewModel? {
             if (instance == null) {
                 synchronized(MainViewModel()::class.java) {
                     if (instance == null) {
                         instance = ViewModelProvider(owner).get(
                             MainViewModel::class.java)
+                        RelationModel.initialize(context)
                     }
                 }
             }
@@ -37,7 +40,9 @@ class MainViewModel : ViewModel() {
 
 
 
-    private val _name = MutableLiveData<String>()
+    private val _name = MutableLiveData<String>().apply {
+       value = "Climat"
+    }
     private val _text = MutableLiveData<String>().apply {
         value = "Explication"
     }
@@ -53,13 +58,13 @@ class MainViewModel : ViewModel() {
 
     fun changeCards(carte1:Int, carte2:Int){
 
-        if(carte1 > carte2){
-            _carte1.value = carte1
-            _carte2.value = carte2
-        }
-        else {
+        if(carte1 >= carte2){
             _carte1.value = carte2
             _carte2.value = carte1
+        }
+        else {
+            _carte1.value = carte1
+            _carte2.value = carte2
         }
 
 
@@ -77,13 +82,10 @@ class MainViewModel : ViewModel() {
             _text.apply{ value  = relationModel.explanation }
 
         }
-        else {
-            Log.d("adr1", "pas bon")
-        }
+        else {Log.d("recherche","recherche non lancee")}
     }
 
     fun changeCollage(name:String){
-        //Log.d("adr1", "nous changeons fresque" + name)
         _name.value = name
     }
 }

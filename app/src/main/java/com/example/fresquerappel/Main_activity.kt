@@ -2,7 +2,6 @@ package com.example.fresquerappel
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
@@ -27,7 +26,7 @@ class Main_activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //Nous definissons le ViewModel
-        mainViewModel = MainViewModel.getInstance(this)!!
+        mainViewModel = MainViewModel.getInstance(this, applicationContext)!!
 
         //On définit le menu latéral
         super.onCreate(savedInstanceState)
@@ -85,7 +84,6 @@ class Main_activity : AppCompatActivity() {
 
         //La VM change le nom de la fresque active
         mainViewModel.name.observe(this, Observer {
-            Log.d("adr1", "VM change fresque active")
             val actionBar: ActionBar? = supportActionBar
             actionBar?.setTitle(it.toString())
         })

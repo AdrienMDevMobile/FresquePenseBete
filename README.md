@@ -10,3 +10,5 @@
 0.5 = mise en place de la ViewModel (récupère titre et numéros de cartes)
 
 0.6 = affichage du résultat de recherche
+
+0.7 = Lecture dans un fichier json

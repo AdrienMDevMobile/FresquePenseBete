@@ -65,7 +65,7 @@ class RechercheDialogueFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //Nous definissons le ViewModel
-        mainViewModel = MainViewModel.getInstance(this)!!
+        mainViewModel = context?.let { MainViewModel.getInstance(this, it) }!!
             //ViewModelProvider(this).get(MainViewModel::class.java)
 
         ETcarte1.addTextChangedListener(TextWatcherGoTo(ETcarte2))
