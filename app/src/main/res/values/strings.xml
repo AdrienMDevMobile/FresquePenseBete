@@ -24,7 +24,7 @@
     <!-- Search -->
     <string name="prompt_carte1">Carte 1</string>
     <string name="prompt_carte2">Carte 2</string>
-    <string name="action_valider">Valider</string>
+    <string name="action_valider">Go</string>
     <string name="warning_missing_carte_num">Rentrez le numéro de carte</string>
 
     <string name="relation_up">-&gt;</string>
@@ -32,5 +32,8 @@
     <string name="relation_updown">&lt;-&gt;</string>
     <string name="relation_incorrect">X</string>
     <string name="relation_none"><b>·</b></string>
+
+    <string name="relation_mandatory">importante</string>
+    <string name="relation_optional">optionelle</string>
 
 </resources>

@@ -12,3 +12,5 @@
 0.6 = affichage du résultat de recherche
 
 0.7 = Lecture dans un fichier json
+
+1.0 = Prête à l'emploi (Recherche de relation entre cartes de la Fresque du climat).

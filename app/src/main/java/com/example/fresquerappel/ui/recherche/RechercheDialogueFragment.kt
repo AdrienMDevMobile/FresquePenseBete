@@ -70,6 +70,9 @@ class RechercheDialogueFragment : DialogFragment() {
 
         ETcarte1.addTextChangedListener(TextWatcherGoTo(ETcarte2))
         ETcarte2.addTextChangedListener(TextWatcherStartSearch(this))
+        BTNrecherche.setOnClickListener {
+            if(startSearch())
+                this.dismiss() }
         /*
         ETcarte1.setFocusable(true)
         ETcarte1.setFocusableInTouchMode(true)

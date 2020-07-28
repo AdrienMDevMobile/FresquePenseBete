@@ -27,10 +27,12 @@ class JsonReader {
                     jArray.getJSONObject(i).getString("c2")
                 val direction: String =
                     jArray.getJSONObject(i).getString("rel")
+                val mandatory:String =
+                    jArray.getJSONObject(i).getString("mandatory")
                 val explanation: String =
                     jArray.getJSONObject(i).getString("expl")
 
-                val rel = RelationModel(card1, card2, fresque, direction, explanation)
+                val rel = RelationModel(card1, card2, fresque, direction, mandatory, explanation)
 
                 list.add(rel)
             }

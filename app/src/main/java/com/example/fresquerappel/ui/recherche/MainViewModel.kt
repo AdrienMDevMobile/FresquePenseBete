@@ -1,9 +1,13 @@
 package com.example.fresquerappel.ui.recherche
 
+import android.app.Application
 import android.content.Context
 import android.provider.ContactsContract
 import android.util.Log
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
+import com.example.fresquerappel.R
+import kotlinx.android.synthetic.main.fragment_main.*
 
 
 /*
@@ -23,6 +27,7 @@ class MainViewModel : ViewModel() {
     private fun MainViewModel() {}
     companion object {
         private var  instance: MainViewModel? = null
+        private var context : Context? = null
 
         fun getInstance(owner: ViewModelStoreOwner, context: Context): MainViewModel? {
             if (instance == null) {
@@ -30,6 +35,7 @@ class MainViewModel : ViewModel() {
                     if (instance == null) {
                         instance = ViewModelProvider(owner).get(
                             MainViewModel::class.java)
+                        this.context = context
                         RelationModel.initialize(context)
                     }
                 }
@@ -37,8 +43,6 @@ class MainViewModel : ViewModel() {
             return instance
         }
     }
-
-
 
     private val _name = MutableLiveData<String>().apply {
        value = "Climat"
@@ -48,13 +52,17 @@ class MainViewModel : ViewModel() {
     }
     private val _carte1 = MutableLiveData<Int>()
     private val _carte2 = MutableLiveData<Int>()
-    private val _relation = MutableLiveData<RelationDirection>()
+    private val _relation = MutableLiveData<String>()
+    private val _relation_color = MutableLiveData<Int>()
+    private val _relation_mandatory = MutableLiveData<String>()
 
     val name : LiveData<String> = _name
     val text: LiveData<String> = _text
     val carte1 : LiveData<Int> = _carte1
     val carte2 : LiveData<Int> = _carte2
-    val relation : MutableLiveData<RelationDirection> = _relation
+    val relation : MutableLiveData<String> = _relation
+    val relation_color = _relation_color
+    val relation_mandatory = _relation_mandatory
 
     fun changeCards(carte1:Int, carte2:Int){
 
@@ -77,9 +85,8 @@ class MainViewModel : ViewModel() {
             }
             val relationModel = RelationModel.research(_carte1.value!!, _carte2.value!!, _name.value!!)
 
-            _relation.apply { value =  relationModel.relationDirection }
-
             _text.apply{ value  = relationModel.explanation }
+            drawRelation(relationModel.relation)
 
         }
         else {Log.d("recherche","recherche non lancee")}
@@ -87,5 +94,55 @@ class MainViewModel : ViewModel() {
 
     fun changeCollage(name:String){
         _name.value = name
+    }
+
+    private fun drawRelation(relation : Relation){
+        if(relation.direction == RelationDirection.UP || relation.direction == RelationDirection.DOWN
+            || relation.direction == RelationDirection.UPDOWN){
+            if(relation.mandatory == RelationMandatory.MANDATORY){
+                context?.let { ContextCompat.getColor(it, R.color.green_correct_mandatory) }?.let {
+                    _relation_color.value = it
+                }
+                _relation_mandatory.value = context!!.getString(R.string.relation_mandatory)
+            }
+
+            else {
+                context?.let { ContextCompat.getColor(it, R.color.green_correct_optional) }?.let {
+                    _relation_color.value = it
+                }
+                _relation_mandatory.value = context!!.getString(R.string.relation_mandatory)
+            }
+
+        }
+        else {
+            _relation_mandatory.value = ""
+        }
+        if(relation.direction == RelationDirection.UP){
+            _relation.value = context?.getString(R.string.relation_up)
+        }
+
+        if(relation.direction == RelationDirection.DOWN){
+            _relation.value = context?.getString(R.string.relation_down)
+        }
+
+        if(relation.direction == RelationDirection.UPDOWN){
+            _relation.value = context?.getString(R.string.relation_updown)
+        }
+
+        if(relation.direction == RelationDirection.INCORRECT){
+            _relation.value =  context?.getString(R.string.relation_incorrect)
+            context?.let { ContextCompat.getColor(it, R.color.red_incorrect) }?.let {
+                _relation_color.value = it
+            }
+        }
+
+
+        if(relation.direction == RelationDirection.NONE){
+            _relation.value =  context?.getString(R.string.relation_none)
+            context?.let { ContextCompat.getColor(it, R.color.gray_missing) }?.let {
+                _relation_color.value = it
+            }
+        }
+
     }
 }

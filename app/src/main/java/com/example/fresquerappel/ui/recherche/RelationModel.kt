@@ -5,9 +5,9 @@ import android.content.Context
 import android.provider.ContactsContract
 import com.example.fresquerappel.tools.JsonReader
 
-class RelationModel(val number1: Int, val number2: Int, val fresque: String, val relationDirection: RelationDirection, val explanation:String){
+class RelationModel(val number1: Int, val number2: Int, val fresque: String, val relation: Relation, val explanation:String){
 
-    constructor(string1:String, string2:String, fresque: String, rDirString: String, explanation: String) : this(string1.toInt(), string2.toInt(), fresque, RelationDirection.getRelDirection(rDirString), explanation) {}
+    constructor(string1:String, string2:String, fresque: String, rDirString: String, rMandatoryString:String, explanation: String) : this(string1.toInt(), string2.toInt(), fresque, Relation(RelationDirection.getRelDirection(rDirString), RelationMandatory.getRelMandatory(rMandatoryString)), explanation) {}
 
     companion object{
         var list: MutableList<RelationModel>? = null
@@ -25,7 +25,7 @@ class RelationModel(val number1: Int, val number2: Int, val fresque: String, val
                         return it
                 }
             }
-            return RelationModel(number1, number2, fresque, RelationDirection.NONE , "")
+            return RelationModel(number1, number2, fresque, Relation(RelationDirection.NONE, RelationMandatory.OPTIONAL) , "")
 
             /*
                var relationDirection = RelationDirection.NONE
@@ -52,6 +52,9 @@ class RelationModel(val number1: Int, val number2: Int, val fresque: String, val
 
 }
 
+class Relation(val direction:RelationDirection, val mandatory: RelationMandatory){
+}
+
 enum class RelationDirection {
     INCORRECT, UP, DOWN, UPDOWN, NONE;
 
@@ -65,6 +68,18 @@ enum class RelationDirection {
                 "INCORRECT" -> return INCORRECT
             }
             return NONE
+        }
+    }
+}
+
+enum class RelationMandatory{
+    MANDATORY, OPTIONAL;
+    companion object{
+        fun getRelMandatory(relationMandatory:String) : RelationMandatory{
+            when(relationMandatory.capitalize()){
+                "MANDATORY"-> return MANDATORY
+            }
+            return OPTIONAL
         }
     }
 }

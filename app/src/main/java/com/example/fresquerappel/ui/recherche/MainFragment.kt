@@ -1,5 +1,6 @@
 package com.example.fresquerappel.ui.recherche
 
+import android.icu.lang.UCharacter.getDirection
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -44,59 +45,16 @@ class MainFragment : Fragment() {
             txt_id_carte2.text = it.toString()
         })
         mainViewModel.relation.observe(viewLifecycleOwner, Observer {
-            drawRelation(it)
+            txt_relation.text = it
+        })
+        mainViewModel.relation_color.observe(viewLifecycleOwner, Observer {
+            txt_relation.setTextColor(it)
+        })
+        mainViewModel.relation_mandatory.observe(viewLifecycleOwner, Observer {
+            txt_mandatory.text = it
         })
 
         return root
     }
 
-    private fun drawRelation(relationDirection : RelationDirection){
-        if(relationDirection == RelationDirection.UP){
-            txt_relation.text = context?.getString(R.string.relation_up)
-            context?.let { ContextCompat.getColor(it, R.color.green_correct) }?.let {
-                txt_relation.setTextColor(
-                    it
-                )
-            }
-        }
-
-        if(relationDirection == RelationDirection.DOWN){
-            txt_relation.text = context?.getString(R.string.relation_down)
-            context?.let { ContextCompat.getColor(it, R.color.green_correct) }?.let {
-                txt_relation.setTextColor(
-                    it
-                )
-            }
-        }
-
-
-        if(relationDirection == RelationDirection.INCORRECT){
-            txt_relation.text = context?.getString(R.string.relation_incorrect)
-            context?.let { ContextCompat.getColor(it, R.color.red_incorrect) }?.let {
-                txt_relation.setTextColor(
-                    it
-                )
-            }
-        }
-
-        if(relationDirection == RelationDirection.UPDOWN){
-            txt_relation.text = context?.getString(R.string.relation_updown)
-            context?.let { ContextCompat.getColor(it, R.color.green_correct) }?.let {
-                txt_relation.setTextColor(
-                    it
-                )
-            }
-        }
-
-
-        if(relationDirection == RelationDirection.NONE){
-            txt_relation.text = context?.getString(R.string.relation_none)
-            context?.let { ContextCompat.getColor(it, R.color.gray_missing) }?.let {
-                txt_relation.setTextColor(
-                    it
-                )
-            }
-        }
-
-    }
 }
