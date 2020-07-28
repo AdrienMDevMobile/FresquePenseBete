@@ -29,6 +29,7 @@
 
     <string name="relation_up">-&gt;</string>
     <string name="relation_down">&lt;-</string>
+    <string name="relation_updown">&lt;-&gt;</string>
     <string name="relation_incorrect">X</string>
     <string name="relation_none"><b>·</b></string>
 

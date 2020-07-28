@@ -79,6 +79,15 @@ class MainFragment : Fragment() {
             }
         }
 
+        if(relationDirection == RelationDirection.UPDOWN){
+            txt_relation.text = context?.getString(R.string.relation_updown)
+            context?.let { ContextCompat.getColor(it, R.color.green_correct) }?.let {
+                txt_relation.setTextColor(
+                    it
+                )
+            }
+        }
+
 
         if(relationDirection == RelationDirection.NONE){
             txt_relation.text = context?.getString(R.string.relation_none)

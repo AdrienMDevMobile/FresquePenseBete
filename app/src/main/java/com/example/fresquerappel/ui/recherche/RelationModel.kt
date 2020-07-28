@@ -53,7 +53,7 @@ class RelationModel(val number1: Int, val number2: Int, val fresque: String, val
 }
 
 enum class RelationDirection {
-    INCORRECT, UP, DOWN, NONE;
+    INCORRECT, UP, DOWN, UPDOWN, NONE;
 
     companion object{
         @SuppressLint("DefaultLocale")
@@ -61,6 +61,7 @@ enum class RelationDirection {
             when (relationDirection.capitalize()) {
                 "UP" -> return UP
                 "DOWN" -> return DOWN
+                "UPDOWN"-> return UPDOWN
                 "INCORRECT" -> return INCORRECT
             }
             return NONE
