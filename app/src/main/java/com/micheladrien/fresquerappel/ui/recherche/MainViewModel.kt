@@ -1,13 +1,11 @@
 package com.micheladrien.fresquerappel.ui.recherche
 
-import android.app.Application
 import android.content.Context
-import android.provider.ContactsContract
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
 import com.micheladrien.fresquerappel.R
-import kotlinx.android.synthetic.main.fragment_main.*
+import com.micheladrien.fresquerappel.absMainVM
 
 
 /*
@@ -22,27 +20,15 @@ Je dois donc le faire en Singleton
 
 //TODO : Le nom de la fresque n'est pas définie par défaut. Comment gérer cela ? La définir par défaut avec getString(R)
 //ou récupérer valeur par défaut (mm fonction) au moment de la recherche si val null.
-class MainViewModel : ViewModel() {
+class MainViewModel : absMainVM() {
 
     private fun MainViewModel() {}
-    companion object {
-        private var  instance: MainViewModel? = null
-        private var context : Context? = null
+    private var context: Context? = null
 
-        fun getInstance(owner: ViewModelStoreOwner, context: Context): MainViewModel? {
-            if (instance == null) {
-                synchronized(MainViewModel()::class.java) {
-                    if (instance == null) {
-                        instance = ViewModelProvider(owner).get(
-                            MainViewModel::class.java)
-                        this.context = context
-                        RelationModel.initialize(context)
-                    }
-                }
-            }
-            return instance
-        }
+    override fun setContext(context: Context){
+        this.context = context
     }
+
 
     private val _name = MutableLiveData<String>().apply {
        value = "Climat"
@@ -56,15 +42,15 @@ class MainViewModel : ViewModel() {
     private val _relation_color = MutableLiveData<Int>()
     private val _relation_mandatory = MutableLiveData<String>()
 
-    val name : LiveData<String> = _name
-    val text: LiveData<String> = _text
-    val carte1 : LiveData<Int> = _carte1
-    val carte2 : LiveData<Int> = _carte2
-    val relation : MutableLiveData<String> = _relation
-    val relation_color = _relation_color
-    val relation_mandatory = _relation_mandatory
+    override val name : LiveData<String> = _name
+    override val text: LiveData<String> = _text
+    override val carte1 : LiveData<Int> = _carte1
+    override val carte2 : LiveData<Int> = _carte2
+    override val relation : LiveData<String> = _relation
+    override val relation_color : LiveData<Int> = _relation_color
+    override val relation_mandatory : LiveData<String> = _relation_mandatory
 
-    fun changeCards(carte1:Int, carte2:Int){
+    override fun changeCards(carte1:Int, carte2:Int){
 
         if(carte1 >= carte2){
             _carte1.value = carte2
@@ -78,7 +64,7 @@ class MainViewModel : ViewModel() {
 
     }
 
-    fun research(){
+    override fun research(){
         if(_carte1.value != null && _carte2.value != null){
             if(_name.value == null){
                 _name.value = "Climat"
@@ -92,7 +78,7 @@ class MainViewModel : ViewModel() {
         else {Log.d("recherche","recherche non lancee")}
     }
 
-    fun changeCollage(name:String){
+    override fun changeCollage(name:String){
         _name.value = name
     }
 
