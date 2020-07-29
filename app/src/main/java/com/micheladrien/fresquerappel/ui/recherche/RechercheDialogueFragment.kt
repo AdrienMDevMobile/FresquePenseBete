@@ -27,9 +27,9 @@ class RechercheDialogueFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
-        /*context?.let {
+        /* context?.let {
             mainViewModel.setContext(it)
-        }!!*/
+        }!! */
 
         //here fragment_my_dialog is the UI of Custom Dialog
 

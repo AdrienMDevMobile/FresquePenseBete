@@ -1,10 +1,11 @@
 package com.micheladrien.fresquerappel.ui.recherche
 
+import android.app.Application
 import android.content.Context
+import android.os.Build
 import android.util.Log
 import androidx.lifecycle.*
-
-
+import com.micheladrien.fresquerappel.R
 /*
 Le Viewmodel sera partagé entre l'activité main (reçoit le nom de la fresque),
 le fragment de recherche (reçoit numéro des cartes)
@@ -17,19 +18,18 @@ Je dois donc le faire en Singleton
 
 //TODO : Le nom de la fresque n'est pas définie par défaut. Comment gérer cela ? La définir par défaut avec getString(R)
 //ou récupérer valeur par défaut (mm fonction) au moment de la recherche si val null.
-class MainViewModel: ViewModel() {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
 
-    private var context: Context? = null
+    //private var context: Context? = null
 
+    /*
     fun setContext(context: Context){
         if(this.context == null)
             this.context = context
-    }
-
+    } */
 
     private val _name = MutableLiveData<String>().apply {
-       //value = context?.getString(R.string.menu_climat)
-        value = "Climat"
+       value = application.getString(R.string.menu_climat)
     }
     private val _text = MutableLiveData<String>().apply {
         value = "Explication"
@@ -81,21 +81,26 @@ class MainViewModel: ViewModel() {
     }
 
     private fun drawRelation(relation : Relation){
-        /*
         if(relation.direction == RelationDirection.UP || relation.direction == RelationDirection.DOWN
             || relation.direction == RelationDirection.UPDOWN){
             if(relation.mandatory == RelationMandatory.MANDATORY){
-                context?.let { ContextCompat.getColor(it, R.color.green_correct_mandatory) }?.let {
+                /*context?.let { ContextCompat.getColor(it, R.color.green_correct_mandatory) }?.let {
                     _relation_color.value = it
-                }
-                _relation_mandatory.value = context!!.getString(R.string.relation_mandatory)
+                }*/
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                    _relation_color.value =  getApplication<Application>().getColor( R.color.green_correct_mandatory)
+                _relation_mandatory.value = getApplication<Application>().getString(R.string.relation_mandatory)
             }
 
             else {
-                context?.let { ContextCompat.getColor(it, R.color.green_correct_optional) }?.let {
+                /*context?.let { ContextCompat.getColor(it, R.color.green_correct_optional) }?.let {
                     _relation_color.value = it
-                }
-                _relation_mandatory.value = context!!.getString(R.string.relation_optional)
+                }*/
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                    _relation_color.value =  getApplication<Application>().getColor( R.color.green_correct_optional)
+                _relation_mandatory.value =  getApplication<Application>().getString(R.string.relation_optional)
             }
 
         }
@@ -103,31 +108,28 @@ class MainViewModel: ViewModel() {
             _relation_mandatory.value = ""
         }
         if(relation.direction == RelationDirection.UP){
-            _relation.value = context?.getString(R.string.relation_up)
+            _relation.value =  getApplication<Application>().getString(R.string.relation_up)
         }
 
         if(relation.direction == RelationDirection.DOWN){
-            _relation.value = context?.getString(R.string.relation_down)
+            _relation.value =  getApplication<Application>().getString(R.string.relation_down)
         }
 
         if(relation.direction == RelationDirection.UPDOWN){
-            _relation.value = context?.getString(R.string.relation_updown)
+            _relation.value =  getApplication<Application>().getString(R.string.relation_updown)
         }
 
         if(relation.direction == RelationDirection.INCORRECT){
-            _relation.value =  context?.getString(R.string.relation_incorrect)
-            context?.let { ContextCompat.getColor(it, R.color.red_incorrect) }?.let {
-                _relation_color.value = it
-            }
+            _relation.value =   getApplication<Application>().getString(R.string.relation_incorrect)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                _relation_color.value =  getApplication<Application>().getColor( R.color.red_incorrect)
         }
 
 
         if(relation.direction == RelationDirection.NONE){
-            _relation.value =  context?.getString(R.string.relation_none)
-            context?.let { ContextCompat.getColor(it, R.color.gray_missing) }?.let {
-                _relation_color.value = it
-            }
+            _relation.value =  getApplication<Application>().getString(R.string.relation_none)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                _relation_color.value =  getApplication<Application>().getColor( R.color.gray_missing)
         }
-           */
     }
 }

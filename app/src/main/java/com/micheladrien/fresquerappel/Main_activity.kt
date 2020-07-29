@@ -18,6 +18,7 @@ import com.micheladrien.fresquerappel.ui.recherche.RechercheDialogueFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.micheladrien.fresquerappel.ui.recherche.MainViewModel
+import com.micheladrien.fresquerappel.ui.recherche.RelationModel
 
 
 class Main_activity : AppCompatActivity() {
@@ -27,9 +28,8 @@ class Main_activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //Nous definissons le ViewModel
-        //mainViewModel = (MainVMSingleton()).getInstance(this, applicationContext)!!
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        //mainViewModel.setContext(applicationContext)
+        RelationModel.initialize(this)
 
         //On définit le menu latéral
         super.onCreate(savedInstanceState)
