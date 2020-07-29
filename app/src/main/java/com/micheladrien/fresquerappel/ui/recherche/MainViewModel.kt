@@ -2,10 +2,7 @@ package com.micheladrien.fresquerappel.ui.recherche
 
 import android.content.Context
 import android.util.Log
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
-import com.micheladrien.fresquerappel.R
-import com.micheladrien.fresquerappel.absMainVM
 
 
 /*
@@ -20,18 +17,19 @@ Je dois donc le faire en Singleton
 
 //TODO : Le nom de la fresque n'est pas définie par défaut. Comment gérer cela ? La définir par défaut avec getString(R)
 //ou récupérer valeur par défaut (mm fonction) au moment de la recherche si val null.
-class MainViewModel : absMainVM() {
+class MainViewModel: ViewModel() {
 
-    private fun MainViewModel() {}
     private var context: Context? = null
 
-    override fun setContext(context: Context){
-        this.context = context
+    fun setContext(context: Context){
+        if(this.context == null)
+            this.context = context
     }
 
 
     private val _name = MutableLiveData<String>().apply {
-       value = "Climat"
+       //value = context?.getString(R.string.menu_climat)
+        value = "Climat"
     }
     private val _text = MutableLiveData<String>().apply {
         value = "Explication"
@@ -42,15 +40,15 @@ class MainViewModel : absMainVM() {
     private val _relation_color = MutableLiveData<Int>()
     private val _relation_mandatory = MutableLiveData<String>()
 
-    override val name : LiveData<String> = _name
-    override val text: LiveData<String> = _text
-    override val carte1 : LiveData<Int> = _carte1
-    override val carte2 : LiveData<Int> = _carte2
-    override val relation : LiveData<String> = _relation
-    override val relation_color : LiveData<Int> = _relation_color
-    override val relation_mandatory : LiveData<String> = _relation_mandatory
+    val name : LiveData<String> = _name
+    val text: LiveData<String> = _text
+    val carte1 : LiveData<Int> = _carte1
+    val carte2 : LiveData<Int> = _carte2
+    val relation : LiveData<String> = _relation
+    val relation_color : LiveData<Int> = _relation_color
+    val relation_mandatory : LiveData<String> = _relation_mandatory
 
-    override fun changeCards(carte1:Int, carte2:Int){
+    fun changeCards(carte1:Int, carte2:Int){
 
         if(carte1 >= carte2){
             _carte1.value = carte2
@@ -64,7 +62,7 @@ class MainViewModel : absMainVM() {
 
     }
 
-    override fun research(){
+    fun research(){
         if(_carte1.value != null && _carte2.value != null){
             if(_name.value == null){
                 _name.value = "Climat"
@@ -78,11 +76,12 @@ class MainViewModel : absMainVM() {
         else {Log.d("recherche","recherche non lancee")}
     }
 
-    override fun changeCollage(name:String){
+    fun changeCollage(name:String){
         _name.value = name
     }
 
     private fun drawRelation(relation : Relation){
+        /*
         if(relation.direction == RelationDirection.UP || relation.direction == RelationDirection.DOWN
             || relation.direction == RelationDirection.UPDOWN){
             if(relation.mandatory == RelationMandatory.MANDATORY){
@@ -129,6 +128,6 @@ class MainViewModel : absMainVM() {
                 _relation_color.value = it
             }
         }
-
+           */
     }
 }

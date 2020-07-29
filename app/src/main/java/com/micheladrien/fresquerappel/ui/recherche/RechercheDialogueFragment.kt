@@ -9,8 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
 import com.micheladrien.fresquerappel.R
-import com.micheladrien.fresquerappel.absMainVM
 import kotlinx.android.synthetic.main.dialogue_fragment_recherche.*
 
 
@@ -19,14 +19,17 @@ class RechercheDialogueFragment : DialogFragment() {
     companion object{
         val maxLengthNumber = 2
     }
-    private lateinit var mainViewModel: absMainVM
+    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+        /*context?.let {
+            mainViewModel.setContext(it)
+        }!!*/
 
         //here fragment_my_dialog is the UI of Custom Dialog
 
@@ -66,9 +69,10 @@ class RechercheDialogueFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //Nous definissons le ViewModel
-        mainViewModel = context?.let {
-            (MainVMSingleton()).getInstance(this, it); }!!
+        //mainViewModel = context?.let {
+        //    (MainVMSingleton()).getInstance(this, it); }!!
         //ViewModelProvider(this).get(MainViewModel::class.java)
+        mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
         ETcarte1.addTextChangedListener(TextWatcherGoTo(ETcarte2))
         ETcarte2.addTextChangedListener(TextWatcherStartSearch(this))

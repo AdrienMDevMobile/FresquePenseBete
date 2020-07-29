@@ -7,23 +7,30 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import com.micheladrien.fresquerappel.ui.recherche.MainVMSingleton
+import androidx.lifecycle.ViewModelProvider
+import com.micheladrien.fresquerappel.ui.recherche.MainViewModel
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {
 
-    private lateinit var mainViewModel: absMainVM
+    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        /*
         mainViewModel = context?.let {
             (MainVMSingleton()).getInstance(
                 this, it
             )
-        }!!
+        }!! */
+        mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+        /*context?.let {
+            mainViewModel.setContext(it)
+        }!! */
 
         val root = inflater.inflate(R.layout.fragment_main, container, false)
 

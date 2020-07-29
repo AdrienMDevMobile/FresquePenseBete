@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -16,17 +17,19 @@ import androidx.navigation.ui.setupWithNavController
 import com.micheladrien.fresquerappel.ui.recherche.RechercheDialogueFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
-import com.micheladrien.fresquerappel.ui.recherche.MainVMSingleton
+import com.micheladrien.fresquerappel.ui.recherche.MainViewModel
 
 
 class Main_activity : AppCompatActivity() {
 
-    private lateinit var mainViewModel: absMainVM
+    private lateinit var mainViewModel: MainViewModel
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //Nous definissons le ViewModel
-        mainViewModel = (MainVMSingleton()).getInstance(this, applicationContext)!!
+        //mainViewModel = (MainVMSingleton()).getInstance(this, applicationContext)!!
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        //mainViewModel.setContext(applicationContext)
 
         //On définit le menu latéral
         super.onCreate(savedInstanceState)
