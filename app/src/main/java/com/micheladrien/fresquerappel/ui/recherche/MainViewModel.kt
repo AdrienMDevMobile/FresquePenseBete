@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.os.Build
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.*
 import com.micheladrien.fresquerappel.R
 /*
@@ -65,6 +66,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun changeCollage(name:String){
+        //Liste des fresques non supportés
+        when(name){
+            getApplication<Application>().getString(R.string.menu_expert), getApplication<Application>().getString(R.string.menu_numerique), getApplication<Application>().getString(R.string.menu_oceanne) -> {
+                Toast.makeText(getApplication(), getApplication<Application>().getString(R.string.toast_collage_unavailable, name), Toast.LENGTH_SHORT).show()
+                return
+            }
+        }
         _name.value = name
     }
 
