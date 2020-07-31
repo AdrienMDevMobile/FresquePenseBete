@@ -21,19 +21,11 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        /*
-        mainViewModel = context?.let {
-            (MainVMSingleton()).getInstance(
-                this, it
-            )
-        }!! */
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
-        /*context?.let {
-            mainViewModel.setContext(it)
-        }!! */
 
         val root = inflater.inflate(R.layout.fragment_main, container, false)
 
+        /* Set up des observeurs debut */
         //Explication
         val textView: TextView = root.findViewById(R.id.text_explication)
         mainViewModel.text.observe(viewLifecycleOwner, Observer {
@@ -47,6 +39,7 @@ class MainFragment : Fragment() {
         mainViewModel.carte2.observe(viewLifecycleOwner, Observer {
             txt_id_carte2.text = it.toString()
         })
+        //Relation = -> <- X, etc + sa couleur + optionel/obligatoire
         mainViewModel.relation.observe(viewLifecycleOwner, Observer {
             txt_relation.text = it
         })
@@ -56,6 +49,7 @@ class MainFragment : Fragment() {
         mainViewModel.relation_mandatory.observe(viewLifecycleOwner, Observer {
             txt_mandatory.text = it
         })
+        /* Set up des observeurs debut */
 
         return root
     }

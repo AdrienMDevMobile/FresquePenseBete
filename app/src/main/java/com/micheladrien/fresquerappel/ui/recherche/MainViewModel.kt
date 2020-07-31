@@ -10,23 +10,11 @@ import com.micheladrien.fresquerappel.R
 Le Viewmodel sera partagé entre l'activité main (reçoit le nom de la fresque),
 le fragment de recherche (reçoit numéro des cartes)
 le fragment principal (affiche les informations)
-L'appel de l'activité et le fragment se font par xml.
-Je dois donc le faire en Singleton
  */
 
 
-
-//TODO : Le nom de la fresque n'est pas définie par défaut. Comment gérer cela ? La définir par défaut avec getString(R)
 //ou récupérer valeur par défaut (mm fonction) au moment de la recherche si val null.
 class MainViewModel(application: Application) : AndroidViewModel(application) {
-
-    //private var context: Context? = null
-
-    /*
-    fun setContext(context: Context){
-        if(this.context == null)
-            this.context = context
-    } */
 
     private val _name = MutableLiveData<String>().apply {
        value = application.getString(R.string.menu_climat)
@@ -84,9 +72,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         if(relation.direction == RelationDirection.UP || relation.direction == RelationDirection.DOWN
             || relation.direction == RelationDirection.UPDOWN){
             if(relation.mandatory == RelationMandatory.MANDATORY){
-                /*context?.let { ContextCompat.getColor(it, R.color.green_correct_mandatory) }?.let {
-                    _relation_color.value = it
-                }*/
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                     _relation_color.value =  getApplication<Application>().getColor( R.color.green_correct_mandatory)
@@ -94,9 +79,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             }
 
             else {
-                /*context?.let { ContextCompat.getColor(it, R.color.green_correct_optional) }?.let {
-                    _relation_color.value = it
-                }*/
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                     _relation_color.value =  getApplication<Application>().getColor( R.color.green_correct_optional)

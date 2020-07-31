@@ -40,8 +40,6 @@ class Main_activity : AppCompatActivity() {
         /* Défini le bouton de recherche -- Debut */
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
-            //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-             //   .setAction("Action", null).show()
 
             val dialogFragment = RechercheDialogueFragment()
             val bundle = Bundle()
@@ -72,11 +70,7 @@ class Main_activity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-
         navView.setNavigationItemSelectedListener { menuItem ->
-
-
-
 
             mainViewModel.changeCollage(menuItem.title.toString())
 

@@ -27,11 +27,6 @@ class RechercheDialogueFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
-        /* context?.let {
-            mainViewModel.setContext(it)
-        }!! */
-
-        //here fragment_my_dialog is the UI of Custom Dialog
 
         return inflater.inflate(R.layout.dialogue_fragment_recherche, container, false)
     }
@@ -69,9 +64,6 @@ class RechercheDialogueFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //Nous definissons le ViewModel
-        //mainViewModel = context?.let {
-        //    (MainVMSingleton()).getInstance(this, it); }!!
-        //ViewModelProvider(this).get(MainViewModel::class.java)
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
         ETcarte1.addTextChangedListener(TextWatcherGoTo(ETcarte2))
@@ -80,6 +72,10 @@ class RechercheDialogueFragment : DialogFragment() {
             if(startSearch())
                 this.dismiss() }
         /*
+         Actuellement mis en commentaire : problème de focus pour l'apparition du clavier :
+         si je ne force pas le focus : rien ne se passe
+         si je force le fos : le clavier ne peut pas disparaitre quand l'utilisateur quitte la memu pop-up
+
         ETcarte1.setFocusable(true)
         ETcarte1.setFocusableInTouchMode(true)
 
@@ -135,6 +131,7 @@ class RechercheDialogueFragment : DialogFragment() {
 */
 
     //Text watchers : actions au moment où l'utilisateur rentre le texte. Passe la main à l'edittext suivant au moment où la taille maximale est atteinte
+    //Premier editText : passe à l'edit text suivant
     class TextWatcherGoTo(val editTextGoTo: EditText) : TextWatcher {
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -145,14 +142,14 @@ class RechercheDialogueFragment : DialogFragment() {
 
         //Fonction non utilisées
         override fun afterTextChanged(s: Editable?) {
-            //Log.d("test", "Nous sommes APRES le textChanged "+ s?.length + " " + s.toString())
+
         }
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            //Log.d("test", "Nous sommes AVANT le textChanged" + s.toString() + start + " " + count + " " + after)
+
         }
     }
 
-
+    //Second edit text : lance la recherche.
     class TextWatcherStartSearch(val rechercheDialogueFragment: RechercheDialogueFragment) : TextWatcher {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             if(s?.length!! >= maxLengthNumber) {
