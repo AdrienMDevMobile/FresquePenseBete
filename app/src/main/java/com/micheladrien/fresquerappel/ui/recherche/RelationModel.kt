@@ -10,27 +10,6 @@ class RelationModel(val number1: Int, val number2: Int, val fresque: String, val
 
     constructor(string1:String, string2:String, fresque: String, rDirString: String, rMandatoryString:String, explanation: String) : this(string1.toInt(), string2.toInt(), fresque, Relation(RelationDirection.getRelDirection(rDirString), RelationMandatory.getRelMandatory(rMandatoryString)), explanation) {}
 
-    companion object{
-        var list: MutableList<RelationModel>? = null
-
-        fun initialize(context:Context){
-            val jsonReader = JsonReader()
-            list = jsonReader.readJsonObject(context)
-        }
-
-        fun research(number1:Int, number2:Int, fresque:String):RelationModel{
-
-            list?.forEach {
-                if(it.number1 == number1){
-                    if(it.number2 == number2)
-                        return it
-                }
-            }
-            return RelationModel(number1, number2, fresque, Relation(RelationDirection.NONE, RelationMandatory.OPTIONAL) , "")
-        }
-
-    }
-
 }
 
 class Relation(val direction:RelationDirection, val mandatory: RelationMandatory){

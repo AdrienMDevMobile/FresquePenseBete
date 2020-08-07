@@ -1,11 +1,13 @@
 package com.micheladrien.fresquerappel.ui.recherche
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import android.os.Build
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.*
+import com.micheladrien.fresquerappel.DataManager
 import com.micheladrien.fresquerappel.R
 /*
 Le Viewmodel sera partagé entre l'activité main (reçoit le nom de la fresque),
@@ -37,6 +39,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val relation_color : LiveData<Int> = _relation_color
     val relation_mandatory : LiveData<String> = _relation_mandatory
 
+    private val dataManager:DataManager = RelationDataManager()
+
     fun changeCards(carte1:Int, carte2:Int){
 
         if(carte1 >= carte2){
@@ -51,20 +55,28 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
+    @SuppressLint("DefaultLocale")
     fun research(){
+        if(!dataManager.isInitalised()) {
+            dataManager.initialize(getApplication(), this.name.value.toString().toLowerCase())
+        }
+        Log.d("0708", "nous avons inialisé")
         if(_carte1.value != null && _carte2.value != null){
             if(_name.value == null){
                 _name.value = "Climat"
             }
-            val relationModel = RelationModel.research(_carte1.value!!, _carte2.value!!, _name.value!!)
+            val relationModel = dataManager.research(_carte1.value!!, _carte2.value!!, _name.value!!)
 
             _text.apply{ value  = relationModel.explanation }
             drawRelation(relationModel.relation)
 
         }
         else {Log.d("recherche","recherche non lancee")}
+
+
     }
 
+    @SuppressLint("DefaultLocale")
     fun changeCollage(name:String){
         //Liste des fresques non supportés
         when(name){
@@ -74,6 +86,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
         _name.value = name
+        dataManager.initialize(getApplication(), name.toLowerCase())
     }
 
     private fun drawRelation(relation : Relation){

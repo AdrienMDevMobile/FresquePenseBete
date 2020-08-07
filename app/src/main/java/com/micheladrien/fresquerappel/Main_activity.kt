@@ -2,6 +2,7 @@ package com.micheladrien.fresquerappel
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
@@ -29,7 +30,7 @@ class Main_activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         //Nous definissons le ViewModel
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        RelationModel.initialize(this)
+
 
         //On définit le menu latéral
         super.onCreate(savedInstanceState)
@@ -56,7 +57,6 @@ class Main_activity : AppCompatActivity() {
 
         }
         /* Défini le bouton de recherche -- Fin */
-
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
