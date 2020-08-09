@@ -22,6 +22,13 @@
   },
   {
     "c1": 1,
+    "c2": 6,
+    "rel": "UP",
+    "mandatory": "optional",
+    "expl": "La déforestation peut être considéré comme étant une activité humaine (1-6)\nou bien\ncomme étant la conséquence d'un besoin de surface pour l'agriculture (8-6)."
+  },
+  {
+    "c1": 1,
     "c2": 8,
     "rel": "UP",
     "mandatory": "mandatory",
@@ -32,14 +39,14 @@
     "c2": 5,
     "rel": "DOWN",
     "mandatory": "optional",
-    "expl": "On peut se demander si les activités humaines consomment des énegie fossiles ou si les énérgies fossiles permettent les activités humaines.\n Ce débat ne doit pas prendre de temps et on peut regrouper les deux cartes au besoin."
+    "expl": "On peut se demander si les activités humaines consomment des énergies fossiles ou si les énergies fossiles permettent les activités humaines.\n Ce débat ne doit pas prendre de temps et on peut regrouper les deux cartes au besoin."
   },
   {
     "c1": 1,
     "c2": 40,
     "rel": "DOWN",
     "mandatory": "optional",
-    "expl": "C'est \"la boucle du club de Rome\" ! Tout cela finira bien par se réguler, mais pas forcément de manière soft. Les participants font souvent ce lien, et proposent parfois de faire un rouleau avec la fresque pour mettre bord à bord la fin et le début.\\nD'ailleurs, il est intéressant de faire remarque qu'il y a des humains dans les cartes du début et celles de la fin, mais pas au milieu."
+    "expl": "C'est \"la boucle du club de Rome\" ! Tout cela finira bien par se réguler, mais pas forcément de manière soft. Les participants font souvent ce lien, et proposent parfois de faire un rouleau avec la fresque pour mettre bord à bord la fin et le début.\nD'ailleurs, il est intéressant de faire remarque qu'il y a des humains dans les cartes du début et celles de la fin, mais pas au milieu."
   },
   {
     "c1": 1,
@@ -60,7 +67,7 @@
     "c2": 5,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": ""
+    "expl": "L'industrie utilise des énergies fossiles et de l'électricité.\nElle représente 40% des Gaz à Effets de Serre (GES)"
   },
   {
     "c1": 2,
@@ -74,7 +81,7 @@
     "c2": 6,
     "rel": "UP",
     "mandatory": "optional",
-    "expl": "Ce lien est possible pour les industries qui consomme du bois. Cependant, il faut faire attention, du bois utilisé par une usine dans une forêt geré durablement n'est pas consideré comme de la déforestation."
+    "expl": "Ce lien est possible pour les industries qui consomment du bois. Cependant, il faut faire attention, du bois utilisé par une usine dans une forêt gérée durablement n'est pas considéré comme de la déforestation."
   },
   {
     "c1": 2,
@@ -88,7 +95,7 @@
     "c2": 5,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": ""
+    "expl": "Le bâtiment (logement et services) utilise des énergies fossiles et de l’électricité.\nIl représente 20% des Gaz à Effet de Serre (GES)."
   },
   {
     "c1": 3,
@@ -102,7 +109,7 @@
     "c2": 5,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": ""
+    "expl": "Le secteur du transport est très dépendant du pétrole.\nIl représente 15% des émissions de GES."
   },
   {
     "c1": 4,
@@ -116,63 +123,70 @@
     "c2": 6,
     "rel": "UP",
     "mandatory": "optional",
-    "expl": "La construction de route nécéssite parfois de déforester, mais l'aspect unidimensionnelle de la route la rend quasiment négligeable devant la déforestation lié à l'agriculture."
+    "expl": "La construction de route nécessite parfois de déforester, mais l'aspect unidimensionnelle de la route la rend quasiment négligeable devant la déforestation lié à l'agriculture."
   },
   {
     "c1": 5,
     "c2": 7,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": ""
+    "expl": "Les énergies fossiles sont le charbon, le pétrole et le gaz.\nElles sont utilisées principalement dans les bâtiments, le transport et dans l'industrie.\nElles émettent du CO2 lors de la combustion"
+  },
+  {
+    "c1": 5,
+    "c2": 8,
+    "rel": "DOWN",
+    "mandatory": "optional",
+    "expl": "L'agriculture ne rejette que peu de CO2 (tracteurs), elle rejette surtout des autres GES."
   },
   {
     "c1": 5,
     "c2": 40,
     "rel": "UP",
     "mandatory": "optional",
-    "expl": "Les conflits armés lié au énergie fossiles sont plus des conséquences géopolitiques que des conséquences directement climatique.\\nMais il peut quand même être interessant de pointer cette relation"
+    "expl": "Les conflits armés liés au énergie fossiles sont plus des conséquences géopolitiques que des conséquences directement climatique.\nMais il peut quand même être intéressant de pointer cette relation"
   },
   {
     "c1": 6,
     "c2": 7,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": "La déforestation émet du CO2 car 93% du bois déforesté par l'homme est brulé. "
+    "expl": "La déforestation émet du CO2 car 93% du bois déforesté par l'homme est brûlé "
   },
   {
     "c1": 6,
     "c2": 8,
     "rel": "DOWN",
-    "mandatory": "mandatory",
-    "expl": ""
+    "mandatory": "optional",
+    "expl": "La déforestation peut être considéré comme étant une activité humaine (1-6)\nou bien\ncomme étant la conséquence d'un besoin de surface pour l'agriculture (8-6)."
   },
   {
     "c1": 6,
     "c2": 12,
-    "rel": "UP",
-    "mandatory": "optional",
-    "expl": "Les participants pensent souvent que la déforestation réduit les puits de carbone.\\nEn réalité, l'impact est minime car les zones déforestées représentent une toute petite partie de la surface totale de forêt. Par contre le CO2 dégagé est très important. "
+    "rel": "INCORRECT",
+    "mandatory": "",
+    "expl": "Les participants pensent souvent que la déforestation réduit les puits de carbone.\nEn réalité, l'impact est minime car les zones déforestées représentent une toute petite partie de la surface totale de forêt. Par contre le CO2 dégagé est très important. "
   },
   {
     "c1": 6,
     "c2": 15,
     "rel": "UP",
     "mandatory": "optional",
-    "expl": "Quand la forêt est coupé, une surface vert foncée est remplacé par une surface vert clair, qui à un albédo plus elevé, donc absorbe moins d'énergie."
+    "expl": "Quand la forêt est coupé, une surface vert foncée est remplacé par une surface vert clair, qui à un albédo plus élevé, donc absorbe moins d'énergie."
   },
   {
     "c1": 6,
     "c2": 26,
     "rel": "UP",
     "mandatory": "optional",
-    "expl": "La végétation retiens l'eau.\\nSi on la coupe, ça facilite les crues."
+    "expl": "La végétation retient l'eau.\nSi on la coupe, ça facilite les crues."
   },
   {
     "c1": 6,
     "c2": 35,
     "rel": "UP",
     "mandatory": "optional",
-    "expl": "Une partie de la déforestation est faite en brûlant la forêt qui peut ensuite dégénérer en feu non-maitrisé. C'est ce qu'il s'est passé pendant l'été 2019 en Amazonie et en Australie"
+    "expl": "Une partie de la déforestation est faite en brûlant la forêt qui peut ensuite dégénérer en feu non maîtrisé C'est ce qu'il s'est passé pendant l'été 2019 en Amazonie et en Australie"
   },
   {
     "c1": 7,
@@ -186,7 +200,7 @@
     "c2": 12,
     "rel": "UPDOWN",
     "mandatory": "mandatory",
-    "expl": "Mettez l'une sur l'autre"
+    "expl": "Mettez l'une sur l'autre."
   },
   {
     "c1": 8,
@@ -207,14 +221,14 @@
     "c2": 25,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": "8-> 25 : \\nOn pense ici surtout aux pesticides (notamment au round-up ou aux néonicotinoïdes). Pas de lien avec le climat, mais relation intéressante à faire"
+    "expl": "On pense ici surtout aux pesticides (notamment au round-up ou aux néonicotinoïdes). Pas de lien avec le climat, mais relation intéressante à faire"
   },
   {
     "c1": 8,
     "c2": 32,
     "rel": "UP",
     "mandatory": "optional",
-    "expl": "Des études ont montré que les rendements augmentent avec de l'augmentation du CO2, mais que la teneur en éléments nutritifs des légumes s'en trouve réduite. En effet, les oligo-éléments ne sont pas plus abondants sous préexte que les rendements augmentent."
+    "expl": "Des études ont montré que les rendements augmentent avec de l'augmentation du CO2, mais que la teneur en éléments nutritifs des légumes s'en trouve réduite. En effet, les oligo-éléments ne sont pas plus abondants sous prétexte que les rendements augmentent."
   },
   {
     "c1": 9,
@@ -242,21 +256,21 @@
     "c2": 15,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": "Les aérosols refroidissent le climat"
+    "expl": "Les aérosols refroidissent le climat(forcage négatif).\nVoir D'où viennent les nuages ? Science étonnante"
   },
   {
     "c1": 10,
     "c2": 38,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": "Les aérosols sont de la pollution"
+    "expl": "Les aérosols sont de la pollution.\nVoir D'où viennent les nuages ? Science étonnante"
   },
   {
     "c1": 11,
     "c2": 12,
     "rel": "DOWN",
     "mandatory": "mandatory",
-    "expl": "Lien bidirectionnel possible"
+    "expl": "Lien bidirectionnel possible.\nOn peut également considérer que le CO2 va d'abord dans l'atmosphère avant d'aller dans les puits de carbone. C'est une interprétation acceptable."
   },
   {
     "c1": 11,
@@ -270,7 +284,7 @@
     "c2": 24,
     "rel": "UP",
     "mandatory": "optional",
-    "expl": ""
+    "expl": "Tant que 24 est relié à 12, c'est ok."
   },
   {
     "c1": 12,
@@ -284,7 +298,7 @@
     "c2": 15,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": ""
+    "expl": "L'effet de serre a une contribution positive sur le forçage radiatif."
   },
   {
     "c1": 14,
@@ -298,70 +312,77 @@
     "c2": 16,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": ""
+    "expl": "Voir Pourquoi les glaçons refroidissent ils ? Science étonnante."
   },
   {
     "c1": 14,
     "c2": 17,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": ""
+    "expl": "L'océan absorbe la plus grosse partie du budge énergétique de la Terre. Sa température a donc augmenté, surtout en surface.\nVoir Pourquoi les glaçons refroidissent ils ? Science étonnante."
   },
   {
     "c1": 14,
     "c2": 18,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": ""
+    "expl": "Voir Pourquoi les glaçons refroidissent ils ? Science étonnante."
   },
   {
     "c1": 14,
     "c2": 19,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": ""
+    "expl": "Voir Pourquoi les glaçons refroidissent ils ? Science étonnante."
   },
   {
     "c1": 14,
     "c2": 21,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": ""
+    "expl": "Même si l'atmosphère ne récupère que 1% du budget énergétique, sa température a augmenté de 1°C depuis 1880."
   },
   {
     "c1": 14,
     "c2": 41,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": "Si l'on veut rester dans la même logique de conservation de l'énergie, il faudrait faire le lien de fonte a partir de budget énérgétique."
+    "expl": "Si l'on veut rester dans la même logique de conservation de l'énergie, il faudrait faire le lien de fonte a partir de budget énergétique"
   },
   {
     "c1": 14,
     "c2": 42,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": "Si l'on veut rester dans la même logique de conservation de l'énergie, il faudrait faire le lien de fonte a partir de budget énérgétique."
+    "expl": "Si l'on veut rester dans la même logique de conservation de l'énergie, il faudrait faire le lien de fonte a partir de budget énergétique."
   },
   {
     "c1": 15,
     "c2": 18,
     "rel": "DOWN",
     "mandatory": "optional",
-    "expl": "Quand la banquise fond, une surface blanche est remplacé par une surface bleu marine, qui à un albédo plus faible, donc absorbe plus d'énergie.\\nCette relation n'est pas indispensable mais permet de mettre en avant une autre boucle de rétro-action du jeu."
+    "expl": "Quand la banquise fond, une surface blanche est remplacé par une surface bleu marine, qui à un albédo plus faible, donc absorbe plus d'énergie.\nCette relation n'est pas indispensable mais permet de mettre en avant une autre boucle de rétro-action du jeu."
+  },
+  {
+    "c1": 16,
+    "c2": 21,
+    "rel": "INCORRECT",
+    "mandatory": "",
+    "expl": "Ce n'est pas la hausse de la température qui importe.\nC'est le budget énergétique.Voir Budget énergétique (14)"
   },
   {
     "c1": 16,
     "c2": 22,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": "Une fonte de 100 gigatonnes de glace par an équivaut à environ 0,28 mm par an d’élévation du niveau moyen des mers.\\nAinsi l'élévation du niveau de la mer est liée de 15 à 35% à la fonte des glaciers, selon les scénarios du GIEC. Le reste est liée de 30% à 35% à la dilatation de l'eau, ainsi qu'à la fonte des calottes glaciaires."
+    "expl": "Une fonte de 100 gigatonnes de glace par an équivaut à environ 0,28 mm par an d’élévation du niveau moyen des mers.\nAinsi l'élévation du niveau de la mer est lié de 15 à 35% à la fonte des glaciers, selon les scénarios du GIEC. Le reste est lié de 30% à 35% à la dilatation de l'eau, ainsi qu'à la fonte des calottes glaciaires."
   },
   {
     "c1": 16,
     "c2": 31,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": "La fonte des glaciers menace l'approvisionnement en eau.\\nEn effet, l'importance relative des eaux de fonte des glaciers en été peut être considérable, contribuant par exemple à 25% des débits d'août dans les bassins drainant les Alpes européennes, avec une superficie d'environ 105 km2 et seulement 1% de couverture glaciaire.\nLeur disparition pourrait être catastrophique pour des villes situées dans les vallées arrosées par les rivières descendant des montagnes environnantes et la faune d'eau douce. L'eau de fonte des glaciers augmente également en importance pendant les sécheresses et les vagues de chaleur."
+    "expl": "La fonte des glaciers menace l'approvisionnement en eau.\nEn effet, l'importance relative des eaux de fonte des glaciers en été peut être considérable, contribuant par exemple à 25% des débits d'eau dans les bassins drainant les Alpes européennes, avec une superficie d'environ 105 km2 et seulement 1% de couverture glaciaire.\nLeur disparition pourrait être catastrophique pour des villes situées dans les vallées arrosées par les rivières descendant des montagnes environnantes et la faune d'eau douce. L'eau de fonte des glaciers augmente également en importance pendant les sécheresses et les vagues de chaleur."
   },
   {
     "c1": 16,
@@ -375,14 +396,21 @@
     "c2": 20,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": ""
+    "expl": "Le moteur du cycle de l'eau, c'est l'évaporation. Elle a lieu à la surface de l'eau (la séparation entre l'air et l'eau). Donc elle est impactée par la hausse de la température de l'air et/ou de l'eau."
+  },
+  {
+    "c1": 17,
+    "c2": 21,
+    "rel": "INCORRECT",
+    "mandatory": "",
+    "expl": "Ce n'est pas la hausse de la température qui importe.\nC'est le budget energétique. Voir Budget énergétique (14)"
   },
   {
     "c1": 17,
     "c2": 22,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": ""
+    "expl": "La hausse de la température de l'eau va entraîner une dilatation qui contribue à la montée des eaux."
   },
   {
     "c1": 17,
@@ -395,29 +423,43 @@
     "c1": 18,
     "c2": 20,
     "rel": "INCORRECT",
-    "mandatory": "optional",
-    "expl": "La fonte de la banquise arctique, mais également la fonte des glaciers du Groenland peuvent amaner, dans un futir lointain, à perturber la circulation thermohaline (qui donne le Gulf Stream).\nMais attention, la carte \"Cycle de l'eau\" ne fait pas du tout référence à la Circulation thermohaline."
+    "mandatory": "",
+    "expl": "La fonte de la banquise arctique, mais également la fonte des glaciers du Groenland peuvent amener, dans un futur lointain, à perturber la circulation thermohaline (qui donne le Gulf Stream).\nMais attention, la carte \"Cycle de l'eau\" ne fait pas du tout référence à la Circulation thermohaline."
+  },
+  {
+    "c1": 18,
+    "c2": 21,
+    "rel": "INCORRECT",
+    "mandatory": "",
+    "expl": "Ce n'est pas la hausse de la température qui importe.\nC'est le budget énergétique Voir Budget énergétique (14)"
   },
   {
     "c1": 18,
     "c2": 22,
     "rel": "INCORRECT",
-    "mandatory": "optional",
-    "expl": "La fonte de la banquise n'est pas responsable de la montée des eaux."
+    "mandatory": "",
+    "expl": "La fonte de la banquise n'est pas responsable de la montée des eaux.\note : Un glaçon qui fond dans du pastis ne fait pas déborder le verre."
   },
   {
     "c1": 18,
     "c2": 25,
     "rel": "UP",
     "mandatory": "optional",
-    "expl": ""
+    "expl": "Évidemment, en fondant, la glace fait disparaître l'habitat de l'ours polaire mais cela reste anecdotique en terme de biodiversité terrestre, bien que fortement symbolique.\nQuand des participants font ce lien, suggérez leur de dessiner un ours polaire."
   },
   {
     "c1": 19,
     "c2": 22,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": ""
+    "expl": "Les calottes glaciaires sont le Groenland et l'Antarctique. Si elles fondaient intégralement, cela représenterait une augmentation du niveau de l'eau de 7m pour le Groenland et de 54m pour l'Antarctique."
+  },
+  {
+    "c1": 20,
+    "c2": 21,
+    "rel": "DOWN",
+    "mandatory": "mandatory",
+    "expl": "Le moteur du cycle de l'eau, c'est l'évaporation. Elle a lieu à la surface de l'eau (la séparation entre l'air et l'eau). Donc elle est impactée par la hausse de la température de l'air et/ou de l'eau."
   },
   {
     "c1": 20,
@@ -453,13 +495,6 @@
     "rel": "UP",
     "mandatory": "optional",
     "expl": "La carte vecteurs de maladie est en général reliée à la carte Biodiversité terrestre car les vecteurs de maladie sont une sous-partie de la biodiversité, mais on peut aussi la relier aux mêmes causes que la carte biodiversité, c’est-à-dire perturbation du cycle de l'eau et hausse de la température"
-  },
-  {
-    "c1": 21,
-    "c2": 20,
-    "rel": "UP",
-    "mandatory": "mandatory",
-    "expl": ""
   },
   {
     "c1": 21,
@@ -500,8 +535,8 @@
     "c1": 22,
     "c2": 33,
     "rel": "UP",
-    "mandatory": "",
-    "expl": ""
+    "mandatory": "mandatory",
+    "expl": "La hausse du niveau de l'eau ajoutée à des perturbations qui amènent à la fois des basses pressions et des vagues peuvent causer des phénomènes de submersion (inondations côtières)."
   },
   {
     "c1": 23,
@@ -515,7 +550,7 @@
     "c2": 24,
     "rel": "DOWN",
     "mandatory": "mandatory",
-    "expl": ""
+    "expl": "Si le pH baisse, la formation de calcaire devient plus difficile."
   },
   {
     "c1": 25,
@@ -530,6 +565,13 @@
     "rel": "DOWN",
     "mandatory": "optional",
     "expl": "Moindre car la disparition des forets détruisent évidemment des habitats naturels mais n'ont pas un impact immédiat majeur dans la destruction de l’ensemble de la chaîne alimentaire."
+  },
+  {
+    "c1": 26,
+    "c2": 30,
+    "rel": "DOWN",
+    "mandatory": "mandatory",
+    "expl": "Avec la sécheresse, le sol durci et si une crue survient dans ces conditions, c'est pire car l'eau ruisselle."
   },
   {
     "c1": 26,
@@ -550,7 +592,7 @@
     "c2": 33,
     "rel": "NONE",
     "mandatory": "optional",
-    "expl": "Ne pas confondre crues et submersions : Lors de crues, l'eau vient du ciel. Lors de submersions, l'eau vient de la mer."
+    "expl": "Ne pas confondre crues et submersions :\nLors de crues, l'eau vient du ciel.\nLors de submersions, l'eau vient de la mer."
   },
   {
     "c1": 26,
@@ -564,21 +606,35 @@
     "c2": 29,
     "rel": "DOWN",
     "mandatory": "mandatory",
-    "expl": ""
+    "expl": "Ptéropodes et coccolithophores étant à la base de la chaîne alimentaire, leur disparition menace toute la biodiversité marine.\nLe réchauffement de l'eau joue aussi un rôle important."
+  },
+  {
+    "c1": 27,
+    "c2": 37,
+    "rel": "UP",
+    "mandatory": "mandatory",
+    "expl": "Dans certaines zones, la pêche est une source d'alimentation essentielle et la disparition de la biodiversité marine cause des problèmes économiques importants (famines)."
   },
   {
     "c1": 28,
     "c2": 38,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": "Avec le réchauffement, les animaux migrent.\\nCertains sont vecteurs de maladie et vont atteindre des zones où les populations ne sont pas immunisées."
+    "expl": "Avec le réchauffement, les animaux migrent.\nCertains sont vecteurs de maladie et vont atteindre des zones où les populations ne sont pas immunisées."
   },
   {
     "c1": 30,
     "c2": 36,
-    "rel": "DOWN",
-    "mandatory": "optional",
-    "expl": ""
+    "rel": "INCORRECT",
+    "mandatory": "",
+    "expl": "Différence entre canicule et sécheresse : La sécheresse est relative au manque d'eau et la canicule à la chaleur."
+  },
+  {
+    "c1": 31,
+    "c2": 32,
+    "rel": "UP",
+    "mandatory": "mandatory",
+    "expl": "Les ressources en eau douce sont affectées par les changements de précipitation et la disparition des glaciers qui ont un rôle régulateur du débit des cours d'eau."
   },
   {
     "c1": 31,
@@ -634,7 +690,7 @@
     "c2": 39,
     "rel": "UP",
     "mandatory": "mandatory",
-    "expl": ""
+    "expl": "Certains territoires sont condamnés à terme à cause de la montée de l'océan et de multiplication des submersions."
   },
   {
     "c1": 34,
@@ -655,7 +711,7 @@
     "c2": 38,
     "rel": "UP",
     "mandatory": "optional",
-    "expl": "Les canicules peuvent être très dévastatrice, notamment chez les personnes agées. "
+    "expl": "Les canicules peuvent être très dévastatrice, notamment chez les personnes âgées."
   },
   {
     "c1": 37,
@@ -688,8 +744,8 @@
   {
     "c1": 39,
     "c2": 40,
-    "rel": "DOWN",
+    "rel": "UP",
     "mandatory": "mandatory",
-    "expl": ""
+    "expl": "Imaginez que vous vivez dans un endroit qui est miraculeusement épargné par le changement climatique. Quelques milliards d'humains risquent d'avoir très envie de le partager avec vous !!!"
   }
 ]

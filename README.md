@@ -1,5 +1,5 @@
 # FresquePenseBete
-1.1 = Correction et nettoyage du code<br>
+1.2 = Correction et nettoyage du code<br>
 **1.0 = Prête à l'emploi (Recherche de relation entre cartes de la Fresque du climat).**<br>
 0.7 = Lecture dans un fichier json<br>
 0.6 = affichage du résultat de recherche<br>
