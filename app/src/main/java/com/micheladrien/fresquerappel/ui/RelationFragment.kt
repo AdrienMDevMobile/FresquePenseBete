@@ -1,7 +1,6 @@
-package com.micheladrien.fresquerappel
+package com.micheladrien.fresquerappel.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +8,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.ui.recherche.MainViewModel
-import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.fragment_relation.*
 
-class MainFragment : Fragment() {
+class RelationFragment : Fragment() {
 
     private lateinit var mainViewModel: MainViewModel
 
@@ -24,7 +24,7 @@ class MainFragment : Fragment() {
 
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
-        val root = inflater.inflate(R.layout.fragment_main, container, false)
+        val root = inflater.inflate(R.layout.fragment_relation, container, false)
 
         /* Set up des observeurs debut */
         //Explication

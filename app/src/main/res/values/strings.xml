@@ -1,25 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Fresque support animateur</string>
+    <string name="app_name">Animateurs fresque</string>
 
     <!-- Strings used for fragments for navigation -->
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-
-    <string name="action_notes"><i>Mes notes</i></string>
-    <string name="action_settings"><i>Settings</i></string>
 
 
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
     <string name="title_activity_navigation_activity">navigation_activity</string>
-    <string name="nav_header_title">Fresque Pense bête</string>
+    <string name="nav_header_title">Support animateurs</string>
     <string name="nav_header_desc">Navigation header</string>
 
-    <string name="menu_climat">Climat</string>
-    <string name="menu_expert"><i>Expert</i></string>
-    <string name="menu_oceanne"><i>Oceanne</i></string>
-    <string name="menu_numerique"><i>Numerique</i></string>
+    <string name="collage_climat">Climat</string>
+    <string name="collage_expert"><i>Expert</i></string>
+    <string name="collage_oceanne"><i>Oceanne</i></string>
+    <string name="collage_numerique"><i>Numerique</i></string>
+
+    <string name="menu_relation">Relation des cartes</string>
+    <string name="menu_timer"><i>Gestion du temps</i></string>
+    <string name="menu_single"><i>Informations cartes</i></string>
+    <string name="menu_notes"><i>Mes notes</i></string>
+
+    <string name="action_settings"><i>Paramètres et Fresque</i></string>
 
     <!-- Search -->
     <string name="prompt_carte1">Carte 1</string>
@@ -37,5 +39,7 @@
     <string name="relation_optional">optionelle</string>
 
     <string name="toast_collage_unavailable">La fresque %1$s est n\'est pas encore supportée</string>
+    <string name="toast_menu_unavailable">L\'activité est n\'est pas encore supportée</string>
+
 
 </resources>

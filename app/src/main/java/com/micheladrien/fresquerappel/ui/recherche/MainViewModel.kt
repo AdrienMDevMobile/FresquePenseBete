@@ -20,7 +20,7 @@ le fragment principal (affiche les informations)
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _name = MutableLiveData<String>().apply {
-       value = application.getString(R.string.menu_climat)
+       value = application.getString(R.string.collage_climat)
     }
     private val _text = MutableLiveData<String>().apply {
         value = "Explication"
@@ -76,7 +76,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    @SuppressLint("DefaultLocale")
+    /* 1.3 : Retour arrière
     fun changeCollage(name:String){
         //Liste des fresques non supportés
         when(name){
@@ -87,7 +87,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
         _name.value = name
         dataManager.initialize(getApplication(), name.toLowerCase())
-    }
+    } */
 
     private fun drawRelation(relation : Relation){
         if(relation.direction == RelationDirection.UP || relation.direction == RelationDirection.DOWN

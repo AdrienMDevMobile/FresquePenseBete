@@ -62,21 +62,26 @@ class Main_activity : AppCompatActivity() {
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
         /* Défini menu lateral -- Debut */
+        /* 1.3 : Retour arrière, la navigation latéralle ne sert désormais plus à changer le nom de la fresque
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home //Cet Id doit obligatoirement se trouver dans le fichier mobile_navigation.xml
+                R.id.nav_main //Cet Id doit obligatoirement se trouver dans le fichier mobile_navigation.xml
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController) */
+
+        appBarConfiguration = AppBarConfiguration(setOf(
+            R.id.nav_main, R.id.nav_single, R.id.nav_timer, R.id.nav_notes), drawerLayout)
+        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+        /* 1.3 retour arrière
         navView.setNavigationItemSelectedListener { menuItem ->
-
             mainViewModel.changeCollage(menuItem.title.toString())
-
             drawerLayout.closeDrawers()
             true
-        }
+        } */
         /* Défini menu lateral -- Fin */
 
         //La VM change le nom de la fresque active
