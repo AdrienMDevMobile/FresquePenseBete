@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.RelationFragment">
+    tools:context=".fragment.relation.RelationFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,6 +30,7 @@
                 android:layout_height="match_parent"
                 android:textColor="@color/black"
                 android:textSize="50sp"/>
+
         </LinearLayout>
 
 
@@ -91,7 +92,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
+    <com.micheladrien.fresquerappel.tools.MovableFloatingActionButton
+        android:id="@+id/relation_search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="81dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_search" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

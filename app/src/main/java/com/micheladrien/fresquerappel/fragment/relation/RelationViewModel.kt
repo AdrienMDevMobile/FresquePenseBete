@@ -1,14 +1,17 @@
-package com.micheladrien.fresquerappel.ui.recherche
+package com.micheladrien.fresquerappel.fragment.relation
 
 import android.annotation.SuppressLint
 import android.app.Application
-import android.content.Context
 import android.os.Build
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.*
-import com.micheladrien.fresquerappel.DataManager
+import com.micheladrien.fresquerappel.manager.DataManager
+import com.micheladrien.fresquerappel.manager.MainDataManager
 import com.micheladrien.fresquerappel.R
+import com.micheladrien.fresquerappel.datas.Relation
+import com.micheladrien.fresquerappel.datas.RelationDirection
+import com.micheladrien.fresquerappel.datas.RelationMandatory
+
 /*
 Le Viewmodel sera partagé entre l'activité main (reçoit le nom de la fresque),
 le fragment de recherche (reçoit numéro des cartes)
@@ -17,11 +20,12 @@ le fragment principal (affiche les informations)
 
 
 //ou récupérer valeur par défaut (mm fonction) au moment de la recherche si val null.
-class MainViewModel(application: Application) : AndroidViewModel(application) {
+class RelationViewModel(application: Application) : AndroidViewModel(application) {
 
+    /* ancien MainViewmodel est désormais RelationView model. Name se trouve dans le nouveau ViewModel
     private val _name = MutableLiveData<String>().apply {
        value = application.getString(R.string.collage_climat)
-    }
+    } */
     private val _text = MutableLiveData<String>().apply {
         value = "Explication"
     }
@@ -31,7 +35,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val _relation_color = MutableLiveData<Int>()
     private val _relation_mandatory = MutableLiveData<String>()
 
-    val name : LiveData<String> = _name
+    //val name : LiveData<String> = _name
     val text: LiveData<String> = _text
     val carte1 : LiveData<Int> = _carte1
     val carte2 : LiveData<Int> = _carte2
@@ -39,7 +43,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val relation_color : LiveData<Int> = _relation_color
     val relation_mandatory : LiveData<String> = _relation_mandatory
 
-    private val dataManager:DataManager = RelationDataManager()
+    private val dataManager: DataManager = MainDataManager()
 
     fun changeCards(carte1:Int, carte2:Int){
 
@@ -58,14 +62,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     @SuppressLint("DefaultLocale")
     fun research(){
         if(!dataManager.isInitalised()) {
-            dataManager.initialize(getApplication(), this.name.value.toString().toLowerCase())
+            dataManager.initialize(getApplication(), getApplication<Application>().getString(R.string.collage_climat))
         }
-        Log.d("0708", "nous avons inialisé")
+        //Log.d("0708", "nous avons inialisé")
         if(_carte1.value != null && _carte2.value != null){
-            if(_name.value == null){
-                _name.value = "Climat"
-            }
-            val relationModel = dataManager.research(_carte1.value!!, _carte2.value!!, _name.value!!)
+            val relationModel = dataManager.researchRelation(_carte1.value!!, _carte2.value!!)
 
             _text.apply{ value  = relationModel.explanation }
             drawRelation(relationModel.relation)
@@ -76,18 +77,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    /* 1.3 : Retour arrière
-    fun changeCollage(name:String){
-        //Liste des fresques non supportés
-        when(name){
-            getApplication<Application>().getString(R.string.menu_expert), getApplication<Application>().getString(R.string.menu_numerique), getApplication<Application>().getString(R.string.menu_oceanne) -> {
-                Toast.makeText(getApplication(), getApplication<Application>().getString(R.string.toast_collage_unavailable, name), Toast.LENGTH_SHORT).show()
-                return
-            }
-        }
-        _name.value = name
-        dataManager.initialize(getApplication(), name.toLowerCase())
-    } */
+    //1.3 : Change collage déplacé dans settings Retour arrière
 
     private fun drawRelation(relation : Relation){
         if(relation.direction == RelationDirection.UP || relation.direction == RelationDirection.DOWN

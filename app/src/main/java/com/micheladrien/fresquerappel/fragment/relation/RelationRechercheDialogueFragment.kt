@@ -1,4 +1,4 @@
-package com.micheladrien.fresquerappel.ui.recherche
+package com.micheladrien.fresquerappel.fragment.relation
 
 import android.os.Bundle
 import android.text.Editable
@@ -14,19 +14,19 @@ import com.micheladrien.fresquerappel.R
 import kotlinx.android.synthetic.main.dialogue_fragment_recherche.*
 
 
-class RechercheDialogueFragment : DialogFragment() {
+class RelationRechercheDialogueFragment : DialogFragment() {
 
     companion object{
         val maxLengthNumber = 2
     }
-    private lateinit var mainViewModel: MainViewModel
+    private lateinit var relationViewModel: RelationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+        relationViewModel = ViewModelProvider(requireActivity()).get(RelationViewModel::class.java)
 
         return inflater.inflate(R.layout.dialogue_fragment_recherche, container, false)
     }
@@ -36,8 +36,8 @@ class RechercheDialogueFragment : DialogFragment() {
         if(checkNumbers()){
             val carte1 = ETcarte1.text.toString().toInt()
             val carte2 = ETcarte2.text.toString().toInt()
-            mainViewModel.changeCards(carte1, carte2)
-            mainViewModel.research()
+            relationViewModel.changeCards(carte1, carte2)
+            relationViewModel.research()
 
             return true
         }
@@ -64,7 +64,7 @@ class RechercheDialogueFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //Nous definissons le ViewModel
-        mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+        //relationViewModel = ViewModelProvider(this).get(RelationViewModel::class.java)
 
         ETcarte1.addTextChangedListener(TextWatcherGoTo(ETcarte2))
         ETcarte2.addTextChangedListener(TextWatcherStartSearch(this))
@@ -101,34 +101,6 @@ class RechercheDialogueFragment : DialogFragment() {
         */
     }
 
-    /*
-    override fun onCancel(dialog: DialogInterface) {
-        super.onCancel(dialog)
-
-        Log.d("test", "cancel")
-
-        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-        //imm?.hideSoftInputFromWindow(view?.windowToken, 0)
-        //imm?.hideSoftInputFromWindow(view?.windowToken, 0)
-        imm?.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, InputMethodManager.HIDE_IMPLICIT_ONLY)
-        imm?.hideSoftInputFromWindow(view?.windowToken, 1)
-    }
-*/
-
-    /*
-    override fun onDestroyView() {
-
-
-        Log.d("test", "destroy")
-
-        //val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-        //imm?.hideSoftInputFromWindow(view?.windowToken, 0)
-        //imm?.hideSoftInputFromWindow(view?.windowToken, 0)
-        //imm?.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, InputMethodManager.HIDE_IMPLICIT_ONLY);
-
-        super.onDestroyView()
-    }
-*/
 
     //Text watchers : actions au moment où l'utilisateur rentre le texte. Passe la main à l'edittext suivant au moment où la taille maximale est atteinte
     //Premier editText : passe à l'edit text suivant
@@ -150,11 +122,11 @@ class RechercheDialogueFragment : DialogFragment() {
     }
 
     //Second edit text : lance la recherche.
-    class TextWatcherStartSearch(val rechercheDialogueFragment: RechercheDialogueFragment) : TextWatcher {
+    class TextWatcherStartSearch(val relationRechercheDialogueFragment: RelationRechercheDialogueFragment) : TextWatcher {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             if(s?.length!! >= maxLengthNumber) {
-                if(rechercheDialogueFragment.startSearch())
-                    rechercheDialogueFragment.dismiss()
+                if(relationRechercheDialogueFragment.startSearch())
+                    relationRechercheDialogueFragment.dismiss()
             }
         }
 
@@ -170,3 +142,33 @@ class RechercheDialogueFragment : DialogFragment() {
     }
 
 }
+
+
+/*
+override fun onCancel(dialog: DialogInterface) {
+    super.onCancel(dialog)
+
+    Log.d("test", "cancel")
+
+    val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+    //imm?.hideSoftInputFromWindow(view?.windowToken, 0)
+    //imm?.hideSoftInputFromWindow(view?.windowToken, 0)
+    imm?.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, InputMethodManager.HIDE_IMPLICIT_ONLY)
+    imm?.hideSoftInputFromWindow(view?.windowToken, 1)
+}
+*/
+
+/*
+override fun onDestroyView() {
+
+
+    Log.d("test", "destroy")
+
+    //val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+    //imm?.hideSoftInputFromWindow(view?.windowToken, 0)
+    //imm?.hideSoftInputFromWindow(view?.windowToken, 0)
+    //imm?.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, InputMethodManager.HIDE_IMPLICIT_ONLY);
+
+    super.onDestroyView()
+}
+*/

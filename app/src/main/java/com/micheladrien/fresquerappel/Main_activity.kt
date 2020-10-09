@@ -15,48 +15,33 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.micheladrien.fresquerappel.ui.recherche.RechercheDialogueFragment
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
-import com.micheladrien.fresquerappel.ui.recherche.MainViewModel
-import com.micheladrien.fresquerappel.ui.recherche.RelationModel
+import com.micheladrien.fresquerappel.manager.MainDataManager
+import com.micheladrien.fresquerappel.manager.SettingsManager
+import java.io.IOException
+import java.io.InputStream
 
 
 class Main_activity : AppCompatActivity() {
 
     private lateinit var mainViewModel: MainViewModel
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var settingsManager: SettingsManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val dataManager = MainDataManager()
+        dataManager.initialize(this, getString(R.string.collage_climat))
+
+        settingsManager = SettingsManager(this, dataManager)
         //Nous definissons le ViewModel
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-
+        settingsManager.addWaitingVM(mainViewModel)
 
         //On définit le menu latéral
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_navigation_activity)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-
-        /* Défini le bouton de recherche -- Debut */
-        val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
-
-            val dialogFragment = RechercheDialogueFragment()
-            val bundle = Bundle()
-            bundle.putBoolean("notAlertDialog", true)
-            dialogFragment.arguments = bundle
-            val ft = supportFragmentManager.beginTransaction()
-            val prev = supportFragmentManager.findFragmentByTag("dialog")
-            if (prev != null)
-            {
-                ft.remove(prev)
-            }
-            ft.addToBackStack(null)
-            dialogFragment.show(ft, "dialog")
-
-        }
-        /* Défini le bouton de recherche -- Fin */
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -71,8 +56,11 @@ class Main_activity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController) */
 
-        appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.nav_main, R.id.nav_single, R.id.nav_timer, R.id.nav_notes), drawerLayout)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.nav_main, R.id.nav_single, R.id.nav_timer, R.id.nav_notes
+            ), drawerLayout
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 

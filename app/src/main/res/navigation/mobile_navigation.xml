@@ -8,22 +8,22 @@
 
     <fragment
         android:id="@+id/nav_main"
-        android:name="com.micheladrien.fresquerappel.ui.RelationFragment"
+        android:name="com.micheladrien.fresquerappel.fragment.relation.RelationFragment"
         tools:layout="@layout/fragment_relation" />
 
     <fragment
         android:id="@+id/nav_timer"
-        android:name="com.micheladrien.fresquerappel.ui.TimerFragment"
+        android:name="com.micheladrien.fresquerappel.fragment.timer.TimerFragment"
         tools:layout="@layout/fragment_timer" />
 
     <fragment
         android:id="@+id/nav_notes"
-        android:name="com.micheladrien.fresquerappel.ui.NotesFragment"
+        android:name="com.micheladrien.fresquerappel.fragment.notes.NotesFragment"
         tools:layout="@layout/fragment_notes" />
 
     <fragment
         android:id="@+id/nav_single"
-        android:name="com.micheladrien.fresquerappel.ui.SingleCardFragment"
+        android:name="com.micheladrien.fresquerappel.fragment.single.SingleCardFragment"
         tools:layout="@layout/fragment_single" />
 
 

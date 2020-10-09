@@ -1,4 +1,4 @@
-package com.micheladrien.fresquerappel.ui
+package com.micheladrien.fresquerappel.fragment.single
 
 import android.os.Bundle
 import android.view.LayoutInflater
