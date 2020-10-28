@@ -1,6 +1,7 @@
 package com.micheladrien.fresquerappel
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -23,11 +24,14 @@ class MainViewModel(application: Application) : AndroidViewModel(application), W
 
     /*
     public fun changeCollage(name_requested:String){
+
         val new_name = settingManager.changeCollage(name_requested)
         if (name_requested == settingManager.NO_COLLAGE_STRING){
             Toast.makeText(getApplication(), getApplication<Application>().getString(R.string.toast_collage_unavailable, name), Toast.LENGTH_SHORT).show()
         }
         else
             _name.value = new_name
+
+
     } */
 }

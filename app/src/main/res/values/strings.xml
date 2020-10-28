@@ -17,7 +17,7 @@
     <string name="collage_numerique"><i>Numerique</i></string>
 
     <string name="menu_relation">Relation des cartes</string>
-    <string name="menu_timer"><i>Gestion du temps</i></string>
+    <string name="menu_timer">Gestion du temps</string>
     <string name="menu_single"><i>Informations cartes</i></string>
     <string name="menu_notes"><i>Mes notes</i></string>
 
