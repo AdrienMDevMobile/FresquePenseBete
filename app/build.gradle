@@ -54,7 +54,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressocore_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressocore_version"
     androidTestImplementation "android.arch.core:core-testing:$lifecycle_version"
-    def mockito_version = '2.28.2' // For local unit tests on your development machine
+    def mockito_version = '3.3.3' // For local unit tests on your development machine
     testImplementation "org.mockito:mockito-core:$mockito_version" // For instrumentation tests on Android devices and emulators
     androidTestImplementation "org.mockito:mockito-android:$mockito_version"
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

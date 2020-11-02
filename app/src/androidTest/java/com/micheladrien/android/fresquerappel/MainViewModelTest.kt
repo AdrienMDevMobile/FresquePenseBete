@@ -2,15 +2,18 @@ package com.micheladrien.android.fresquerappel
 
 import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.Observer
-import com.micheladrien.fresquerappel.MainViewModel
+import com.micheladrien.fresquerappel.R
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
-import org.mockito.Mockito.verify
+import org.mockito.junit.MockitoJUnitRunner
 
 
+@RunWith(MockitoJUnitRunner::class)
 class MainViewModelTest {
 
   //Regle : defini la manière dont les tests vont être menés
@@ -19,33 +22,50 @@ class MainViewModelTest {
   @JvmField
   var instantTaskExecutorRule = InstantTaskExecutorRule()
 
-  //Simulation des objets necessaires pour la VM
-  private val applicationMock:Application = mock(Application::class.java)
-
-  //private val collageNameObserver: Observer<String> = mock()
+  @Mock
+  val applicationMock: Application = mock(Application::class.java)
   /*
-  private val mockVictoryRepository: VictoryRepository = mock()
-  */
+  val applicationMock : Application */
 
-  //3 : La vm a etre testée
-  private val viewModel = MainViewModel(applicationMock)
-
-  /*
   //Before : set up avant de faire les tests
   @Before
   fun setUpTaskDetailViewModel() {
 
-    viewModel.name.observeForever(collageNameObserver)
+    //Pas necessaire car cela est geré par RunWith(MockitoJUnitRunner... initMocks(this)
+
+    //val applicationMock : Application = mock(Application::class.java)
+    `when`(applicationMock.getString(R.string.collage_climat)).thenReturn("Climat")
+
+    //Simulation des objets necessaires pour la VM. Plus besoin : l'annotation mock le fait
+
+
+    //private val collageNameObserver: Observer<String> = mock()
+    /*
+    private val mockVictoryRepository: VictoryRepository = mock()
+    */
+
+    //private lateinit var viewModel:MainViewModel
+
+    //viewModel.name.observeForever(collageNameObserver)
     /*viewModel.repository = mockVictoryRepository*/
+
+
+    //3 : La vm a etre testée
+    //viewModel = MainViewModel(applicationMock)
+
   }
-*/
+
   //Un test
   @Test
   fun setVictoryTitleSavesTitle() {
+
+
     //Arrange–Act–Assert pattern
 
+    /*
     val title = "New title"
     viewModel.notifyNewCollage(title)
+     */
 
     //Verify permet de vérifier qu’une méthode a été bien appelée et que que les interactions avec le mock sont celles attendues.
     //Verifie
