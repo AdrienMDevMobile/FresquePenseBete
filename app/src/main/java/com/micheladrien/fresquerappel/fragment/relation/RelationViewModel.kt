@@ -11,6 +11,7 @@ import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.Relation
 import com.micheladrien.fresquerappel.datas.RelationDirection
 import com.micheladrien.fresquerappel.datas.RelationMandatory
+import com.micheladrien.fresquerappel.tools.JsonReader
 
 /*
 Le Viewmodel sera partagé entre l'activité main (reçoit le nom de la fresque),
@@ -43,7 +44,7 @@ class RelationViewModel(application: Application) : AndroidViewModel(application
     val relation_color : LiveData<Int> = _relation_color
     val relation_mandatory : LiveData<String> = _relation_mandatory
 
-    private val dataManager: DataManager = MainDataManager()
+    private val dataManager: DataManager = MainDataManager(getApplication())
 
     fun changeCards(carte1:Int, carte2:Int){
 
@@ -61,9 +62,12 @@ class RelationViewModel(application: Application) : AndroidViewModel(application
 
     @SuppressLint("DefaultLocale")
     fun research(){
-        if(!dataManager.isInitalised()) {
-            dataManager.initialize(getApplication(), getApplication<Application>().getString(R.string.collage_climat))
+
+        /* Actuellement, l'initialisation se fait automatiquement dans la classe qui porte le singleton
+        if(!dataManager.isDataInitialised()) {
+            dataManager.loadData( getApplication<Application>().getString(R.string.collage_climat))
         }
+        */
         //Log.d("0708", "nous avons inialisé")
         if(_carte1.value != null && _carte2.value != null){
             val relationModel = dataManager.researchRelation(_carte1.value!!, _carte2.value!!)
@@ -73,7 +77,6 @@ class RelationViewModel(application: Application) : AndroidViewModel(application
 
         }
         else {Log.d("recherche","recherche non lancee")}
-
 
     }
 

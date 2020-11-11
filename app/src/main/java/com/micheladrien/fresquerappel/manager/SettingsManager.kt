@@ -15,7 +15,7 @@ class SettingsManager(var context : Context, var dataManager : DataManager) {
 
     //Notify the VMs that the collage is changed (currently, only MainViewModel)
     fun changeCollage(name:String): String {
-        dataManager.initialize(context, name.toLowerCase())
+        dataManager.loadData(name.toLowerCase())
         //return NO_COLLAGE_STRING servira en cas d'erreur d'initialisation connues
 
         for (vm in listOfViewModel){

@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.micheladrien.fresquerappel.R
 
@@ -21,20 +22,57 @@ class TimerFragment : Fragment() {
     private lateinit var timerViewModel: TimerViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: TimerAdapter
+    private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        timerViewModel = ViewModelProvider(this).get(TimerViewModel::class.java)
-
         val root = inflater.inflate(R.layout.fragment_timer, container, false)
+        /*
+        //obtain a handle to the RecycleView object, connect it to a layout manager, and attach an adapter for the data to be displayed:
+        viewManager = LinearLayoutManager(this)
+        viewAdapter = MyAdapter(myDataset)
+
+        recyclerView = findViewById<RecyclerView>(R.id.my_recycler_view).apply {
+            // use this setting to improve performance if you know that changes
+            // in content do not change the layout size of the RecyclerView
+            setHasFixedSize(true)
+
+            // use a linear layout manager
+            layoutManager = viewManager
+
+            // specify an viewAdapter (see also next example)
+            adapter = viewAdapter
+        */
+
+
+
 
         val arrayList = ArrayList<String>()
         // Adapter: You need three parameters 'the context, id of the layout (it will be where the data is shown),
         // and the array that contains the data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         /**
         //TODO https://developer.android.com/guide/topics/ui/layout/recyclerview

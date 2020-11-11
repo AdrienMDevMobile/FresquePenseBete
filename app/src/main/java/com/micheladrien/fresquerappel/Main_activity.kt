@@ -18,6 +18,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.micheladrien.fresquerappel.manager.MainDataManager
 import com.micheladrien.fresquerappel.manager.SettingsManager
+import com.micheladrien.fresquerappel.tools.JsonReader
 import java.io.IOException
 import java.io.InputStream
 
@@ -29,8 +30,7 @@ class Main_activity : AppCompatActivity() {
     private lateinit var settingsManager: SettingsManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val dataManager = MainDataManager()
-        dataManager.initialize(this, getString(R.string.collage_climat))
+        val dataManager = MainDataManager(this)
 
         settingsManager = SettingsManager(this, dataManager)
         //Nous definissons le ViewModel

@@ -9,12 +9,12 @@ import java.io.IOException
 import java.io.InputStream
 
 
-class JsonReader {
+open class JsonReader(val context:Context) {
 
-    fun readJsonObject(context: Context, file_name:String):MutableList<RelationModel>{
+    fun readJsonObject(file_name:String):MutableList<RelationModel>{
 
         try {
-            val jArray = JSONArray(loadJSONFromAsset(context, file_name))
+            val jArray = JSONArray(loadJSONFromAsset(file_name))
             //val jArray = JSONArray("[{\"c1\": 1,\"c2\": 2,\"rel\": \"UP\",\"mandatory\": \"mandatory\",\"expl\": \"\"}]")
             val list = mutableListOf<RelationModel>()
 
@@ -43,7 +43,7 @@ class JsonReader {
         }
     }
 
-    private fun loadJSONFromAsset(context: Context, file_name:String): String? {
+    private fun loadJSONFromAsset(file_name:String): String? {
         val low_file_name : String = file_name.toLowerCase()
 
         val json = try {

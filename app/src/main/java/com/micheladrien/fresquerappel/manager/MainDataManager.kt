@@ -1,39 +1,100 @@
+//Singleton : https://blog.mindorks.com/how-to-create-a-singleton-class-in-kotlin
 package com.micheladrien.fresquerappel.manager
 
 import android.content.Context
-import com.micheladrien.fresquerappel.tools.JsonReader
-import com.micheladrien.fresquerappel.fragment.single.Single
+import android.util.Log
+import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.Relation
 import com.micheladrien.fresquerappel.datas.RelationDirection
 import com.micheladrien.fresquerappel.datas.RelationMandatory
 import com.micheladrien.fresquerappel.datas.RelationModel
+import com.micheladrien.fresquerappel.fragment.single.Single
+import com.micheladrien.fresquerappel.tools.JsonReader
 
-class MainDataManager : DataManager {
-    private var list: MutableList<RelationModel>? = null
-    private var isInitialised:Boolean = false
+class MainDataManager(context: Context) : DataManager {
+    val mainDataManager : SingletonDataManager = SingletonDataManager.getInstance(context)
 
-    override fun initialize(context: Context, file_name : String){
-        val jsonReader = JsonReader()
-        list = jsonReader.readJsonObject(context, file_name)
-        isInitialised = true
+
+   init{
+       if (!isDataInitialised()){
+           loadData(context.getString(R.string.collage_climat))
+       }
+   }
+
+    override fun isDataInitialised(): Boolean {
+        return mainDataManager.isDataInitialised()
     }
 
-    override fun isInitalised():Boolean{
-        return this.isInitialised
-    }
-
-    override fun researchRelation(number1:Int, number2:Int): RelationModel {
-        list?.forEach {
-            if(it.number1 == number1){
-                if(it.number2 == number2)
-                    return it
-            }
+    override fun loadData(file_name: String) {
+        synchronized(mainDataManager){
+            mainDataManager.loadData(file_name)
         }
-        return RelationModel(number1, number2, Relation(RelationDirection.NONE, RelationMandatory.OPTIONAL) , "")
+
+    }
+
+    override fun researchRelation(number1: Int, number2: Int): RelationModel {
+        synchronized(mainDataManager) {
+            return mainDataManager.researchRelation(number1, number2)
+        }
     }
 
     override fun researchSingle(number1: Int): Single {
-        TODO("Not yet implemented")
+        synchronized(mainDataManager){
+            return mainDataManager.researchSingle(number1)}
     }
 
+
+
+    //Subclass. Cette classe ne sera instanciée qu'une fois
+    class SingletonDataManager(val jsonReader: JsonReader){
+
+        companion object {
+            lateinit private var instance : SingletonDataManager
+            var boolInit:Boolean = false
+
+            private fun isInitialised():Boolean{
+                return boolInit
+            }
+
+            fun getInstance(context: Context): SingletonDataManager{
+                if(isInitialised()) {
+                    return instance
+                }
+                else {
+                    val newJsonReader = JsonReader(context)
+                    instance = SingletonDataManager(newJsonReader)
+                    boolInit = true
+                    return instance
+                }
+            }
+        }
+
+        private var list: MutableList<RelationModel>? = null
+        private var is_list_init:Boolean = false
+
+
+        fun loadData(file_name : String){
+            list = jsonReader.readJsonObject(file_name)
+            Log.d("ami", "Nous avons init la bdd")
+            is_list_init = true
+        }
+
+        fun isDataInitialised():Boolean{
+            return this.is_list_init
+        }
+
+        fun researchRelation(number1:Int, number2:Int): RelationModel {
+            list?.forEach {
+                if(it.number1 == number1){
+                    if(it.number2 == number2)
+                        return it
+                }
+            }
+            return RelationModel(number1, number2, Relation(RelationDirection.NONE, RelationMandatory.OPTIONAL) , "")
+        }
+
+        fun researchSingle(number1: Int): Single {
+            TODO("Not yet implemented")
+        }
+    }
 }
