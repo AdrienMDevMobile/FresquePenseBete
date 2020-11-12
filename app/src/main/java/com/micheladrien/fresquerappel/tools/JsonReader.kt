@@ -11,7 +11,7 @@ import java.io.InputStream
 
 open class JsonReader(val context:Context) {
 
-    fun readJsonObject(file_name:String):MutableList<RelationModel>{
+    open fun readJsonObject(file_name:String):MutableList<RelationModel>{
 
         try {
             val jArray = JSONArray(loadJSONFromAsset(file_name))
