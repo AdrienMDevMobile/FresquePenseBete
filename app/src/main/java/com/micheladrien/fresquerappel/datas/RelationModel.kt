@@ -1,6 +1,7 @@
 package com.micheladrien.fresquerappel.datas
 
 import android.annotation.SuppressLint
+import java.util.*
 
 class RelationModel(val number1: Int, val number2: Int, val relation: Relation, val explanation:String){
 
@@ -8,9 +9,17 @@ class RelationModel(val number1: Int, val number2: Int, val relation: Relation, 
         RelationDirection.getRelDirection(rDirString), RelationMandatory.getRelMandatory(rMandatoryString)
     ), explanation) {}
 
+    override fun equals(other:Any?): Boolean{
+        return other is RelationModel && number1 == other.number1 && number2 == other.number2 && relation == other.relation && explanation == other.explanation
+
+    }
+
 }
 
 class Relation(val direction: RelationDirection, val mandatory: RelationMandatory){
+    override fun equals(other: Any?): Boolean {
+        return other is Relation && direction == other.direction && mandatory == other.mandatory
+    }
 }
 
 enum class RelationDirection {

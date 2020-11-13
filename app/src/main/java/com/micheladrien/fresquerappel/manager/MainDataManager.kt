@@ -12,7 +12,7 @@ import com.micheladrien.fresquerappel.fragment.single.Single
 import com.micheladrien.fresquerappel.tools.JsonReader
 
 class MainDataManager(context: Context) : DataManager {
-    val mainDataManager : SingletonDataManager = SingletonDataManager.getInstance(context)
+    val dataManager : SingletonDataManager = SingletonDataManager.getInstance(context)
 
 
    init{
@@ -22,25 +22,25 @@ class MainDataManager(context: Context) : DataManager {
    }
 
     override fun isDataInitialised(): Boolean {
-        return mainDataManager.isDataInitialised()
+        return dataManager.isDataInitialised()
     }
 
     override fun loadData(file_name: String) {
-        synchronized(mainDataManager){
-            mainDataManager.loadData(file_name)
+        synchronized(dataManager){
+            dataManager.loadData(file_name)
         }
 
     }
 
     override fun researchRelation(number1: Int, number2: Int): RelationModel {
-        synchronized(mainDataManager) {
-            return mainDataManager.researchRelation(number1, number2)
+        synchronized(dataManager) {
+            return dataManager.researchRelation(number1, number2)
         }
     }
 
     override fun researchSingle(number1: Int): Single {
-        synchronized(mainDataManager){
-            return mainDataManager.researchSingle(number1)}
+        synchronized(dataManager){
+            return dataManager.researchSingle(number1)}
     }
 
 
