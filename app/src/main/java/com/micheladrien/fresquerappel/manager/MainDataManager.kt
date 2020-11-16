@@ -75,7 +75,6 @@ class MainDataManager(context: Context) : DataManager {
 
         fun loadData(file_name : String){
             list = jsonReader.readJsonObject(file_name)
-            Log.d("ami", "Nous avons init la bdd")
             is_list_init = true
         }
 
