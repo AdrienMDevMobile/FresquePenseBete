@@ -48,16 +48,20 @@ class RelationRechercheDialogueFragment : DialogFragment() {
 
     //Vérifie que les numéros de cartes ont bien étés entrés
     fun checkNumbers():Boolean{
-        if (TextUtils.isEmpty(ETcarte1.text.toString())) {
-            ETcarte1.error = getString(R.string.warning_missing_carte_num)
-            return false
-        }
+        var to_return = true
+
         if (TextUtils.isEmpty(ETcarte2.text.toString())) {
             ETcarte2.error = getString(R.string.warning_missing_carte_num)
-            return false
+            ETcarte2.requestFocus()
+            to_return = false
+        }
+        if (TextUtils.isEmpty(ETcarte1.text.toString())) {
+            ETcarte1.error = getString(R.string.warning_missing_carte_num)
+            ETcarte1.requestFocus()
+            to_return = false
         }
 
-        return true
+        return to_return
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

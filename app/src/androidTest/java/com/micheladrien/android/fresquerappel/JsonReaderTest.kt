@@ -1,5 +1,4 @@
 package com.micheladrien.android.fresquerappel
-
 import android.content.Context
 import android.util.Log
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
@@ -17,7 +16,7 @@ import org.junit.runner.RunWith
 
 
 @RunWith(AndroidJUnit4::class)
-class RechercheRelationFragmentTest {
+class JsonReaderTest {
 
     @Rule
     @JvmField
@@ -38,7 +37,7 @@ class RechercheRelationFragmentTest {
     //Attention : Si le texte dans climat.json change : il faut adapter le test
     @Test
     fun ListCorrectTypeTest(){
-       assertNotNull(list_of_relation)
+        assertNotNull(list_of_relation)
     }
     @Test
     fun ListCorrectSizeTest(){
@@ -49,5 +48,3 @@ class RechercheRelationFragmentTest {
         Log.d("Test_file : ListCorrectSizeTest", "list_of_relation.size = " + list_of_relation.size)
     }
 }
-
-

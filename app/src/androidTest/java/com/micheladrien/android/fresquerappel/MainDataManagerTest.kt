@@ -7,11 +7,8 @@ import com.micheladrien.fresquerappel.datas.RelationDirection
 import com.micheladrien.fresquerappel.datas.RelationMandatory
 import com.micheladrien.fresquerappel.datas.RelationModel
 import com.micheladrien.fresquerappel.manager.MainDataManager
-import org.junit.Assert
+import org.junit.*
 import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
 

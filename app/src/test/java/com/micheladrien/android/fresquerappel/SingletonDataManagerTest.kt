@@ -1,6 +1,5 @@
 package com.micheladrien.android.fresquerappel
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.micheladrien.fresquerappel.datas.RelationDirection
 import com.micheladrien.fresquerappel.datas.RelationMandatory
 import com.micheladrien.fresquerappel.datas.RelationModel
@@ -10,26 +9,28 @@ import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
 
-
+//Unit test (n'utilise pas d'emulateur, uniquement la JVM
 @RunWith(MockitoJUnitRunner::class)
 class SingletonDataManagerTest {
 
     //Regle : defini la manière dont les tests vont être menés
     //InstantTaskExecutorRule = force les tests à etre synchrones
+    /*
     @Rule
     @JvmField
-    var instantTaskExecutorRule = InstantTaskExecutorRule()
+    var instantTaskExecutorRule = InstantTaskExecutorRule()*/
 
     //Le JsonReader qui va lire dans les fichiers est une maquette
     @Mock
     private val mockJsonReader: JsonReader = Mockito.mock(JsonReader::class.java)
+
+    lateinit var singletonDataManager : MainDataManager.SingletonDataManager
 
     @Before
     fun set_up() {
@@ -37,12 +38,13 @@ class SingletonDataManagerTest {
         val listOfJsonReader = mutableListOf<RelationModel>()
         listOfJsonReader.add(RelationModel("1","2", RelationDirection.UP.toString(), RelationMandatory.MANDATORY.toString(), "Test text"))
         Mockito.`when`(mockJsonReader.readJsonObject("test")).thenReturn(listOfJsonReader)
+        singletonDataManager = MainDataManager.SingletonDataManager(mockJsonReader)
     }
 
     //Nous verifions qu'à la base, les données ne sont pas marquées comme chargées.
     @Test
     fun testDataUnloaded(){
-        val singletonDataManager: MainDataManager.SingletonDataManager = MainDataManager.SingletonDataManager(mockJsonReader)
+
         //Assert/AssertFalse : verifie que la valeur est vrai ou fausse.
         Assert.assertFalse(singletonDataManager.isDataInitialised())
     }
@@ -50,7 +52,6 @@ class SingletonDataManagerTest {
     //J'ai mock ma classe JsonReader. Les données sont désormais marquées comme chargées.
     @Test
     fun testDataLoad(){
-        val singletonDataManager: MainDataManager.SingletonDataManager = MainDataManager.SingletonDataManager(mockJsonReader)
         singletonDataManager.loadData("test")
         Mockito.verify(mockJsonReader).readJsonObject("test")
         assert(singletonDataManager.isDataInitialised())
@@ -59,7 +60,6 @@ class SingletonDataManagerTest {
     //Recherche Relation avec succes
     @Test
     fun testRechRelFound(){
-        val singletonDataManager: MainDataManager.SingletonDataManager = MainDataManager.SingletonDataManager(mockJsonReader)
         singletonDataManager.loadData("test")
         assertEquals(
             singletonDataManager.researchRelation(1, 2),
@@ -77,7 +77,6 @@ class SingletonDataManagerTest {
     //Recherche Relation non trouvée
     @Test
     fun testRechRelNotFound(){
-        val singletonDataManager: MainDataManager.SingletonDataManager = MainDataManager.SingletonDataManager(mockJsonReader)
         singletonDataManager.loadData("test")
         /*assertNotEquals(
             singletonDataManager.researchRelation(1, 2),
@@ -97,7 +96,6 @@ class SingletonDataManagerTest {
     //Je vérifie que la fonction equals de ma classe RElationmodel fonctionne correctement
     @Test
     fun testRelationModelEquals(){
-        val singletonDataManager: MainDataManager.SingletonDataManager = MainDataManager.SingletonDataManager(mockJsonReader)
         singletonDataManager.loadData("test")
         assertNotEquals(singletonDataManager.researchRelation(1, 2), "prout")
         assertNotEquals(
