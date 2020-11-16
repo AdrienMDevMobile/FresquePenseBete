@@ -29,7 +29,7 @@ class SingletonDataManagerTest {
 
     //Le JsonReader qui va lire dans les fichiers est une maquette
     @Mock
-    val mockJsonReader: JsonReader = Mockito.mock(JsonReader::class.java)
+    private val mockJsonReader: JsonReader = Mockito.mock(JsonReader::class.java)
 
     @Before
     fun set_up() {

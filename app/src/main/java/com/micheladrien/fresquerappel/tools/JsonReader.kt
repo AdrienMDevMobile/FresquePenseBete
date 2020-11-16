@@ -1,7 +1,7 @@
 package com.micheladrien.fresquerappel.tools
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import com.micheladrien.fresquerappel.datas.RelationModel
 import org.json.JSONArray
 import org.json.JSONException
@@ -43,6 +43,7 @@ open class JsonReader(val context:Context) {
         }
     }
 
+    @SuppressLint("DefaultLocale")
     private fun loadJSONFromAsset(file_name:String): String? {
         val low_file_name : String = file_name.toLowerCase()
 

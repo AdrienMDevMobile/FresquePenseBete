@@ -24,7 +24,7 @@ class MainDataManagerTest(){
     var countingTaskExecutorRule  = CountingTaskExecutorRule()
 
     //Set up la variable Context
-    lateinit var context: Context
+    private lateinit var context: Context
     @Before
     fun set_up(){
         context = ApplicationProvider.getApplicationContext()
