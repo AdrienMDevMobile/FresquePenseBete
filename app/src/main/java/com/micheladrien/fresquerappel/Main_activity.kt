@@ -37,7 +37,7 @@ class Main_activity : AppCompatActivity() {
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         settingsManager.addWaitingVM(mainViewModel)
 
-        //On définit le menu latéral
+        /* Défini menu lateral -- Debut */
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_navigation_activity)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
@@ -46,15 +46,6 @@ class Main_activity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
-        /* Défini menu lateral -- Debut */
-        /* 1.3 : Retour arrière, la navigation latéralle ne sert désormais plus à changer le nom de la fresque
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_main //Cet Id doit obligatoirement se trouver dans le fichier mobile_navigation.xml
-            ), drawerLayout
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController) */
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -64,7 +55,15 @@ class Main_activity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        /* 1.3 retour arrière
+        /* 1.3 : Retour arrière, la navigation latéralle ne sert désormais plus à changer le nom de la fresque
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.nav_main //Cet Id doit obligatoirement se trouver dans le fichier mobile_navigation.xml
+            ), drawerLayout
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
+
         navView.setNavigationItemSelectedListener { menuItem ->
             mainViewModel.changeCollage(menuItem.title.toString())
             drawerLayout.closeDrawers()
@@ -73,7 +72,7 @@ class Main_activity : AppCompatActivity() {
         /* Défini menu lateral -- Fin */
 
         //La VM change le nom de la fresque active
-        mainViewModel.name.observe(this, Observer {
+        mainViewModel.name.observe(this, {
             val actionBar: ActionBar? = supportActionBar
             actionBar?.setTitle(it.toString())
         })

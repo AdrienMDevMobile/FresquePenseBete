@@ -28,6 +28,7 @@ class RelationFragmentTest {
 
 
     //Before : set up avant de faire les tests
+    //Le fragment relation est celui qui s'ouvre en premier. Pas besoin de s'y déplacer..
     @Before
     fun setUpTaskDetailViewModel() {
         onView(withId(R.id.relation_search_button)).perform(click())

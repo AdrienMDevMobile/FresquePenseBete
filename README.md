@@ -1,5 +1,5 @@
 # FresquePenseBete
-**A partir de 1.4 : Developpement en TDD (Test Driven development) : Mockito (maquette), Espresso (UI)**<br>
+**A partir de 1.4 : Developpement en TDD (Test Driven development) : Junit, Mockito (maquette), Espresso (UI)**<br>
 1.3 = Retour arrière barre latérale : il y aura désormais plusieurs fragments<br>
 1.2 = Correction et nettoyage du code<br>
 **1.0 = Prête à l'emploi (Recherche de relation entre cartes de la Fresque du climat). Structure de code MVVM**<br>
