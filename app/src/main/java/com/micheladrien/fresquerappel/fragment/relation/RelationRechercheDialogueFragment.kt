@@ -14,7 +14,7 @@ import com.micheladrien.fresquerappel.R
 import kotlinx.android.synthetic.main.dialogue_fragment_recherche.*
 
 
-class RelationRechercheDialogueFragment : DialogFragment() {
+class RelationRechercheDialogueFragment() : DialogFragment() {
 
     companion object{
         val maxLengthNumber = 2

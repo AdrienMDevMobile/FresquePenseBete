@@ -46,13 +46,6 @@ class MainActivityTest {
     }
 
     @Test
-    fun testOpenTimeFragment(){
-        onView(withId(R.id.nav_timer)).perform(click())
-
-        //sleep(2000)
-
-    }
-    @Test
     fun testOpenSingleFragment(){
         onView(withId(R.id.nav_single)).perform(click())
         onView(withId(R.id.tv_single_not_supported)).check(matches(isDisplayed()))

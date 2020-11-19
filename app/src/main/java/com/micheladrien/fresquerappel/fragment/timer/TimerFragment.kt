@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.micheladrien.fresquerappel.R
-
+import kotlinx.android.synthetic.main.fragment_timer.*
 
 class TimerFragment : Fragment() {
 
@@ -30,66 +30,36 @@ class TimerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_timer, container, false)
-        /*
-        //obtain a handle to the RecycleView object, connect it to a layout manager, and attach an adapter for the data to be displayed:
-        viewManager = LinearLayoutManager(this)
-        viewAdapter = MyAdapter(myDataset)
 
-        recyclerView = findViewById<RecyclerView>(R.id.my_recycler_view).apply {
+
+        //obtain a handle to the RecycleView object, connect it to a layout manager, and attach an adapter for the data to be displayed:
+        viewManager = LinearLayoutManager(context)
+
+
+        // Adapter: You need three parameters 'the context, id of the layout (it will be where the data is shown),
+        val timer_set = arrayOf("one", "two")
+        // and the array that contains the data
+        viewAdapter = TimerAdapter(timer_set)
+
+        recyclerView = root.findViewById<RecyclerView>(R.id.recycler_view_timer).apply {
             // use this setting to improve performance if you know that changes
             // in content do not change the layout size of the RecyclerView
-            setHasFixedSize(true)
+            this.setHasFixedSize(true)
 
             // use a linear layout manager
             layoutManager = viewManager
 
             // specify an viewAdapter (see also next example)
             adapter = viewAdapter
-        */
 
 
-
-
-        val arrayList = ArrayList<String>()
-        // Adapter: You need three parameters 'the context, id of the layout (it will be where the data is shown),
-        // and the array that contains the data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }
 
 
 
 
         /**
         //TODO https://developer.android.com/guide/topics/ui/layout/recyclerview
-        //viewManager = LinearLayoutManager(this)
-        viewAdapter = TimerAdapter()
-
-        recyclerView = root.findViewById<RecyclerView>(R.id.list_timer).apply {
-            // use this setting to improve performance if you know that changes
-            // in content do not change the layout size of the RecyclerView
-            setHasFixedSize(true)
-
-            // use a linear layout manager
-            //layoutManager = viewManager
-
-            // specify an viewAdapter (see also next example)
-            adapter = viewAdapter
-        }
 
         /* TODO Utilisation VM : quand j'aurai mis en place la vue.
         TODO RecyclerView.Adapter.notify…() quand un element est changé

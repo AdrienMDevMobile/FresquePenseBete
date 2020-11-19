@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.micheladrien.fresquerappel.R
 import kotlinx.android.synthetic.main.fragment_relation.*
@@ -31,25 +30,25 @@ class RelationFragment : Fragment() {
         /* Set up des observeurs debut */
         //Explication
         val textView: TextView = root.findViewById(R.id.text_explication)
-        relationViewModel.text.observe(viewLifecycleOwner, Observer {
+        relationViewModel.text.observe(viewLifecycleOwner, /* Observer */  {
             textView.text = it
         })
 
         //Id des deux cartes
-        relationViewModel.carte1.observe(viewLifecycleOwner, Observer {
+        relationViewModel.carte1.observe(viewLifecycleOwner,  {
             txt_id_carte1.text = it.toString()
         })
-        relationViewModel.carte2.observe(viewLifecycleOwner, Observer {
+        relationViewModel.carte2.observe(viewLifecycleOwner,  {
             txt_id_carte2.text = it.toString()
         })
         //Relation = -> <- X, etc + sa couleur + optionel/obligatoire
-        relationViewModel.relation.observe(viewLifecycleOwner, Observer {
+        relationViewModel.relation.observe(viewLifecycleOwner,  {
             txt_relation.text = it
         })
-        relationViewModel.relation_color.observe(viewLifecycleOwner, Observer {
+        relationViewModel.relation_color.observe(viewLifecycleOwner,  {
             txt_relation.setTextColor(it)
         })
-        relationViewModel.relation_mandatory.observe(viewLifecycleOwner, Observer {
+        relationViewModel.relation_mandatory.observe(viewLifecycleOwner,  {
             txt_mandatory.text = it
         })
         /* Set up des observeurs debut */
@@ -58,7 +57,6 @@ class RelationFragment : Fragment() {
         val fab: FloatingActionButton = root.findViewById(R.id.relation_search_button)
 
         fab.setOnClickListener { view ->
-
             val dialogFragment = RelationRechercheDialogueFragment()
             val bundle = Bundle()
             bundle.putBoolean("notAlertDialog", true)
