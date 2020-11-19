@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent"
 android:layout_height="@dimen/timer_item_height"
 android:layout_marginLeft="@dimen/timer_margin_medium"
 android:layout_marginRight="@dimen/timer_margin_medium"
 android:gravity="center_vertical">
 
-<TextView
-    android:id="@+id/tv_timer_name"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="String temporaire"/>
-</FrameLayout>
+    <TextView
+        android:id="@+id/tv_timer_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Timer name"
+        android:layout_marginLeft="@dimen/timer_margin_medium"
+        android:layout_marginRight="@dimen/timer_margin_medium"
+        android:textSize="@dimen/timer_size_name"/>
+
+    <TextView
+        android:id="@+id/tv_timer_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Timer value"
+        android:layout_marginLeft="@dimen/timer_margin_medium"
+        android:layout_marginRight="@dimen/timer_margin_medium"
+        android:textSize="@dimen/timer_size_value"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="X"
+        android:layout_marginLeft="@dimen/timer_margin_medium"
+        android:layout_marginRight="@dimen/timer_margin_medium"
+        android:background="@null"
+        />
+</LinearLayout>

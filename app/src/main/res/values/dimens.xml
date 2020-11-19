@@ -11,6 +11,8 @@
     <dimen name="fragment_vertical_margin">16dp</dimen>
 
     <!-- Timer's view items -->
-    <dimen name="timer_item_height">16dp</dimen>
-    <dimen name="timer_margin_medium">16dp</dimen>
+    <dimen name="timer_item_height">22dp</dimen>
+    <dimen name="timer_margin_medium">8dp</dimen>
+    <dimen name="timer_size_name">16dp</dimen>
+    <dimen name="timer_size_value">20dp</dimen>
 </resources>

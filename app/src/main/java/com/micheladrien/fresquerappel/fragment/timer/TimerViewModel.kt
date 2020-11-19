@@ -18,23 +18,44 @@ Observable array list :  https://github.com/theblitz/ObservableCollections
 https://stackoverflow.com/questions/7178801/how-do-i-structure-mvvm-with-collections
 TODO Remplacer string par TimephaseViewModel
  */
+//https://medium.com/@atifmukhtar/recycler-view-with-mvvm-livedata-a1fd062d2280
 class TimerViewModel(application: Application) : AndroidViewModel(application) {
 
+    private val _timerLiveData = MutableLiveData<ArrayList<String>>()
+    var timerArrayList:ArrayList<String>? = null
+    val timerLiveData: LiveData<ArrayList<String>> = _timerLiveData
 
-    private val _timerCollection = ObservableArrayList<String>().apply {
-        this.add("aa")
-        this.add("bb")
-        this.add("cc")
-        this.add("dd")
+    init{
+        populateList()
     }
 
-    val timerCollection : ObservableArrayList<String> = _timerCollection
+    //TODO Recuperer la liste depuis une BDD
+    fun populateList(){
+        val time1  = "Time1"
+        val time2  = "Time2"
+        val time3  = "Time3"
+        /*
+        val time1 = TimerModel(1, "1", 15)
+        val time2 = TimerModel(1, "2", 15)
+        val time3 = TimerModel(1, "conclusion", 15)
+        timerArrayList = ArrayList<TimerModel>()
 
-    fun addTimer(){
+        */
+        timerArrayList = ArrayList<String>()
+        timerArrayList!!.add(time1)
+        timerArrayList!!.add(time2)
+        timerArrayList!!.add(time3)
+
+        _timerLiveData.value = timerArrayList
+    }
+
+    //TODO
+    fun changeTimer(id: Int, new_name:String, new_time:Int){
 
     }
 
-    fun removeTimer(){
+    //TODO
+    fun suppressTimer(id:Int){
 
     }
 

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.micheladrien.fresquerappel.R
 
 //Gestionnaire des ViewHolder
-class TimerAdapter(private val timer_set: Array<String>) : RecyclerView.Adapter<TimerViewHolder>() {
+class TimerAdapter(private val timer_set: ArrayList<String>) : RecyclerView.Adapter<TimerViewHolder>() {
 
     //The method creates and initializes the ViewHolder and its associated View,
     // but does not fill in the view's contents—the ViewHolder has not yet been bound to specific data.

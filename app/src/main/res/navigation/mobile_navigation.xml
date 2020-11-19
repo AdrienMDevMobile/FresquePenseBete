@@ -3,13 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_main"
+    app:startDestination="@+id/nav_timer"
     tools:ignore="UnusedNavigation">
 
     <fragment
         android:id="@+id/nav_main"
         android:name="com.micheladrien.fresquerappel.fragment.relation.RelationFragment"
         tools:layout="@layout/fragment_relation" />
+
+    <fragment
+        android:id="@+id/nav_single"
+        android:name="com.micheladrien.fresquerappel.fragment.single.SingleCardFragment"
+        tools:layout="@layout/fragment_single" />
 
     <fragment
         android:id="@+id/nav_timer"
@@ -21,10 +26,7 @@
         android:name="com.micheladrien.fresquerappel.fragment.notes.NotesFragment"
         tools:layout="@layout/fragment_notes" />
 
-    <fragment
-        android:id="@+id/nav_single"
-        android:name="com.micheladrien.fresquerappel.fragment.single.SingleCardFragment"
-        tools:layout="@layout/fragment_single" />
+
 
 
 

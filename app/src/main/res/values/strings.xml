@@ -37,6 +37,7 @@
     <string name="relation_optional">optionelle</string>
 
     <string name="title_timer">Gestion du temps</string>
+    <string name="button_timer_go">Go</string>
 
     <string name="toast_collage_unavailable">La fresque %1$s est n\'est pas encore supportée</string>
     <string name="toast_menu_unavailable">L\'activité est n\'est pas encore supportée</string>
