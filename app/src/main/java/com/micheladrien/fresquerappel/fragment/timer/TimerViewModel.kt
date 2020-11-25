@@ -11,7 +11,7 @@ import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.Relation
 import com.micheladrien.fresquerappel.datas.RelationDirection
 import com.micheladrien.fresquerappel.datas.RelationMandatory
-import il.co.theblitz.observablecollections.lists.ObservableArrayList
+//import il.co.theblitz.observablecollections.lists.ObservableArrayList
 
 /*
 Observable array list :  https://github.com/theblitz/ObservableCollections
@@ -20,6 +20,8 @@ TODO Remplacer string par TimephaseViewModel
  */
 //https://medium.com/@atifmukhtar/recycler-view-with-mvvm-livedata-a1fd062d2280
 class TimerViewModel(application: Application) : AndroidViewModel(application) {
+
+    /*
 
     private val _timerLiveData = MutableLiveData<ArrayList<String>>()
     var timerArrayList:ArrayList<String>? = null
@@ -58,5 +60,5 @@ class TimerViewModel(application: Application) : AndroidViewModel(application) {
     fun suppressTimer(id:Int){
 
     }
-
+    */
 }

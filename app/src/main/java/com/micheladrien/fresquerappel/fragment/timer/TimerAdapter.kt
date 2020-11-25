@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.micheladrien.fresquerappel.R
 
 //Gestionnaire des ViewHolder
-class TimerAdapter(private val timer_set: ArrayList<String>) : RecyclerView.Adapter<TimerViewHolder>() {
+class TimerAdapter(private val timer_set: ArrayList<String>)  {
+    /*: RecyclerView.Adapter<TimerViewHolder>()
 
     //The method creates and initializes the ViewHolder and its associated View,
     // but does not fill in the view's contents—the ViewHolder has not yet been bound to specific data.
@@ -33,4 +34,5 @@ class TimerAdapter(private val timer_set: ArrayList<String>) : RecyclerView.Adap
     // For example, in an address book app, this might be the total number of addresses.
     // RecyclerView uses this to determine when there are no more items that can be displayed.
     override fun getItemCount() = timer_set.size
+    */
 }
