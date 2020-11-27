@@ -10,11 +10,15 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.micheladrien.fresquerappel.R
-import kotlinx.android.synthetic.main.fragment_relation.*
+import com.micheladrien.fresquerappel.databinding.FragmentRelationBinding
 
 class RelationFragment : Fragment() {
 
     private lateinit var relationViewModel: RelationViewModel
+
+    private var _binding: FragmentRelationBinding? = null
+    // This property is only valid between onCreateView and onDestroyView.
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,36 +29,38 @@ class RelationFragment : Fragment() {
         //je suis obligé de mettre l'activité main comme propriétaire
         relationViewModel = ViewModelProvider(requireActivity()).get(RelationViewModel::class.java)
 
-        val root = inflater.inflate(R.layout.fragment_relation, container, false)
+        _binding = FragmentRelationBinding.inflate(inflater, container, false)
+        val root = binding.root
+
 
         /* Set up des observeurs debut */
         //Explication
-        val textView: TextView = root.findViewById(R.id.text_explication)
+        val textView: TextView = binding.textExplication
         relationViewModel.text.observe(viewLifecycleOwner, /* Observer */  {
             textView.text = it
         })
 
         //Id des deux cartes
         relationViewModel.carte1.observe(viewLifecycleOwner,  {
-            txt_id_carte1.text = it.toString()
+            binding.txtIdCarte1.text = it.toString()
         })
         relationViewModel.carte2.observe(viewLifecycleOwner,  {
-            txt_id_carte2.text = it.toString()
+            binding.txtIdCarte2.text = it.toString()
         })
         //Relation = -> <- X, etc + sa couleur + optionel/obligatoire
         relationViewModel.relation.observe(viewLifecycleOwner,  {
-            txt_relation.text = it
+            binding.txtIdCarte2.text = it
         })
         relationViewModel.relation_color.observe(viewLifecycleOwner,  {
-            txt_relation.setTextColor(it)
+            binding.txtMandatory.setTextColor(it)
         })
         relationViewModel.relation_mandatory.observe(viewLifecycleOwner,  {
-            txt_mandatory.text = it
+            binding.txtRelation.text = it
         })
         /* Set up des observeurs debut */
 
         /* Défini le bouton de recherche -- Debut */
-        val fab: FloatingActionButton = root.findViewById(R.id.relation_search_button)
+        val fab: FloatingActionButton = binding.relationSearchButton
 
         fab.setOnClickListener { view ->
             val dialogFragment = RelationRechercheDialogueFragment()

@@ -11,7 +11,8 @@ import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.micheladrien.fresquerappel.R
-import kotlinx.android.synthetic.main.dialogue_fragment_recherche.*
+import com.micheladrien.fresquerappel.databinding.DialogueFragmentRechercheBinding
+import com.micheladrien.fresquerappel.databinding.FragmentRelationBinding
 
 
 class RelationRechercheDialogueFragment() : DialogFragment() {
@@ -21,6 +22,10 @@ class RelationRechercheDialogueFragment() : DialogFragment() {
     }
     private lateinit var relationViewModel: RelationViewModel
 
+    private var _binding: DialogueFragmentRechercheBinding? = null
+    // This property is only valid between onCreateView and onDestroyView.
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -28,14 +33,15 @@ class RelationRechercheDialogueFragment() : DialogFragment() {
     ): View? {
         relationViewModel = ViewModelProvider(requireActivity()).get(RelationViewModel::class.java)
 
-        return inflater.inflate(R.layout.dialogue_fragment_recherche, container, false)
+        _binding = DialogueFragmentRechercheBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     fun startSearch():Boolean{
 
         if(checkNumbers()){
-            val carte1 = ETcarte1.text.toString().toInt()
-            val carte2 = ETcarte2.text.toString().toInt()
+            val carte1 = binding.ETcarte1.text.toString().toInt()
+            val carte2 = binding.ETcarte2.text.toString().toInt()
             relationViewModel.changeCards(carte1, carte2)
             relationViewModel.research()
 
@@ -50,14 +56,14 @@ class RelationRechercheDialogueFragment() : DialogFragment() {
     fun checkNumbers():Boolean{
         var to_return = true
 
-        if (TextUtils.isEmpty(ETcarte2.text.toString())) {
-            ETcarte2.error = getString(R.string.warning_missing_carte_num)
-            ETcarte2.requestFocus()
+        if (TextUtils.isEmpty(binding.ETcarte2.text.toString())) {
+            binding.ETcarte2.error = getString(R.string.warning_missing_carte_num)
+            binding.ETcarte2.requestFocus()
             to_return = false
         }
-        if (TextUtils.isEmpty(ETcarte1.text.toString())) {
-            ETcarte1.error = getString(R.string.warning_missing_carte_num)
-            ETcarte1.requestFocus()
+        if (TextUtils.isEmpty(binding.ETcarte1.text.toString())) {
+            binding.ETcarte1.error = getString(R.string.warning_missing_carte_num)
+            binding.ETcarte1.requestFocus()
             to_return = false
         }
 
@@ -70,9 +76,9 @@ class RelationRechercheDialogueFragment() : DialogFragment() {
         //Nous definissons le ViewModel
         //relationViewModel = ViewModelProvider(this).get(RelationViewModel::class.java)
 
-        ETcarte1.addTextChangedListener(TextWatcherGoTo(ETcarte2))
-        ETcarte2.addTextChangedListener(TextWatcherStartSearch(this))
-        BTNrecherche.setOnClickListener {
+        binding.ETcarte1.addTextChangedListener(TextWatcherGoTo(binding.ETcarte2))
+        binding.ETcarte2.addTextChangedListener(TextWatcherStartSearch(this))
+        binding.BTNrecherche.setOnClickListener {
             if(startSearch())
                 this.dismiss() }
         /*
