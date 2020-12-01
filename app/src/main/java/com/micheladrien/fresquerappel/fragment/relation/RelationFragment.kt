@@ -24,7 +24,7 @@ class RelationFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         //Vue que ce ViewModel recevra des infos du fragment pop up
         //je suis obligé de mettre l'activité main comme propriétaire
         relationViewModel = ViewModelProvider(requireActivity()).get(RelationViewModel::class.java)
@@ -49,13 +49,13 @@ class RelationFragment : Fragment() {
         })
         //Relation = -> <- X, etc + sa couleur + optionel/obligatoire
         relationViewModel.relation.observe(viewLifecycleOwner,  {
-            binding.txtIdCarte2.text = it
+            binding.txtRelation.text = it
         })
         relationViewModel.relation_color.observe(viewLifecycleOwner,  {
-            binding.txtMandatory.setTextColor(it)
+            binding.txtRelation.setTextColor(it)
         })
         relationViewModel.relation_mandatory.observe(viewLifecycleOwner,  {
-            binding.txtRelation.text = it
+            binding.txtMandatory.text = it
         })
         /* Set up des observeurs debut */
 

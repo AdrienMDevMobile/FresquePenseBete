@@ -4,6 +4,7 @@ package com.micheladrien.android.fresquerappel
 import android.R
 import android.app.Application
 import android.widget.EditText
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 //import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.espresso.Espresso.onView
 import androidx.test.filters.LargeTest
@@ -22,7 +23,7 @@ import org.junit.runner.RunWith
 
 //@RunWith(MockitoJUnitRunner::class)
 class RelationFragmentTest {
-    /*
+
     //Regle : defini la manière dont les tests vont être menés
     //InstantTaskExecutorRule = force les tests à etre synchrones
     @Rule
@@ -47,7 +48,7 @@ class RelationFragmentTest {
     //Test : Premier editText, Apres avoir rentré deux chiffres : passe au second edit text
 
     //Test : Second editText, Apres avoir rentré deux chiffres : lance la recherche
-    */
+
 
 }
 

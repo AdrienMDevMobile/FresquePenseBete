@@ -1,6 +1,7 @@
 package com.micheladrien.android.fresquerappel
 
 import android.content.Context
+import androidx.arch.core.executor.testing.CountingTaskExecutorRule
 //import androidx.arch.core.executor.testing.CountingTaskExecutorRule
 import androidx.test.core.app.ApplicationProvider
 import com.micheladrien.fresquerappel.datas.RelationDirection
@@ -14,7 +15,7 @@ import org.junit.runner.RunWith
 
 //@RunWith(MockitoJUnitRunner::class)
 class MainDataManagerTest(){
-    /*
+
     //Regle : defini la manière dont les tests vont être menés
     //InstantTaskExecutorRule = les tests peuvent être asynchrone
     @Rule
@@ -67,6 +68,6 @@ class MainDataManagerTest(){
             )
         )
     }
-*/
+
 }
 
