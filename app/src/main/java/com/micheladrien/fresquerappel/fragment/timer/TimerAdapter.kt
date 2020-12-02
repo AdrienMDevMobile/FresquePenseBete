@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.micheladrien.fresquerappel.R
+import com.micheladrien.fresquerappel.datas.TimerModel
 
 //Gestionnaire des ViewHolder
-class TimerAdapter(private val timer_set: ArrayList<String>) : RecyclerView.Adapter<TimerViewHolder>()  {
+class TimerAdapter(private val timer_set: ArrayList<TimerModel>) : RecyclerView.Adapter<TimerViewHolder>()  {
 
     //The method creates and initializes the ViewHolder and its associated View,
     // but does not fill in the view's contents—the ViewHolder has not yet been bound to specific data.
@@ -25,7 +26,17 @@ class TimerAdapter(private val timer_set: ArrayList<String>) : RecyclerView.Adap
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         //holder.attribut =
-        holder.tv_timer_name.text = timer_set[position]
+
+        //name affichera exactement trois charactères
+        var name = timer_set[position].name
+        if(name.length >=3)
+            name = name.subSequence(0,3).toString()
+        else {
+            while(name.length < 3) name+= " "
+        }
+
+        holder.tv_timer_name.text = name
+        holder.tv_timer_value.text = timer_set[position].time_value.toString()
 
     }
 

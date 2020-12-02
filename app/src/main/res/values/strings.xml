@@ -42,5 +42,8 @@
     <string name="toast_collage_unavailable">La fresque %1$s est n\'est pas encore supportée</string>
     <string name="toast_menu_unavailable">L\'activité est n\'est pas encore supportée</string>
 
+    <string name="ph_timer_name">Place holder timer name</string>
+    <string name="ph_timer_value">Place holder timer value</string>
+    <string name="timer_remove">X</string>
 
 </resources>

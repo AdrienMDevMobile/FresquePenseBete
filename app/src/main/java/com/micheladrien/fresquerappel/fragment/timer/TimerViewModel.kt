@@ -11,6 +11,8 @@ import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.Relation
 import com.micheladrien.fresquerappel.datas.RelationDirection
 import com.micheladrien.fresquerappel.datas.RelationMandatory
+import com.micheladrien.fresquerappel.datas.TimerModel
+
 //import il.co.theblitz.observablecollections.lists.ObservableArrayList
 
 /*
@@ -23,9 +25,9 @@ class TimerViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-    private val _timerLiveData = MutableLiveData<ArrayList<String>>()
-    var timerArrayList:ArrayList<String>? = null
-    val timerLiveData: LiveData<ArrayList<String>> = _timerLiveData
+    private val _timerLiveData = MutableLiveData<ArrayList<TimerModel>>()
+    //var timerArrayList:ArrayList<TimerModel>? = null
+    val timerLiveData: LiveData<ArrayList<TimerModel>> = _timerLiveData
 
     init{
         populateList()
@@ -33,20 +35,21 @@ class TimerViewModel(application: Application) : AndroidViewModel(application) {
 
     //TODO Recuperer la liste depuis une BDD
     fun populateList(){
+        /*
         val time1  = "Time1"
         val time2  = "Time2"
         val time3  = "Time3"
-        /*
-        val time1 = TimerModel(1, "1", 15)
-        val time2 = TimerModel(1, "2", 15)
-        val time3 = TimerModel(1, "conclusion", 15)
-        timerArrayList = ArrayList<TimerModel>()
-
         */
-        timerArrayList = ArrayList<String>()
-        timerArrayList!!.add(time1)
-        timerArrayList!!.add(time2)
-        timerArrayList!!.add(time3)
+        //timerArrayList = ArrayList<String>()
+
+        val time1 = TimerModel(1, "1ab", 15)
+        val time2 = TimerModel(2, "2a", 16)
+        val time3 = TimerModel(3, "conclusion", 17)
+        val timerArrayList = ArrayList<TimerModel>()
+
+        timerArrayList.add(time1)
+        timerArrayList.add(time2)
+        timerArrayList.add(time3)
 
         _timerLiveData.value = timerArrayList
     }

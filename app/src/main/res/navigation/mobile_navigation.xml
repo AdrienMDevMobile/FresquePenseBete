@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_main"
+    app:startDestination="@+id/nav_timer"
     tools:ignore="UnusedNavigation">
 
     <fragment
@@ -25,9 +25,6 @@
         android:id="@+id/nav_notes"
         android:name="com.micheladrien.fresquerappel.fragment.notes.NotesFragment"
         tools:layout="@layout/fragment_notes" />
-
-
-
 
 
 </navigation>

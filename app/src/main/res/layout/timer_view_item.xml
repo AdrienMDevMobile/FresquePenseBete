@@ -9,25 +9,27 @@ android:gravity="center_vertical">
     <TextView
         android:id="@+id/tv_timer_name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Timer name"
+        android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/timer_margin_medium"
         android:layout_marginRight="@dimen/timer_margin_medium"
-        android:textSize="@dimen/timer_size_name"/>
+        android:text="@string/ph_timer_name"
+        android:textSize="@dimen/timer_size_name"
+        android:fontFamily="monospace"/>
 
     <TextView
         android:id="@+id/tv_timer_value"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Timer value"
+        android:layout_height="match_parent"
+        android:text="@string/ph_timer_name"
         android:layout_marginLeft="@dimen/timer_margin_medium"
         android:layout_marginRight="@dimen/timer_margin_medium"
+        android:fontFamily="monospace"
         android:textSize="@dimen/timer_size_value"/>
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="X"
+        android:layout_height="match_parent"
+        android:text="@string/timer_remove"
         android:layout_marginLeft="@dimen/timer_margin_medium"
         android:layout_marginRight="@dimen/timer_margin_medium"
         android:background="@null"

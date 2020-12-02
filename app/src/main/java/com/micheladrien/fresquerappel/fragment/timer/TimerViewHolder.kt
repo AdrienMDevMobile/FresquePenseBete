@@ -14,10 +14,12 @@ import com.micheladrien.fresquerappel.R
 //1 : 5 mns 2: 20 mns 3 : 10 mns 4 : 10 mns 5 : 10 mns
 class TimerViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
     val tv_timer_name : TextView
+    val tv_timer_value : TextView
 
     init {
         // Define click listener for the ViewHolder's View.
         //Fait le lien avec le textView dans l'xml
         tv_timer_name = view.findViewById(R.id.tv_timer_name)
+        tv_timer_value = view.findViewById(R.id.tv_timer_value)
     }
 }
