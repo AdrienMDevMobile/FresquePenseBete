@@ -12,7 +12,7 @@ import com.micheladrien.fresquerappel.R
 // Each data item is just a string in this case that is shown in a TextView.
 //TODO ???? Constructeur : id du timer, Init : récupère le nom et la durée associée à l'id du timer
 //1 : 5 mns 2: 20 mns 3 : 10 mns 4 : 10 mns 5 : 10 mns
-class TimerViewHolder(val view: View) : RecyclerView.ViewHolder(view) { /*
+class TimerViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
     val tv_timer_name : TextView
 
     init {
@@ -20,5 +20,4 @@ class TimerViewHolder(val view: View) : RecyclerView.ViewHolder(view) { /*
         //Fait le lien avec le textView dans l'xml
         tv_timer_name = view.findViewById(R.id.tv_timer_name)
     }
-        */
 }

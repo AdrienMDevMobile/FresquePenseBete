@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.fragment.relation.RelationViewModel
 
-class TimerFragment : Fragment() {/*
+class TimerFragment : Fragment() {
 
     private lateinit var timerViewModel: TimerViewModel
     private lateinit var recyclerView: RecyclerView
@@ -48,7 +48,7 @@ class TimerFragment : Fragment() {/*
         /* TODO Utilisation VM : quand j'aurai mis en place la vue.
         TODO RecyclerView.Adapter.notify…() quand un element est changé */
 
-        timerViewModel.timerLiveData.observe(viewLifecycleOwner, Observer{
+        timerViewModel.timerLiveData.observe(viewLifecycleOwner, {
 
             //Dans l'observe : ecrase et refait le RecyclerViewAdapter
             viewAdapter = TimerAdapter(it)
@@ -64,7 +64,7 @@ class TimerFragment : Fragment() {/*
         //TODO Donner la fonction delete de ma VM dans le bouton X (a faire dans l'adapter ?) Il me faut probablement creer une classe custom OnClickListener
 
         return root
-    }*/
+    }
 
 }
 

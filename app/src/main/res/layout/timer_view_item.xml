@@ -6,8 +6,6 @@ android:layout_marginLeft="@dimen/timer_margin_medium"
 android:layout_marginRight="@dimen/timer_margin_medium"
 android:gravity="center_vertical">
 
-    <!--
-
     <TextView
         android:id="@+id/tv_timer_name"
         android:layout_width="wrap_content"
@@ -35,5 +33,4 @@ android:gravity="center_vertical">
         android:background="@null"
         />
 
-    -->
 </LinearLayout>
