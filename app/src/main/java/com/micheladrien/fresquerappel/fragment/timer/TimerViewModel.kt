@@ -2,6 +2,7 @@ package com.micheladrien.fresquerappel.fragment.timer
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
@@ -14,6 +15,9 @@ import com.micheladrien.fresquerappel.datas.Relation
 import com.micheladrien.fresquerappel.datas.RelationDirection
 import com.micheladrien.fresquerappel.datas.RelationMandatory
 import com.micheladrien.fresquerappel.datas.TimerModel
+import com.micheladrien.fresquerappel.thread.TimerBackgroundThreadRunner
+import com.micheladrien.fresquerappel.tools.NotificationsTools
+import java.lang.Thread.sleep
 
 //import il.co.theblitz.observablecollections.lists.ObservableArrayList
 
@@ -28,8 +32,10 @@ class TimerViewModel(application: Application) : AndroidViewModel(application) {
 
 
     private val _timerLiveData = MutableLiveData<ArrayList<TimerModel>>()
-    //var timerArrayList:ArrayList<TimerModel>? = null
+    var timerArrayList:ArrayList<TimerModel>? = null
     val timerLiveData: LiveData<ArrayList<TimerModel>> = _timerLiveData
+
+    private var backGroundRunner : TimerBackgroundThreadRunner = TimerBackgroundThreadRunner()
 
     init{
         populateList()
@@ -44,14 +50,14 @@ class TimerViewModel(application: Application) : AndroidViewModel(application) {
         */
         //timerArrayList = ArrayList<String>()
 
-        val time1 = TimerModel(1, "1ab", 15)
-        val time2 = TimerModel(2, "2a", 16)
-        val time3 = TimerModel(3, "conclusion", 17)
-        val timerArrayList = ArrayList<TimerModel>()
+        val time1 = TimerModel(1, "1ab", 1)
+        val time2 = TimerModel(2, "2a", 2)
+        val time3 = TimerModel(3, "conclusion", 10)
+        timerArrayList = ArrayList<TimerModel>()
 
-        timerArrayList.add(time1)
-        timerArrayList.add(time2)
-        timerArrayList.add(time3)
+        timerArrayList!!.add(time1)
+        timerArrayList!!.add(time2)
+        timerArrayList!!.add(time3)
 
         _timerLiveData.value = timerArrayList
     }
@@ -66,10 +72,10 @@ class TimerViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    fun startTimer(){
-        Log.d("onclickTimer", "2")
-        //TODO transferer le code dans le TimerBackground, appeler sa fonction ici
-        //TODO Garder Notification_id
+    fun startTimer(context : Context?){
+
+            backGroundRunner.changeListTimer(this.timerArrayList!!)
+            backGroundRunner.start(context!!)
 
     }
 

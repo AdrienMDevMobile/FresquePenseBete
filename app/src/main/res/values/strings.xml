@@ -46,7 +46,7 @@
     <string name="ph_timer_value">Place holder timer value</string>
     <string name="timer_remove">X</string>
 
-    <string name="channel_name">Channel_name</string>
-    <string name="channel_description">Channel_description</string>
+    <string name="timer_channel_name">Timers sections</string>
+    <string name="timer_channel_description">Notification timer pour chaque section</string>
 
 </resources>

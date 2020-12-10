@@ -21,6 +21,7 @@ import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.databinding.DialogueFragmentRechercheBinding
 import com.micheladrien.fresquerappel.databinding.FragmentTimerBinding
 import com.micheladrien.fresquerappel.fragment.relation.RelationViewModel
+import com.micheladrien.fresquerappel.tools.NotificationsTools
 
 class TimerFragment : Fragment() {
 
@@ -45,7 +46,7 @@ class TimerFragment : Fragment() {
         val root = binding.root
 
         //TODO Deplacer cela ailleur (mais recommandations disent de le mettre au max d'endroits au cas où)
-        createNotificationChannel()
+        NotificationsTools.createNotificationChannel(context)
         //obtain a handle to the RecycleView object, connect it to a layout manager, and attach an adapter for the data to be displayed:
         //viewManager = LinearLayoutManager(context)
 
@@ -84,39 +85,11 @@ class TimerFragment : Fragment() {
 
         //timerViewModel
         binding.BTNStartTimer.setOnClickListener {
-            val builder = NotificationCompat.Builder(view?.context!!, "ID_NOTIFICATION")
-                    .setSmallIcon(R.drawable.main_alerte)
-                    .setContentTitle("Titre")
-                    .setContentText("Texte")
-                    .setPriority(NotificationCompat.PRIORITY_MAX)
-            with(NotificationManagerCompat.from(view?.context!!)) {
-                // notificationId is a unique int for each notification that you must define
-                notify(2, builder.build())
-            }
-        /*
-            Log.d("onclickTimer", "1")
-            timerViewModel.startTimer() */
+            timerViewModel.startTimer(view?.context)
         }
         return root
     }
 
-    //TODO Deplacer cela ailleur
-    //TODO Id channel doit etre contenu dans un fichier
-    private fun createNotificationChannel() {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = getString(R.string.channel_name)
-            val descriptionText = getString(R.string.channel_description)
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel("ID_NOTIFICATION", name, importance).apply {
-                description = descriptionText
-            }
-            // Register the channel with the system
-            val notificationManager: NotificationManager =
-                    context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
-        }
-    }
+
 }
 
