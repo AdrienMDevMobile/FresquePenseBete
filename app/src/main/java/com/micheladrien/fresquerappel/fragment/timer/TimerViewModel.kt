@@ -50,7 +50,7 @@ class TimerViewModel(application: Application) : AndroidViewModel(application) {
         */
         //timerArrayList = ArrayList<String>()
 
-        val time1 = TimerModel(1, "1ab", 1)
+        val time1 = TimerModel(1, "1ab", 10)
         val time2 = TimerModel(2, "2a", 2)
         val time3 = TimerModel(3, "conclusion", 10)
         timerArrayList = ArrayList<TimerModel>()

@@ -3,6 +3,7 @@ package com.micheladrien.fresquerappel.fragment.timer
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -21,6 +22,7 @@ import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.databinding.DialogueFragmentRechercheBinding
 import com.micheladrien.fresquerappel.databinding.FragmentTimerBinding
 import com.micheladrien.fresquerappel.fragment.relation.RelationViewModel
+import com.micheladrien.fresquerappel.thread.TimerService
 import com.micheladrien.fresquerappel.tools.NotificationsTools
 
 class TimerFragment : Fragment() {
@@ -85,6 +87,7 @@ class TimerFragment : Fragment() {
 
         //timerViewModel
         binding.BTNStartTimer.setOnClickListener {
+            //context?.startService(Intent(context, TimerService::class.java))
             timerViewModel.startTimer(view?.context)
         }
         return root

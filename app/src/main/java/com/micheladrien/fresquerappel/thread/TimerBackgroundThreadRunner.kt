@@ -1,58 +1,61 @@
 package com.micheladrien.fresquerappel.thread
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import com.micheladrien.fresquerappel.R
+import androidx.core.app.JobIntentService.enqueueWork
 import com.micheladrien.fresquerappel.datas.TimerModel
-import com.micheladrien.fresquerappel.tools.NotificationsTools
+import java.util.*
+import kotlin.collections.ArrayList
 
-class TimerBackgroundThreadRunner(){
+/* Options pour faire le run en arriere plan :
+Pour faire tourner en arrière plan :
+Utilisation des Services. Le plus simple.
+ou Utilisation de RxJava. Je ne pense pas que cela soit necessaire.
+RxJava a pour but de simplifier la communication des valeurs entre le thread principal et secondaire.
+Est ce que une communication bilatérale est necessaire ? Je pense que non
+
+Utilisation de timer et timertask pour gérer les temps.
+ */
+class TimerBackgroundThreadRunner() {
     private var listeTimer : ArrayList<TimerModel> = ArrayList<TimerModel>()
     private lateinit var context : Context
 
-    fun changeListTimer(listeTimer : ArrayList<TimerModel>){
+    fun changeListTimer(listeTimer: ArrayList<TimerModel>){
         this.listeTimer= listeTimer
     }
 
-    fun start(startContext:Context){
-        this.context = startContext
+    fun start(context: Context){
         Log.d("backGround", "2")
+        val mIntent = Intent(context, TimerService::class.java)
+        //mIntent.putExtra("maxCountValue", 1000)
+        TimerService.enqueueWork(context, mIntent)
 
-        //TODO Mettre tout cela en arriere plan
-        var num_notification = 1
+        /*
+        var t : Thread = Thread{
 
-        listeTimer.forEach{
-            //* 1000 pour avoir secondes au lieu de MS
-            Thread.sleep(it.time_value.toLong() * 1000)
-            val builder = NotificationCompat.Builder(context, "ID_NOTIFICATION")
-                    .setSmallIcon(R.drawable.main_alerte)
-                    .setContentTitle(it.name)
-                    //.setContentText( )
-                    .setPriority(NotificationCompat.PRIORITY_MAX)
-            with(NotificationManagerCompat.from(context)) {
-                // notificationId is a unique int for each notification that you must define
-                notify(NotificationsTools.NOTIFICATION_ID_TIMER + num_notification, builder.build())
-
-                num_notification++
+            fun run(){
+                Log.d("Test Timer Background", "creation thread")
+                context.startService(
+                        Intent(context,TimerService::class.java))
             }
-            /*
-                Log.d("onclickTimer", "1")
-                timerViewModel.startTimer() */
         }
+        Log.d("backGround", "3")
+        t.start()
+        */
+
+        //val intent_service = Intent(context, TimerService::class.java)
+        //Log.d("Timer test", "a envoyer" + listeTimer.get(0).time_value)
+        //intent_service.putExtra("your_key_here", listeTimer.get(0).time_value)
+        //context.startService(intent_service)
+
     }
 
-    fun stop(){
-
+    //TODO A utiliser
+    fun stop(context: Context){
+        val intent_service = Intent(context, TimerService::class.java)
+        context.stopService(intent_service)
     }
 
-    //TODO Repousser la fin d'une section de X minutes
-    fun repeat(numberSecond : Int){
 
-    }
-    //TODO Etape 1, cela passera par la fonction sans param (int prédéfini), + tard, mettre son paramétrage à un endroid
-    fun repeat(){
-        this.repeat(300)
-    }
 }
