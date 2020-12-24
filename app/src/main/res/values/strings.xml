@@ -22,10 +22,10 @@
     <string name="action_settings"><i>Paramètres et Fresque</i></string>
 
     <!-- Search -->
-    <string name="prompt_carte1">Carte 1</string>
-    <string name="prompt_carte2">Carte 2</string>
+    <string name="prompt_card1">Carte 1</string>
+    <string name="prompt_card2">Carte 2</string>
     <string name="action_valider">Go</string>
-    <string name="warning_missing_carte_num">Rentrez le numéro de carte</string>
+    <string name="warning_missing_card_num">Rentrez le numéro de carte</string>
 
     <string name="relation_up">-&gt;</string>
     <string name="relation_down">&lt;-</string>

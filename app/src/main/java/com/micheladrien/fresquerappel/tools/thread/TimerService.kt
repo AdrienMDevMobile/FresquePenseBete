@@ -3,15 +3,11 @@ package com.micheladrien.fresquerappel.tools.thread
 
 import android.app.AlarmManager
 import android.app.PendingIntent
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.core.app.JobIntentService
-import androidx.core.app.NotificationCompat
 import com.micheladrien.fresquerappel.tools.notification.NotificationService
-import com.micheladrien.fresquerappel.tools.notification.NotificationsTools
-import java.time.*
 import java.util.*
 
 class TimerService : JobIntentService() {
@@ -44,7 +40,7 @@ class TimerService : JobIntentService() {
 
         val alarmTimer = Calendar.getInstance()
 
-        val notification = NotificationsTools.createTimerNotification(context, "Titre")
+        val notification = NotificationService.createTimerNotification(context, "Titre")
 
         val intent = Intent(context, NotificationService::class.java)
         intent.putExtra("STRING_NOT_ID", 1)

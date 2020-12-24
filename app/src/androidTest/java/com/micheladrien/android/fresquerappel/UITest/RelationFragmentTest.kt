@@ -45,45 +45,45 @@ class RelationFragmentTest {
     //Après avoir rentré 2 chiffres dans le premier editBox : passe à l'editBox2
     @Test
     fun write2FigInEditBox1(){
-        onView(withId(R.id.ETcarte1)).perform(typeText("01"))
-        onView(withId(R.id.ETcarte2)).check(matches(hasFocus()))
+        onView(withId(R.id.ETcard1)).perform(typeText("01"))
+        onView(withId(R.id.ETcard2)).check(matches(hasFocus()))
     }
 
     //Après avoir rentré 2 chiffres dans le second editBox : lance la recherche : fait disparaitre le dialogue
     @Test
     fun write2FigInEditBox1AndEditBox2(){
-        onView(withId(R.id.ETcarte1)).perform(typeText("01"))
-        onView(withId(R.id.ETcarte2)).perform(typeText("02"))
+        onView(withId(R.id.ETcard1)).perform(typeText("01"))
+        onView(withId(R.id.ETcard2)).perform(typeText("02"))
         onView(withId(R.id.container_dialogue_fragment_recherche)).check(doesNotExist())
     }
 
     //Lance la recherche alors qu'il manque un chiffre dans la première boite (focus sur la seconde boite)
     @Test
     fun write2FigInEditBox1AndSearch(){
-        onView(withId(R.id.ETcarte1)).perform(typeText("01"))
+        onView(withId(R.id.ETcard1)).perform(typeText("01"))
         onView(withId(R.id.BTNrecherche)).perform(click())
-        onView(withId(R.id.ETcarte2)).check(matches(hasFocus()))
+        onView(withId(R.id.ETcard2)).check(matches(hasFocus()))
     }
 
     //Lance la recherche alors qu'il manque un chiffre dans la seconde boite
     @Test
     fun write2FigInEditBox2() {
-        onView(withId(R.id.ETcarte2)).perform(typeText("01"))
-        onView(withId(R.id.ETcarte1)).check(matches(hasFocus()))
+        onView(withId(R.id.ETcard2)).perform(typeText("01"))
+        onView(withId(R.id.ETcard1)).check(matches(hasFocus()))
     }
 
 
     //Vérifie que la recherche affiche les numéros de la recherche + direction + texte explicatif
     @Test
     fun checkRelationShownAfterSearch(){
-        onView(withId(R.id.ETcarte1)).perform(typeText("07"))
-        onView(withId(R.id.ETcarte2)).perform(typeText("12"))
+        onView(withId(R.id.ETcard1)).perform(typeText("07"))
+        onView(withId(R.id.ETcard2)).perform(typeText("12"))
 
 
-        onView(withId(R.id.txt_id_carte1)).check(matches(withText("7")))
-        onView(withId(R.id.txt_id_carte2)).check(matches(withText("12")))
-        onView(withId(R.id.text_explication))
-            .check(matches(UITestUtilitaire.hasTextFilled(R.id.text_explication)))
+        onView(withId(R.id.txt_id_card1)).check(matches(withText("7")))
+        onView(withId(R.id.txt_id_card2)).check(matches(withText("12")))
+        onView(withId(R.id.text_explanation))
+            .check(matches(UITestUtilitaire.hasTextFilled(R.id.text_explanation)))
     }
 
 }

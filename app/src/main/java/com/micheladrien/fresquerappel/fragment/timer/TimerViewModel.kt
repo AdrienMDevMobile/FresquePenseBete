@@ -1,20 +1,11 @@
 package com.micheladrien.fresquerappel.fragment.timer
 
-import android.app.AlarmManager
 import android.app.Application
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.util.Log
-import androidx.core.app.JobIntentService
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.*
 import com.micheladrien.fresquerappel.datas.TimerModel
-import com.micheladrien.fresquerappel.tools.notification.NotificationService
-import com.micheladrien.fresquerappel.tools.notification.NotificationsTools
-import com.micheladrien.fresquerappel.tools.thread.TimerBackgroundThreadRunner
 import com.micheladrien.fresquerappel.tools.thread.TimerService
-import java.util.*
 import kotlin.collections.ArrayList
 
 //import il.co.theblitz.observablecollections.lists.ObservableArrayList
@@ -32,8 +23,6 @@ class TimerViewModel(application: Application) : AndroidViewModel(application) {
     private val _timerLiveData = MutableLiveData<ArrayList<TimerModel>>()
     var timerArrayList:ArrayList<TimerModel>? = null
     val timerLiveData: LiveData<ArrayList<TimerModel>> = _timerLiveData
-
-    private var backGroundRunner : TimerBackgroundThreadRunner = TimerBackgroundThreadRunner()
 
     init{
         populateList()

@@ -11,13 +11,13 @@ import org.junit.Assert.assertNotEquals
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-//import org.mockito.Mock
-//import org.mockito.Mockito
-//import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.Mock
+import org.mockito.Mockito
+import org.mockito.junit.MockitoJUnitRunner
 
 //Unit test (n'utilise pas d'emulateur, uniquement la JVM
-//@RunWith(MockitoJUnitRunner::class)
-class SingletonDataManagerTest {/*
+@RunWith(MockitoJUnitRunner::class)
+class SingletonDataManagerTest {
 
     //Regle : defini la manière dont les tests vont être menés
     //InstantTaskExecutorRule = force les tests à etre synchrones
@@ -103,5 +103,5 @@ class SingletonDataManagerTest {/*
             singletonDataManager.researchRelation(3, 1)
         )
     }
-*/
+
 }

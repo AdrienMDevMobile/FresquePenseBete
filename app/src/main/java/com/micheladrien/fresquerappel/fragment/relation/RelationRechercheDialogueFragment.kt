@@ -40,9 +40,9 @@ class RelationRechercheDialogueFragment() : DialogFragment() {
     fun startSearch():Boolean{
 
         if(checkNumbers()){
-            val carte1 = binding.ETcarte1.text.toString().toInt()
-            val carte2 = binding.ETcarte2.text.toString().toInt()
-            relationViewModel.changeCards(carte1, carte2)
+            val card1 = binding.ETcard1.text.toString().toInt()
+            val card2 = binding.ETcard2.text.toString().toInt()
+            relationViewModel.changeCards(card1, card2)
             relationViewModel.research()
 
             return true
@@ -56,14 +56,14 @@ class RelationRechercheDialogueFragment() : DialogFragment() {
     fun checkNumbers():Boolean{
         var to_return = true
 
-        if (TextUtils.isEmpty(binding.ETcarte2.text.toString())) {
-            binding.ETcarte2.error = getString(R.string.warning_missing_carte_num)
-            binding.ETcarte2.requestFocus()
+        if (TextUtils.isEmpty(binding.ETcard2.text.toString())) {
+            binding.ETcard2.error = getString(R.string.warning_missing_card_num)
+            binding.ETcard2.requestFocus()
             to_return = false
         }
-        if (TextUtils.isEmpty(binding.ETcarte1.text.toString())) {
-            binding.ETcarte1.error = getString(R.string.warning_missing_carte_num)
-            binding.ETcarte1.requestFocus()
+        if (TextUtils.isEmpty(binding.ETcard1.text.toString())) {
+            binding.ETcard1.error = getString(R.string.warning_missing_card_num)
+            binding.ETcard1.requestFocus()
             to_return = false
         }
 
@@ -76,8 +76,8 @@ class RelationRechercheDialogueFragment() : DialogFragment() {
         //Nous definissons le ViewModel
         //relationViewModel = ViewModelProvider(this).get(RelationViewModel::class.java)
 
-        binding.ETcarte1.addTextChangedListener(TextWatcherGoTo(binding.ETcarte2))
-        binding.ETcarte2.addTextChangedListener(TextWatcherStartSearch(this))
+        binding.ETcard1.addTextChangedListener(TextWatcherGoTo(binding.ETcard2))
+        binding.ETcard2.addTextChangedListener(TextWatcherStartSearch(this))
         binding.BTNrecherche.setOnClickListener {
             if(startSearch())
                 this.dismiss() }
@@ -152,33 +152,3 @@ class RelationRechercheDialogueFragment() : DialogFragment() {
     }
 
 }
-
-
-/*
-override fun onCancel(dialog: DialogInterface) {
-    super.onCancel(dialog)
-
-    Log.d("test", "cancel")
-
-    val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-    //imm?.hideSoftInputFromWindow(view?.windowToken, 0)
-    //imm?.hideSoftInputFromWindow(view?.windowToken, 0)
-    imm?.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, InputMethodManager.HIDE_IMPLICIT_ONLY)
-    imm?.hideSoftInputFromWindow(view?.windowToken, 1)
-}
-*/
-
-/*
-override fun onDestroyView() {
-
-
-    Log.d("test", "destroy")
-
-    //val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-    //imm?.hideSoftInputFromWindow(view?.windowToken, 0)
-    //imm?.hideSoftInputFromWindow(view?.windowToken, 0)
-    //imm?.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, InputMethodManager.HIDE_IMPLICIT_ONLY);
-
-    super.onDestroyView()
-}
-*/

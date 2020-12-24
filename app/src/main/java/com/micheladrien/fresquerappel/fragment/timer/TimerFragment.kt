@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.databinding.FragmentTimerBinding
-import com.micheladrien.fresquerappel.tools.notification.NotificationsTools
+import com.micheladrien.fresquerappel.tools.notification.NotificationService
 
 class TimerFragment : Fragment() {
 
@@ -35,7 +35,7 @@ class TimerFragment : Fragment() {
         val root = binding.root
 
         //TODO Deplacer cela ailleur (mais recommandations disent de le mettre au max d'endroits au cas où)
-        NotificationsTools.createNotificationChannel(context)
+        NotificationService.createNotificationChannel(context)
         //obtain a handle to the RecycleView object, connect it to a layout manager, and attach an adapter for the data to be displayed:
         //viewManager = LinearLayoutManager(context)
 

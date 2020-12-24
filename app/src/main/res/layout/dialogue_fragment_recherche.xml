@@ -12,37 +12,37 @@
     tools:context=".fragment.relation.RelationRechercheDialogueFragment">
 
     <EditText
-        android:id="@+id/ETcarte1"
+        android:id="@+id/ETcard1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="24dp"
-        android:hint="@string/prompt_carte1"
+        android:hint="@string/prompt_card1"
         android:inputType="number"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="ETcarte1"
+        android:autofillHints="ETcard1"
         android:focusable="true"
         android:focusableInTouchMode="true"/>
 
     <EditText
-        android:id="@+id/ETcarte2"
+        android:id="@+id/ETcard2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:hint="@string/prompt_carte2"
+        android:hint="@string/prompt_card2"
         android:imeOptions="actionDone"
         android:inputType="number"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ETcarte1"
-        android:autofillHints="ETcarte2"/>
+        app:layout_constraintTop_toBottomOf="@+id/ETcard1"
+        android:autofillHints="ETcard2"/>
 
     <Button
         android:id="@+id/BTNrecherche"
@@ -54,7 +54,7 @@
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ETcarte2"
+        app:layout_constraintTop_toBottomOf="@+id/ETcard2"
         />
 
 

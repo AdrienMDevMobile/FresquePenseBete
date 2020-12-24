@@ -35,17 +35,17 @@ class RelationFragment : Fragment() {
 
         /* Set up des observeurs debut */
         //Explication
-        val textView: TextView = binding.textExplication
+        val textView: TextView = binding.textExplanation
         relationViewModel.text.observe(viewLifecycleOwner, /* Observer */  {
             textView.text = it
         })
 
         //Id des deux cartes
-        relationViewModel.carte1.observe(viewLifecycleOwner,  {
-            binding.txtIdCarte1.text = it.toString()
+        relationViewModel.card1.observe(viewLifecycleOwner,  {
+            binding.txtIdCard1.text = it.toString()
         })
-        relationViewModel.carte2.observe(viewLifecycleOwner,  {
-            binding.txtIdCarte2.text = it.toString()
+        relationViewModel.card2.observe(viewLifecycleOwner,  {
+            binding.txtIdCard2.text = it.toString()
         })
         //Relation = -> <- X, etc + sa couleur + optionel/obligatoire
         relationViewModel.relation.observe(viewLifecycleOwner,  {
