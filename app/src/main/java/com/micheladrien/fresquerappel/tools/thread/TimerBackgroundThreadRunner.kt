@@ -1,11 +1,9 @@
-package com.micheladrien.fresquerappel.thread
+package com.micheladrien.fresquerappel.tools.thread
 
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import androidx.core.app.JobIntentService.enqueueWork
 import com.micheladrien.fresquerappel.datas.TimerModel
-import java.util.*
 import kotlin.collections.ArrayList
 
 /* Options pour faire le run en arriere plan :
@@ -19,7 +17,6 @@ Utilisation de timer et timertask pour gérer les temps.
  */
 class TimerBackgroundThreadRunner() {
     private var listeTimer : ArrayList<TimerModel> = ArrayList<TimerModel>()
-    private lateinit var context : Context
 
     fun changeListTimer(listeTimer: ArrayList<TimerModel>){
         this.listeTimer= listeTimer
@@ -30,24 +27,6 @@ class TimerBackgroundThreadRunner() {
         val mIntent = Intent(context, TimerService::class.java)
         //mIntent.putExtra("maxCountValue", 1000)
         TimerService.enqueueWork(context, mIntent)
-
-        /*
-        var t : Thread = Thread{
-
-            fun run(){
-                Log.d("Test Timer Background", "creation thread")
-                context.startService(
-                        Intent(context,TimerService::class.java))
-            }
-        }
-        Log.d("backGround", "3")
-        t.start()
-        */
-
-        //val intent_service = Intent(context, TimerService::class.java)
-        //Log.d("Timer test", "a envoyer" + listeTimer.get(0).time_value)
-        //intent_service.putExtra("your_key_here", listeTimer.get(0).time_value)
-        //context.startService(intent_service)
 
     }
 

@@ -3,6 +3,7 @@
     package="com.micheladrien.fresquerappel">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_round"
@@ -21,7 +22,8 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".thread.TimerService" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="true"/>
+        <service android:name="com.micheladrien.fresquerappel.tools.thread.TimerService" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="true"/>
+        <receiver android:name=".tools.notification.NotificationService"/>
     </application>
 
 

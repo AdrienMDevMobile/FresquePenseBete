@@ -1,23 +1,21 @@
 package com.micheladrien.fresquerappel.fragment.timer
 
-import android.annotation.SuppressLint
+import android.app.AlarmManager
 import android.app.Application
+import android.app.PendingIntent
 import android.content.Context
-import android.os.Build
+import android.content.Intent
 import android.util.Log
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
+import androidx.core.app.JobIntentService
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.*
-import com.micheladrien.fresquerappel.manager.DataManager
-import com.micheladrien.fresquerappel.manager.MainDataManager
-import com.micheladrien.fresquerappel.R
-import com.micheladrien.fresquerappel.datas.Relation
-import com.micheladrien.fresquerappel.datas.RelationDirection
-import com.micheladrien.fresquerappel.datas.RelationMandatory
 import com.micheladrien.fresquerappel.datas.TimerModel
-import com.micheladrien.fresquerappel.thread.TimerBackgroundThreadRunner
-import com.micheladrien.fresquerappel.tools.NotificationsTools
-import java.lang.Thread.sleep
+import com.micheladrien.fresquerappel.tools.notification.NotificationService
+import com.micheladrien.fresquerappel.tools.notification.NotificationsTools
+import com.micheladrien.fresquerappel.tools.thread.TimerBackgroundThreadRunner
+import com.micheladrien.fresquerappel.tools.thread.TimerService
+import java.util.*
+import kotlin.collections.ArrayList
 
 //import il.co.theblitz.observablecollections.lists.ObservableArrayList
 
@@ -72,10 +70,17 @@ class TimerViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    fun startTimer(context : Context?){
+    fun startTimer(context : Context){
 
-            backGroundRunner.changeListTimer(this.timerArrayList!!)
-            backGroundRunner.start(context!!)
+        val mIntent = Intent(context, TimerService::class.java)
+        //mIntent.putExtra("maxCountValue", 1000)
+        TimerService.enqueueWork(context, mIntent)
+
+
+    }
+
+    //TODO
+    fun stopTimer() {
 
     }
 
