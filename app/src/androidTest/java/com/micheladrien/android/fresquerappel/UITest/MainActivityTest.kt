@@ -64,7 +64,7 @@ class MainActivityTest {
         onView(withId(R.id.nav_timer)).perform(click())
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())
         onView(withId(R.id.nav_main)).perform(click())
-        onView(withId(R.id.text_explication)).check(matches(isDisplayed()))
+        onView(withId(R.id.text_explanation)).check(matches(isDisplayed()))
     }
 
 

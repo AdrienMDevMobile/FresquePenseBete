@@ -1,0 +1,136 @@
+Index: app/src/androidTest/java/com/micheladrien/android/fresquerappel/TimerServiceTest.kt
+===================================================================
+--- app/src/androidTest/java/com/micheladrien/android/fresquerappel/TimerServiceTest.kt	(revision d8503d1c270751bdde4930909fbc5224130fa442)
++++ app/src/androidTest/java/com/micheladrien/android/fresquerappel/TimerServiceTest.kt	(revision d8503d1c270751bdde4930909fbc5224130fa442)
+@@ -1,8 +0,0 @@
+-package com.micheladrien.android.fresquerappel
+-
+-class TimerServiceTest {
+-
+-    //TODO Nous executons le service et nous avons une alarme de programmée
+-
+-    //TODO Nous arretons le service et les alarmes sont bien annulées
+-}
+\ No newline at end of file
+Index: app/src/androidTest/java/com/micheladrien/android/fresquerappel/UITest/MainActivityTest.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.micheladrien.android.fresquerappel.UITest\r\n\r\nimport androidx.test.espresso.Espresso.onView\r\nimport androidx.test.espresso.action.ViewActions.click\r\nimport androidx.test.espresso.assertion.ViewAssertions.matches\r\nimport androidx.test.espresso.matcher.ViewMatchers.isDisplayed\r\nimport androidx.test.espresso.matcher.ViewMatchers.withId\r\nimport androidx.test.ext.junit.runners.AndroidJUnit4\r\nimport androidx.test.rule.ActivityTestRule\r\nimport com.micheladrien.fresquerappel.Main_activity\r\nimport com.micheladrien.fresquerappel.R\r\nimport org.junit.Rule\r\nimport org.junit.Test\r\nimport org.junit.runner.RunWith\r\nimport androidx.test.espresso.contrib.DrawerActions\r\nimport org.junit.Before\r\n\r\n\r\n//Tester slidebar : https://developer.android.com/reference/androidx/test/espresso/contrib/DrawerActions\r\n//Il faut ajouter au gradle androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:num_version'\r\n@RunWith(AndroidJUnit4::class)\r\nclass MainActivityTest {\r\n\r\n    @get:Rule\r\n    val mainActivityTestRule : ActivityTestRule<Main_activity> = ActivityTestRule<Main_activity>(\r\n        Main_activity::class.java\r\n    )\r\n\r\n    @Before\r\n    fun set_up(){\r\n        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())\r\n    }\r\n\r\n    @Test\r\n    fun testSlidebarToTimer(){\r\n        onView(withId(R.id.nav_view)).check(matches(isDisplayed()))\r\n    }\r\n\r\n    @Test\r\n    fun testOpenSingleFragment(){\r\n        onView(withId(R.id.nav_single)).perform(click())\r\n        onView(withId(R.id.tv_single_not_supported)).check(matches(isDisplayed()))\r\n        //sleep(2000)\r\n\r\n    }\r\n    @Test\r\n    fun testOpenNoteFragment(){\r\n        onView(withId(R.id.nav_notes)).perform(click())\r\n        onView(withId(R.id.tv_note_not_supported)).check(matches(isDisplayed()))\r\n\r\n\r\n    }\r\n    @Test\r\n    fun testOpenTimeThenRelationFragment(){\r\n        onView(withId(R.id.nav_timer)).perform(click())\r\n        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())\r\n        onView(withId(R.id.nav_main)).perform(click())\r\n        onView(withId(R.id.text_explanation)).check(matches(isDisplayed()))\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/androidTest/java/com/micheladrien/android/fresquerappel/UITest/MainActivityTest.kt	(revision d8503d1c270751bdde4930909fbc5224130fa442)
++++ app/src/androidTest/java/com/micheladrien/android/fresquerappel/UITest/MainActivityTest.kt	(date 1609943386511)
+@@ -1,7 +1,11 @@
+ package com.micheladrien.android.fresquerappel.UITest
+ 
++import androidx.navigation.Navigation
++import androidx.navigation.testing.TestNavHostController
++import androidx.test.core.app.ApplicationProvider
+ import androidx.test.espresso.Espresso.onView
+ import androidx.test.espresso.action.ViewActions.click
++import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
+ import androidx.test.espresso.assertion.ViewAssertions.matches
+ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+ import androidx.test.espresso.matcher.ViewMatchers.withId
+@@ -13,7 +17,12 @@
+ import org.junit.Test
+ import org.junit.runner.RunWith
+ import androidx.test.espresso.contrib.DrawerActions
++import androidx.test.espresso.contrib.NavigationViewActions.navigateTo
++import com.micheladrien.fresquerappel.fragment.timer.TimerFragment
++import org.junit.Assert.assertThat
++import org.junit.Assert.assertTrue
+ import org.junit.Before
++import java.lang.Thread.sleep
+ 
+ 
+ //Tester slidebar : https://developer.android.com/reference/androidx/test/espresso/contrib/DrawerActions
+Index: app/src/main/java/com/micheladrien/fresquerappel/tools/notification/NotificationService.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.micheladrien.fresquerappel.tools.notification\r\n\r\nimport android.app.Notification\r\nimport android.app.NotificationChannel\r\nimport android.app.NotificationManager\r\nimport android.app.PendingIntent\r\nimport android.content.BroadcastReceiver\r\nimport android.content.Context\r\nimport android.content.Intent\r\nimport android.os.Build\r\nimport android.util.Log\r\nimport androidx.core.app.NotificationCompat\r\nimport androidx.core.app.NotificationManagerCompat\r\nimport com.micheladrien.fresquerappel.R\r\nimport com.micheladrien.fresquerappel.tools.thread.TimerService\r\n\r\nclass NotificationService: BroadcastReceiver() {\r\n\r\n    companion object {\r\n\r\n        val ID_CHANNEL_TIMER = \"ID_CHANNEL_TIMER\"\r\n        val NOTIFICATION_ID_TIMER = 1\r\n\r\n        fun createNotificationChannel(context: Context?) {\r\n            // Create the NotificationChannel, but only on API 26+ because\r\n            // the NotificationChannel class is new and not in the support library\r\n            //Ce qui sera visible dans les parametres de l'utilisateur\r\n            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {\r\n                val name = context?.getString(R.string.timer_channel_name)\r\n                val descriptionText = context?.getString(R.string.timer_channel_description)\r\n                val importance = NotificationManager.IMPORTANCE_HIGH\r\n                val channel = NotificationChannel(ID_CHANNEL_TIMER, name, importance).apply {\r\n                    description = descriptionText\r\n                }\r\n                // Register the channel with the system\r\n                val notificationManager: NotificationManager =\r\n                        context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager\r\n                notificationManager.createNotificationChannel(channel)\r\n            }\r\n        }\r\n\r\n        fun createTimerNotification(context: Context, title: String): Notification {\r\n            val intent = Intent(context, TimerService::class.java)\r\n\r\n            val builder = NotificationCompat.Builder(context, ID_CHANNEL_TIMER)\r\n                    .setSmallIcon(R.drawable.notification_picture)\r\n                    .setContentTitle(title)\r\n                    //.setContentText( )\r\n                    .setPriority(NotificationCompat.PRIORITY_MAX)\r\n                    //Cela va automatiquement fermer la notification on click\r\n                    .setAutoCancel(true)\r\n                    //Cet intent ne fera rien (je veut juste que la notification parte quand l'utilisateur clique dessus)\r\n                    .setContentIntent(PendingIntent.getActivity(context, 0, Intent(), 0))\r\n\r\n            val toReturn = builder.build()\r\n            //toReturn.flags = Notification.DEFAULT_LIGHTS or FLAG_AUTO_CANCEL\r\n            return toReturn\r\n        }\r\n    }\r\n\r\n    override fun onReceive(context: Context, intent: Intent) {\r\n        val notification = createTimerNotification(context, \"Titre\")\r\n        with(NotificationManagerCompat.from(context)) {\r\n            // notificationId is a unique int for each notification that you must define\r\n            notify(NOTIFICATION_ID_TIMER /*+ num_notification*/, notification)\r\n\r\n        }\r\n\r\n        Log.d(\"timer test\", \"Alarm just fired\")\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/micheladrien/fresquerappel/tools/notification/NotificationService.kt	(revision d8503d1c270751bdde4930909fbc5224130fa442)
++++ app/src/main/java/com/micheladrien/fresquerappel/tools/notification/NotificationService.kt	(date 1609943300038)
+@@ -9,6 +9,7 @@
+ import android.content.Intent
+ import android.os.Build
+ import android.util.Log
++import androidx.core.app.JobIntentService
+ import androidx.core.app.NotificationCompat
+ import androidx.core.app.NotificationManagerCompat
+ import com.micheladrien.fresquerappel.R
+@@ -41,9 +42,12 @@
+ 
+         fun createTimerNotification(context: Context, title: String): Notification {
+             val intent = Intent(context, TimerService::class.java)
++            //val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
++            val delayTimerVal: PendingIntent = PendingIntent.getService(context, 0, intent, 0)
++
+ 
+             val builder = NotificationCompat.Builder(context, ID_CHANNEL_TIMER)
+-                    .setSmallIcon(R.drawable.notification_picture)
++                    .setSmallIcon(R.drawable.main_alerte)
+                     .setContentTitle(title)
+                     //.setContentText( )
+                     .setPriority(NotificationCompat.PRIORITY_MAX)
+Index: app/src/main/java/com/micheladrien/fresquerappel/tools/thread/TimerService.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.micheladrien.fresquerappel.tools.thread\r\n\r\n\r\nimport android.app.AlarmManager\r\nimport android.app.PendingIntent\r\nimport android.content.Context\r\nimport android.content.Intent\r\nimport android.util.Log\r\nimport androidx.core.app.JobIntentService\r\nimport com.micheladrien.fresquerappel.tools.notification.NotificationService\r\nimport java.util.*\r\n\r\nclass TimerService : JobIntentService() {\r\n\r\n    companion object {\r\n\r\n        private val JOB_ID = 2\r\n        //Il me faut rendre enqueWork publique. Me sert à et up\r\n        fun enqueueWork(context: Context, intent: Intent) {\r\n            enqueueWork(context, TimerService::class.java, JOB_ID, intent)\r\n        }\r\n\r\n    }\r\n\r\n    override fun onHandleWork(intent: Intent) {\r\n        Log.d(\"Test Timer Background\", \"onStartComand\")\r\n        executeService(baseContext)\r\n    }\r\n\r\n    override fun onCreate() {\r\n        super.onCreate()\r\n        Log.d(\"Test Timer Background\", \"onCreate\")\r\n    }\r\n\r\n    private var testSleep:Int = 60\r\n\r\n    private var serviceRunning:Boolean = false\r\n\r\n    fun executeService(context: Context) {\r\n\r\n        val alarmTimer = Calendar.getInstance()\r\n\r\n        val intent = Intent(context, NotificationService::class.java)\r\n\r\n        val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)\r\n\r\n        val alarm = getSystemService(ALARM_SERVICE) as AlarmManager\r\n        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {\r\n            alarm.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, alarmTimer.timeInMillis + 3000, pendingIntent)\r\n            Log.d(\"test timer\", \"nous avons set inexact avec allowWhileIdle par TimerSErvice\")\r\n        } else {\r\n            TODO(\"VERSION.SDK_INT < M\")\r\n        }\r\n\r\n\r\n    }\r\n\r\n\r\n    override fun onDestroy() {\r\n        super.onDestroy()\r\n        //Log.e(\"Service finish\", \"Finish\")\r\n    }\r\n\r\n    //TODO Repousser la fin d'une section de X minutes\r\n    fun repeat(numberSecond: Int){\r\n\r\n        Log.d(\"Test timer\", \"fonction repeat\")\r\n    }\r\n    //TODO Etape 1, cela passera par la fonction sans param (int prédéfini), + tard, mettre son paramétrage à un endroid\r\n    fun repeat(){\r\n        this.repeat(300)\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/micheladrien/fresquerappel/tools/thread/TimerService.kt	(revision d8503d1c270751bdde4930909fbc5224130fa442)
++++ app/src/main/java/com/micheladrien/fresquerappel/tools/thread/TimerService.kt	(date 1609943300042)
+@@ -40,7 +40,11 @@
+ 
+         val alarmTimer = Calendar.getInstance()
+ 
++        val notification = NotificationService.createTimerNotification(context, "Titre")
++
+         val intent = Intent(context, NotificationService::class.java)
++        intent.putExtra("STRING_NOT_ID", 1)
++        intent.putExtra("String_notification", notification)
+ 
+         val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)
+ 
+Index: app/src/androidTest/java/com/micheladrien/android/fresquerappel/JsonReaderTest.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.micheladrien.android.fresquerappel\r\n\r\nimport android.content.Context\r\nimport android.util.Log\r\nimport androidx.arch.core.executor.testing.InstantTaskExecutorRule\r\nimport androidx.test.core.app.ApplicationProvider\r\nimport androidx.test.ext.junit.runners.AndroidJUnit4\r\nimport com.micheladrien.fresquerappel.R\r\nimport com.micheladrien.fresquerappel.datas.RelationModel\r\nimport com.micheladrien.fresquerappel.tools.JsonReader\r\nimport org.junit.Assert.assertNotNull\r\nimport org.junit.Assert.assertTrue\r\nimport org.junit.Before\r\nimport org.junit.Rule\r\nimport org.junit.Test\r\nimport org.junit.runner.RunWith\r\n\r\n\r\n@RunWith(AndroidJUnit4::class)\r\nclass JsonReaderTest {\r\n\r\n    @Rule\r\n    @JvmField\r\n    var instantTaskExecutorRule = InstantTaskExecutorRule()\r\n\r\n    private lateinit var context : Context\r\n    private lateinit var jsonReader : JsonReader\r\n    private lateinit var list_of_relation : MutableList<RelationModel>\r\n\r\n    @Before\r\n    fun setup() {\r\n        context = ApplicationProvider.getApplicationContext()\r\n        jsonReader = JsonReader(context)\r\n        list_of_relation = jsonReader.readJsonObject(context.getString(R.string.collage_climat))\r\n    }\r\n\r\n    //Tester dataManager.researchRelation() pour relation qui existe\r\n    //Attention : Si le texte dans climat.json change : il faut adapter le test\r\n    @Test\r\n    fun ListCorrectTypeTest(){\r\n        assertNotNull(list_of_relation)\r\n    }\r\n    @Test\r\n    fun ListCorrectSizeTest(){\r\n        assertTrue(list_of_relation.size > 0)\r\n        //Il y a normalement au moins une centaine de lignes\r\n        // Je ne met pas le chiffre précis car il peut facilement changer. A verifier dans les logs si besoin.\r\n        assertTrue(list_of_relation.size > 100)\r\n        Log.d(\"Test_file : ListCorrectSizeTest\", \"list_of_relation.size = \" + list_of_relation.size)\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/androidTest/java/com/micheladrien/android/fresquerappel/JsonReaderTest.kt	(revision d8503d1c270751bdde4930909fbc5224130fa442)
++++ app/src/androidTest/java/com/micheladrien/android/fresquerappel/JsonReaderTest.kt	(date 1609943300026)
+@@ -1,8 +1,8 @@
+ package com.micheladrien.android.fresquerappel
+-
+ import android.content.Context
+ import android.util.Log
+ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
++//import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+ import androidx.test.core.app.ApplicationProvider
+ import androidx.test.ext.junit.runners.AndroidJUnit4
+ import com.micheladrien.fresquerappel.R
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>apply plugin: 'com.android.application'\r\napply plugin: 'kotlin-android'\r\n\r\nandroid {\r\n    compileSdkVersion 29\r\n    buildToolsVersion \"29.0.3\"\r\n\r\n    buildFeatures {\r\n        viewBinding true\r\n    }\r\n\r\n    defaultConfig {\r\n        applicationId \"com.micheladrien.fresquerappel\"\r\n        minSdkVersion 22\r\n        targetSdkVersion 29\r\n        versionCode 12\r\n        versionName \"1.2\"\r\n\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility JavaVersion.VERSION_1_8\r\n        targetCompatibility JavaVersion.VERSION_1_8\r\n    }\r\n    kotlinOptions {\r\n        jvmTarget = '1.8'\r\n    }\r\n}\r\n\r\ndependencies {\r\n    implementation fileTree(dir: \"libs\", include: [\"*.jar\"])\r\n    implementation \"org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version\"\r\n    implementation 'androidx.core:core-ktx:1.3.2'\r\n    implementation 'androidx.appcompat:appcompat:1.2.0'\r\n    implementation 'com.google.android.material:material:1.2.1'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'\r\n    def navigation_version = '2.3.1'\r\n    implementation \"androidx.navigation:navigation-fragment-ktx:$navigation_version\"\r\n    implementation \"androidx.navigation:navigation-ui-ktx:$navigation_version\"\r\n    implementation 'androidx.legacy:legacy-support-v4:1.0.0'\r\n    implementation \"androidx.navigation:navigation-fragment-ktx:$navigation_version\"\r\n    implementation \"androidx.navigation:navigation-ui-ktx:$navigation_version\"\r\n    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'\r\n    implementation 'androidx.annotation:annotation:1.1.0'\r\n    implementation 'androidx.recyclerview:recyclerview:1.1.0'\r\n    testImplementation 'junit:junit:4.13.1'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.2'\r\n    implementation 'il.co.theblitz:observablecollections:1.4.2'\r\n    def espressocore_version = '3.3.0'\r\n    androidTestImplementation \"androidx.test.espresso:espresso-core:$espressocore_version\"\r\n    androidTestImplementation \"androidx.test.espresso:espresso-core:$espressocore_version\"\r\n    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'\r\n    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'\r\n    androidTestImplementation \"android.arch.core:core-testing:$lifecycle_version\"\r\n    def mockito_version = '3.5.5' // For local unit tests on your development machine\r\n    testImplementation \"org.mockito:mockito-core:$mockito_version\" // For instrumentation tests on Android devices and emulators\r\n    androidTestImplementation \"org.mockito:mockito-android:$mockito_version\"\r\n    androidTestImplementation 'com.android.support.test:runner:1.0.2'\r\n    androidTestImplementation 'com.android.support.test:rules:1.0.2'\r\n    androidTestImplementation 'com.android.support:support-annotations:28.0.0'\r\n    androidTestImplementation \"androidx.navigation:navigation-testing:$navigation_version\"\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision d8503d1c270751bdde4930909fbc5224130fa442)
++++ app/build.gradle	(date 1609943300023)
+@@ -56,7 +56,6 @@
+     def espressocore_version = '3.3.0'
+     androidTestImplementation "androidx.test.espresso:espresso-core:$espressocore_version"
+     androidTestImplementation "androidx.test.espresso:espresso-core:$espressocore_version"
+-    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
+     androidTestImplementation "android.arch.core:core-testing:$lifecycle_version"
+     def mockito_version = '3.5.5' // For local unit tests on your development machine
