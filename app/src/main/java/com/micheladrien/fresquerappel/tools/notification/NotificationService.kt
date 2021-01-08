@@ -19,8 +19,11 @@ class NotificationService: BroadcastReceiver() {
 
     companion object {
 
-        val ID_CHANNEL_TIMER = "ID_CHANNEL_TIMER"
-        val NOTIFICATION_ID_TIMER = 1
+        const val INTENT_TITLE = "INTI"
+        const val INTENT_TEXT = "INTE"
+        const val STRING_NOT_ID ="SNI"
+        const val ID_CHANNEL_TIMER = "ID_CHANNEL_TIMER"
+        const val NOTIFICATION_ID_TIMER = 1
 
         fun createNotificationChannel(context: Context?) {
             // Create the NotificationChannel, but only on API 26+ because
@@ -40,16 +43,14 @@ class NotificationService: BroadcastReceiver() {
             }
         }
 
-        fun createTimerNotification(context: Context, title: String): Notification {
-            val intent = Intent(context, TimerService::class.java)
-            //val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
-            val delayTimerVal: PendingIntent = PendingIntent.getService(context, 0, intent, 0)
-
+        fun createTimerNotification(context: Context, title: String?, text:String?): Notification {
+            //val intent = Intent(context, TimerService::class.java)
+            //val delayTimerVal: PendingIntent = PendingIntent.getService(context, 0, intent, 0)
 
             val builder = NotificationCompat.Builder(context, ID_CHANNEL_TIMER)
-                    .setSmallIcon(R.drawable.main_alerte)
+                    .setSmallIcon(R.drawable.notification_picture)
                     .setContentTitle(title)
-                    //.setContentText( )
+                    .setContentText(text)
                     .setPriority(NotificationCompat.PRIORITY_MAX)
                     //Cela va automatiquement fermer la notification on click
                     .setAutoCancel(true)
@@ -62,14 +63,19 @@ class NotificationService: BroadcastReceiver() {
         }
     }
 
+    //C'est ici que la notification est affichée à l'utilisateur.
     override fun onReceive(context: Context, intent: Intent) {
-        val notification = createTimerNotification(context, "Titre")
+
+        val title = intent.getStringExtra(INTENT_TITLE)
+        val text = intent.getStringExtra(INTENT_TEXT)
+
+        val notification = createTimerNotification(context, title, text)
         with(NotificationManagerCompat.from(context)) {
             // notificationId is a unique int for each notification that you must define
             notify(NOTIFICATION_ID_TIMER /*+ num_notification*/, notification)
 
         }
 
-        Log.d("timer test", "Alarm just fired")
+        //Log.d("timer test", "Alarm just fired")
     }
 }
