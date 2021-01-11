@@ -10,15 +10,14 @@ import androidx.test.rule.ActivityTestRule
 import androidx.test.uiautomator.*
 import com.micheladrien.fresquerappel.Main_activity
 import com.micheladrien.fresquerappel.tools.notification.NotificationService
-import junit.framework.TestCase.assertEquals
-import junit.framework.TestCase.assertTrue
+import junit.framework.TestCase.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.Rule
+import java.lang.Thread.sleep
 
 //https://developer.android.com/training/testing/ui-automator
-//https://proandroiddev.com/testing-android-notifications-f147a572b257
 
 //https://proandroiddev.com/testing-android-notifications-f147a572b257
 
@@ -98,13 +97,33 @@ class NotificationServiceTest {
 
     }
 
-    //TODO Verifier que nous avons une notification à la fin
-    fun createTimerNotification(){
+
+    //Les notifications timers sont concues pour disparaitre sans plus quand nous clickons dessus
+    //TODO Notification dispear when we click on it
+    @Test
+    fun tapTimerNotificationToDisapear(){
+
+        mDevice.openNotification()
+        mDevice.wait(Until.hasObject(By.pkg("com.android.systemui")), 10000)
+
+        val notification = NotificationService.createTimerNotification(context , titleNotTest, textNotTest)
+
+        with(NotificationManagerCompat.from(context)) {
+            // notificationId is a unique int for each notification that you must define
+            notify(NotificationService.NOTIFICATION_ID_TIMER /*+ num_notification*/, notification)
+        }
+
+        val title: UiObject2 = mDevice.findObject(By.text(titleNotTest))
+
+        title.click()
+
+        assertNull(mDevice.findObject(By.text(titleNotTest)))
+
 
     }
 
-    //TODO Notification dispear when we click on it
-    fun tapTimerNotificationToMakeItDisapear(){
+    //TODO Verifier que nous avons une notification à la fin
+    fun createTimerNotification(){
 
     }
 
