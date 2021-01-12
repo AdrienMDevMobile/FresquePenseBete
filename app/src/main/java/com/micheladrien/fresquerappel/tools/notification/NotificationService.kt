@@ -23,7 +23,7 @@ class NotificationService: BroadcastReceiver() {
         const val INTENT_TEXT = "INTE"
         const val STRING_NOT_ID ="SNI"
         const val ID_CHANNEL_TIMER = "ID_CHANNEL_TIMER"
-        const val NOTIFICATION_ID_TIMER = 1
+        //const val NOTIFICATION_ID_TIMER = 1
 
         fun createNotificationChannel(context: Context?) {
             // Create the NotificationChannel, but only on API 26+ because
@@ -66,13 +66,16 @@ class NotificationService: BroadcastReceiver() {
     //C'est ici que la notification est affichée à l'utilisateur.
     override fun onReceive(context: Context, intent: Intent) {
 
+        Log.d("testNotificationList", "onReceive")
+
         val title = intent.getStringExtra(INTENT_TITLE)
         val text = intent.getStringExtra(INTENT_TEXT)
+        val Notification_id_timer = intent.getIntExtra(STRING_NOT_ID, 0)
 
         val notification = createTimerNotification(context, title, text)
         with(NotificationManagerCompat.from(context)) {
             // notificationId is a unique int for each notification that you must define
-            notify(NOTIFICATION_ID_TIMER /*+ num_notification*/, notification)
+            notify(Notification_id_timer /*+ num_notification*/, notification)
 
         }
 

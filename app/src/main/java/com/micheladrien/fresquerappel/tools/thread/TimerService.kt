@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.core.app.JobIntentService
+import com.micheladrien.fresquerappel.datas.TimerModel
 import com.micheladrien.fresquerappel.tools.notification.NotificationService
 import com.micheladrien.fresquerappel.tools.notification.NotificationService.Companion.INTENT_TEXT
 import com.micheladrien.fresquerappel.tools.notification.NotificationService.Companion.INTENT_TITLE
@@ -16,7 +17,7 @@ import java.util.*
 class TimerService : JobIntentService() {
 
     companion object {
-
+        val KEY_TIMERSERVICE_EXTRA = "KSEx"
         private val JOB_ID = 2
         //Il me faut rendre enqueWork publique. Me sert à et up
         fun enqueueWork(context: Context, intent: Intent) {
@@ -25,8 +26,11 @@ class TimerService : JobIntentService() {
 
     }
 
+    private var timerArrayList:ArrayList<TimerModel>? = null
+
     override fun onHandleWork(intent: Intent) {
         Log.d("Test Timer Background", "onStartComand")
+        timerArrayList = intent.getParcelableArrayListExtra(KEY_TIMERSERVICE_EXTRA)
         executeService(baseContext)
     }
 
@@ -37,26 +41,42 @@ class TimerService : JobIntentService() {
 
     private var testSleep:Int = 60
 
-    private var serviceRunning:Boolean = false
-
     fun executeService(context: Context) {
 
         val alarmTimer = Calendar.getInstance()
 
-        val intent = Intent(context, NotificationService::class.java)
-        intent.putExtra(STRING_NOT_ID, 1)
-        intent.putExtra(INTENT_TITLE, "TitleS")
-        intent.putExtra(INTENT_TEXT, "TextS")
+        //Cette variable retient le temps des timers précédents pour décaller le suivant
+        //ex : timer 1 = 10 minutes, timer 2 = 10 minutes. Timer 2 sonnera dans 20 minutes (10+10)
+        var previousTimerSet = 0
+        var not_id = 0
 
-        val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)
+        timerArrayList?.forEach(){
+            Log.d("testNotificationList", "Nous allons definir" + it.name)
 
-        val alarm = getSystemService(ALARM_SERVICE) as AlarmManager
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            alarm.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, alarmTimer.timeInMillis + 3000, pendingIntent)
-            Log.d("test timer", "nous avons set inexact avec allowWhileIdle par TimerSErvice")
-        } else {
-            TODO("VERSION.SDK_INT < M")
+            val intent = Intent(context, NotificationService::class.java)
+            intent.putExtra(STRING_NOT_ID, ++not_id)
+            intent.putExtra(INTENT_TITLE, it.id)
+            intent.putExtra(INTENT_TEXT, it.name)
+            Log.d("testNotificationList", "Nous avons intent" + it.name + " " + it.id  + " " + not_id)
+
+            val pendingIntent = PendingIntent.getBroadcast(context, not_id, intent, PendingIntent.FLAG_CANCEL_CURRENT)
+
+            val time_wait = it.time_value*1000
+
+            val alarm = getSystemService(ALARM_SERVICE) as AlarmManager
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                val triggerAtMillis = alarmTimer.timeInMillis + time_wait + previousTimerSet
+                alarm.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAtMillis,  pendingIntent)
+                Log.d("testNotificationList", "nous avons set inexact avec allowWhileIdle par TimerSErvice "+ triggerAtMillis)
+            } else {
+                TODO("VERSION.SDK_INT < M")
+            }
+
+            previousTimerSet+= time_wait
+
         }
+
+
 
 
     }

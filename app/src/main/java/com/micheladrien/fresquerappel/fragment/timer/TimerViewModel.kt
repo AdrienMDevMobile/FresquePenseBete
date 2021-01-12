@@ -6,7 +6,7 @@ import android.content.Intent
 import androidx.lifecycle.*
 import com.micheladrien.fresquerappel.datas.TimerModel
 import com.micheladrien.fresquerappel.tools.thread.TimerService
-import kotlin.collections.ArrayList
+import java.util.ArrayList
 
 //import il.co.theblitz.observablecollections.lists.ObservableArrayList
 
@@ -37,14 +37,14 @@ class TimerViewModel(application: Application) : AndroidViewModel(application) {
         */
         //timerArrayList = ArrayList<String>()
 
-        val time1 = TimerModel(1, "1ab", 10)
+        val time1 = TimerModel(1, "1ab", 2)
         val time2 = TimerModel(2, "2a", 2)
         val time3 = TimerModel(3, "conclusion", 10)
         timerArrayList = ArrayList<TimerModel>()
 
         timerArrayList!!.add(time1)
         timerArrayList!!.add(time2)
-        timerArrayList!!.add(time3)
+        //timerArrayList!!.add(time3)
 
         _timerLiveData.value = timerArrayList
     }
@@ -63,6 +63,7 @@ class TimerViewModel(application: Application) : AndroidViewModel(application) {
 
         val mIntent = Intent(context, TimerService::class.java)
         //mIntent.putExtra("maxCountValue", 1000)
+        mIntent.putParcelableArrayListExtra(TimerService.KEY_TIMERSERVICE_EXTRA,timerArrayList)
         TimerService.enqueueWork(context, mIntent)
 
 

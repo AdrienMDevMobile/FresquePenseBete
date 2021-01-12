@@ -29,11 +29,17 @@ class TimerAdapter(private val timer_set: ArrayList<TimerModel>) : RecyclerView.
 
         //name affichera exactement trois charactères
         var name = timer_set[position].name
-        if(name.length >=3)
-            name = name.subSequence(0,3).toString()
-        else {
-            while(name.length < 3) name+= " "
+        if(name != null){
+            if(name.length >=3)
+                name = name.subSequence(0,3).toString()
+            else {
+                while(name.length < 3) name+= " "
+            }
         }
+        else {
+            name = ""
+        }
+
 
         holder.tv_timer_name.text = name
         holder.tv_timer_value.text = timer_set[position].time_value.toString()
