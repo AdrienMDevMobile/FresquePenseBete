@@ -3,6 +3,10 @@ package com.micheladrien.android.fresquerappel.UITest
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import androidx.test.uiautomator.By
+import androidx.test.uiautomator.UiDevice
+import androidx.test.uiautomator.UiObject2
+import junit.framework.TestCase
 import org.hamcrest.Description
 import org.hamcrest.TypeSafeMatcher
 
@@ -33,4 +37,16 @@ object UITestUtilitaire {
     }
     //https://stackoverflow.com/questions/23381459/how-to-get-text-from-textview-using-espresso
     //https://stackoverflow.com/questions/45597008/espresso-get-text-of-element/45601564
+
+    //Vérifie si il existe une notification (titre, texte)
+    fun checkNotification(mDevice : UiDevice, expectedTitle:String, expectedText:String){
+        //Recupere titre, texte et le bouton d'action de la notification
+        val title: UiObject2 = mDevice.findObject(By.text(expectedTitle))
+        val text: UiObject2 = mDevice.findObject(By.textStartsWith(expectedText))
+        //val boutonAction: UiObject2 = uiDevice.findObject(By.res("Bouton action"))
+
+        TestCase.assertEquals(expectedTitle, title.text)
+        TestCase.assertTrue(text.text.startsWith(expectedText))
+        //assertEquals(expectedAllCities.toLowerCase(), allCities.text.toLowerCase())
+    }
 }

@@ -8,6 +8,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import androidx.test.uiautomator.*
+import com.micheladrien.android.fresquerappel.UITest.UITestUtilitaire.checkNotification
 import com.micheladrien.fresquerappel.Main_activity
 import com.micheladrien.fresquerappel.tools.notification.NotificationService
 import junit.framework.TestCase.*
@@ -33,6 +34,8 @@ class NotificationServiceTest {
     private lateinit var mDevice : UiDevice
     private lateinit var context: Context
 
+    private val ID_NOT_TEST = 1
+
     @get:Rule
     val mainActivityTestRule : ActivityTestRule<Main_activity> = ActivityTestRule<Main_activity>(
             Main_activity::class.java
@@ -52,17 +55,7 @@ class NotificationServiceTest {
     clearAll.click()
     */
 
-    //Vérifie si il existe une notification (titre, texte)
-    fun checkNotification(expectedTitle:String, expectedText:String){
-        //Recupere titre, texte et le bouton d'action de la notification
-        val title: UiObject2 = mDevice.findObject(By.text(expectedTitle))
-        val text: UiObject2 = mDevice.findObject(By.textStartsWith(expectedText))
-        //val boutonAction: UiObject2 = uiDevice.findObject(By.res("Bouton action"))
 
-        assertEquals(expectedTitle, title.text)
-        assertTrue(text.text.startsWith(expectedText))
-        //assertEquals(expectedAllCities.toLowerCase(), allCities.text.toLowerCase())
-    }
 
     //Nous verifions que la notification soit bien créée, puis nous l'affichons à la main
     @Test
@@ -75,10 +68,10 @@ class NotificationServiceTest {
 
         with(NotificationManagerCompat.from(context)) {
             // notificationId is a unique int for each notification that you must define
-            notify(NotificationService.NOTIFICATION_ID_TIMER /*+ num_notification*/, notification)
+            notify(ID_NOT_TEST /*+ num_notification*/, notification)
         }
 
-        checkNotification(titleNotTest, textNotTest)
+        checkNotification(mDevice, titleNotTest, textNotTest)
     }
 
     //Nous laissons la création et l'affichage de la notification au programme.
@@ -93,7 +86,7 @@ class NotificationServiceTest {
         val notService = NotificationService()
         notService.onReceive(context, intent)
 
-        checkNotification(titleNotTest, textNotTest)
+        checkNotification(mDevice, titleNotTest, textNotTest)
 
     }
 
@@ -110,7 +103,7 @@ class NotificationServiceTest {
 
         with(NotificationManagerCompat.from(context)) {
             // notificationId is a unique int for each notification that you must define
-            notify(NotificationService.NOTIFICATION_ID_TIMER /*+ num_notification*/, notification)
+            notify(ID_NOT_TEST /*+ num_notification*/, notification)
         }
 
         val title: UiObject2 = mDevice.findObject(By.text(titleNotTest))
@@ -122,20 +115,6 @@ class NotificationServiceTest {
 
     }
 
-    //TODO Verifier que nous avons une notification à la fin
-    fun createTimerNotification(){
-
-    }
-
-    //TODO Est ce que cela appel bien la creation de notification ?
-    fun onReceiveCreateNotification(){
-
-    }
-
-    //TODO Notification shows correct informations
-    fun checkInfoOnTimerNotification(){
-
-    }
 
     /* La fonction va appuyer sur le bouton qui lancera le processus de notification
     private fun clickOnSendNotification() : ViewAction {

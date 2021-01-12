@@ -103,7 +103,6 @@ class RelationRechercheDialogueFragment() : DialogFragment() {
         val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
         //imm?.showSoftInput(ETcarte1, InputMethodManager.SHOW_IMPLICIT)
         imm?.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
-        //Log.d("test", "b4")
 
 
         //récupère le focus
@@ -141,11 +140,9 @@ class RelationRechercheDialogueFragment() : DialogFragment() {
         }
 
         override fun afterTextChanged(s: Editable?) {
-            //Log.d("test", "Nous sommes APRES le textChanged")
         }
 
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            //Log.d("test", "Nous sommes AVANT le textChanged")
         }
 
 

@@ -1,6 +1,5 @@
 package com.micheladrien.android.fresquerappel
 import android.content.Context
-import android.util.Log
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 //import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.core.app.ApplicationProvider
@@ -46,7 +45,6 @@ class JsonReaderTest {
         //Il y a normalement au moins une centaine de lignes
         // Je ne met pas le chiffre précis car il peut facilement changer. A verifier dans les logs si besoin.
         assertTrue(list_of_relation.size > 100)
-        Log.d("Test_file : ListCorrectSizeTest", "list_of_relation.size = " + list_of_relation.size)
     }
 
 }

@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.*
 import com.micheladrien.fresquerappel.datas.TimerModel
-import com.micheladrien.fresquerappel.tools.thread.TimerService
+import com.micheladrien.fresquerappel.tools.notification.TimerService
 import java.util.ArrayList
 
 //import il.co.theblitz.observablecollections.lists.ObservableArrayList

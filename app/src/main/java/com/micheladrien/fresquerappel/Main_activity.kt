@@ -2,7 +2,6 @@ package com.micheladrien.fresquerappel
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity

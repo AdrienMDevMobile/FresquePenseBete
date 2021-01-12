@@ -9,11 +9,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.util.Log
-import androidx.core.app.JobIntentService
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.micheladrien.fresquerappel.R
-import com.micheladrien.fresquerappel.tools.thread.TimerService
 
 class NotificationService: BroadcastReceiver() {
 
@@ -66,11 +64,11 @@ class NotificationService: BroadcastReceiver() {
     //C'est ici que la notification est affichée à l'utilisateur.
     override fun onReceive(context: Context, intent: Intent) {
 
-        Log.d("testNotificationList", "onReceive")
-
         val title = intent.getStringExtra(INTENT_TITLE)
         val text = intent.getStringExtra(INTENT_TEXT)
         val Notification_id_timer = intent.getIntExtra(STRING_NOT_ID, 0)
+
+        Log.d("testNotificationList", "Nous avons intent" + title + "|" + text)
 
         val notification = createTimerNotification(context, title, text)
         with(NotificationManagerCompat.from(context)) {
@@ -78,7 +76,5 @@ class NotificationService: BroadcastReceiver() {
             notify(Notification_id_timer /*+ num_notification*/, notification)
 
         }
-
-        //Log.d("timer test", "Alarm just fired")
     }
 }

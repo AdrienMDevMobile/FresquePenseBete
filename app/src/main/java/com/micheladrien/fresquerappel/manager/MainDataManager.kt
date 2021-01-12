@@ -2,7 +2,6 @@
 package com.micheladrien.fresquerappel.manager
 
 import android.content.Context
-import android.util.Log
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.Relation
 import com.micheladrien.fresquerappel.datas.RelationDirection
