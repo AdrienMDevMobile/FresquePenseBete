@@ -30,21 +30,13 @@ class TimerViewModel(application: Application) : AndroidViewModel(application) {
 
     //TODO Recuperer la liste depuis une BDD
     fun populateList(){
-        /*
-        val time1  = "Time1"
-        val time2  = "Time2"
-        val time3  = "Time3"
-        */
-        //timerArrayList = ArrayList<String>()
 
-        val time1 = TimerModel(1, "1ab", 2)
-        val time2 = TimerModel(2, "2a", 2)
-        val time3 = TimerModel(3, "conclusion", 10)
+        val time1 = TimerModel(1, "Lot 1", 600)
+        val time2 = TimerModel(2, "Lot 2", 900)
         timerArrayList = ArrayList<TimerModel>()
 
         timerArrayList!!.add(time1)
         timerArrayList!!.add(time2)
-        //timerArrayList!!.add(time3)
 
         _timerLiveData.value = timerArrayList
     }

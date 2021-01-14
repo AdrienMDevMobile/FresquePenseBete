@@ -1,10 +1,13 @@
 package com.micheladrien.fresquerappel.fragment.timer
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.TimerModel
+import com.micheladrien.fresquerappel.tools.TimerStringTool
+
 
 //Gestionnaire des ViewHolder
 class TimerAdapter(private val timer_set: ArrayList<TimerModel>) : RecyclerView.Adapter<TimerViewHolder>()  {
@@ -25,15 +28,15 @@ class TimerAdapter(private val timer_set: ArrayList<TimerModel>) : RecyclerView.
     override fun onBindViewHolder(holder: TimerViewHolder, position: Int) {
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        //holder.attribut =
 
-        //name affichera exactement trois charactères
+        //name affichera exactement six characteres
+        var max_length = 6
         var name = timer_set[position].name
         if(name != null){
-            if(name.length >=3)
-                name = name.subSequence(0,3).toString()
+            if(name.length >=max_length)
+                name = name.subSequence(0, max_length).toString()
             else {
-                while(name.length < 3) name+= " "
+                while(name.length < max_length) name+= " "
             }
         }
         else {
@@ -42,7 +45,7 @@ class TimerAdapter(private val timer_set: ArrayList<TimerModel>) : RecyclerView.
 
 
         holder.tv_timer_name.text = name
-        holder.tv_timer_value.text = timer_set[position].time_value.toString()
+        holder.tv_timer_value.text = TimerStringTool.fromSecToTimeString(timer_set[position].time_value)
 
     }
 
@@ -52,3 +55,4 @@ class TimerAdapter(private val timer_set: ArrayList<TimerModel>) : RecyclerView.
     override fun getItemCount() = timer_set.size
 
 }
+

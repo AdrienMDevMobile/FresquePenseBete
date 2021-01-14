@@ -14,6 +14,8 @@ import com.micheladrien.android.fresquerappel.UITest.UITestUtilitaire.checkNotif
 import com.micheladrien.fresquerappel.Main_activity
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.TimerModel
+import com.micheladrien.fresquerappel.fragment.timer.TimerAdapter
+import com.micheladrien.fresquerappel.tools.TimerStringTool
 import com.micheladrien.fresquerappel.tools.notification.TimerService
 import junit.framework.TestCase
 import org.junit.Before
@@ -25,7 +27,7 @@ import java.util.ArrayList
 
 //Verification de l'execution du timer (en arrière plan, va faire une notification)
 @RunWith(AndroidJUnit4::class)
-class TimerTest {
+class TimerUITest {
 
     private lateinit var mDevice : UiDevice
     private lateinit var context: Context
@@ -61,16 +63,6 @@ class TimerTest {
         mDevice.wait(Until.hasObject(By.text(context.getString(R.string.notification_title_timer))), 10000)
 
         checkNotification(mDevice, context.getString(R.string.notification_title_timer), textNotTest)
-
-    }
-
-    //TODO Est ce que cela appel bien la creation de notification ?
-    fun onReceiveCreateNotification(){
-
-    }
-
-    //TODO Notification shows correct informations
-    fun checkInfoOnTimerNotification(){
 
     }
 
