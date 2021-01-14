@@ -48,6 +48,7 @@
 
     <string name="timer_channel_name">Timers sections</string>
     <string name="timer_channel_description">Notification timer pour chaque section</string>
-    <string name="notification_title_timer">Gestion du temps</string>
+    <string name="timer_notification_title">Gestion du temps</string>
+    <string name="timer_set_toast">Les alarmes ont démarrées</string>
 
 </resources>

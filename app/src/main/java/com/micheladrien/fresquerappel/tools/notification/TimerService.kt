@@ -5,6 +5,7 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.widget.Toast
 import androidx.core.app.JobIntentService
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.TimerModel
@@ -51,7 +52,7 @@ class TimerService : JobIntentService() {
 
             val intent = Intent(context, NotificationService::class.java)
             intent.putExtra(STRING_NOT_ID, ++not_id)
-            intent.putExtra(INTENT_TITLE, getString(R.string.notification_title_timer))
+            intent.putExtra(INTENT_TITLE, getString(R.string.timer_notification_title))
             intent.putExtra(INTENT_TEXT, it.name)
 
             val pendingIntent = PendingIntent.getBroadcast(context, not_id, intent, PendingIntent.FLAG_CANCEL_CURRENT)
@@ -61,7 +62,7 @@ class TimerService : JobIntentService() {
             val alarm = getSystemService(ALARM_SERVICE) as AlarmManager
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                 val triggerAtMillis = alarmTimer.timeInMillis + time_wait + previousTimerSet
-                alarm.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAtMillis,  pendingIntent)
+                alarm.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAtMillis,  pendingIntent)
             } else {
                 TODO("VERSION.SDK_INT < M")
             }
@@ -69,6 +70,7 @@ class TimerService : JobIntentService() {
             previousTimerSet+= time_wait
 
         }
+
     }
 
 

@@ -3,7 +3,9 @@ package com.micheladrien.fresquerappel.fragment.timer
 import android.app.Application
 import android.content.Context
 import android.content.Intent
+import android.widget.Toast
 import androidx.lifecycle.*
+import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.TimerModel
 import com.micheladrien.fresquerappel.tools.notification.TimerService
 import java.util.ArrayList
@@ -58,7 +60,8 @@ class TimerViewModel(application: Application) : AndroidViewModel(application) {
         mIntent.putParcelableArrayListExtra(TimerService.KEY_TIMERSERVICE_EXTRA,timerArrayList)
         TimerService.enqueueWork(context, mIntent)
 
-
+        val toast = Toast.makeText(context, context.getString(R.string.timer_set_toast), Toast.LENGTH_SHORT)
+        toast.show()
     }
 
     //TODO
