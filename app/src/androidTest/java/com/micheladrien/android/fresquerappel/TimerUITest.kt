@@ -60,9 +60,9 @@ class TimerUITest {
         mIntent.putParcelableArrayListExtra(TimerService.KEY_TIMERSERVICE_EXTRA,timerArrayList)
         TimerService.enqueueWork(context, mIntent)
 
-        mDevice.wait(Until.hasObject(By.text(context.getString(R.string.notification_title_timer))), 10000)
+        mDevice.wait(Until.hasObject(By.text(context.getString(R.string.timer_notification_title))), 10000)
 
-        checkNotification(mDevice, context.getString(R.string.notification_title_timer), textNotTest)
+        checkNotification(mDevice, context.getString(R.string.timer_notification_title), textNotTest)
 
     }
 
