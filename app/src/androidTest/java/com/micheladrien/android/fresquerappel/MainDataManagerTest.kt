@@ -11,9 +11,7 @@ import com.micheladrien.fresquerappel.manager.MainDataManager
 import org.junit.*
 import org.junit.Assert.assertTrue
 import org.junit.runner.RunWith
-//import org.mockito.junit.MockitoJUnitRunner
 
-//@RunWith(MockitoJUnitRunner::class)
 class MainDataManagerTest(){
 
     //Regle : defini la manière dont les tests vont être menés

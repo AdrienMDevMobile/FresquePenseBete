@@ -9,7 +9,7 @@ import com.micheladrien.fresquerappel.manager.SettingsManager
 import com.micheladrien.fresquerappel.tools.WaitingViewModel
 
 
-//Currently : only prints the name
+//Currently : only prints the name of the collage
 class MainViewModel(application: Application) : AndroidViewModel(application), WaitingViewModel{
 
     private val _name = MutableLiveData<String>().apply {
