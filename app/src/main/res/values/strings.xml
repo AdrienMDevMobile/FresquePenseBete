@@ -18,6 +18,7 @@
     <string name="menu_timer">Gestion du temps</string>
     <string name="menu_single"><i>Informations cartes</i></string>
     <string name="menu_notes"><i>Mes notes</i></string>
+    <string name="menu_about">A propos</string>
 
     <string name="action_settings"><i>Paramètres et Fresque</i></string>
 

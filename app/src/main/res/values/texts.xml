@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name = "txt_about">Application mobile faite par Adrien MICHEL \n
+        L\'application n\'est pas approuvée par l\'assocation \"Fresque du climat\"
+        et ne représente pas l\'opinion de l\'assocation ou toutes personnes incluses dans la direction de l\'association \"Fresque du climat\" ou la production du jeu \"Fresque du climat\"
+    </string>
+</resources>
