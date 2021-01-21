@@ -10,6 +10,9 @@ import org.junit.runners.JUnit4
 
 @RunWith(JUnit4::class)
 class TimerTest {
+
+    /* Test outil conversion secondes en texte heures:minutes:secondes - Debut */
+    /*fromSecToTimeString et fromTimeStringToSec */
     @Test
     fun testSecondToTimeString(){
         val seconds = 3661 //Une heure une minute et une seconde
@@ -37,4 +40,5 @@ class TimerTest {
         val seconds = TimerStringTool.fromTimeStringToSec(testText)
         assertEquals(seconds, 61)
     }
+    /* Test outil conversion secondes en texte heures:minutes:secondes - Fin */
 }

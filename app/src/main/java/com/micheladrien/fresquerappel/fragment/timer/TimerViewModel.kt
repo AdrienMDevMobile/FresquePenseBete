@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.lifecycle.*
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.TimerModel
+import com.micheladrien.fresquerappel.manager.TimerManager
 import com.micheladrien.fresquerappel.tools.notification.TimerService
 import java.util.ArrayList
 
@@ -18,12 +19,11 @@ https://stackoverflow.com/questions/7178801/how-do-i-structure-mvvm-with-collect
 TODO Remplacer string par TimephaseViewModel
  */
 //https://medium.com/@atifmukhtar/recycler-view-with-mvvm-livedata-a1fd062d2280
-class TimerViewModel(application: Application) : AndroidViewModel(application) {
+class TimerViewModel : ViewModel() {
 
-
-
-    private val _timerLiveData = MutableLiveData<ArrayList<TimerModel>>()
+    private val timerManager = TimerManager()
     var timerArrayList:ArrayList<TimerModel>? = null
+    private val _timerLiveData = MutableLiveData<ArrayList<TimerModel>>()
     val timerLiveData: LiveData<ArrayList<TimerModel>> = _timerLiveData
 
     init{
@@ -32,14 +32,7 @@ class TimerViewModel(application: Application) : AndroidViewModel(application) {
 
     //TODO Recuperer la liste depuis une BDD
     fun populateList(){
-
-        val time1 = TimerModel(1, "Lot 1", 600)
-        val time2 = TimerModel(2, "Lot 2", 900)
-        timerArrayList = ArrayList<TimerModel>()
-
-        timerArrayList!!.add(time1)
-        timerArrayList!!.add(time2)
-
+        timerArrayList = timerManager.getListTimer()
         _timerLiveData.value = timerArrayList
     }
 

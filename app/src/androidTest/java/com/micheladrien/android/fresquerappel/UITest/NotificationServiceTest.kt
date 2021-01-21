@@ -1,4 +1,4 @@
-package com.micheladrien.android.fresquerappel
+package com.micheladrien.android.fresquerappel.UITest
 
 import android.content.Context
 import android.content.Intent
@@ -10,13 +10,13 @@ import androidx.test.rule.ActivityTestRule
 import androidx.test.uiautomator.*
 import com.micheladrien.android.fresquerappel.UITest.UITestUtilitaire.checkNotification
 import com.micheladrien.fresquerappel.Main_activity
+import com.micheladrien.fresquerappel.tools.notification.NotServiceCompanion
 import com.micheladrien.fresquerappel.tools.notification.NotificationService
 import junit.framework.TestCase.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.Rule
-import java.lang.Thread.sleep
 
 //https://developer.android.com/training/testing/ui-automator
 
@@ -64,7 +64,7 @@ class NotificationServiceTest {
         mDevice.openNotification()
         mDevice.wait(Until.hasObject(By.pkg("com.android.systemui")), 10000)
 
-        val notification = NotificationService.createTimerNotification(context , titleNotTest, textNotTest)
+        val notification = NotServiceCompanion.createTimerNotification(context , titleNotTest, textNotTest)
 
         with(NotificationManagerCompat.from(context)) {
             // notificationId is a unique int for each notification that you must define
@@ -79,9 +79,9 @@ class NotificationServiceTest {
     fun defineNotification(){
 
         val intent = Intent(context, NotificationService::class.java)
-        intent.putExtra(NotificationService.STRING_NOT_ID, 1)
-        intent.putExtra(NotificationService.INTENT_TITLE, titleNotTest)
-        intent.putExtra(NotificationService.INTENT_TEXT, textNotTest)
+        intent.putExtra(NotServiceCompanion.STRING_NOT_ID, 1)
+        intent.putExtra(NotServiceCompanion.INTENT_TITLE, titleNotTest)
+        intent.putExtra(NotServiceCompanion.INTENT_TEXT, textNotTest)
 
         val notService = NotificationService()
         notService.onReceive(context, intent)
@@ -99,7 +99,7 @@ class NotificationServiceTest {
         mDevice.openNotification()
         mDevice.wait(Until.hasObject(By.pkg("com.android.systemui")), 10000)
 
-        val notification = NotificationService.createTimerNotification(context , titleNotTest, textNotTest)
+        val notification = NotServiceCompanion.createTimerNotification(context , titleNotTest, textNotTest)
 
         with(NotificationManagerCompat.from(context)) {
             // notificationId is a unique int for each notification that you must define

@@ -1,29 +1,32 @@
-package com.micheladrien.android.fresquerappel
+package com.micheladrien.android.fresquerappel.UITest
 
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import androidx.lifecycle.ViewModelProvider
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
-import androidx.test.uiautomator.By
 import androidx.test.uiautomator.UiDevice
-import androidx.test.uiautomator.Until
-import com.micheladrien.android.fresquerappel.UITest.UITestUtilitaire
 import com.micheladrien.android.fresquerappel.UITest.UITestUtilitaire.checkNotification
 import com.micheladrien.fresquerappel.Main_activity
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.TimerModel
-import com.micheladrien.fresquerappel.fragment.timer.TimerAdapter
-import com.micheladrien.fresquerappel.tools.TimerStringTool
+import com.micheladrien.fresquerappel.fragment.timer.TimerFragment
+import com.micheladrien.fresquerappel.fragment.timer.TimerViewModel
+import com.micheladrien.fresquerappel.tools.notification.NotServiceCompanion
+import com.micheladrien.fresquerappel.tools.notification.NotificationService
 import com.micheladrien.fresquerappel.tools.notification.TimerService
-import junit.framework.TestCase
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.lang.Thread.sleep
-import java.util.ArrayList
+import org.mockito.Mock
+import org.mockito.Mockito
+import org.mockito.junit.MockitoJUnitRunner
+import java.util.*
+
 
 //Verification de l'execution du timer (en arrière plan, va faire une notification)
 @RunWith(AndroidJUnit4::class)
@@ -46,9 +49,24 @@ class TimerUITest {
         context = ApplicationProvider.getApplicationContext()
     }
 
-    //TODO Verifier que nous avons une notification à la fin
+    //Verification : le NotificationService fait apparaitre une notification
     @Test
-    fun createTimerNotification(){
+    fun NotificationService(){
+        val intent = Intent(context, NotificationService::class.java)
+        intent.putExtra(NotServiceCompanion.STRING_NOT_ID, 1)
+        intent.putExtra(NotServiceCompanion.INTENT_TITLE, textNotTest)
+        intent.putExtra(NotServiceCompanion.INTENT_TEXT, textNotTest)
+
+
+        val pendingIntent = PendingIntent.getBroadcast(context, 1, intent, PendingIntent.FLAG_CANCEL_CURRENT)
+        pendingIntent.send()
+
+        checkNotification(mDevice, textNotTest, textNotTest)
+    }
+
+    //Verification : TimerService fait bien apparaitre une notification
+    @Test
+    fun TimerServiceTestCreateNot(){
 
         val time1 = TimerModel(1, textNotTest, delayTest)
         val timerArrayList = ArrayList<TimerModel>()
@@ -57,13 +75,29 @@ class TimerUITest {
 
         val mIntent = Intent(context, TimerService::class.java)
         //mIntent.putExtra("maxCountValue", 1000)
-        mIntent.putParcelableArrayListExtra(TimerService.KEY_TIMERSERVICE_EXTRA,timerArrayList)
+        mIntent.putParcelableArrayListExtra(TimerService.KEY_TIMERSERVICE_EXTRA, timerArrayList)
         TimerService.enqueueWork(context, mIntent)
-
-        mDevice.wait(Until.hasObject(By.text(context.getString(R.string.timer_notification_title))), 10000)
 
         checkNotification(mDevice, context.getString(R.string.timer_notification_title), textNotTest)
 
+    }
+
+    //La fonction VM fait bien une notification
+    @Test
+    fun VMStartTimer(){
+        val vm = TimerViewModel()
+        vm.startTimer(context)
+
+        checkNotification(mDevice, context.getString(R.string.timer_notification_title), textNotTest)
+    }
+
+
+    //Le Fragment appel bien la fonction
+    @Test
+    fun TimerFragmentCallTimerService(){
+        //Creer fragment
+
+        //Mocking du timerService
     }
 
 }

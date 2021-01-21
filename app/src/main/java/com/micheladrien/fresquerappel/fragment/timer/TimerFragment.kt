@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.databinding.FragmentTimerBinding
+import com.micheladrien.fresquerappel.tools.notification.NotServiceCompanion
 import com.micheladrien.fresquerappel.tools.notification.NotificationService
 
 class TimerFragment : Fragment() {
@@ -34,11 +35,9 @@ class TimerFragment : Fragment() {
         _binding = FragmentTimerBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        //TODO Deplacer cela ailleur (mais recommandations disent de le mettre au max d'endroits au cas où)
-        NotificationService.createNotificationChannel(context)
+        NotServiceCompanion.createNotificationChannel(context)
         //obtain a handle to the RecycleView object, connect it to a layout manager, and attach an adapter for the data to be displayed:
         //viewManager = LinearLayoutManager(context)
-
 
 
         /*
@@ -72,7 +71,7 @@ class TimerFragment : Fragment() {
 
         //TODO Donner la fonction delete de ma VM dans le bouton X (a faire dans l'adapter ?) Il me faut probablement creer une classe custom OnClickListener
 
-        //timerViewModel
+        //Bouton lancer les timers
         binding.BTNStartTimer.setOnClickListener {
             //context?.startService(Intent(context, TimerService::class.java))
             view?.let{
