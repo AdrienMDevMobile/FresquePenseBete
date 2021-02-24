@@ -53,9 +53,9 @@ class MainActivityTest {
 
     }
     @Test
-    fun testOpenNoteFragment(){
-        onView(withId(R.id.nav_notes)).perform(click())
-        onView(withId(R.id.tv_note_not_supported)).check(matches(isDisplayed()))
+    fun testOpenAboutFragment(){
+        onView(withId(R.id.nav_about)).perform(click())
+        onView(withId(R.id.tv_about)).check(matches(isDisplayed()))
 
 
     }

@@ -11,7 +11,7 @@ import androidx.core.app.NotificationCompat
 import com.micheladrien.fresquerappel.R
 
 //Companion values and functions for Notification
-class NotServiceCompanion {
+abstract class NotServiceCompanion {
 
     companion object {
 

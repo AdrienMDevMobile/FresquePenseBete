@@ -19,7 +19,7 @@ https://stackoverflow.com/questions/7178801/how-do-i-structure-mvvm-with-collect
 TODO Remplacer string par TimephaseViewModel
  */
 //https://medium.com/@atifmukhtar/recycler-view-with-mvvm-livedata-a1fd062d2280
-class TimerViewModel : ViewModel() {
+class TimerViewModel() : ViewModel() {
 
     private val timerManager = TimerManager()
     var timerArrayList:ArrayList<TimerModel>? = null
@@ -32,8 +32,12 @@ class TimerViewModel : ViewModel() {
 
     //TODO Recuperer la liste depuis une BDD
     fun populateList(){
-        timerArrayList = timerManager.getListTimer()
-        _timerLiveData.value = timerArrayList
+        populateList(timerManager.getListTimer())
+    }
+
+    fun populateList(timerArrayList : ArrayList<TimerModel>){
+        this.timerArrayList = timerArrayList
+        _timerLiveData.postValue(timerArrayList)
     }
 
     //TODO

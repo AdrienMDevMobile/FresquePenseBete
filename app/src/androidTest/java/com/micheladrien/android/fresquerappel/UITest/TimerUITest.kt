@@ -3,7 +3,9 @@ package com.micheladrien.android.fresquerappel.UITest
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
+import androidx.test.annotation.UiThreadTest
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -15,6 +17,7 @@ import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.TimerModel
 import com.micheladrien.fresquerappel.fragment.timer.TimerFragment
 import com.micheladrien.fresquerappel.fragment.timer.TimerViewModel
+import com.micheladrien.fresquerappel.manager.TimerManager
 import com.micheladrien.fresquerappel.tools.notification.NotServiceCompanion
 import com.micheladrien.fresquerappel.tools.notification.NotificationService
 import com.micheladrien.fresquerappel.tools.notification.TimerService
@@ -25,6 +28,7 @@ import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
+import java.lang.Thread.sleep
 import java.util.*
 
 
@@ -74,7 +78,6 @@ class TimerUITest {
         timerArrayList.add(time1)
 
         val mIntent = Intent(context, TimerService::class.java)
-        //mIntent.putExtra("maxCountValue", 1000)
         mIntent.putParcelableArrayListExtra(TimerService.KEY_TIMERSERVICE_EXTRA, timerArrayList)
         TimerService.enqueueWork(context, mIntent)
 
@@ -83,12 +86,14 @@ class TimerUITest {
     }
 
     //La fonction VM fait bien une notification
+    @UiThreadTest
     @Test
     fun VMStartTimer(){
         val vm = TimerViewModel()
+        vm.populateList(TimerManager().getTestListTimer())
         vm.startTimer(context)
-
-        checkNotification(mDevice, context.getString(R.string.timer_notification_title), textNotTest)
+        //checkNotification(mDevice, context.getString(R.string.timer_notification_title), "Lot 1")
+        //sleep(100)
     }
 
 

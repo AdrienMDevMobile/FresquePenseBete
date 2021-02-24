@@ -27,6 +27,7 @@ class Main_activity : AppCompatActivity() {
     private lateinit var mainViewModel: MainViewModel
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var settingsManager: SettingsManager
+    //private val customFragmentFactory = FragmentFactory()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val dataManager = MainDataManager(this)
@@ -36,10 +37,17 @@ class Main_activity : AppCompatActivity() {
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         settingsManager.addWaitingVM(mainViewModel)
 
+        /*
+        val fragmentFactory = customFragmentFactory
+        getSupportFragmentManager().setFragmentFactory(fragmentFactory)
+         */
+
         /* Défini menu lateral -- Debut */
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_navigation_activity)
+
         val toolbar: Toolbar = findViewById(R.id.toolbar)
+        //Set up l'hamburger à droite
         setSupportActionBar(toolbar)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
@@ -78,7 +86,7 @@ class Main_activity : AppCompatActivity() {
 
     }
 
-    //Creation menu
+    //Creation menu hamburger
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
