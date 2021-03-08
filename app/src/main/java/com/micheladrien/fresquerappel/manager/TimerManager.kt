@@ -5,10 +5,6 @@ import java.util.ArrayList
 
 class TimerManager {
 
-    companion object {
-        val TEST_VALUES = "TEST"
-        val RUN_VALUES = "RUN"
-    }
 
     fun getListTimer(): ArrayList<TimerModel>{
 

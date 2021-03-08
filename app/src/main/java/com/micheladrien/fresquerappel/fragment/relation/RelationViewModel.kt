@@ -5,13 +5,12 @@ import android.app.Application
 import android.os.Build
 import android.util.Log
 import androidx.lifecycle.*
-import com.micheladrien.fresquerappel.manager.DataManager
-import com.micheladrien.fresquerappel.manager.MainDataManager
+import com.micheladrien.fresquerappel.manager.CollageDataManager
+import com.micheladrien.fresquerappel.manager.MainCollageDataManager
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.Relation
 import com.micheladrien.fresquerappel.datas.RelationDirection
 import com.micheladrien.fresquerappel.datas.RelationMandatory
-import com.micheladrien.fresquerappel.tools.JsonReader
 
 /*
 Le Viewmodel sera partagé entre l'activité main (reçoit le nom de la fresque),
@@ -28,7 +27,7 @@ class RelationViewModel(application: Application) : AndroidViewModel(application
        value = application.getString(R.string.collage_climat)
     } */
     private val _text = MutableLiveData<String>().apply {
-        value = "Explication"
+        value = application.getString(R.string.please_start_search)
     }
     private val _card1 = MutableLiveData<Int>()
     private val _card2 = MutableLiveData<Int>()
@@ -44,7 +43,7 @@ class RelationViewModel(application: Application) : AndroidViewModel(application
     val relation_color : LiveData<Int> = _relation_color
     val relation_mandatory : LiveData<String> = _relation_mandatory
 
-    private val dataManager: DataManager = MainDataManager(getApplication())
+    private val collageDataManager: CollageDataManager = MainCollageDataManager(getApplication())
 
     fun changeCards(card1:Int, card2:Int){
 
@@ -70,7 +69,7 @@ class RelationViewModel(application: Application) : AndroidViewModel(application
         */
         //Log.d("0708", "nous avons inialisé")
         if(_card1.value != null && _card2.value != null){
-            val relationModel = dataManager.researchRelation(_card1.value!!, _card2.value!!)
+            val relationModel = collageDataManager.researchRelation(_card1.value!!, _card2.value!!)
 
             _text.apply{ value  = relationModel.explanation }
             drawRelation(relationModel.relation)

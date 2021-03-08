@@ -29,7 +29,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textColor="@color/black"
-                android:textSize="50sp"/>
+                android:textSize="50sp"
+                tools:text="99"/>
 
         </LinearLayout>
 
@@ -48,13 +49,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textColor="@color/black"
-                android:textSize="50sp"/>
+                android:textSize="50sp"
+                tools:text="="/>
             <TextView
                 android:id="@+id/txt_mandatory"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textColor="@color/black"
                 android:textSize="15sp"
+                tools:text="mandatory"
                 app:layout_constraintTop_toBottomOf="@+id/txt_relation" />
         </LinearLayout>
 
@@ -72,7 +75,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textColor="@color/black"
-                android:textSize="50sp"/>
+                android:textSize="50sp"
+                tools:text="99"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -90,7 +94,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Explication\nLore ipsum"/>
 
     <com.micheladrien.fresquerappel.tools.MovableFloatingActionButton
         android:id="@+id/relation_search_button"

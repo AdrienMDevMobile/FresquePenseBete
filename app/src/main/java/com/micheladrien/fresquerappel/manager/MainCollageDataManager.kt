@@ -10,7 +10,7 @@ import com.micheladrien.fresquerappel.datas.RelationModel
 import com.micheladrien.fresquerappel.fragment.single.Single
 import com.micheladrien.fresquerappel.tools.JsonReader
 
-class MainDataManager(context: Context) : DataManager {
+class MainCollageDataManager(context: Context) : CollageDataManager {
     val dataManager : SingletonDataManager = SingletonDataManager.getInstance(context)
 
 
@@ -22,6 +22,11 @@ class MainDataManager(context: Context) : DataManager {
 
     override fun isDataInitialised(): Boolean {
         return dataManager.isDataInitialised()
+    }
+
+    override fun changeCollage(name:String) {
+        loadData(name.toLowerCase())
+        //return NO_COLLAGE_STRING servira en cas d'erreur d'initialisation connues
     }
 
     override fun loadData(file_name: String) {

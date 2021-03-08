@@ -3,7 +3,7 @@ package com.micheladrien.android.fresquerappel
 import com.micheladrien.fresquerappel.datas.RelationDirection
 import com.micheladrien.fresquerappel.datas.RelationMandatory
 import com.micheladrien.fresquerappel.datas.RelationModel
-import com.micheladrien.fresquerappel.manager.MainDataManager
+import com.micheladrien.fresquerappel.manager.MainCollageDataManager
 import com.micheladrien.fresquerappel.tools.JsonReader
 import org.junit.Assert
 import org.junit.Assert.assertEquals
@@ -17,7 +17,7 @@ import org.mockito.junit.MockitoJUnitRunner
 
 //Unit test (n'utilise pas d'emulateur, uniquement la JVM
 @RunWith(MockitoJUnitRunner::class)
-class SingletonDataManagerTest {
+class SingletonCollageDataManagerTest {
 
     //Regle : defini la manière dont les tests vont être menés
     //InstantTaskExecutorRule = force les tests à etre synchrones
@@ -30,7 +30,7 @@ class SingletonDataManagerTest {
     @Mock
     private val mockJsonReader: JsonReader = Mockito.mock(JsonReader::class.java)
 
-    lateinit var singletonDataManager : MainDataManager.SingletonDataManager
+    lateinit var singletonDataManager : MainCollageDataManager.SingletonDataManager
 
     @Before
     fun set_up() {
@@ -38,7 +38,7 @@ class SingletonDataManagerTest {
         val listOfJsonReader = mutableListOf<RelationModel>()
         listOfJsonReader.add(RelationModel("1","2", RelationDirection.UP.toString(), RelationMandatory.MANDATORY.toString(), "Test text"))
         Mockito.`when`(mockJsonReader.readJsonObject("test")).thenReturn(listOfJsonReader)
-        singletonDataManager = MainDataManager.SingletonDataManager(mockJsonReader)
+        singletonDataManager = MainCollageDataManager.SingletonDataManager(mockJsonReader)
     }
 
     //Nous verifions qu'à la base, les données ne sont pas marquées comme chargées.

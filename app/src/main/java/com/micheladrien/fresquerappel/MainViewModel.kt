@@ -5,12 +5,10 @@ import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.micheladrien.fresquerappel.manager.SettingsManager
-import com.micheladrien.fresquerappel.tools.WaitingViewModel
 
 
 //Currently : only prints the name of the collage
-class MainViewModel(application: Application) : AndroidViewModel(application), WaitingViewModel{
+class MainViewModel(application: Application) : AndroidViewModel(application){
 
     private val _name = MutableLiveData<String>().apply {
         value = application.getString(R.string.collage_climat)
@@ -18,9 +16,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application), W
 
     val name : LiveData<String> = _name
 
+    /*
     override fun notifyNewCollage(collage_name: String) {
         _name.value = collage_name
-    }
+    }*/
 
     /*
     public fun changeCollage(name_requested:String){

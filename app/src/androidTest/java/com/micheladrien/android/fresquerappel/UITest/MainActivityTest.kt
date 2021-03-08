@@ -63,7 +63,7 @@ class MainActivityTest {
     fun testOpenTimeThenRelationFragment(){
         onView(withId(R.id.nav_timer)).perform(click())
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())
-        onView(withId(R.id.nav_main)).perform(click())
+        onView(withId(R.id.nav_relation)).perform(click())
         onView(withId(R.id.text_explanation)).check(matches(isDisplayed()))
     }
 

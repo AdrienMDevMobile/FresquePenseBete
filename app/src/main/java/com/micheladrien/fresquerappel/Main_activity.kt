@@ -7,7 +7,6 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -15,32 +14,24 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
-import com.micheladrien.fresquerappel.manager.MainDataManager
-import com.micheladrien.fresquerappel.manager.SettingsManager
-import com.micheladrien.fresquerappel.tools.JsonReader
-import java.io.IOException
-import java.io.InputStream
+import com.micheladrien.fresquerappel.manager.MainCollageDataManager
 
 
 class Main_activity : AppCompatActivity() {
 
     private lateinit var mainViewModel: MainViewModel
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var settingsManager: SettingsManager
-    //private val customFragmentFactory = FragmentFactory()
+    private val customFragmentFactory = MainFragmentFactory()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val dataManager = MainDataManager(this)
+        val dataManager = MainCollageDataManager(this)
 
-        settingsManager = SettingsManager(this, dataManager)
         //Nous definissons le ViewModel
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        settingsManager.addWaitingVM(mainViewModel)
 
-        /*
+
         val fragmentFactory = customFragmentFactory
         getSupportFragmentManager().setFragmentFactory(fragmentFactory)
-         */
 
         /* Défini menu lateral -- Debut */
         super.onCreate(savedInstanceState)
@@ -56,7 +47,7 @@ class Main_activity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_main, R.id.nav_single, R.id.nav_timer, R.id.nav_about
+                R.id.nav_relation, R.id.nav_timer, R.id.nav_single,  R.id.nav_about
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
