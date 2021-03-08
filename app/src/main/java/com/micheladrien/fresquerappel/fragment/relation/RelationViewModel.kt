@@ -11,6 +11,8 @@ import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.Relation
 import com.micheladrien.fresquerappel.datas.RelationDirection
 import com.micheladrien.fresquerappel.datas.RelationMandatory
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 /*
 Le Viewmodel sera partagé entre l'activité main (reçoit le nom de la fresque),
@@ -20,7 +22,8 @@ le fragment principal (affiche les informations)
 
 
 //ou récupérer valeur par défaut (mm fonction) au moment de la recherche si val null.
-class RelationViewModel(application: Application) : AndroidViewModel(application) {
+@HiltViewModel
+class RelationViewModel @Inject constructor (private val collageDataManager: CollageDataManager, application: Application) : AndroidViewModel(application) {
 
     /* ancien MainViewmodel est désormais RelationView model. Name se trouve dans le nouveau ViewModel
     private val _name = MutableLiveData<String>().apply {
@@ -42,8 +45,6 @@ class RelationViewModel(application: Application) : AndroidViewModel(application
     val relation : LiveData<String> = _relation
     val relation_color : LiveData<Int> = _relation_color
     val relation_mandatory : LiveData<String> = _relation_mandatory
-
-    private val collageDataManager: CollageDataManager = MainCollageDataManager(getApplication())
 
     fun changeCards(card1:Int, card2:Int){
 

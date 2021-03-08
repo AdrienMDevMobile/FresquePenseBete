@@ -3,14 +3,14 @@ package com.micheladrien.fresquerappel.datas
 import android.annotation.SuppressLint
 import java.util.*
 
-class RelationModel(val number1: Int, val number2: Int, val relation: Relation, val explanation:String){
+class CardsRelation(val number1: Int, val number2: Int, val relation: Relation, val explanation:String){
 
     constructor(string1:String, string2:String, rDirString: String, rMandatoryString:String, explanation: String) : this(string1.toInt(), string2.toInt(), Relation(
         RelationDirection.getRelDirection(rDirString), RelationMandatory.getRelMandatory(rMandatoryString)
     ), explanation) {}
 
     override fun equals(other:Any?): Boolean{
-        return other is RelationModel && number1 == other.number1 && number2 == other.number2 && relation == other.relation && explanation == other.explanation
+        return other is CardsRelation && number1 == other.number1 && number2 == other.number2 && relation == other.relation && explanation == other.explanation
 
     }
 

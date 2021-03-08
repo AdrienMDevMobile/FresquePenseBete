@@ -5,8 +5,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.micheladrien.fresquerappel.R
-import com.micheladrien.fresquerappel.datas.RelationModel
-import com.micheladrien.fresquerappel.tools.JsonReader
+import com.micheladrien.fresquerappel.datas.CardsRelation
+import com.micheladrien.fresquerappel.manager.JsonDataProvider
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -16,21 +16,21 @@ import org.junit.runner.RunWith
 
 
 @RunWith(AndroidJUnit4::class)
-class JsonReaderTest {
+class JsonDataProviderTest {
 
     @Rule
     @JvmField
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private lateinit var context : Context
-    private lateinit var jsonReader : JsonReader
-    private lateinit var list_of_relation : MutableList<RelationModel>
+    private lateinit var jsonDataProvider : JsonDataProvider
+    private lateinit var list_of_relation : MutableList<CardsRelation>
 
     @Before
     fun setup() {
         context = ApplicationProvider.getApplicationContext()
-        jsonReader = JsonReader(context)
-        list_of_relation = jsonReader.readJsonObject(context.getString(R.string.collage_climat))
+        jsonDataProvider = JsonDataProvider(context)
+        list_of_relation = jsonDataProvider.provideRelations(context.getString(R.string.collage_climat))
     }
 
     //Tester dataManager.researchRelation() pour relation qui existe

@@ -1,103 +1,56 @@
 //Singleton : https://blog.mindorks.com/how-to-create-a-singleton-class-in-kotlin
 package com.micheladrien.fresquerappel.manager
 
-import android.content.Context
-import com.micheladrien.fresquerappel.R
-import com.micheladrien.fresquerappel.datas.Relation
-import com.micheladrien.fresquerappel.datas.RelationDirection
-import com.micheladrien.fresquerappel.datas.RelationMandatory
-import com.micheladrien.fresquerappel.datas.RelationModel
+import com.micheladrien.fresquerappel.datas.*
 import com.micheladrien.fresquerappel.fragment.single.Single
-import com.micheladrien.fresquerappel.tools.JsonReader
+import javax.inject.Inject
 
-class MainCollageDataManager(context: Context) : CollageDataManager {
-    val dataManager : SingletonDataManager = SingletonDataManager.getInstance(context)
-
+class MainCollageDataManager @Inject constructor(private val dataProvider: DataProvider) : CollageDataManager {
 
    init{
        if (!isDataInitialised()){
-           loadData(context.getString(R.string.collage_climat))
+           loadData("climat")
+           //loadData(init_collage)
+           //loadData(context.getString(R.string.collage_climat))
        }
    }
 
-    override fun isDataInitialised(): Boolean {
-        return dataManager.isDataInitialised()
-    }
 
-    override fun changeCollage(name:String) {
-        loadData(name.toLowerCase())
-        //return NO_COLLAGE_STRING servira en cas d'erreur d'initialisation connues
-    }
+    //Subclass. Cette classe ne sera instanciée qu'une fois
+
+
+    private var list: MutableList<CardsRelation>? = null
+    private var is_list_init: Boolean = false
 
     override fun loadData(file_name: String) {
-        synchronized(dataManager){
-            dataManager.loadData(file_name)
-        }
-
+        list = dataProvider.provideRelations(file_name)
+        is_list_init = true
     }
 
-    override fun researchRelation(number1: Int, number2: Int): RelationModel {
-        synchronized(dataManager) {
-            return dataManager.researchRelation(number1, number2)
+    override fun changeCollage(name: String) {
+        loadData(name)
+    }
+
+    override fun isDataInitialised(): Boolean {
+        return this.is_list_init
+    }
+
+    override fun researchRelation(number1: Int, number2: Int): CardsRelation {
+        list?.forEach {
+            if (it.number1 == number1) {
+                if (it.number2 == number2)
+                    return it
+            }
         }
+        return CardsRelation(
+            number1,
+            number2,
+            Relation(RelationDirection.NONE, RelationMandatory.OPTIONAL),
+            ""
+        )
     }
 
     override fun researchSingle(number1: Int): Single {
-        synchronized(dataManager){
-            return dataManager.researchSingle(number1)}
-    }
-
-
-
-    //Subclass. Cette classe ne sera instanciée qu'une fois
-    class SingletonDataManager(val jsonReader: JsonReader){
-
-        companion object {
-            lateinit private var instance : SingletonDataManager
-            var boolInit:Boolean = false
-
-            private fun isInitialised():Boolean{
-                return boolInit
-            }
-
-            fun getInstance(context: Context): SingletonDataManager{
-                if(isInitialised()) {
-                    return instance
-                }
-                else {
-                    val newJsonReader = JsonReader(context)
-                    instance = SingletonDataManager(newJsonReader)
-                    boolInit = true
-                    return instance
-                }
-            }
-        }
-
-        private var list: MutableList<RelationModel>? = null
-        private var is_list_init:Boolean = false
-
-
-        fun loadData(file_name : String){
-            list = jsonReader.readJsonObject(file_name)
-            is_list_init = true
-        }
-
-        fun isDataInitialised():Boolean{
-            return this.is_list_init
-        }
-
-        fun researchRelation(number1:Int, number2:Int): RelationModel {
-            list?.forEach {
-                if(it.number1 == number1){
-                    if(it.number2 == number2)
-                        return it
-                }
-            }
-            return RelationModel(number1, number2, Relation(RelationDirection.NONE, RelationMandatory.OPTIONAL) , "")
-        }
-
-        fun researchSingle(number1: Int): Single {
-            TODO("Not yet implemented")
-        }
+        TODO("Not yet implemented")
     }
 }

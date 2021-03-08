@@ -6,19 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.databinding.FragmentRelationBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class RelationFragment : Fragment() {
-
-    private lateinit var relationViewModel: RelationViewModel
 
     private var _binding: FragmentRelationBinding? = null
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
+
+    private val relationViewModel: RelationViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,7 +31,7 @@ class RelationFragment : Fragment() {
     ): View {
         //Vue que ce ViewModel recevra des infos du fragment pop up
         //je suis obligé de mettre l'activité main comme propriétaire
-        relationViewModel = ViewModelProvider(requireActivity()).get(RelationViewModel::class.java)
+        //relationViewModel = ViewModelProvider(requireActivity()).get(RelationViewModel::class.java)
 
         _binding = FragmentRelationBinding.inflate(inflater, container, false)
         val root = binding.root
@@ -62,7 +66,8 @@ class RelationFragment : Fragment() {
         /* Défini le bouton de recherche -- Debut */
         val fab: FloatingActionButton = binding.relationSearchButton
 
-        fab.setOnClickListener { view ->
+        fab.setOnClickListener {
+                /*view ->
             val dialogFragment = RelationRechercheDialogueFragment()
             val bundle = Bundle()
             bundle.putBoolean("notAlertDialog", true)
@@ -77,7 +82,7 @@ class RelationFragment : Fragment() {
             if (ft != null) {
                 dialogFragment.show(ft, "dialog")
             }
-
+            */
         }
         /* Défini le bouton de recherche -- Fin */
 

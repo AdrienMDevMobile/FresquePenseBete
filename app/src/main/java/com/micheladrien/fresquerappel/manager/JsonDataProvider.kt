@@ -1,22 +1,35 @@
-package com.micheladrien.fresquerappel.tools
+package com.micheladrien.fresquerappel.manager
 
 import android.annotation.SuppressLint
 import android.content.Context
-import com.micheladrien.fresquerappel.datas.RelationModel
+import android.util.Log
+import com.micheladrien.fresquerappel.datas.CardsRelation
+import dagger.hilt.android.qualifiers.ActivityContext
+import dagger.hilt.android.qualifiers.ApplicationContext
 import org.json.JSONArray
 import org.json.JSONException
 import java.io.IOException
 import java.io.InputStream
+import javax.inject.Inject
 
 
-open class JsonReader(val context:Context) {
+open class JsonDataProvider @Inject constructor(@ApplicationContext private val context:Context) : DataProvider {
 
-    open fun readJsonObject(file_name:String):MutableList<RelationModel>{
+    /* Mon JsonsDataProvider est bien créé.
+    init{
+        Log.d("diAdrien", "jsonDataProvider")
+    } */
+
+    override fun provideRelations(collage: String): MutableList<CardsRelation> {
+        return readJsonObject(collage.toLowerCase())
+    }
+
+    private fun readJsonObject(file_name:String):MutableList<CardsRelation>{
 
         try {
             val jArray = JSONArray(loadJSONFromAsset(file_name))
             //val jArray = JSONArray("[{\"c1\": 1,\"c2\": 2,\"rel\": \"UP\",\"mandatory\": \"mandatory\",\"expl\": \"\"}]")
-            val list = mutableListOf<RelationModel>()
+            val list = mutableListOf<CardsRelation>()
 
             for (i in 0 until jArray.length()) {
 
@@ -31,7 +44,7 @@ open class JsonReader(val context:Context) {
                 val explanation: String =
                     jArray.getJSONObject(i).getString("expl")
 
-                val rel = RelationModel(card1, card2, direction, mandatory, explanation)
+                val rel = CardsRelation(card1, card2, direction, mandatory, explanation)
 
                 list.add(rel)
             }
@@ -39,11 +52,10 @@ open class JsonReader(val context:Context) {
             return list
         } catch (e: JSONException) {
             e.printStackTrace()
-            return mutableListOf<RelationModel>()
+            return mutableListOf<CardsRelation>()
         }
     }
 
-    @SuppressLint("DefaultLocale")
     private fun loadJSONFromAsset(file_name:String): String? {
         val low_file_name : String = file_name.toLowerCase()
 
@@ -63,6 +75,7 @@ open class JsonReader(val context:Context) {
         return json
 
     }
+
 
 
 }

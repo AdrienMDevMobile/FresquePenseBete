@@ -14,24 +14,26 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
-import com.micheladrien.fresquerappel.manager.MainCollageDataManager
+import com.micheladrien.fresquerappel.manager.CollageDataManager
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class Main_activity : AppCompatActivity() {
 
     private lateinit var mainViewModel: MainViewModel
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private val customFragmentFactory = MainFragmentFactory()
+    @Inject lateinit var collageDataManager: CollageDataManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val dataManager = MainCollageDataManager(this)
+        //val dataManager = MainCollageDataManager(this)
 
         //Nous definissons le ViewModel
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
 
-        val fragmentFactory = customFragmentFactory
-        getSupportFragmentManager().setFragmentFactory(fragmentFactory)
+        /*val fragmentFactory = customFragmentFactory
+        getSupportFragmentManager().setFragmentFactory(fragmentFactory) */
 
         /* Défini menu lateral -- Debut */
         super.onCreate(savedInstanceState)

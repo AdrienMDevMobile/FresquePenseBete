@@ -13,14 +13,17 @@ import androidx.lifecycle.ViewModelProvider
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.databinding.DialogueFragmentRechercheBinding
 import com.micheladrien.fresquerappel.databinding.FragmentRelationBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
-class RelationRechercheDialogueFragment() : DialogFragment() {
+@AndroidEntryPoint
+class RelationRechercheDialogueFragment @Inject constructor(private var relationViewModel: RelationViewModel) : DialogFragment() {
 
     companion object{
         val maxLengthNumber = 2
     }
-    private lateinit var relationViewModel: RelationViewModel
+    //private lateinit var relationViewModel: RelationViewModel
 
     private var _binding: DialogueFragmentRechercheBinding? = null
     // This property is only valid between onCreateView and onDestroyView.
