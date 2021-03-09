@@ -1,6 +1,5 @@
 package com.micheladrien.fresquerappel.tools
 
-import android.util.Log
 import java.lang.Exception
 import kotlin.math.pow
 

@@ -1,6 +1,5 @@
 package com.micheladrien.fresquerappel.manager
 
-import android.content.Context
 import com.micheladrien.fresquerappel.datas.CardsRelation
 import com.micheladrien.fresquerappel.fragment.single.Single
 

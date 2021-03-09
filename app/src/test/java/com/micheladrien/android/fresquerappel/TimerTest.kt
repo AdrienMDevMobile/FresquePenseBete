@@ -1,7 +1,5 @@
 package com.micheladrien.android.fresquerappel
 
-
-import com.micheladrien.fresquerappel.fragment.timer.TimerAdapter
 import com.micheladrien.fresquerappel.tools.TimerStringTool
 import junit.framework.TestCase.assertEquals
 import org.junit.Test

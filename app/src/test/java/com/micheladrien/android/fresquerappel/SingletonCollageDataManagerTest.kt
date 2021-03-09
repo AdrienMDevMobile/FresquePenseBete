@@ -1,17 +1,6 @@
 package com.micheladrien.android.fresquerappel
 
-import com.micheladrien.fresquerappel.datas.RelationDirection
-import com.micheladrien.fresquerappel.datas.RelationMandatory
-import com.micheladrien.fresquerappel.manager.MainCollageDataManager
-import com.micheladrien.fresquerappel.manager.JsonDataProvider
-import org.junit.Assert
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotEquals
-import org.junit.Before
-import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
 
 //Unit test (n'utilise pas d'emulateur, uniquement la JVM

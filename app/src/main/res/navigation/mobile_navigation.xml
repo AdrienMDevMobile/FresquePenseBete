@@ -11,7 +11,6 @@
         android:name="com.micheladrien.fresquerappel.fragment.relation.RelationFragment"
         tools:layout="@layout/fragment_relation" />
 
-    <!--
 
     <fragment
         android:id="@+id/nav_timer"
@@ -26,7 +25,7 @@
     <fragment
         android:id="@+id/nav_about"
         android:name="com.micheladrien.fresquerappel.fragment.about.AboutFragment"
-        tools:layout="@layout/fragment_about" /> !-->
+        tools:layout="@layout/fragment_about" />
 
 
 </navigation>

@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.databinding.FragmentTimerBinding
 import com.micheladrien.fresquerappel.tools.notification.NotServiceCompanion
-import com.micheladrien.fresquerappel.tools.notification.NotificationService
 
 class TimerFragment : Fragment() {
 

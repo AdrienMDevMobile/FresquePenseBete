@@ -6,7 +6,6 @@ import android.os.Build
 import android.util.Log
 import androidx.lifecycle.*
 import com.micheladrien.fresquerappel.manager.CollageDataManager
-import com.micheladrien.fresquerappel.manager.MainCollageDataManager
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.Relation
 import com.micheladrien.fresquerappel.datas.RelationDirection

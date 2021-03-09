@@ -7,13 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.databinding.FragmentRelationBinding
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class RelationFragment : Fragment() {
@@ -25,9 +22,9 @@ class RelationFragment : Fragment() {
     private val relationViewModel: RelationViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
         //Vue que ce ViewModel recevra des infos du fragment pop up
         //je suis obligé de mettre l'activité main comme propriétaire
@@ -45,20 +42,20 @@ class RelationFragment : Fragment() {
         })
 
         //Id des deux cartes
-        relationViewModel.card1.observe(viewLifecycleOwner,  {
+        relationViewModel.card1.observe(viewLifecycleOwner, {
             binding.txtIdCard1.text = it.toString()
         })
-        relationViewModel.card2.observe(viewLifecycleOwner,  {
+        relationViewModel.card2.observe(viewLifecycleOwner, {
             binding.txtIdCard2.text = it.toString()
         })
         //Relation = -> <- X, etc + sa couleur + optionel/obligatoire
-        relationViewModel.relation.observe(viewLifecycleOwner,  {
+        relationViewModel.relation.observe(viewLifecycleOwner, {
             binding.txtRelation.text = it
         })
-        relationViewModel.relation_color.observe(viewLifecycleOwner,  {
+        relationViewModel.relation_color.observe(viewLifecycleOwner, {
             binding.txtRelation.setTextColor(it)
         })
-        relationViewModel.relation_mandatory.observe(viewLifecycleOwner,  {
+        relationViewModel.relation_mandatory.observe(viewLifecycleOwner, {
             binding.txtMandatory.text = it
         })
         /* Set up des observeurs debut */
@@ -66,9 +63,8 @@ class RelationFragment : Fragment() {
         /* Défini le bouton de recherche -- Debut */
         val fab: FloatingActionButton = binding.relationSearchButton
 
-        fab.setOnClickListener {
-                /*view ->
-            val dialogFragment = RelationRechercheDialogueFragment()
+        fab.setOnClickListener { view ->
+            val dialogFragment = RelSearchDialogFragment()
             val bundle = Bundle()
             bundle.putBoolean("notAlertDialog", true)
             dialogFragment.arguments = bundle
@@ -82,7 +78,12 @@ class RelationFragment : Fragment() {
             if (ft != null) {
                 dialogFragment.show(ft, "dialog")
             }
-            */
+            requireActivity().supportFragmentManager
+                    .setFragmentResultListener(RelSearchDialogFragment.KEY_RESULT, viewLifecycleOwner,
+                            { requestKey, result -> relationViewModel.changeCards(
+                                    result.getInt(RelSearchDialogFragment.KEY_CARD1), result.getInt(RelSearchDialogFragment.KEY_CARD2))
+                                relationViewModel.research()
+                            })
         }
         /* Défini le bouton de recherche -- Fin */
 

@@ -1,10 +1,7 @@
 package com.micheladrien.fresquerappel.manager
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import com.micheladrien.fresquerappel.datas.CardsRelation
-import dagger.hilt.android.qualifiers.ActivityContext
 import dagger.hilt.android.qualifiers.ApplicationContext
 import org.json.JSONArray
 import org.json.JSONException

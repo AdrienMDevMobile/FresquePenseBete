@@ -9,21 +9,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.ViewModelProvider
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.databinding.DialogueFragmentRechercheBinding
-import com.micheladrien.fresquerappel.databinding.FragmentRelationBinding
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 
-@AndroidEntryPoint
-class RelationRechercheDialogueFragment @Inject constructor(private var relationViewModel: RelationViewModel) : DialogFragment() {
+class RelSearchDialogFragment : DialogFragment() {
 
     companion object{
-        val maxLengthNumber = 2
+        val KEY_CARD1 = "card1"
+        val KEY_CARD2 = "card2"
+        val KEY_RESULT = "ResRel"
+        private val maxLengthNumber = 2
     }
-    //private lateinit var relationViewModel: RelationViewModel
 
     private var _binding: DialogueFragmentRechercheBinding? = null
     // This property is only valid between onCreateView and onDestroyView.
@@ -34,7 +31,7 @@ class RelationRechercheDialogueFragment @Inject constructor(private var relation
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        relationViewModel = ViewModelProvider(requireActivity()).get(RelationViewModel::class.java)
+        //relationViewModel = ViewModelProvider(requireActivity()).get(RelationViewModel::class.java)
 
         _binding = DialogueFragmentRechercheBinding.inflate(inflater, container, false)
         return binding.root
@@ -45,8 +42,13 @@ class RelationRechercheDialogueFragment @Inject constructor(private var relation
         if(checkNumbers()){
             val card1 = binding.ETcard1.text.toString().toInt()
             val card2 = binding.ETcard2.text.toString().toInt()
+            /* Not sharing a Viewmodel with relationFragment anymore. Returns value to TargetFragment
             relationViewModel.changeCards(card1, card2)
-            relationViewModel.research()
+            relationViewModel.research() */
+            val bundle = Bundle()
+            bundle.putInt(KEY_CARD1, card1)
+            bundle.putInt(KEY_CARD2, card2)
+            parentFragmentManager.setFragmentResult(KEY_RESULT, bundle)
 
             return true
         }
@@ -54,6 +56,8 @@ class RelationRechercheDialogueFragment @Inject constructor(private var relation
             return false
 
     }
+
+
 
     //Vérifie que les numéros de cartes ont bien étés entrés
     fun checkNumbers():Boolean{
@@ -81,9 +85,7 @@ class RelationRechercheDialogueFragment @Inject constructor(private var relation
 
         binding.ETcard1.addTextChangedListener(TextWatcherGoTo(binding.ETcard2))
         binding.ETcard2.addTextChangedListener(TextWatcherStartSearch(this))
-        binding.BTNrecherche.setOnClickListener {
-            if(startSearch())
-                this.dismiss() }
+        binding.BTNrecherche.setOnClickListener { if(startSearch()) this.dismiss() }
         /*
          Actuellement mis en commentaire : problème de focus pour l'apparition du clavier :
          si je ne force pas le focus : rien ne se passe
@@ -134,11 +136,11 @@ class RelationRechercheDialogueFragment @Inject constructor(private var relation
     }
 
     //Second edit text : lance la recherche.
-    class TextWatcherStartSearch(val relationRechercheDialogueFragment: RelationRechercheDialogueFragment) : TextWatcher {
+    class TextWatcherStartSearch(val relSearchDialogFragment: RelSearchDialogFragment) : TextWatcher {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             if(s?.length!! >= maxLengthNumber) {
-                if(relationRechercheDialogueFragment.startSearch())
-                    relationRechercheDialogueFragment.dismiss()
+                if(relSearchDialogFragment.startSearch())
+                    relSearchDialogFragment.dismiss()
             }
         }
 

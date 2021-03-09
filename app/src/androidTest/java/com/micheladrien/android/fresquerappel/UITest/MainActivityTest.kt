@@ -1,11 +1,7 @@
 package com.micheladrien.android.fresquerappel.UITest
 
-import androidx.navigation.Navigation
-import androidx.navigation.testing.TestNavHostController
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -17,12 +13,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import androidx.test.espresso.contrib.DrawerActions
-import androidx.test.espresso.contrib.NavigationViewActions.navigateTo
-import com.micheladrien.fresquerappel.fragment.timer.TimerFragment
-import org.junit.Assert.assertThat
-import org.junit.Assert.assertTrue
 import org.junit.Before
-import java.lang.Thread.sleep
 
 
 //Tester slidebar : https://developer.android.com/reference/androidx/test/espresso/contrib/DrawerActions

@@ -1,7 +1,6 @@
 package com.micheladrien.fresquerappel.datas
 
 import android.annotation.SuppressLint
-import java.util.*
 
 class CardsRelation(val number1: Int, val number2: Int, val relation: Relation, val explanation:String){
 

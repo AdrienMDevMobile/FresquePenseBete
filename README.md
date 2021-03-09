@@ -1,4 +1,6 @@
 # FresquePenseBete
+**A partir de 1.5.X : Utilisation de Hilt pour Dependency Injection**<br>
+1.5 = Nouvelle fonctionnalité : Mise en place notifications préparées.<br>
 **A partir de 1.4 : Developpement en TDD (Test Driven development) : Junit, Mockito, Espresso et UIautomator**<br>
 1.3 = Retour arrière barre latérale : il y aura désormais plusieurs fragments<br>
 1.2 = Correction et nettoyage du code<br>

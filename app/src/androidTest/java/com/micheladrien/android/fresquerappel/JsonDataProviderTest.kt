@@ -1,7 +1,7 @@
 package com.micheladrien.android.fresquerappel
+
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-//import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.micheladrien.fresquerappel.R
