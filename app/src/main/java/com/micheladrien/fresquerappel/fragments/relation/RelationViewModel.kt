@@ -1,11 +1,11 @@
-package com.micheladrien.fresquerappel.fragment.relation
+package com.micheladrien.fresquerappel.fragments.relation
 
 import android.annotation.SuppressLint
 import android.app.Application
 import android.os.Build
 import android.util.Log
 import androidx.lifecycle.*
-import com.micheladrien.fresquerappel.manager.CollageDataManager
+import com.micheladrien.fresquerappel.managers.CollageDataManager
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.Relation
 import com.micheladrien.fresquerappel.datas.RelationDirection
@@ -15,8 +15,8 @@ import javax.inject.Inject
 
 /*
 Le Viewmodel sera partagé entre l'activité main (reçoit le nom de la fresque),
-le fragment de recherche (reçoit numéro des cartes)
-le fragment principal (affiche les informations)
+le fragments de recherche (reçoit numéro des cartes)
+le fragments principal (affiche les informations)
  */
 
 

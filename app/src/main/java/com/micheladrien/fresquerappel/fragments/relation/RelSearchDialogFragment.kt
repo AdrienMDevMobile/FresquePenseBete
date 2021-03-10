@@ -1,4 +1,4 @@
-package com.micheladrien.fresquerappel.fragment.relation
+package com.micheladrien.fresquerappel.fragments.relation
 
 import android.os.Bundle
 import android.text.Editable

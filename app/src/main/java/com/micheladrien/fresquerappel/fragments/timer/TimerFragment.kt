@@ -1,4 +1,4 @@
-package com.micheladrien.fresquerappel.fragment.timer
+package com.micheladrien.fresquerappel.fragments.timer
 
 import android.os.Bundle
 import android.view.LayoutInflater

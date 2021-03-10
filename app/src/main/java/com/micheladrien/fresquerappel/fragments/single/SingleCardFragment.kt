@@ -1,4 +1,4 @@
-package com.micheladrien.fresquerappel.fragment.notes
+package com.micheladrien.fresquerappel.fragments.single
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.micheladrien.fresquerappel.R
 
-class NotesFragment : Fragment() {
+class SingleCardFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -15,8 +15,7 @@ class NotesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val root = inflater.inflate(R.layout.fragment_notes, container, false)
+        val root = inflater.inflate(R.layout.fragment_single, container, false)
         return root
     }
-
 }

@@ -1,4 +1,4 @@
-package com.micheladrien.fresquerappel.manager
+package com.micheladrien.fresquerappel.managers
 
 import com.micheladrien.fresquerappel.datas.TimerModel
 import java.util.ArrayList

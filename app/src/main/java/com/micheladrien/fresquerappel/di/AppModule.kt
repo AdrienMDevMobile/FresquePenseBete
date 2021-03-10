@@ -1,9 +1,9 @@
 package com.micheladrien.fresquerappel.di
 
-import com.micheladrien.fresquerappel.manager.CollageDataManager
-import com.micheladrien.fresquerappel.manager.DataProvider
-import com.micheladrien.fresquerappel.manager.JsonDataProvider
-import com.micheladrien.fresquerappel.manager.MainCollageDataManager
+import com.micheladrien.fresquerappel.managers.CollageDataManager
+import com.micheladrien.fresquerappel.managers.DataProvider
+import com.micheladrien.fresquerappel.managers.JsonDataProvider
+import com.micheladrien.fresquerappel.managers.MainCollageDataManager
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

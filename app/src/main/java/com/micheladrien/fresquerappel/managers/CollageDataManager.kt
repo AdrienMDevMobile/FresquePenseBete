@@ -1,7 +1,7 @@
-package com.micheladrien.fresquerappel.manager
+package com.micheladrien.fresquerappel.managers
 
 import com.micheladrien.fresquerappel.datas.CardsRelation
-import com.micheladrien.fresquerappel.fragment.single.Single
+import com.micheladrien.fresquerappel.fragments.single.Single
 
 interface CollageDataManager {
 

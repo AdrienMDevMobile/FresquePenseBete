@@ -1,4 +1,4 @@
-package com.micheladrien.fresquerappel.fragment.about
+package com.micheladrien.fresquerappel.fragments.about
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package com.micheladrien.fresquerappel.manager
+package com.micheladrien.fresquerappel.managers
 
 import android.content.Context
 import com.micheladrien.fresquerappel.datas.CardsRelation

@@ -3,9 +3,9 @@ package com.micheladrien.android.fresquerappel
 import com.micheladrien.fresquerappel.datas.CardsRelation
 import com.micheladrien.fresquerappel.datas.RelationDirection
 import com.micheladrien.fresquerappel.datas.RelationMandatory
-import com.micheladrien.fresquerappel.manager.CollageDataManager
-import com.micheladrien.fresquerappel.manager.DataProvider
-import com.micheladrien.fresquerappel.manager.MainCollageDataManager
+import com.micheladrien.fresquerappel.managers.CollageDataManager
+import com.micheladrien.fresquerappel.managers.DataProvider
+import com.micheladrien.fresquerappel.managers.MainCollageDataManager
 import org.junit.*
 import org.junit.Assert.assertTrue
 import org.junit.runner.RunWith

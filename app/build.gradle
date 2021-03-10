@@ -19,7 +19,7 @@ android {
         versionName "1.2"
 
         //testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        testInstrumentationRunner "com.example.android.hilt.CustomTestRunner"
+        testInstrumentationRunner "com.micheladrien.android.fresquerappel.CustomTestRunner"
     }
 
     buildTypes {

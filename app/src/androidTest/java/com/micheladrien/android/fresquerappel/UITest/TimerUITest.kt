@@ -3,8 +3,6 @@ package com.micheladrien.android.fresquerappel.UITest
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.util.Log
-import androidx.lifecycle.ViewModelProvider
 import androidx.test.annotation.UiThreadTest
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -15,9 +13,8 @@ import com.micheladrien.android.fresquerappel.UITest.UITestUtilitaire.checkNotif
 import com.micheladrien.fresquerappel.Main_activity
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.TimerModel
-import com.micheladrien.fresquerappel.fragment.timer.TimerFragment
-import com.micheladrien.fresquerappel.fragment.timer.TimerViewModel
-import com.micheladrien.fresquerappel.manager.TimerManager
+import com.micheladrien.fresquerappel.fragments.timer.TimerViewModel
+import com.micheladrien.fresquerappel.managers.TimerManager
 import com.micheladrien.fresquerappel.tools.notification.NotServiceCompanion
 import com.micheladrien.fresquerappel.tools.notification.NotificationService
 import com.micheladrien.fresquerappel.tools.notification.TimerService
@@ -25,10 +22,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
-import org.mockito.Mockito
-import org.mockito.junit.MockitoJUnitRunner
-import java.lang.Thread.sleep
 import java.util.*
 
 
@@ -100,7 +93,7 @@ class TimerUITest {
     //Le Fragment appel bien la fonction
     @Test
     fun TimerFragmentCallTimerService(){
-        //Creer fragment
+        //Creer fragments
 
         //Mocking du timerService
     }

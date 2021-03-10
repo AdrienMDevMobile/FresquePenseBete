@@ -1,4 +1,4 @@
-package com.micheladrien.fresquerappel.fragment.timer
+package com.micheladrien.fresquerappel.fragments.timer
 
 import android.content.Context
 import android.content.Intent
@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.lifecycle.*
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.TimerModel
-import com.micheladrien.fresquerappel.manager.TimerManager
+import com.micheladrien.fresquerappel.managers.TimerManager
 import com.micheladrien.fresquerappel.tools.notification.TimerService
 import java.util.ArrayList
 

@@ -2,39 +2,49 @@ package com.micheladrien.android.fresquerappel
 
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.CardsRelation
-import com.micheladrien.fresquerappel.manager.JsonDataProvider
+import com.micheladrien.fresquerappel.managers.DataProvider
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import javax.inject.Inject
 
 
 @RunWith(AndroidJUnit4::class)
+@HiltAndroidTest
 class JsonDataProviderTest {
+
 
     @Rule
     @JvmField
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
+
+
+
     private lateinit var context : Context
-    private lateinit var jsonDataProvider : JsonDataProvider
+    @Inject
+    lateinit var jsonDataProvider : DataProvider
     private lateinit var list_of_relation : MutableList<CardsRelation>
 
+    //Attention : Si le texte dans climat.json change : il faut adapter le test
     @Before
     fun setup() {
-        context = ApplicationProvider.getApplicationContext()
-        jsonDataProvider = JsonDataProvider(context)
-        list_of_relation = jsonDataProvider.provideRelations(context.getString(R.string.collage_climat))
+        hiltRule.inject()
+        //context = ApplicationProvider.getApplicationContext()
+        //jsonDataProvider = JsonDataProvider(context)
+        list_of_relation = jsonDataProvider.provideRelations("climat")
     }
 
-    //Tester dataManager.researchRelation() pour relation qui existe
-    //Attention : Si le texte dans climat.json change : il faut adapter le test
+
     @Test
     fun ListCorrectTypeTest(){
         assertNotNull(list_of_relation)
@@ -47,4 +57,8 @@ class JsonDataProviderTest {
         assertTrue(list_of_relation.size > 100)
     }
 
+
+    /*@Test
+    fun initTest(){assertTrue(true)}
+    //Tester dataManager.researchRelation() pour relation qui existe */
 }

@@ -1,4 +1,4 @@
-package com.micheladrien.fresquerappel.fragment.timer
+package com.micheladrien.fresquerappel.fragments.timer
 
 import android.view.View
 import android.widget.TextView

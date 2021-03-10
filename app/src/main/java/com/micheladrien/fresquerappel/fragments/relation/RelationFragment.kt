@@ -1,4 +1,4 @@
-package com.micheladrien.fresquerappel.fragment.relation
+package com.micheladrien.fresquerappel.fragments.relation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -26,7 +26,7 @@ class RelationFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        //Vue que ce ViewModel recevra des infos du fragment pop up
+        //Vue que ce ViewModel recevra des infos du fragments pop up
         //je suis obligé de mettre l'activité main comme propriétaire
         //relationViewModel = ViewModelProvider(requireActivity()).get(RelationViewModel::class.java)
 
