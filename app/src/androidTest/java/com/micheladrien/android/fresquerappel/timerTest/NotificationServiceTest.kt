@@ -1,4 +1,4 @@
-package com.micheladrien.android.fresquerappel.UITest
+package com.micheladrien.android.fresquerappel.timerTest
 
 import android.content.Context
 import android.content.Intent
@@ -8,10 +8,11 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import androidx.test.uiautomator.*
-import com.micheladrien.android.fresquerappel.UITest.UITestUtilitaire.checkNotification
+import com.micheladrien.android.fresquerappel.UITestUtilitaire.checkNotification
 import com.micheladrien.fresquerappel.Main_activity
 import com.micheladrien.fresquerappel.tools.notification.NotServiceCompanion
 import com.micheladrien.fresquerappel.tools.notification.NotificationService
+import dagger.hilt.android.testing.HiltAndroidTest
 import junit.framework.TestCase.*
 import org.junit.Before
 import org.junit.Test
@@ -23,6 +24,7 @@ import org.junit.Rule
 //https://proandroiddev.com/testing-android-notifications-f147a572b257
 
 @RunWith(AndroidJUnit4::class)
+@HiltAndroidTest
 class NotificationServiceTest {
 
     private val clearAllNotificationRes = "com.android.systemui:id/dismiss_text"

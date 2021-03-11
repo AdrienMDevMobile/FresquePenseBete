@@ -1,6 +1,7 @@
 package com.micheladrien.fresquerappel.managers
 
 import android.content.Context
+import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.CardsRelation
 import dagger.hilt.android.qualifiers.ApplicationContext
 import org.json.JSONArray
@@ -12,14 +13,8 @@ import javax.inject.Inject
 
 open class JsonDataProvider @Inject constructor(@ApplicationContext private val context:Context) : DataProvider {
 
-    /* Mon JsonsDataProvider est bien créé.
-    init{
-        Log.d("diAdrien", "jsonDataProvider")
-    } */
+    override fun provideRelations(collage: String): MutableList<CardsRelation> = readJsonObject(collage.toLowerCase())
 
-    override fun provideRelations(collage: String): MutableList<CardsRelation> {
-        return readJsonObject(collage.toLowerCase())
-    }
 
     private fun readJsonObject(file_name:String):MutableList<CardsRelation>{
 

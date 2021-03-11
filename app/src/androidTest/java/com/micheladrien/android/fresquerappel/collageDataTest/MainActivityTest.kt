@@ -1,5 +1,6 @@
-package com.micheladrien.android.fresquerappel.UITest
+package com.micheladrien.android.fresquerappel.collageDataTest
 
+import android.content.Intent
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -13,21 +14,33 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import androidx.test.espresso.contrib.DrawerActions
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
 
 
 //Tester slidebar : https://developer.android.com/reference/androidx/test/espresso/contrib/DrawerActions
 //Il faut ajouter au gradle androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:num_version'
 @RunWith(AndroidJUnit4::class)
+@HiltAndroidTest
 class MainActivityTest {
 
     @get:Rule
+    var hiltRule = HiltAndroidRule(this)
+    /*
+    @get:Rule
     val mainActivityTestRule : ActivityTestRule<Main_activity> = ActivityTestRule<Main_activity>(
         Main_activity::class.java
-    )
+    ) */
 
     @Before
     fun set_up(){
+        val mainActivityTestRule : ActivityTestRule<Main_activity> = ActivityTestRule<Main_activity>(
+                Main_activity::class.java
+        )
+        mainActivityTestRule.launchActivity(Intent())
+
+
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())
     }
 
@@ -36,13 +49,14 @@ class MainActivityTest {
         onView(withId(R.id.nav_view)).check(matches(isDisplayed()))
     }
 
+    /*
     @Test
     fun testOpenSingleFragment(){
         onView(withId(R.id.nav_single)).perform(click())
         onView(withId(R.id.tv_single_not_supported)).check(matches(isDisplayed()))
         //sleep(2000)
 
-    }
+    } */
     @Test
     fun testOpenAboutFragment(){
         onView(withId(R.id.nav_about)).perform(click())

@@ -21,8 +21,11 @@ TODO Remplacer string par TimephaseViewModel
 class TimerViewModel() : ViewModel() {
 
     private val timerManager = TimerManager()
+
     var timerArrayList:ArrayList<TimerModel>? = null
+
     private val _timerLiveData = MutableLiveData<ArrayList<TimerModel>>()
+
     val timerLiveData: LiveData<ArrayList<TimerModel>> = _timerLiveData
 
     init{

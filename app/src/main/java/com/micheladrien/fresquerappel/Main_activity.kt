@@ -49,7 +49,7 @@ class Main_activity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_relation, R.id.nav_timer, R.id.nav_single,  R.id.nav_about
+                R.id.nav_relation, R.id.nav_timer, /*R.id.nav_single,*/  R.id.nav_about
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -71,11 +71,11 @@ class Main_activity : AppCompatActivity() {
         } */
         /* Défini menu lateral -- Fin */
 
-        //La VM change le nom de la fresque active
+        /*La VM change le nom de la fresque active
         mainViewModel.name.observe(this, {
             val actionBar: ActionBar? = supportActionBar
             actionBar?.setTitle(it.toString())
-        })
+        }) */
 
     }
 

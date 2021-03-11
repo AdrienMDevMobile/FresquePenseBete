@@ -17,10 +17,11 @@
         android:name="com.micheladrien.fresquerappel.fragments.timer.TimerFragment"
         tools:layout="@layout/fragment_timer" />
 
+    <!--
     <fragment
         android:id="@+id/nav_single"
         android:name="com.micheladrien.fresquerappel.fragments.single.SingleCardFragment"
-        tools:layout="@layout/fragment_single" />
+        tools:layout="@layout/fragment_single" /> -->
 
     <fragment
         android:id="@+id/nav_about"

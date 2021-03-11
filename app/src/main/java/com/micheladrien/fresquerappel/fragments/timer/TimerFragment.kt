@@ -1,5 +1,6 @@
 package com.micheladrien.fresquerappel.fragments.timer
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -81,6 +82,11 @@ class TimerFragment : Fragment() {
         return root
     }
 
+
+    override fun onStart() {
+        super.onStart()
+        activity?.setTitle(getString(R.string.menu_timer))
+    }
 
 }
 

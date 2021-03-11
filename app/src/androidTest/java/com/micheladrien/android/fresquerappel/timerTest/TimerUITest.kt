@@ -1,4 +1,4 @@
-package com.micheladrien.android.fresquerappel.UITest
+package com.micheladrien.android.fresquerappel.timerTest
 
 import android.app.PendingIntent
 import android.content.Context
@@ -9,7 +9,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import androidx.test.uiautomator.UiDevice
-import com.micheladrien.android.fresquerappel.UITest.UITestUtilitaire.checkNotification
+import com.micheladrien.android.fresquerappel.UITestUtilitaire.checkNotification
 import com.micheladrien.fresquerappel.Main_activity
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.TimerModel
@@ -18,6 +18,7 @@ import com.micheladrien.fresquerappel.managers.TimerManager
 import com.micheladrien.fresquerappel.tools.notification.NotServiceCompanion
 import com.micheladrien.fresquerappel.tools.notification.NotificationService
 import com.micheladrien.fresquerappel.tools.notification.TimerService
+import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -27,6 +28,7 @@ import java.util.*
 
 //Verification de l'execution du timer (en arrière plan, va faire une notification)
 @RunWith(AndroidJUnit4::class)
+@HiltAndroidTest
 class TimerUITest {
 
     private lateinit var mDevice : UiDevice

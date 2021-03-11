@@ -7,28 +7,24 @@ import javax.inject.Inject
 
 class MainCollageDataManager @Inject constructor(private val dataProvider: DataProvider) : CollageDataManager {
 
+
+
    init{
-       if (!isDataInitialised()){
-           loadData("climat")
-           //loadData(init_collage)
-           //loadData(context.getString(R.string.collage_climat))
-       }
+       changeCollage("Climat")
    }
 
 
     //Subclass. Cette classe ne sera instanciée qu'une fois
 
-
+    private lateinit var currentCollage : String
     private var list: MutableList<CardsRelation>? = null
     private var is_list_init: Boolean = false
 
-    override fun loadData(file_name: String) {
-        list = dataProvider.provideRelations(file_name)
-        is_list_init = true
-    }
 
     override fun changeCollage(name: String) {
-        loadData(name)
+        list = dataProvider.provideRelations(name)
+        currentCollage = name
+        is_list_init = true
     }
 
     override fun isDataInitialised(): Boolean {
@@ -52,5 +48,9 @@ class MainCollageDataManager @Inject constructor(private val dataProvider: DataP
 
     override fun researchSingle(number1: Int): Single {
         TODO("Not yet implemented")
+    }
+
+    override fun getCurrentCollage() : String {
+        return currentCollage
     }
 }

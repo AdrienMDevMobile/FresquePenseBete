@@ -10,10 +10,11 @@
             android:icon="@drawable/menu_lien"
             android:title="@string/menu_relation" />
 
+        <!--
         <item
             android:id="@+id/nav_single"
             android:icon="@drawable/menu_single"
-            android:title="@string/menu_single" />
+            android:title="@string/menu_single" /> -->
 
         <item
             android:id="@+id/nav_timer"

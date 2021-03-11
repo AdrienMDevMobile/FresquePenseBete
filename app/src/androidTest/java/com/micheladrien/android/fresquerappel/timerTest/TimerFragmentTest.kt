@@ -1,4 +1,4 @@
-package com.micheladrien.android.fresquerappel.UITest
+package com.micheladrien.android.fresquerappel.timerTest
 
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.action.ViewActions
@@ -8,11 +8,13 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.micheladrien.fresquerappel.Main_activity
 import com.micheladrien.fresquerappel.R
+import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
+@HiltAndroidTest
 class TimerFragmentTest {
 
     @get:Rule

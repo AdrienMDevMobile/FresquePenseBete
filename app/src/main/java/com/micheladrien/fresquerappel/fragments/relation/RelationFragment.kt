@@ -1,5 +1,7 @@
 package com.micheladrien.fresquerappel.fragments.relation
 
+import android.app.ActionBar
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -87,7 +89,16 @@ class RelationFragment : Fragment() {
         }
         /* Défini le bouton de recherche -- Fin */
 
+
+
         return root
     }
+
+
+    override fun onStart() {
+        super.onStart()
+        activity?.setTitle(relationViewModel.getCurrentCollage())
+    }
+
 
 }

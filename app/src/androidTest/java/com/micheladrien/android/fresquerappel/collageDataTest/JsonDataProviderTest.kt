@@ -1,4 +1,4 @@
-package com.micheladrien.android.fresquerappel
+package com.micheladrien.android.fresquerappel.collageDataTest
 
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule

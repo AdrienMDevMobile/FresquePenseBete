@@ -10,6 +10,7 @@ import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.Relation
 import com.micheladrien.fresquerappel.datas.RelationDirection
 import com.micheladrien.fresquerappel.datas.RelationMandatory
+import com.micheladrien.fresquerappel.tools.iCollageVM
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -22,7 +23,7 @@ le fragments principal (affiche les informations)
 
 //ou récupérer valeur par défaut (mm fonction) au moment de la recherche si val null.
 @HiltViewModel
-class RelationViewModel @Inject constructor (private val collageDataManager: CollageDataManager, application: Application) : AndroidViewModel(application) {
+class RelationViewModel @Inject constructor (private val collageDataManager: CollageDataManager, application: Application) : AndroidViewModel(application), iCollageVM {
 
     /* ancien MainViewmodel est désormais RelationView model. Name se trouve dans le nouveau ViewModel
     private val _name = MutableLiveData<String>().apply {
@@ -127,4 +128,10 @@ class RelationViewModel @Inject constructor (private val collageDataManager: Col
                 _relation_color.value =  getApplication<Application>().getColor( R.color.gray_missing)
         }
     }
+
+    //TODO : Voir si le collageDataManager peut aussi être passé à la classe abstraite iCollageVM
+    override fun getCurrentCollage(): String {
+        return collageDataManager.getCurrentCollage()
+    }
+
 }

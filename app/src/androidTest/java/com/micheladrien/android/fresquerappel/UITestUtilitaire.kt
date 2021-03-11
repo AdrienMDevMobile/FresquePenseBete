@@ -1,4 +1,4 @@
-package com.micheladrien.android.fresquerappel.UITest
+package com.micheladrien.android.fresquerappel
 
 import android.view.View
 import android.widget.EditText
