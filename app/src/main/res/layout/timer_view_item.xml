@@ -4,7 +4,8 @@ android:layout_width="match_parent"
 android:layout_height="@dimen/timer_item_height"
 android:layout_marginLeft="@dimen/timer_margin_medium"
 android:layout_marginRight="@dimen/timer_margin_medium"
-android:gravity="center_vertical">
+android:gravity="center_vertical"
+xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
         android:id="@+id/tv_timer_name"
@@ -12,20 +13,22 @@ android:gravity="center_vertical">
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/timer_margin_medium"
         android:layout_marginRight="@dimen/timer_margin_medium"
-        android:text="@string/ph_timer_name"
         android:textSize="@dimen/timer_size_name"
-        android:fontFamily="monospace"/>
+        android:fontFamily="monospace"
+        tools:text="TimerName"/>
+
 
     <TextView
         android:id="@+id/tv_timer_value"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="@string/ph_timer_name"
         android:layout_marginLeft="@dimen/timer_margin_medium"
         android:layout_marginRight="@dimen/timer_margin_medium"
         android:fontFamily="monospace"
-        android:textSize="@dimen/timer_size_value"/>
+        android:textSize="@dimen/timer_size_value"
+        tools:text="00:00"/>
 
+    <!--
     <Button
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -33,6 +36,6 @@ android:gravity="center_vertical">
         android:layout_marginLeft="@dimen/timer_margin_medium"
         android:layout_marginRight="@dimen/timer_margin_medium"
         android:background="@null"
-        />
+        /> -->
 
 </LinearLayout>

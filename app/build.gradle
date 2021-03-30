@@ -62,8 +62,11 @@ dependencies {
     def mockito_version = '3.5.5' // For local unit tests on your development machine
     testImplementation "org.mockito:mockito-core:$mockito_version" // For instrumentation tests on Android devices and emulators
     androidTestImplementation "org.mockito:mockito-android:$mockito_version"
+
+    //Pour Android Test rules (ActivityTestRule)
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
+
     androidTestImplementation 'com.android.support:support-annotations:28.0.0'
     androidTestImplementation "androidx.navigation:navigation-testing:$navigation_version"
     //https://github.com/android/android-test/issues/731

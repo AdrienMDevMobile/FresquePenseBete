@@ -13,6 +13,6 @@
     <!-- Timer's view items -->
     <dimen name="timer_item_height">22sp</dimen>
     <dimen name="timer_margin_medium">8sp</dimen>
-    <dimen name="timer_size_name">16sp</dimen>
+    <dimen name="timer_size_name">20sp</dimen>
     <dimen name="timer_size_value">20sp</dimen>
 </resources>
