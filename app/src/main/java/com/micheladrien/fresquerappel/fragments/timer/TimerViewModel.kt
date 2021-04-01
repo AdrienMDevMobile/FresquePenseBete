@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.lifecycle.*
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.TimerModel
-import com.micheladrien.fresquerappel.managers.TimerManager
+import com.micheladrien.fresquerappel.managers.TimerProvider
 import com.micheladrien.fresquerappel.tools.notification.TimerSExecutor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.ArrayList
@@ -20,9 +20,7 @@ TODO Remplacer string par TimephaseViewModel
  */
 //https://medium.com/@atifmukhtar/recycler-view-with-mvvm-livedata-a1fd062d2280
 @HiltViewModel
-class TimerViewModel @Inject constructor(private val timerExecutor : TimerSExecutor) : ViewModel() {
-
-    private val timerManager = TimerManager()
+class TimerViewModel @Inject constructor(private val timerExecutor : TimerSExecutor, private val timerProvider: TimerProvider) : ViewModel() {
 
     var timerArrayList:ArrayList<TimerModel>? = null
 
@@ -36,7 +34,7 @@ class TimerViewModel @Inject constructor(private val timerExecutor : TimerSExecu
 
     //TODO Recuperer la liste depuis une BDD
     fun populateList(){
-        populateList(timerManager.getListTimer())
+        populateList(timerProvider.getListTimer())
     }
 
     fun populateList(timerArrayList : ArrayList<TimerModel>){

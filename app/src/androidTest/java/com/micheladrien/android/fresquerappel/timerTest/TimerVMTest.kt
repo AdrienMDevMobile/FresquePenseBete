@@ -9,7 +9,7 @@ import androidx.test.rule.ActivityTestRule
 import androidx.test.uiautomator.UiDevice
 import com.micheladrien.fresquerappel.Main_activity
 import com.micheladrien.fresquerappel.fragments.timer.TimerViewModel
-import com.micheladrien.fresquerappel.managers.TimerManager
+import com.micheladrien.fresquerappel.managers.RawTimerProvider
 import com.micheladrien.fresquerappel.tools.notification.TimerSExecutor
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -47,8 +47,8 @@ class TimerVMTest {
     @UiThreadTest
     @Test
     fun VMStartTimer(){
-        val vm = TimerViewModel(timerSExecutor)
-        vm.populateList(TimerManager().getTestListTimer())
+        val vm = TimerViewModel(timerSExecutor, RawTimerProvider())
+        vm.populateList()
         vm.startTimer(context)
         //checkNotification(mDevice, context.getString(R.string.timer_notification_title), "Lot 1")
         //sleep(100)
