@@ -4,6 +4,8 @@ import com.micheladrien.fresquerappel.managers.CollageDataManager
 import com.micheladrien.fresquerappel.managers.DataProvider
 import com.micheladrien.fresquerappel.managers.JsonDataProvider
 import com.micheladrien.fresquerappel.managers.MainCollageDataManager
+import com.micheladrien.fresquerappel.tools.notification.MainTimerSExecutor
+import com.micheladrien.fresquerappel.tools.notification.TimerSExecutor
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -26,5 +28,6 @@ abstract class AppModule {
     abstract fun bindDataProvider(
         dataProvider : JsonDataProvider
     ): DataProvider
+
 
 }

@@ -1,14 +1,15 @@
 package com.micheladrien.fresquerappel.fragments.timer
 
 import android.content.Context
-import android.content.Intent
 import android.widget.Toast
 import androidx.lifecycle.*
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.TimerModel
 import com.micheladrien.fresquerappel.managers.TimerManager
-import com.micheladrien.fresquerappel.tools.notification.TimerService
+import com.micheladrien.fresquerappel.tools.notification.TimerSExecutor
+import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.ArrayList
+import javax.inject.Inject
 
 //import il.co.theblitz.observablecollections.lists.ObservableArrayList
 
@@ -18,7 +19,8 @@ https://stackoverflow.com/questions/7178801/how-do-i-structure-mvvm-with-collect
 TODO Remplacer string par TimephaseViewModel
  */
 //https://medium.com/@atifmukhtar/recycler-view-with-mvvm-livedata-a1fd062d2280
-class TimerViewModel() : ViewModel() {
+@HiltViewModel
+class TimerViewModel @Inject constructor(private val timerExecutor : TimerSExecutor) : ViewModel() {
 
     private val timerManager = TimerManager()
 
@@ -54,10 +56,7 @@ class TimerViewModel() : ViewModel() {
 
     fun startTimer(context : Context){
 
-        val mIntent = Intent(context, TimerService::class.java)
-        //mIntent.putExtra("maxCountValue", 1000)
-        mIntent.putParcelableArrayListExtra(TimerService.KEY_TIMERSERVICE_EXTRA,timerArrayList)
-        TimerService.enqueueWork(context, mIntent)
+        timerExecutor.executeTimers(context, timerArrayList)
 
         val toast = Toast.makeText(context, context.getString(R.string.timer_set_toast), Toast.LENGTH_SHORT)
         toast.show()

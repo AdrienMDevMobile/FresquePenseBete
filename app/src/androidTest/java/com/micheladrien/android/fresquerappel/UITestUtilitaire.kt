@@ -13,6 +13,9 @@ import org.hamcrest.TypeSafeMatcher
 
 object UITestUtilitaire {
 
+    val textNotTest = "TextTest"
+    val delayTest = 2
+
     //Inspiré par https://stackoverflow.com/questions/45597008/espresso-get-text-of-element/45601564
     //Je fais ma propre fonction matcher : vérifie que le texte est bien rempli
     fun hasTextFilled(id: Int): TypeSafeMatcher<View?> {

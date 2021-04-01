@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.databinding.FragmentTimerBinding
 import com.micheladrien.fresquerappel.tools.notification.NotServiceCompanion
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TimerFragment : Fragment() {
 
     private lateinit var timerViewModel: TimerViewModel

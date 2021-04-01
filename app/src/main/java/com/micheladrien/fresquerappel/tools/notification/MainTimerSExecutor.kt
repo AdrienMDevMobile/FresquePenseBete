@@ -9,29 +9,37 @@ import android.widget.Toast
 import androidx.core.app.JobIntentService
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.TimerModel
+import dagger.hilt.android.scopes.FragmentScoped
 import java.util.*
+import javax.inject.Inject
 
-class TimerService : JobIntentService() {
-
+//Will execute the timerservice below. The TimerService is not known by other classes.
+class MainTimerSExecutor @Inject constructor(): TimerSExecutor {
     companion object {
         val KEY_TIMERSERVICE_EXTRA = "KSEx"
-        private val JOB_ID = 2
-        //Il me faut rendre enqueWork publique. Me sert à set up
-        fun enqueueWork(context: Context, intent: Intent) {
-            enqueueWork(context, TimerService::class.java, JOB_ID, intent)
-        }
-
+        val JOB_ID = 2
     }
+
+    override fun executeTimers(context:Context, timerArrayList : ArrayList<TimerModel>?){
+        val mIntent = Intent(context, TimerService::class.java)
+        //mIntent.putExtra("maxCountValue", 1000)
+        mIntent.putParcelableArrayListExtra(KEY_TIMERSERVICE_EXTRA,timerArrayList)
+        enqueueWork(context, mIntent)
+    }
+    //Il me faut rendre enqueWork publique. Me sert à set up
+    private fun enqueueWork(context: Context, intent: Intent) {
+        JobIntentService.enqueueWork(context, TimerService::class.java, JOB_ID, intent)
+    }
+
+}
+
+class TimerService : JobIntentService() {
 
     private var timerArrayList:ArrayList<TimerModel>? = null
 
     override fun onHandleWork(intent: Intent) {
-        timerArrayList = intent.getParcelableArrayListExtra(KEY_TIMERSERVICE_EXTRA)
+        timerArrayList = intent.getParcelableArrayListExtra(MainTimerSExecutor.KEY_TIMERSERVICE_EXTRA)
         executeService(baseContext)
-    }
-
-    override fun onCreate() {
-        super.onCreate()
     }
 
     fun executeService(context: Context) {

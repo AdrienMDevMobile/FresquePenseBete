@@ -4,6 +4,7 @@ package com.micheladrien.fresquerappel.managers
 import com.micheladrien.fresquerappel.datas.*
 import com.micheladrien.fresquerappel.fragments.single.Single
 import javax.inject.Inject
+import javax.inject.Singleton
 
 class MainCollageDataManager @Inject constructor(private val dataProvider: DataProvider) : CollageDataManager {
 

@@ -9,7 +9,7 @@ import org.json.JSONException
 import java.io.IOException
 import java.io.InputStream
 import javax.inject.Inject
-
+import javax.inject.Singleton
 
 open class JsonDataProvider @Inject constructor(@ApplicationContext private val context:Context) : DataProvider {
 
