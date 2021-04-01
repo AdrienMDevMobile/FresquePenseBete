@@ -11,6 +11,7 @@ import androidx.test.rule.ActivityTestRule
 import com.micheladrien.android.fresquerappel.UITestUtilitaire
 import com.micheladrien.fresquerappel.Main_activity
 import com.micheladrien.fresquerappel.R
+import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
 import org.junit.Rule
@@ -29,6 +30,8 @@ class RelationFragmentTest {
         Main_activity::class.java
     )
 
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
 
     //Before : set up avant de faire les tests
     //Le fragments relation est celui qui s'ouvre en premier. Pas besoin de s'y déplacer..

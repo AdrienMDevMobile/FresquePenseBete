@@ -11,6 +11,9 @@ import com.micheladrien.fresquerappel.tools.TimerStringTool
 //Gestionnaire des ViewHolder
 class TimerAdapter(private val timer_set: ArrayList<TimerModel>) : RecyclerView.Adapter<TimerViewHolder>()  {
 
+    companion object{
+        var max_length = 8
+    }
     //The method creates and initializes the ViewHolder and its associated View,
     // but does not fill in the view's contents—the ViewHolder has not yet been bound to specific data.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimerViewHolder {
@@ -28,8 +31,7 @@ class TimerAdapter(private val timer_set: ArrayList<TimerModel>) : RecyclerView.
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
 
-        //name affichera exactement six characteres
-        var max_length = 6
+        //name affichera exactement X characteres
         var name = timer_set[position].name
         if(name != null){
             if(name.length >=max_length)
