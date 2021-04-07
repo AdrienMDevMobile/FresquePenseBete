@@ -1,23 +1,21 @@
 package com.micheladrien.fresquerappel.fragments.timer
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.databinding.FragmentTimerBinding
-import com.micheladrien.fresquerappel.tools.notification.NotServiceCompanion
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class TimerFragment : Fragment() {
 
-    private lateinit var timerViewModel: TimerViewModel
+    private val timerViewModel: TimerViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: TimerAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
@@ -32,12 +30,9 @@ class TimerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        timerViewModel = ViewModelProvider(this).get(TimerViewModel::class.java)
-
         _binding = FragmentTimerBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        NotServiceCompanion.createNotificationChannel(context)
         //obtain a handle to the RecycleView object, connect it to a layout manager, and attach an adapter for the data to be displayed:
         //viewManager = LinearLayoutManager(context)
 

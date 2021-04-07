@@ -44,6 +44,8 @@ class TimerService : JobIntentService() {
 
     fun executeService(context: Context) {
 
+        NotServiceCompanion.createNotificationChannel(context)
+
         val alarmTimer = Calendar.getInstance()
 
         //Cette variable retient le temps des timers précédents pour décaller le suivant
