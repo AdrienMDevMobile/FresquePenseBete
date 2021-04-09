@@ -1,15 +1,19 @@
 package com.micheladrien.android.fresquerappel.timerTest
 
 import android.content.Context
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.annotation.UiThreadTest
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import androidx.test.uiautomator.UiDevice
+import com.micheladrien.android.fresquerappel.diTest.testClasses.TestTimerProvider
 import com.micheladrien.fresquerappel.Main_activity
+import com.micheladrien.fresquerappel.datas.TimerModel
 import com.micheladrien.fresquerappel.fragments.timer.TimerViewModel
 import com.micheladrien.fresquerappel.managers.RawTimerProvider
+import com.micheladrien.fresquerappel.managers.TimerProvider
 import com.micheladrien.fresquerappel.tools.notification.TimerSExecutor
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -17,41 +21,64 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.ArgumentMatchers.any
+import org.mockito.ArgumentMatchers.anyListOf
+import org.mockito.Mock
+import org.mockito.Mockito
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.verify
+import org.mockito.MockitoAnnotations
+import org.mockito.junit.MockitoJUnit
+import org.mockito.junit.MockitoJUnitRunner
 import javax.inject.Inject
 
-@RunWith(AndroidJUnit4::class)
+//https://www.vogella.com/tutorials/Mockito/article.html
+@RunWith(MockitoJUnitRunner::class)
 @HiltAndroidTest
 class TimerVMTest {
-    /*
-
-    private lateinit var mDevice : UiDevice
-    private lateinit var context: Context
-
-    @Inject
-    lateinit var timerSExecutor: TimerSExecutor
 
     @get:Rule
     val mainActivityTestRule : ActivityTestRule<Main_activity> = ActivityTestRule<Main_activity>(
             Main_activity::class.java
     )
-
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
+    @get:Rule
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
+
+    @Mock
+    lateinit var timerProvider: TimerProvider
+    @Mock
+    private val mockTimerSExecutor: TimerSExecutor = Mockito.mock(TimerSExecutor::class.java)
+    private lateinit var context: Context
+    private lateinit var vm : TimerViewModel
+    private val fakeListTimer = ArrayList<TimerModel>()
+
+
 
     @Before
-    fun set_up(){
-        mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+    fun init() {
+        MockitoAnnotations.openMocks(this)
+        `when`(timerProvider.getListTimer()).thenReturn(fakeListTimer)
         context = ApplicationProvider.getApplicationContext()
+
+        vm = TimerViewModel(mockTimerSExecutor, timerProvider)
+
     }
 
-    //La fonction VM fait bien une notification
-    @UiThreadTest
+    //Préparer un test avant de dev la classe :
+    //je mock/fake les classes utilisée par ma classe a creer
+    //et je m'assure que la fonction des classes utilisée soit bien appelé
     @Test
-    fun VMStartTimer(){
-        val vm = TimerViewModel(timerSExecutor, RawTimerProvider())
-        vm.populateList()
+    fun testCallSExecutor(){
         vm.startTimer(context)
-        //checkNotification(mDevice, context.getString(R.string.timer_notification_title), "Lot 1")
-        //sleep(100)
-    }*/
+        verify(mockTimerSExecutor).executeTimers(context, fakeListTimer)
+    }
+
+    @Test
+    fun stopTimers(){
+        vm.startTimer(context)
+        vm.stopTimer(context)
+        verify(mockTimerSExecutor).stopAllTimers(context)
+    }
 }

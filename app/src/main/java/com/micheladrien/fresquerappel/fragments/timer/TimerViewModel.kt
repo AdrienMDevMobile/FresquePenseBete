@@ -25,8 +25,10 @@ class TimerViewModel @Inject constructor(private val timerExecutor : TimerSExecu
     var timerArrayList:ArrayList<TimerModel>? = null
 
     private val _timerLiveData = MutableLiveData<ArrayList<TimerModel>>()
-
     val timerLiveData: LiveData<ArrayList<TimerModel>> = _timerLiveData
+
+    private val _timersAreStarted = MutableLiveData<Boolean>()
+    val timersAreStarted: LiveData<Boolean> = _timersAreStarted
 
     init{
         populateList()
@@ -37,7 +39,7 @@ class TimerViewModel @Inject constructor(private val timerExecutor : TimerSExecu
         populateList(timerProvider.getListTimer())
     }
 
-    fun populateList(timerArrayList : ArrayList<TimerModel>){
+    private fun populateList(timerArrayList : ArrayList<TimerModel>){
         this.timerArrayList = timerArrayList
         _timerLiveData.postValue(timerArrayList)
     }
@@ -56,13 +58,14 @@ class TimerViewModel @Inject constructor(private val timerExecutor : TimerSExecu
 
         timerExecutor.executeTimers(context, timerArrayList)
 
-        val toast = Toast.makeText(context, context.getString(R.string.timer_set_toast), Toast.LENGTH_SHORT)
-        toast.show()
+        /*val toast = Toast.makeText(context, context.getString(R.string.timer_set_toast), Toast.LENGTH_SHORT)
+        toast.show()*/
+        _timersAreStarted.postValue(true)
     }
 
     //TODO
-    fun stopTimer() {
-
+    fun stopTimer(context : Context) {
+        timerExecutor.stopAllTimers(context)
     }
 
 }

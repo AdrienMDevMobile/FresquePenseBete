@@ -26,6 +26,11 @@ class MainTimerSExecutor @Inject constructor(): TimerSExecutor {
         mIntent.putParcelableArrayListExtra(KEY_TIMERSERVICE_EXTRA,timerArrayList)
         enqueueWork(context, mIntent)
     }
+
+    override fun stopAllTimers(context: Context) {
+        TODO("Not yet implemented")
+    }
+
     //Il me faut rendre enqueWork publique. Me sert à set up
     private fun enqueueWork(context: Context, intent: Intent) {
         JobIntentService.enqueueWork(context, TimerService::class.java, JOB_ID, intent)

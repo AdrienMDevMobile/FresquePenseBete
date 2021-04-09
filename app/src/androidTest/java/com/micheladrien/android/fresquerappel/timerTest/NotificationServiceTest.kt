@@ -57,8 +57,6 @@ class NotificationServiceTest {
     clearAll.click()
     */
 
-
-
     //Nous verifions que la notification soit bien créée, puis nous l'affichons à la main
     @Test
     fun createAndPublishNotification() {
