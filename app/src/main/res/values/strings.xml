@@ -52,5 +52,7 @@
     <string name="timer_channel_description">Notification timer pour chaque section.</string>
     <string name="timer_notification_title">Gestion du temps</string>
     <string name="timer_set_toast">Les alarmes ont démarrées.</string>
+    <string name="timer_stop_toast">Les alarmes ont étés arrétées.</string>
+    <string name="timer_error_toast">Une erreur c\'est produite.</string>
 
 </resources>

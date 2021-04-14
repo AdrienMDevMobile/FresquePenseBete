@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.databinding.FragmentTimerBinding
+import com.micheladrien.fresquerappel.tools.TimerState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -66,9 +67,22 @@ class TimerFragment : Fragment() {
         })
         //Log.d("ami","fin set up")
 
-        timerViewModel.timersAreStarted.observe(viewLifecycleOwner, {
-            val toast = Toast.makeText(context, context?.getString(R.string.timer_set_toast), Toast.LENGTH_SHORT)
-            toast.show()
+        timerViewModel.timerState.observe(viewLifecycleOwner, {
+            when(it){
+                TimerState.STARTED ->  {
+                    val toast = Toast.makeText(context, context?.getString(R.string.timer_set_toast), Toast.LENGTH_SHORT)
+                    toast.show()
+                }
+                TimerState.STOPPED -> {
+                    val toast = Toast.makeText(context, context?.getString(R.string.timer_stop_toast), Toast.LENGTH_SHORT)
+                    toast.show()
+                }
+                TimerState.ERROR -> {
+                    val toast = Toast.makeText(context, context?.getString(R.string.timer_error_toast), Toast.LENGTH_SHORT)
+                    toast.show()
+                }
+
+            }
         })
 
 

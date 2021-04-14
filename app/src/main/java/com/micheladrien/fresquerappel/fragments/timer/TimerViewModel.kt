@@ -6,6 +6,7 @@ import androidx.lifecycle.*
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.TimerModel
 import com.micheladrien.fresquerappel.managers.TimerProvider
+import com.micheladrien.fresquerappel.tools.TimerState
 import com.micheladrien.fresquerappel.tools.notification.TimerSExecutor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.ArrayList
@@ -24,11 +25,12 @@ class TimerViewModel @Inject constructor(private val timerExecutor : TimerSExecu
 
     var timerArrayList:ArrayList<TimerModel>? = null
 
-    private val _timerLiveData = MutableLiveData<ArrayList<TimerModel>>()
+    private val _timerLiveData = MutableLiveData<ArrayList<TimerModel>>().apply { false }
     val timerLiveData: LiveData<ArrayList<TimerModel>> = _timerLiveData
 
-    private val _timersAreStarted = MutableLiveData<Boolean>()
-    val timersAreStarted: LiveData<Boolean> = _timersAreStarted
+    private val _timerState = MutableLiveData<TimerState>()
+    val timerState: LiveData<TimerState> = _timerState
+
 
     init{
         populateList()
@@ -58,9 +60,7 @@ class TimerViewModel @Inject constructor(private val timerExecutor : TimerSExecu
 
         timerExecutor.executeTimers(context, timerArrayList)
 
-        /*val toast = Toast.makeText(context, context.getString(R.string.timer_set_toast), Toast.LENGTH_SHORT)
-        toast.show()*/
-        _timersAreStarted.postValue(true)
+        _timerState.postValue(TimerState.STARTED)
     }
 
     //TODO
