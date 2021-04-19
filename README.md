@@ -1,4 +1,7 @@
 # FresquePenseBete
+Seconde fonctionnalité (en test) : https://youtu.be/f-iKKb55pBU
+Première fonctionnalité (sur le store) : https://youtu.be/iGr_F_73JcY
+
 **A partir de 1.5.X : Utilisation de Hilt pour Dependency Injection**<br>
 1.5 = Nouvelle fonctionnalité : Mise en place notifications préparées.<br>
 **A partir de 1.4 : Developpement en TDD (Test Driven development) : Junit, Mockito, Espresso et UIautomator**<br>
