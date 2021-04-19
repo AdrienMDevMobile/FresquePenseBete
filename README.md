@@ -1,8 +1,7 @@
 # FresquePenseBete
 
-Seconde fonctionnalité (en test) : https://youtu.be/f-iKKb55pBU
-
-Première fonctionnalité (sur le store) : https://youtu.be/iGr_F_73JcY
+Seconde fonctionnalité (en test) : https://youtu.be/f-iKKb55pBU <br>
+Première fonctionnalité (sur le store) : https://youtu.be/iGr_F_73JcY <br>
 
 **A partir de 1.5.X : Utilisation de Hilt pour Dependency Injection**<br>
 1.5 = Nouvelle fonctionnalité : Mise en place notifications préparées.<br>
