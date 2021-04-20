@@ -133,5 +133,4 @@ class RelationViewModel @Inject constructor (private val collageDataManager: Col
     override fun getCurrentCollage(): String {
         return collageDataManager.getCurrentCollage()
     }
-
 }

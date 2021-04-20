@@ -63,6 +63,10 @@ dependencies {
     testImplementation "org.mockito:mockito-core:$mockito_version" // For instrumentation tests on Android devices and emulators
     androidTestImplementation "org.mockito:mockito-android:$mockito_version"
 
+    //https://square.github.io/leakcanary/fundamentals-how-leakcanary-works/
+    //Retirer de la version sur le store
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
+
     //Pour Android Test rules (ActivityTestRule)
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'

@@ -100,5 +100,9 @@ class RelationFragment : Fragment() {
         activity?.setTitle(relationViewModel.getCurrentCollage())
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }

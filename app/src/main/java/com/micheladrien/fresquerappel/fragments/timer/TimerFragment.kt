@@ -105,5 +105,10 @@ class TimerFragment : Fragment() {
         activity?.setTitle(getString(R.string.menu_timer))
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }
 
