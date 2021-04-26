@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".fragments.relation.RelationFragment">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -83,19 +84,19 @@
 
     <TextView
         android:id="@+id/text_explanation"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:textAlignment="center"
         android:gravity="center"
+        android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Explication\nLore ipsum"/>
+        tools:text="Explication\nLore ipsum" />
 
     <com.micheladrien.fresquerappel.tools.MovableFloatingActionButton
         android:id="@+id/relation_search_button"
