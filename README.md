@@ -1,11 +1,11 @@
 # FresquePenseBete
 
-Seconde fonctionnalité (en test) : Plannification des notifications https://youtu.be/f-iKKb55pBU <br>
-Première fonctionnalité (sur le store) : Aide mémoire des relations https://youtu.be/iGr_F_73JcY <br>
+La dernière fonctionnalité, actuellement en cours de développement, permet de planifier des notifications d’un coup en avance. Cela permet une gestion du temps des différents lots du jeu. https://youtu.be/f-iKKb55pBU <br>
+La première fonctionnalité est un aide-mémoire sur les relations entre les cartes. https://youtu.be/iGr_F_73JcY <br>
 
 **A partir de 1.5.X : Utilisation de Hilt pour Dependency Injection**<br>
 1.5 = Nouvelle fonctionnalité : Mise en place notifications préparées.<br>
-**A partir de 1.4 : Developpement en TDD (Test Driven development) : Junit, Mockito, Espresso et UIautomator**<br>
+**A partir de 1.4 : Apprentissage d'outils pour le TDD (Test Driven development) : Junit, Mockito, Espresso et UIautomator**<br>
 1.3 = Retour arrière barre latérale : il y aura désormais plusieurs fragments<br>
 1.2 = Correction et nettoyage du code<br>
 **1.0 = Prête à l'emploi (Recherche de relation entre cartes de la Fresque du climat). Structure de code MVVM**<br>

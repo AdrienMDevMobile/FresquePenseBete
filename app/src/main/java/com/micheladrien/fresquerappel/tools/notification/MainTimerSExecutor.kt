@@ -49,6 +49,12 @@ class TimerService : JobIntentService() {
 
     fun executeService(context: Context) {
 
+        prepareAllNotifications(context)
+
+
+    }
+
+    private fun prepareAllNotifications(context: Context) {
         NotServiceCompanion.createNotificationChannel(context)
 
         val alarmTimer = Calendar.getInstance()
@@ -59,27 +65,33 @@ class TimerService : JobIntentService() {
         var not_id = 0
 
         timerArrayList?.forEach(){
-
-            val intent = Intent(context, NotificationService::class.java)
-            intent.putExtra(NotServiceCompanion.STRING_NOT_ID, ++not_id)
-            intent.putExtra(NotServiceCompanion.INTENT_TITLE, getString(R.string.timer_notification_title))
-            intent.putExtra(NotServiceCompanion.INTENT_TEXT, it.name)
-
-            val pendingIntent = PendingIntent.getBroadcast(context, not_id, intent, PendingIntent.FLAG_CANCEL_CURRENT)
-
+            ++not_id
             val time_wait = it.time_value*1000
 
-            val alarm = getSystemService(ALARM_SERVICE) as AlarmManager
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                val triggerAtMillis = alarmTimer.timeInMillis + time_wait + previousTimerSet
-                alarm.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAtMillis,  pendingIntent)
-            } else {
-                TODO("VERSION.SDK_INT < M")
-            }
+            prepareOneNotification(context, alarmTimer, not_id, it.name, time_wait, previousTimerSet)
 
             previousTimerSet+= time_wait
-
         }
+
+    }
+
+    private fun prepareOneNotification(context: Context, alarmTimer : Calendar, notId: Int, name: String?, timeWait : Int, previousTimerSet: Int) {
+
+        val intent = Intent(context, NotificationService::class.java)
+        intent.putExtra(NotServiceCompanion.STRING_NOT_ID, notId)
+        intent.putExtra(NotServiceCompanion.INTENT_TITLE, getString(R.string.timer_notification_title))
+        intent.putExtra(NotServiceCompanion.INTENT_TEXT, name)
+
+        val pendingIntent = PendingIntent.getBroadcast(context, notId, intent, PendingIntent.FLAG_CANCEL_CURRENT)
+
+        val alarm = getSystemService(ALARM_SERVICE) as AlarmManager
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            val triggerAtMillis = alarmTimer.timeInMillis + timeWait + previousTimerSet
+            alarm.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAtMillis,  pendingIntent)
+        } else {
+            TODO("VERSION.SDK_INT < M")
+        }
+
 
     }
 

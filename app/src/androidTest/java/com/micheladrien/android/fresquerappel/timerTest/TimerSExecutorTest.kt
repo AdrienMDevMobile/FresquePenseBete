@@ -1,6 +1,8 @@
 package com.micheladrien.android.fresquerappel.timerTest
 
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -13,13 +15,15 @@ import com.micheladrien.fresquerappel.Main_activity
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.TimerModel
 import com.micheladrien.fresquerappel.tools.notification.MainTimerSExecutor
+import com.micheladrien.fresquerappel.tools.notification.NotificationService
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.util.ArrayList
+import java.util.*
+
 
 @RunWith(AndroidJUnit4::class)
 @HiltAndroidTest
@@ -30,7 +34,7 @@ class TimerSExecutorTest {
 
     @get:Rule
     val mainActivityTestRule : ActivityTestRule<Main_activity> = ActivityTestRule<Main_activity>(
-            Main_activity::class.java
+        Main_activity::class.java
     )
 
     @get:Rule
@@ -59,6 +63,17 @@ class TimerSExecutorTest {
         TimerService.enqueueWork(context, mIntent)*/
 
         UITestUtilitaire.checkNotification(mDevice, context.getString(R.string.timer_notification_title), textNotTest)
+        /*
+        val alarmUp = PendingIntent.getBroadcast(
+            context, 0,
+            Intent(NotificationService::class.java),
+            PendingIntent.FLAG_NO_CREATE
+        ) != null
 
+        assert(alarmUp)*/
+        /*
+        if (alarmUp) {
+            Log.d("myTag", "Alarm is already active")
+        } */
     }
 }
