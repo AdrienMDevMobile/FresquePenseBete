@@ -9,6 +9,9 @@ import com.micheladrien.fresquerappel.managers.TimerProvider
 import com.micheladrien.fresquerappel.tools.TimerState
 import com.micheladrien.fresquerappel.tools.notification.TimerSExecutor
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.ArrayList
 import javax.inject.Inject
 
@@ -30,6 +33,13 @@ class TimerViewModel @Inject constructor(private val timerExecutor : TimerSExecu
 
     private val _timerState = MutableLiveData<TimerState>()
     val timerState: LiveData<TimerState> = _timerState
+
+    private var coroutineScope = this.viewModelScope
+
+
+    public fun setCouroutineScope(coroutineScopeProvider: CoroutineScope){
+        this.coroutineScope = coroutineScopeProvider
+    }
 
 
     init{
@@ -58,14 +68,23 @@ class TimerViewModel @Inject constructor(private val timerExecutor : TimerSExecu
 
     fun startTimer(context : Context){
 
-        timerExecutor.executeTimers(context, timerArrayList)
+        coroutineScope.launch(Dispatchers.IO){
+            if(timerExecutor.executeTimers(context, timerArrayList))
+                _timerState.postValue(TimerState.STARTED)
+            else _timerState.postValue(TimerState.ERROR)
+        }
 
-        _timerState.postValue(TimerState.STARTED)
+
+
     }
 
     //TODO
     fun stopTimer(context : Context) {
-        timerExecutor.stopAllTimers(context)
+        coroutineScope.launch(Dispatchers.IO) {
+            if(timerExecutor.stopAllTimers(context))
+                _timerState.postValue(TimerState.STOPPED)
+            else _timerState.postValue(TimerState.ERROR)
+        }
     }
 
 }

@@ -4,12 +4,17 @@ package com.micheladrien.fresquerappel.tools.notification
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
+import android.content.Context.ALARM_SERVICE
 import android.content.Intent
 import android.widget.Toast
 import androidx.core.app.JobIntentService
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.lifecycle.viewModelScope
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.TimerModel
 import dagger.hilt.android.scopes.FragmentScoped
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
 
@@ -20,23 +25,73 @@ class MainTimerSExecutor @Inject constructor(): TimerSExecutor {
         val JOB_ID = 2
     }
 
-    override fun executeTimers(context:Context, timerArrayList : ArrayList<TimerModel>?){
+    override suspend fun executeTimers(context:Context, timerArrayList : ArrayList<TimerModel>?) : Boolean{
+        return prepareAllNotifications(context, timerArrayList)
+        /*
         val mIntent = Intent(context, TimerService::class.java)
         //mIntent.putExtra("maxCountValue", 1000)
         mIntent.putParcelableArrayListExtra(KEY_TIMERSERVICE_EXTRA,timerArrayList)
-        enqueueWork(context, mIntent)
+        enqueueWork(context, mIntent) */
     }
 
-    override fun stopAllTimers(context: Context) {
-        TODO("Not yet implemented")
+    override suspend fun stopAllTimers(context: Context) : Boolean {
+        //TODO("Not yet implemented")
+        return false
     }
 
+    /*
     //Il me faut rendre enqueWork publique. Me sert à set up
     private fun enqueueWork(context: Context, intent: Intent) {
         JobIntentService.enqueueWork(context, TimerService::class.java, JOB_ID, intent)
+    }*/
+
+
+    private fun prepareAllNotifications(context: Context, timerArrayList : ArrayList<TimerModel>?) : Boolean {
+        NotServiceCompanion.createNotificationChannel(context)
+
+        val alarmTimer = Calendar.getInstance()
+
+        //Cette variable retient le temps des timers précédents pour décaller le suivant
+        //ex : timer 1 = 10 minutes, timer 2 = 10 minutes. Timer 2 sonnera dans 20 minutes (10+10)
+        var previousTimerSet = 0
+        var not_id = 0
+
+        timerArrayList?.forEach(){
+            ++not_id
+            val time_wait = it.time_value*1000
+
+            prepareOneNotification(context, alarmTimer, not_id, it.name, time_wait, previousTimerSet)
+
+            previousTimerSet+= time_wait
+        }
+
+        return true
+
     }
 
+    private fun prepareOneNotification(context: Context, alarmTimer : Calendar, notId: Int, name: String?, timeWait : Int, previousTimerSet: Int) {
+
+        val intent = Intent(context, NotificationService::class.java)
+        intent.putExtra(NotServiceCompanion.STRING_NOT_ID, notId)
+        intent.putExtra(NotServiceCompanion.INTENT_TITLE, context.getString(R.string.timer_notification_title))
+        intent.putExtra(NotServiceCompanion.INTENT_TEXT, name)
+
+        val pendingIntent = PendingIntent.getBroadcast(context, notId, intent, PendingIntent.FLAG_CANCEL_CURRENT)
+
+        val alarm = context.getSystemService(ALARM_SERVICE) as AlarmManager
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            val triggerAtMillis = alarmTimer.timeInMillis + timeWait + previousTimerSet
+            alarm.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAtMillis,  pendingIntent)
+        } else {
+            TODO("VERSION.SDK_INT < M")
+        }
+
+
+    }
 }
+
+
+/*
 
 class TimerService : JobIntentService() {
 
@@ -89,7 +144,7 @@ class TimerService : JobIntentService() {
             val triggerAtMillis = alarmTimer.timeInMillis + timeWait + previousTimerSet
             alarm.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAtMillis,  pendingIntent)
         } else {
-            TODO("VERSION.SDK_INT < M")
+            ("VERSION.SDK_INT < M")
         }
 
 
@@ -100,12 +155,13 @@ class TimerService : JobIntentService() {
         super.onDestroy()
     }
 
-    //TODO Repousser la fin d'une section de X minutes
+    //Repousser la fin d'une section de X minutes
     fun repeat(numberSecond: Int){
     }
-    //TODO Etape 1, cela passera par la fonction sans param (int prédéfini), + tard, mettre son paramétrage à un endroid
+    //Etape 1, cela passera par la fonction sans param (int prédéfini), + tard, mettre son paramétrage à un endroid
     fun repeat(){
         this.repeat(300)
     }
 
 }
+ */

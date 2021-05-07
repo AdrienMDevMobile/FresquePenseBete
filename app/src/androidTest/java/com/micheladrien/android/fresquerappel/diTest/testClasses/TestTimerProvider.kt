@@ -11,7 +11,7 @@ open class TestTimerProvider @Inject constructor(): TimerProvider {
 
         timerArrayList = ArrayList<TimerModel>()
 
-        timerArrayList!!.add(time1)
+        timerArrayList.add(time1)
 
         return timerArrayList
     }

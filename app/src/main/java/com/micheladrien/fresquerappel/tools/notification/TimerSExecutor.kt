@@ -6,6 +6,6 @@ import java.util.ArrayList
 
 //Timer Service Executor, will plan the timers to trigger in the future
 interface TimerSExecutor {
-    fun executeTimers(context: Context, timerArrayList : ArrayList<TimerModel>?)
-    fun stopAllTimers(context: Context)
+    suspend fun executeTimers(context: Context, timerArrayList : ArrayList<TimerModel>?) : Boolean
+    suspend fun stopAllTimers(context: Context) : Boolean
 }

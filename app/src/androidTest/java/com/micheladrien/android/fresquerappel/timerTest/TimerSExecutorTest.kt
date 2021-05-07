@@ -15,9 +15,10 @@ import com.micheladrien.fresquerappel.Main_activity
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.TimerModel
 import com.micheladrien.fresquerappel.tools.notification.MainTimerSExecutor
-import com.micheladrien.fresquerappel.tools.notification.NotificationService
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import kotlinx.coroutines.runBlocking
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -48,7 +49,7 @@ class TimerSExecutorTest {
 
     //Verification : TimerSExecutor fait bien apparaitre une notification
     @Test
-    fun TimerSExecutorTestCreateNot(){
+    fun TimerSExecutorTestCreateNotif()= runBlocking {
 
         val time1 = TimerModel(1, textNotTest, delayTest)
         val timerArrayList = ArrayList<TimerModel>()
@@ -62,7 +63,11 @@ class TimerSExecutorTest {
         mIntent.putParcelableArrayListExtra(TimerService.KEY_TIMERSERVICE_EXTRA, timerArrayList)
         TimerService.enqueueWork(context, mIntent)*/
 
-        UITestUtilitaire.checkNotification(mDevice, context.getString(R.string.timer_notification_title), textNotTest)
+        UITestUtilitaire.checkNotification(
+            mDevice,
+            context.getString(R.string.timer_notification_title),
+            textNotTest
+        )
         /*
         val alarmUp = PendingIntent.getBroadcast(
             context, 0,
@@ -76,4 +81,5 @@ class TimerSExecutorTest {
             Log.d("myTag", "Alarm is already active")
         } */
     }
+
 }

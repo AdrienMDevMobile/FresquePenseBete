@@ -2,38 +2,31 @@ package com.micheladrien.android.fresquerappel.timerTest
 
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.test.annotation.UiThreadTest
 import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
-import androidx.test.uiautomator.UiDevice
-import com.micheladrien.android.fresquerappel.diTest.testClasses.TestTimerProvider
+import com.micheladrien.android.fresquerappel.CustomCoroutineRule
+//import com.micheladrien.android.fresquerappel.CustomCoroutineRule
 import com.micheladrien.android.fresquerappel.observeForTesting
 import com.micheladrien.fresquerappel.Main_activity
 import com.micheladrien.fresquerappel.datas.TimerModel
 import com.micheladrien.fresquerappel.fragments.timer.TimerViewModel
-import com.micheladrien.fresquerappel.managers.RawTimerProvider
 import com.micheladrien.fresquerappel.managers.TimerProvider
 import com.micheladrien.fresquerappel.tools.TimerState
 import com.micheladrien.fresquerappel.tools.notification.TimerSExecutor
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import io.mockk.coVerify
+import io.mockk.every
+import io.mockk.mockk
 import junit.framework.Assert.assertEquals
+import junit.framework.Assert.assertTrue
+import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlinx.coroutines.test.TestCoroutineScope
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.ArgumentMatchers.any
-import org.mockito.ArgumentMatchers.anyListOf
-import org.mockito.Mock
-import org.mockito.Mockito
-import org.mockito.Mockito.`when`
-import org.mockito.Mockito.verify
-import org.mockito.MockitoAnnotations
-import org.mockito.junit.MockitoJUnit
-import org.mockito.junit.MockitoJUnitRunner
-import javax.inject.Inject
+import org.junit.runners.JUnit4
 
 //https://www.vogella.com/tutorials/Mockito/article.html
 
@@ -45,8 +38,8 @@ Si il n'y a rien. Cela se termine de manière positive.
 
 https://medium.com/@muratcanbur/unit-test-your-livedata-and-viewmodel-3b224f71e981
 Mocking observer.
- */
-@RunWith(MockitoJUnitRunner::class)
+*/
+@RunWith(JUnit4::class)
 @HiltAndroidTest
 class TimerVMTest {
 
@@ -58,11 +51,11 @@ class TimerVMTest {
     var hiltRule = HiltAndroidRule(this)
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
+    @get:Rule val coroutineRule = CustomCoroutineRule()
 
-    @Mock
+
     lateinit var timerProvider: TimerProvider
-    @Mock
-    private val mockTimerSExecutor: TimerSExecutor = Mockito.mock(TimerSExecutor::class.java)
+    private lateinit var mockTimerSExecutor: TimerSExecutor
     private lateinit var context: Context
     private lateinit var vm : TimerViewModel
     private val fakeListTimer = ArrayList<TimerModel>()
@@ -71,47 +64,38 @@ class TimerVMTest {
 
     @Before
     fun init() {
-        MockitoAnnotations.openMocks(this)
-        `when`(timerProvider.getListTimer()).thenReturn(fakeListTimer)
+        timerProvider =  mockk()
+        mockTimerSExecutor = mockk()
+        every { timerProvider.getListTimer() } returns fakeListTimer
         context = ApplicationProvider.getApplicationContext()
 
         vm = TimerViewModel(mockTimerSExecutor, timerProvider)
+        vm.setCouroutineScope( TestCoroutineScope(TestCoroutineDispatcher()))
+    }
 
+    @Test
+    fun testInit(){
+        assertTrue(true)
     }
 
     //Préparer un test avant de dev la classe :
     //je mock/fake les classes utilisée par ma classe a creer
     //et je m'assure que la fonction des classes utilisée soit bien appelé
     @Test
-    fun testCallSExecutor(){
+    fun testCallSExecutor() = coroutineRule.runBlockingTest{
         vm.startTimer(context)
-        verify(mockTimerSExecutor).executeTimers(context, fakeListTimer)
+        //Verify(mockTimerSExecutor).executeTimers(context, fakeListTimer)
+        //assertTrue(true)
+       coVerify{mockTimerSExecutor.executeTimers(context, fakeListTimer)}
     }
 
-    //we successfully get an answer from the start of the timers
-    @Test
-    fun getStartCallBack(){
-        vm.startTimer(context)
-        vm.timerState.observeForTesting {
-            assertEquals(it.values[0], TimerState.STARTED)
-        }
-    }
 
     //@TODO
     @Test
     fun stopTimers(){
         vm.startTimer(context)
         vm.stopTimer(context)
-        verify(mockTimerSExecutor).stopAllTimers(context)
+        coVerify {mockTimerSExecutor.stopAllTimers(context)}
     }
 
-    //we successfully get an answer from the start of the timers
-    //TODO
-    @Test
-    fun getStopCallBack(){
-        vm.startTimer(context)
-        vm.timerState.observeForTesting {
-            assertEquals(it.values[0], TimerState.STOPPED)
-        }
-    }
 }
