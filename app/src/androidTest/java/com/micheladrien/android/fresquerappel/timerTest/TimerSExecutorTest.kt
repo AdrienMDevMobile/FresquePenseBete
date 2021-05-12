@@ -86,4 +86,38 @@ class TimerSExecutorTest {
          */
     }
 
+
+    @Test
+    fun TimerSExecutorCancelPendingIntent()= runBlocking {
+
+        //We create the pendingintent and start it (like in TimerSExecutorCreatePendingIntent)
+        val time1 = TimerModel(1, textNotTest, delayTest)
+        val timerArrayList = ArrayList<TimerModel>()
+
+        timerArrayList.add(time1)
+
+        val timerSExecutor = MainTimerSExecutor()
+        timerSExecutor.executeTimers(context, timerArrayList)
+
+        //We cancel and check that is is no longer here.
+
+        timerSExecutor.stopAllTimers(context)
+
+        val alarmDown = PendingIntent.getBroadcast(
+                context, 1,
+                Intent(context, NotificationService::class.java),
+                PendingIntent.FLAG_NO_CREATE
+        ) == null
+
+        assert(alarmDown)
+
+        /* Not needed anymore : NotificationServiceTest checks that a notification is shown. TimerSExecut checks NotificationSErvice has been started.
+        UITestUtilitaire.checkNotification(
+            mDevice,
+            context.getString(R.string.timer_notification_title),
+            textNotTest
+        )
+         */
+    }
+
 }
