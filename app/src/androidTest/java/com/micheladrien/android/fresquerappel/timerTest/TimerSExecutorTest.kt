@@ -15,6 +15,7 @@ import com.micheladrien.fresquerappel.Main_activity
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.datas.TimerModel
 import com.micheladrien.fresquerappel.tools.notification.MainTimerSExecutor
+import com.micheladrien.fresquerappel.tools.notification.NotificationService
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.runBlocking
@@ -49,7 +50,7 @@ class TimerSExecutorTest {
 
     //Verification : TimerSExecutor fait bien apparaitre une notification
     @Test
-    fun TimerSExecutorTestCreateNotif()= runBlocking {
+    fun TimerSExecutorCreatePendingIntent()= runBlocking {
 
         val time1 = TimerModel(1, textNotTest, delayTest)
         val timerArrayList = ArrayList<TimerModel>()
@@ -63,23 +64,26 @@ class TimerSExecutorTest {
         mIntent.putParcelableArrayListExtra(TimerService.KEY_TIMERSERVICE_EXTRA, timerArrayList)
         TimerService.enqueueWork(context, mIntent)*/
 
+
+        //https://stackoverflow.com/questions/4556670/how-to-check-if-alarmmanager-already-has-an-alarm-set
+        //Pour annuler : Flag_cancel_current : https://developer.android.com/reference/android/app/PendingIntent#getBroadcast(android.content.Context,%20int,%20android.content.Intent,%20int)
+        //Puis : alarmManager.cancel(pendingIntent);//important
+        //pendingIntent.cancel();//important
+        val alarmUp = PendingIntent.getBroadcast(
+            context, 1,
+            Intent(context, NotificationService::class.java),
+            PendingIntent.FLAG_NO_CREATE
+        ) != null
+
+        assert(alarmUp)
+
+        /* Not needed anymore : NotificationServiceTest checks that a notification is shown. TimerSExecut checks NotificationSErvice has been started.
         UITestUtilitaire.checkNotification(
             mDevice,
             context.getString(R.string.timer_notification_title),
             textNotTest
         )
-        /*
-        val alarmUp = PendingIntent.getBroadcast(
-            context, 0,
-            Intent(NotificationService::class.java),
-            PendingIntent.FLAG_NO_CREATE
-        ) != null
-
-        assert(alarmUp)*/
-        /*
-        if (alarmUp) {
-            Log.d("myTag", "Alarm is already active")
-        } */
+         */
     }
 
 }

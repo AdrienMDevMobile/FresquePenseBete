@@ -27,11 +27,6 @@ class MainTimerSExecutor @Inject constructor(): TimerSExecutor {
 
     override suspend fun executeTimers(context:Context, timerArrayList : ArrayList<TimerModel>?) : Boolean{
         return prepareAllNotifications(context, timerArrayList)
-        /*
-        val mIntent = Intent(context, TimerService::class.java)
-        //mIntent.putExtra("maxCountValue", 1000)
-        mIntent.putParcelableArrayListExtra(KEY_TIMERSERVICE_EXTRA,timerArrayList)
-        enqueueWork(context, mIntent) */
     }
 
     override suspend fun stopAllTimers(context: Context) : Boolean {

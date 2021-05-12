@@ -12,6 +12,7 @@ import com.micheladrien.android.fresquerappel.UITestUtilitaire.checkNotification
 import com.micheladrien.fresquerappel.Main_activity
 import com.micheladrien.fresquerappel.tools.notification.NotServiceCompanion
 import com.micheladrien.fresquerappel.tools.notification.NotificationService
+import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import junit.framework.TestCase.*
 import org.junit.Before
@@ -42,6 +43,9 @@ class NotificationServiceTest {
     val mainActivityTestRule : ActivityTestRule<Main_activity> = ActivityTestRule<Main_activity>(
             Main_activity::class.java
     )
+
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
 
     @Before
     fun setUp()
