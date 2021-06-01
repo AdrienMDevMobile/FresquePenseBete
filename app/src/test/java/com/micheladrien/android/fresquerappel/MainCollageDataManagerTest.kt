@@ -9,19 +9,23 @@ import com.micheladrien.fresquerappel.managers.MainCollageDataManager
 import org.junit.*
 import org.junit.Assert.assertTrue
 import org.junit.runner.RunWith
+import org.junit.runners.JUnit4
 import org.mockito.Mockito
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
 
 
-@RunWith(MockitoJUnitRunner::class)
+//@RunWith(MockitoJUnitRunner::class)
+@RunWith(JUnit4::class)
 class MainCollageDataManagerTest() {
 
     //Set up la variable Context
     //private val context: Context = ApplicationProvider.getApplicationContext()
     private val mockDataProvider: DataProvider = Mockito.mock(DataProvider::class.java)
     private lateinit var mdm : CollageDataManager
+
+    private var climat_collage_name = "Climat"
 
     @Before
     fun set_up() {
@@ -36,7 +40,7 @@ class MainCollageDataManagerTest() {
                 "Mettez l'une sur l'autre."
             )
         )
-        `when`(mockDataProvider.provideRelations("climat")).thenReturn(relationList)
+        `when`(mockDataProvider.provideRelations(climat_collage_name)).thenReturn(relationList)
 
         mdm = MainCollageDataManager(mockDataProvider)
     }
@@ -50,7 +54,7 @@ class MainCollageDataManagerTest() {
 
     @Test
     fun DMcallProvideRelations() {
-        verify(mockDataProvider).provideRelations("climat");
+        verify(mockDataProvider).provideRelations(climat_collage_name);
     }
 
     @Test

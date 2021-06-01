@@ -23,7 +23,9 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.micheladrien.fresquerappel.tools.notification.TimerService" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="true"/>
+        <!--
+        <service android:name="com.micheladrien.fresquerappel.tools.notification.NotificationService" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="true"/>
+        -->
         <receiver android:name=".tools.notification.NotificationService"/>
     </application>
 

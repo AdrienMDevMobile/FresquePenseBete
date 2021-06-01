@@ -96,7 +96,6 @@ class NotificationServiceTest {
 
 
     //Les notifications timers sont concues pour disparaitre sans plus quand nous clickons dessus
-    //TODO Notification dispear when we click on it
     @Test
     fun tapTimerNotificationToDisapear(){
 

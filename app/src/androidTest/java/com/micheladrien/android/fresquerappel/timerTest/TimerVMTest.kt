@@ -73,10 +73,11 @@ class TimerVMTest {
         vm.setCouroutineScope( TestCoroutineScope(TestCoroutineDispatcher()))
     }
 
+    /*
     @Test
     fun testInit(){
         assertTrue(true)
-    }
+    }*/
 
     //Préparer un test avant de dev la classe :
     //je mock/fake les classes utilisée par ma classe a creer
@@ -89,13 +90,11 @@ class TimerVMTest {
        coVerify{mockTimerSExecutor.executeTimers(context, fakeListTimer)}
     }
 
-
-    //@TODO
     @Test
     fun stopTimers(){
         vm.startTimer(context)
         vm.stopTimer(context)
-        coVerify {mockTimerSExecutor.stopAllTimers(context)}
+        coVerify {mockTimerSExecutor.stopAllTimers(context, fakeListTimer)}
     }
 
 }

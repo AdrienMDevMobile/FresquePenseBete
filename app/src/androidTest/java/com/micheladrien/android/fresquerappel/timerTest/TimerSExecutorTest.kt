@@ -77,16 +77,12 @@ class TimerSExecutorTest {
 
         assert(alarmUp)
 
-        /* Not needed anymore : NotificationServiceTest checks that a notification is shown. TimerSExecut checks NotificationSErvice has been started.
-        UITestUtilitaire.checkNotification(
-            mDevice,
-            context.getString(R.string.timer_notification_title),
-            textNotTest
-        )
-         */
+        /* Not needed anymore : NotificationServiceTest checks that a notification is shown. TimerSExecut checks NotificationSErvice has been started */
     }
 
-
+    //I have to change how stopAllTimers work because to get an existing pending intent I need it's requestCode.
+    //We can save all sent notification request codes but that would put a lot of issues if the user exit the app.
+    //So we use the list visible for the user and give it back to the Executor
     @Test
     fun TimerSExecutorCancelPendingIntent()= runBlocking {
 
@@ -101,7 +97,7 @@ class TimerSExecutorTest {
 
         //We cancel and check that is is no longer here.
 
-        timerSExecutor.stopAllTimers(context)
+        timerSExecutor.stopAllTimers(context, timerArrayList)
 
         val alarmDown = PendingIntent.getBroadcast(
                 context, 1,

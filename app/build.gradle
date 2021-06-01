@@ -13,10 +13,10 @@ android {
 
     defaultConfig {
         applicationId "com.micheladrien.fresquerappel"
-        minSdkVersion 22
+        minSdkVersion 23
         targetSdkVersion 29
-        versionCode 12
-        versionName "1.2"
+        versionCode 20
+        versionName "2.0"
 
         //testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunner "com.micheladrien.android.fresquerappel.CustomTestRunner"
@@ -93,7 +93,7 @@ dependencies {
 
     //https://square.github.io/leakcanary/fundamentals-how-leakcanary-works/
     //Retirer de la version sur le store
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
+    //debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
 
     //Pour Android Test rules (ActivityTestRule)
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

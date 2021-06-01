@@ -40,6 +40,7 @@
 
     <string name="title_timer">Gestion du temps</string>
     <string name="button_timer_go">Go</string>
+    <string name="button_timer_stop">Arrêter</string>
 
     <string name="toast_collage_unavailable">La fresque %1$s est n\'est pas encore supportée.</string>
     <string name="toast_menu_unavailable">L\'activité est n\'est pas encore supportée.</string>
@@ -48,8 +49,8 @@
     <string name="ph_timer_value">Place holder timer value</string>
     <string name="timer_remove">X</string>
 
-    <string name="timer_channel_name">Timers sections</string>
-    <string name="timer_channel_description">Notification timer pour chaque section.</string>
+    <string name="timer_channel_name">Gestion du temps</string>
+    <string name="timer_channel_description">Notification temps pour chaque partie.</string>
     <string name="timer_notification_title">Gestion du temps</string>
     <string name="timer_set_toast">Les alarmes ont démarrées.</string>
     <string name="timer_stop_toast">Les alarmes ont étés arrétées.</string>

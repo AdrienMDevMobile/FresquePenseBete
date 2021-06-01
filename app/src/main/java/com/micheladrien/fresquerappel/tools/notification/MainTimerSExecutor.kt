@@ -25,13 +25,37 @@ class MainTimerSExecutor @Inject constructor(): TimerSExecutor {
         val JOB_ID = 2
     }
 
+
+
+    //List of IDs of Notification called
+    private val listIDNotifcationCalled = ArrayList<Int>()
+
     override suspend fun executeTimers(context:Context, timerArrayList : ArrayList<TimerModel>?) : Boolean{
         return prepareAllNotifications(context, timerArrayList)
     }
 
-    override suspend fun stopAllTimers(context: Context) : Boolean {
-        //TODO("Not yet implemented")
-        return false
+    override suspend fun stopAllTimers(context: Context, timerArrayList : ArrayList<TimerModel>?) : Boolean {
+
+        val alarm = context.getSystemService(ALARM_SERVICE) as AlarmManager
+
+        timerArrayList?.forEach(){
+            val toCancel = PendingIntent.getBroadcast(
+                    context, it.id,
+                    Intent(context, NotificationService::class.java),
+                    PendingIntent.FLAG_NO_CREATE
+            )
+            if(toCancel!=null){
+                alarm.cancel(toCancel);//important
+                toCancel.cancel();//important
+            }
+        }
+
+        //https://stackoverflow.com/questions/4556670/how-to-check-if-alarmmanager-already-has-an-alarm-set
+        //Pour annuler : Flag_cancel_current : https://developer.android.com/reference/android/app/PendingIntent#getBroadcast(android.content.Context,%20int,%20android.content.Intent,%20int)
+        //Puis : alarmManager.cancel(pendingIntent);//important
+        //pendingIntent.cancel();//important
+
+        return true
     }
 
     /*
@@ -49,13 +73,13 @@ class MainTimerSExecutor @Inject constructor(): TimerSExecutor {
         //Cette variable retient le temps des timers précédents pour décaller le suivant
         //ex : timer 1 = 10 minutes, timer 2 = 10 minutes. Timer 2 sonnera dans 20 minutes (10+10)
         var previousTimerSet = 0
-        var not_id = 0
+        //var not_id = 0
 
         timerArrayList?.forEach(){
-            ++not_id
+            //++not_id
             val time_wait = it.time_value*1000
 
-            prepareOneNotification(context, alarmTimer, not_id, it.name, time_wait, previousTimerSet)
+            prepareOneNotification(context, alarmTimer, it.id, it.name, time_wait, previousTimerSet)
 
             previousTimerSet+= time_wait
         }
@@ -74,12 +98,9 @@ class MainTimerSExecutor @Inject constructor(): TimerSExecutor {
         val pendingIntent = PendingIntent.getBroadcast(context, notId, intent, PendingIntent.FLAG_CANCEL_CURRENT)
 
         val alarm = context.getSystemService(ALARM_SERVICE) as AlarmManager
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            val triggerAtMillis = alarmTimer.timeInMillis + timeWait + previousTimerSet
-            alarm.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAtMillis,  pendingIntent)
-        } else {
-            TODO("VERSION.SDK_INT < M")
-        }
+        val triggerAtMillis = alarmTimer.timeInMillis + timeWait + previousTimerSet
+        alarm.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAtMillis,  pendingIntent)
+
 
 
     }

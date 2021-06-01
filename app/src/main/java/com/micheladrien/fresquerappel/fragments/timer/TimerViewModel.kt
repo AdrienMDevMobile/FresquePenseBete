@@ -20,7 +20,6 @@ import javax.inject.Inject
 /*
 Observable array list :  https://github.com/theblitz/ObservableCollections
 https://stackoverflow.com/questions/7178801/how-do-i-structure-mvvm-with-collections
-TODO Remplacer string par TimephaseViewModel
  */
 //https://medium.com/@atifmukhtar/recycler-view-with-mvvm-livedata-a1fd062d2280
 @HiltViewModel
@@ -46,7 +45,6 @@ class TimerViewModel @Inject constructor(private val timerExecutor : TimerSExecu
         populateList()
     }
 
-    //TODO Recuperer la liste depuis une BDD
     fun populateList(){
         populateList(timerProvider.getListTimer())
     }
@@ -78,10 +76,9 @@ class TimerViewModel @Inject constructor(private val timerExecutor : TimerSExecu
 
     }
 
-    //TODO
     fun stopTimer(context : Context) {
         coroutineScope.launch(Dispatchers.IO) {
-            if(timerExecutor.stopAllTimers(context))
+            if(timerExecutor.stopAllTimers(context, timerArrayList))
                 _timerState.postValue(TimerState.STOPPED)
             else _timerState.postValue(TimerState.ERROR)
         }

@@ -12,7 +12,7 @@ import com.micheladrien.fresquerappel.tools.TimerStringTool
 class TimerAdapter(private val timer_set: ArrayList<TimerModel>) : RecyclerView.Adapter<TimerViewHolder>()  {
 
     companion object{
-        var max_length = 8
+        var max_length = 23
     }
     //The method creates and initializes the ViewHolder and its associated View,
     // but does not fill in the view's contents—the ViewHolder has not yet been bound to specific data.

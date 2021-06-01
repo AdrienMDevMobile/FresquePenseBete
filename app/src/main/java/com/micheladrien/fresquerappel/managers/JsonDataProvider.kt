@@ -16,7 +16,7 @@ open class JsonDataProvider @Inject constructor(@ApplicationContext private val 
     override fun provideRelations(collage: String): MutableList<CardsRelation> = readJsonObject(collage.toLowerCase())
 
 
-    private fun readJsonObject(file_name:String):MutableList<CardsRelation>{
+    open fun readJsonObject(file_name:String):MutableList<CardsRelation>{
 
         try {
             val jArray = JSONArray(loadJSONFromAsset(file_name))
