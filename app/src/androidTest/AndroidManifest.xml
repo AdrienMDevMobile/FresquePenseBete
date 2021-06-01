@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.package">
+
+    <!-- This workaround is mandatory for Mokk's problems
+    https://bleepcoder.com/de/mockk/442237299/bug-mockkagentexception-when-creating-a-mock-on-api-level-28
+    https://github.com/mockk/mockk/issues/297
+    -->
+    <application android:extractNativeLibs="true" />
+</manifest>
