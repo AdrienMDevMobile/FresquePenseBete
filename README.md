@@ -1,8 +1,9 @@
-# FresquePenseBete Readme
+# Application Animateurs et Animatrices Fresque Readme
 
-La dernière fonctionnalité, actuellement en cours de développement, permet de planifier des notifications d’un coup en avance. Cela permet une gestion du temps des différents lots du jeu. https://youtu.be/f-iKKb55pBU <br>
+La deuxième fonctionnalité, permet de planifier des notifications d’un coup en avance. Cela permet une gestion du temps des différents lots du jeu. https://youtu.be/f-iKKb55pBU <br>
 La première fonctionnalité est un aide-mémoire sur les relations entre les cartes. https://youtu.be/iGr_F_73JcY <br>
 
+**2.0 = Prêt à l'emploi de la fonctionnalité des notifications**
 1.6 = Annuler les notifications préparées.
 **A partir de 1.5.X : Utilisation de Hilt pour Dependency Injection**<br>
 1.5 = Nouvelle fonctionnalité : Mise en place notifications préparées.<br>
