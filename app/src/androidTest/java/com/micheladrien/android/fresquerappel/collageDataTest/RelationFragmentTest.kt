@@ -9,7 +9,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.micheladrien.android.fresquerappel.UITestUtilitaire
-import com.micheladrien.fresquerappel.Main_activity
+import com.micheladrien.fresquerappel.View.view.Main_activity
 import com.micheladrien.fresquerappel.R
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest

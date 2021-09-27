@@ -1,7 +1,7 @@
 package com.micheladrien.fresquerappel.tools.notification
 
 import android.content.Context
-import com.micheladrien.fresquerappel.datas.TimerModel
+import com.micheladrien.fresquerappel.Data.datas.TimerModel
 import java.util.ArrayList
 
 //Timer Service Executor, will plan the timers to trigger in the future

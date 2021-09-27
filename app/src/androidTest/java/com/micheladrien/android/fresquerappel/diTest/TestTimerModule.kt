@@ -1,7 +1,7 @@
 package com.micheladrien.android.fresquerappel.diTest.testClasses
 
 import com.micheladrien.fresquerappel.di.TimerModule
-import com.micheladrien.fresquerappel.managers.TimerProvider
+import com.micheladrien.fresquerappel.Data.managers.TimerProvider
 import com.micheladrien.fresquerappel.tools.notification.MainTimerSExecutor
 import com.micheladrien.fresquerappel.tools.notification.TimerSExecutor
 import dagger.Binds

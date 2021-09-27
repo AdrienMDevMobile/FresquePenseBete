@@ -6,15 +6,8 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Context.ALARM_SERVICE
 import android.content.Intent
-import android.widget.Toast
-import androidx.core.app.JobIntentService
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.lifecycle.viewModelScope
 import com.micheladrien.fresquerappel.R
-import com.micheladrien.fresquerappel.datas.TimerModel
-import dagger.hilt.android.scopes.FragmentScoped
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.micheladrien.fresquerappel.Data.datas.TimerModel
 import java.util.*
 import javax.inject.Inject
 

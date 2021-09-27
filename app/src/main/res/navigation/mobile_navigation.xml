@@ -7,24 +7,24 @@
 
     <fragment
         android:id="@+id/nav_relation"
-        android:name="com.micheladrien.fresquerappel.fragments.relation.RelationFragment"
+        android:name="com.micheladrien.fresquerappel.View.view.relation.RelationFragment"
         tools:layout="@layout/fragment_relation" />
 
 
     <fragment
         android:id="@+id/nav_timer"
-        android:name="com.micheladrien.fresquerappel.fragments.timer.TimerFragment"
+        android:name="com.micheladrien.fresquerappel.View.view.timer.TimerFragment"
         tools:layout="@layout/fragment_timer" />
 
     <!--
     <fragment
         android:id="@+id/nav_single"
-        android:name="com.micheladrien.fresquerappel.fragments.single.SingleCardFragment"
+        android:name="com.micheladrien.fresquerappel.View.view.single.SingleCardFragment"
         tools:layout="@layout/fragment_single" /> -->
 
     <fragment
         android:id="@+id/nav_about"
-        android:name="com.micheladrien.fresquerappel.fragments.about.AboutFragment"
+        android:name="com.micheladrien.fresquerappel.View.view.about.AboutFragment"
         tools:layout="@layout/fragment_about" />
 
 

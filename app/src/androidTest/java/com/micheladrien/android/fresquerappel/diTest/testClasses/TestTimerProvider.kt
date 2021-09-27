@@ -1,7 +1,7 @@
 package com.micheladrien.android.fresquerappel.diTest.testClasses
 
-import com.micheladrien.fresquerappel.datas.TimerModel
-import com.micheladrien.fresquerappel.managers.TimerProvider
+import com.micheladrien.fresquerappel.Data.datas.TimerModel
+import com.micheladrien.fresquerappel.Data.managers.TimerProvider
 import javax.inject.Inject
 
 open class TestTimerProvider @Inject constructor(): TimerProvider {

@@ -1,11 +1,11 @@
 package com.micheladrien.android.fresquerappel
 
-import com.micheladrien.fresquerappel.datas.CardsRelation
-import com.micheladrien.fresquerappel.datas.RelationDirection
-import com.micheladrien.fresquerappel.datas.RelationMandatory
-import com.micheladrien.fresquerappel.managers.CollageDataManager
-import com.micheladrien.fresquerappel.managers.DataProvider
-import com.micheladrien.fresquerappel.managers.MainCollageDataManager
+import com.micheladrien.fresquerappel.Data.datas.CardsRelation
+import com.micheladrien.fresquerappel.Data.datas.RelationDirection
+import com.micheladrien.fresquerappel.Data.datas.RelationMandatory
+import com.micheladrien.fresquerappel.Data.managers.CollageDataManager
+import com.micheladrien.fresquerappel.Data.managers.DataProvider
+import com.micheladrien.fresquerappel.Data.managers.MainCollageDataManager
 import org.junit.*
 import org.junit.Assert.assertTrue
 import org.junit.runner.RunWith
@@ -13,7 +13,6 @@ import org.junit.runners.JUnit4
 import org.mockito.Mockito
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.verify
-import org.mockito.junit.MockitoJUnitRunner
 
 
 //@RunWith(MockitoJUnitRunner::class)
