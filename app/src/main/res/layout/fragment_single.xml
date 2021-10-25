@@ -1,25 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.view.relation.RelationFragment">
+    tools:context=".View.view.single.SingleCardFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/singleNavigation">
+
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+            android:layout_height="330dp">
+
+            <ImageView android:id="@+id/image_card"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/fr_adulte_carte_1_recto"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView android:id="@+id/scroll_SV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:fillViewport="true"
+            android:nestedScrollingEnabled="true"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:behavior_hideable="false"
+            app:layout_behavior="@string/bottom_sheet_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_round"
+                android:paddingStart="24sp"
+                android:paddingTop="44dp"
+                android:paddingEnd="24sp"
+                android:paddingBottom="24sp">
+
+                <TextView android:id="@+id/card_nameTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Activité humaine"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView android:id="@+id/lotTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Lot : "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/card_nameTV" />
+
+                <TextView android:id="@+id/lot_numberTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    app:layout_constraintStart_toEndOf="@id/lotTV"
+                    app:layout_constraintTop_toTopOf="@id/lotTV" />
+
+                <TextView android:id="@+id/card_textTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:paddingTop="8sp"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel nibh scelerisque, ultrices augue et, consectetur magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc viverra varius dolor. Etiam dolor lorem, rutrum et ultrices ac, tempor at sapien. Vestibulum a viverra dolor. Vivamus sodales diam at lacus posuere placerat. Sed tristique ligula nec risus posuere tempus. Aliquam feugiat, dui sed porttitor gravida, nibh ante semper neque, a laoreet nisi risus ut ipsum. Mauris ac mauris dui. Sed ac elit sed massa egestas imperdiet condimentum in leo. Fusce posuere finibus interdum. Proin pharetra ex non odio ullamcorper, non fringilla eros sagittis. Aenean tristique justo vitae quam sagittis sodales. Donec lectus mi, vulputate a sodales ut, tempus vitae lectus. Suspendisse potenti. Fusce quis libero ac nisi sodales facilisis eu eu ex. In sed pretium mi, vitae auctor nulla. Ut ex erat, elementum tristique urna vitae, suscipit malesuada nisi. Maecenas aliquam ultricies est ornare elementum. Duis venenatis nibh a efficitur lobortis. Quisque diam massa, placerat sit amet purus nec, viverra congue nisi. Duis hendrerit metus sed viverra tempus. Fusce in tristique nibh, vel tristique lectus. Morbi varius pellentesque rutrum. Vivamus metus diam, egestas id sodales ut, fermentum at lectus. Duis rutrum cursus maximus. Cras non odio quis lacus bibendum feugiat. Donec blandit nisi vitae ante pellentesque finibus. Sed tortor odio, consequat nec nibh at, suscipit efficitur mi. Proin lectus tellus, congue ut diam vel, venenatis posuere justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lot_numberTV" />
 
 
-    <TextView
-        android:id="@+id/tv_single_not_supported"
-        android:layout_width="wrap_content"
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/singleNavigation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="164dp"
-        android:layout_marginLeft="164dp"
-        android:layout_marginTop="358dp"
-        android:layout_marginBottom="354dp"
-        android:text="@string/toast_menu_unavailable"
+        android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentBottom="true"
+        >
+
+        <View android:id="@+id/divider_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/prevCard_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/btn_background"
+            android:text="P"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/card_numberET"
+            app:layout_constraintHorizontal_bias="0.70"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/card_numberET"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="01"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/nextCard_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/btn_background"
+            android:text="N"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.3"
+            app:layout_constraintStart_toEndOf="@+id/card_numberET"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
