@@ -5,9 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.micheladrien.fresquerappel.R
+import com.micheladrien.fresquerappel.View.viewmodel.relation.RelationViewModel
+import com.micheladrien.fresquerappel.databinding.FragmentRelationBinding
+import com.micheladrien.fresquerappel.databinding.FragmentSingleBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SingleCardFragment : Fragment() {
+
+    private var _binding: FragmentSingleBinding? = null
+    private val binding get() = _binding!!
+
+    //private val relationViewModel: SingleViewModel by viewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -15,7 +27,9 @@ class SingleCardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val root = inflater.inflate(R.layout.fragment_single, container, false)
+        _binding = FragmentSingleBinding.inflate(inflater, container, false)
+        val root = binding.root
+
         return root
     }
 }
