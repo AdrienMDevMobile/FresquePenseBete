@@ -1,4 +1,4 @@
-package com.micheladrien.fresquerappel.tools;
+package com.micheladrien.fresquerappel.View.tools;
 
 import android.content.Context;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -6,8 +6,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 //Pris de https://stackoverflow.com/questions/46370836/android-movable-draggable-floating-action-button-fab
 public class MovableFloatingActionButton extends FloatingActionButton implements View.OnTouchListener {

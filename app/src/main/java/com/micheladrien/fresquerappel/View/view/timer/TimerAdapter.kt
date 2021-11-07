@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.Data.datas.TimerModel
-import com.micheladrien.fresquerappel.tools.TimerStringTool
+import com.micheladrien.fresquerappel.View.tools.TimerStringTool
 
 
 //Gestionnaire des ViewHolder

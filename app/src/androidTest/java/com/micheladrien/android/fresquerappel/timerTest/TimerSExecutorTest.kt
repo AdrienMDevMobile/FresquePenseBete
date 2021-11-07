@@ -12,8 +12,8 @@ import com.micheladrien.android.fresquerappel.UITestUtilitaire.delayTest
 import com.micheladrien.android.fresquerappel.UITestUtilitaire.textNotTest
 import com.micheladrien.fresquerappel.View.view.Main_activity
 import com.micheladrien.fresquerappel.Data.datas.TimerModel
-import com.micheladrien.fresquerappel.tools.notification.MainTimerSExecutor
-import com.micheladrien.fresquerappel.tools.notification.NotificationService
+import com.micheladrien.fresquerappel.View.tools.notification.MainTimerSExecutor
+import com.micheladrien.fresquerappel.View.tools.notification.NotificationService
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.runBlocking

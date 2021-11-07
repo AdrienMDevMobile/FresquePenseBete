@@ -1,4 +1,4 @@
-package com.micheladrien.fresquerappel.tools.notification
+package com.micheladrien.fresquerappel.View.tools.notification
 
 import android.content.BroadcastReceiver
 import android.content.Context

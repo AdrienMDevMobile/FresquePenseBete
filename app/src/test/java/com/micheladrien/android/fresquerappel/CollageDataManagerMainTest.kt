@@ -5,7 +5,7 @@ import com.micheladrien.fresquerappel.Data.datas.RelationDirection
 import com.micheladrien.fresquerappel.Data.datas.RelationMandatory
 import com.micheladrien.fresquerappel.Data.managers.CollageDataManager
 import com.micheladrien.fresquerappel.Data.managers.DataProvider
-import com.micheladrien.fresquerappel.Data.managers.MainCollageDataManager
+import com.micheladrien.fresquerappel.Data.managers.CollageDataManagerMain
 import org.junit.*
 import org.junit.Assert.assertTrue
 import org.junit.runner.RunWith
@@ -17,7 +17,7 @@ import org.mockito.Mockito.verify
 
 //@RunWith(MockitoJUnitRunner::class)
 @RunWith(JUnit4::class)
-class MainCollageDataManagerTest() {
+class CollageDataManagerMainTest() {
 
     //Set up la variable Context
     //private val context: Context = ApplicationProvider.getApplicationContext()
@@ -41,7 +41,7 @@ class MainCollageDataManagerTest() {
         )
         `when`(mockDataProvider.provideRelations(climat_collage_name)).thenReturn(relationList)
 
-        mdm = MainCollageDataManager(mockDataProvider)
+        mdm = CollageDataManagerMain(mockDataProvider)
     }
 
     //Tester la bonne définition du Singleton au moment du cast

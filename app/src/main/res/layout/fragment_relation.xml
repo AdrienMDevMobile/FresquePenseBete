@@ -98,7 +98,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Explication\nLore ipsum" />
 
-    <com.micheladrien.fresquerappel.tools.MovableFloatingActionButton
+    <com.micheladrien.fresquerappel.View.tools.MovableFloatingActionButton
         android:id="@+id/relation_search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

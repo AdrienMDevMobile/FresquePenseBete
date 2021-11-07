@@ -9,7 +9,7 @@ import java.io.IOException
 import java.io.InputStream
 import javax.inject.Inject
 
-open class JsonDataProvider @Inject constructor(@ApplicationContext private val context:Context) : DataProvider {
+open class DataProviderJson @Inject constructor(@ApplicationContext private val context:Context) : DataProvider {
 
     override fun provideRelations(collage: String): MutableList<CardsRelation> = readJsonObject(collage.toLowerCase())
 
@@ -18,7 +18,7 @@ open class JsonDataProvider @Inject constructor(@ApplicationContext private val 
 
         try {
             val jArray = JSONArray(loadJSONFromAsset(file_name))
-            //val jArray = JSONArray("[{\"c1\": 1,\"c2\": 2,\"rel\": \"UP\",\"mandatory\": \"mandatory\",\"expl\": \"\"}]")
+
             val list = mutableListOf<CardsRelation>()
 
             for (i in 0 until jArray.length()) {

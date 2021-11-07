@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.lifecycle.*
 import com.micheladrien.fresquerappel.Data.datas.TimerModel
 import com.micheladrien.fresquerappel.Data.managers.TimerProvider
-import com.micheladrien.fresquerappel.tools.TimerState
-import com.micheladrien.fresquerappel.tools.notification.TimerSExecutor
+import com.micheladrien.fresquerappel.View.tools.TimerState
+import com.micheladrien.fresquerappel.View.tools.notification.TimerSExecutor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

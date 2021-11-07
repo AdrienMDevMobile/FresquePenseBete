@@ -1,4 +1,4 @@
-package com.micheladrien.fresquerappel.tools.notification
+package com.micheladrien.fresquerappel.View.tools.notification
 
 import android.content.Context
 import com.micheladrien.fresquerappel.Data.datas.TimerModel

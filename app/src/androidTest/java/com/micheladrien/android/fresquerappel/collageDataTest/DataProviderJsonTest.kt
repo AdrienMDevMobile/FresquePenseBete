@@ -18,7 +18,7 @@ import javax.inject.Inject
 
 @RunWith(AndroidJUnit4::class)
 @HiltAndroidTest
-class JsonDataProviderTest {
+class DataProviderJsonTest {
 
 
     @Rule

@@ -4,7 +4,7 @@ import com.micheladrien.fresquerappel.Data.datas.TimerModel
 import java.util.ArrayList
 import javax.inject.Inject
 
-class RawTimerProvider @Inject constructor(): TimerProvider{
+class TimerProviderRaw @Inject constructor(): TimerProvider{
 
 
     override fun getListTimer(): ArrayList<TimerModel> {

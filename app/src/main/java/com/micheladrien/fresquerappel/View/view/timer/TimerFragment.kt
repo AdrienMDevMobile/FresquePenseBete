@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.View.viewmodel.timer.TimerViewModel
 import com.micheladrien.fresquerappel.databinding.FragmentTimerBinding
-import com.micheladrien.fresquerappel.tools.TimerState
+import com.micheladrien.fresquerappel.View.tools.TimerState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

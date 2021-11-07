@@ -10,7 +10,7 @@ import com.micheladrien.fresquerappel.View.view.Main_activity
 import com.micheladrien.fresquerappel.Data.datas.TimerModel
 import com.micheladrien.fresquerappel.View.viewmodel.timer.TimerViewModel
 import com.micheladrien.fresquerappel.Data.managers.TimerProvider
-import com.micheladrien.fresquerappel.tools.notification.TimerSExecutor
+import com.micheladrien.fresquerappel.View.tools.notification.TimerSExecutor
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import io.mockk.coVerify

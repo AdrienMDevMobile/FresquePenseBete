@@ -5,7 +5,7 @@ import com.micheladrien.fresquerappel.Data.datas.*
 import com.micheladrien.fresquerappel.View.view.single.Single
 import javax.inject.Inject
 
-class MainCollageDataManager @Inject constructor(private val dataProvider: DataProvider) : CollageDataManager {
+class CollageDataManagerMain @Inject constructor(private val dataProvider: DataProvider) : CollageDataManager {
 
 
 
