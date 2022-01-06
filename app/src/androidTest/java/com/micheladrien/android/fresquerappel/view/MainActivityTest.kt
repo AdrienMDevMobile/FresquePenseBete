@@ -1,4 +1,4 @@
-package com.micheladrien.android.fresquerappel.collageDataTest
+package com.micheladrien.android.fresquerappel.view
 
 import android.content.Intent
 import androidx.test.espresso.Espresso.onView

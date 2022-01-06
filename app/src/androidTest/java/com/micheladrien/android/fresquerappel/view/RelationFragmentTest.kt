@@ -1,10 +1,11 @@
-package com.micheladrien.android.fresquerappel.collageDataTest
+package com.micheladrien.android.fresquerappel.view
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.DrawerActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
@@ -37,6 +38,8 @@ class RelationFragmentTest {
     //Le fragments relation est celui qui s'ouvre en premier. Pas besoin de s'y déplacer..
     @Before
     fun setUpTaskDetailViewModel() {
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())
+        onView(withId(R.id.nav_relation)).perform(click())
         onView(withId(R.id.relation_search_button)).perform(click())
     }
 

@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.View.viewmodel.relation.RelationViewModel
 import com.micheladrien.fresquerappel.databinding.FragmentRelationBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -96,7 +97,7 @@ class RelationFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        activity?.setTitle(relationViewModel.getCurrentCollage())
+        activity?.setTitle(getString(R.string.menu_relation))
     }
 
     override fun onDestroyView() {

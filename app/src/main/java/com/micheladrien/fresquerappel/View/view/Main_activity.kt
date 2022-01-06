@@ -8,14 +8,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
-import com.micheladrien.fresquerappel.View.viewmodel.MainViewModel
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.Data.managers.CollageDataManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,20 +22,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class Main_activity : AppCompatActivity() {
 
-    private lateinit var mainViewModel: MainViewModel
     private lateinit var appBarConfiguration: AppBarConfiguration
     @Inject lateinit var collageDataManager: CollageDataManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //val dataManager = MainCollageDataManager(this)
-
-        //Nous definissons le ViewModel
-        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-
-
-        /*val fragmentFactory = customFragmentFactory
-        getSupportFragmentManager().setFragmentFactory(fragmentFactory) */
-
         /* Défini menu lateral -- Debut */
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_navigation_activity)
@@ -57,28 +45,6 @@ class Main_activity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-        /* 1.3 : Retour arrière, la navigation latéralle ne sert désormais plus à changer le nom de la fresque
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_main //Cet Id doit obligatoirement se trouver dans le fichier mobile_navigation.xml
-            ), drawerLayout
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
-
-        navView.setNavigationItemSelectedListener { menuItem ->
-            mainViewModel.changeCollage(menuItem.title.toString())
-            drawerLayout.closeDrawers()
-            true
-        } */
-        /* Défini menu lateral -- Fin */
-
-        /*La VM change le nom de la fresque active
-        mainViewModel.name.observe(this, {
-            val actionBar: ActionBar? = supportActionBar
-            actionBar?.setTitle(it.toString())
-        }) */
 
     }
 

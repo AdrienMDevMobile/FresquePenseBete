@@ -10,7 +10,6 @@ import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.Data.datas.Relation
 import com.micheladrien.fresquerappel.Data.datas.RelationDirection
 import com.micheladrien.fresquerappel.Data.datas.RelationMandatory
-import com.micheladrien.fresquerappel.View.tools.iCollageVM
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -23,12 +22,8 @@ le fragments principal (affiche les informations)
 
 //ou récupérer valeur par défaut (mm fonction) au moment de la recherche si val null.
 @HiltViewModel
-class RelationViewModel @Inject constructor (collageDataManager: CollageDataManager, application: Application) : iCollageVM(collageDataManager, application) {
+class RelationViewModel @Inject constructor (val collageDataManager: CollageDataManager, application: Application) : AndroidViewModel(application) {
 
-    /* ancien MainViewmodel est désormais RelationView model. Name se trouve dans le nouveau ViewModel
-    private val _name = MutableLiveData<String>().apply {
-       value = application.getString(R.string.collage_climat)
-    } */
     private val _text = MutableLiveData<String>().apply {
         value = application.getString(R.string.please_start_search)
     }
@@ -38,7 +33,6 @@ class RelationViewModel @Inject constructor (collageDataManager: CollageDataMana
     private val _relation_color = MutableLiveData<Int>()
     private val _relation_mandatory = MutableLiveData<String>()
 
-    //val name : LiveData<String> = _name
     val text: LiveData<String> = _text
     val card1 : LiveData<Int> = _card1
     val card2 : LiveData<Int> = _card2

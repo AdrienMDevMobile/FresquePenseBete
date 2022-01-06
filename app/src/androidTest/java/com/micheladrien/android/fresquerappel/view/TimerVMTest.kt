@@ -1,4 +1,4 @@
-package com.micheladrien.android.fresquerappel.timerTest
+package com.micheladrien.android.fresquerappel.view
 
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule

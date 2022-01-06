@@ -44,24 +44,12 @@ class CollageDataManagerMainTest() {
         mdm = CollageDataManagerMain(mockDataProvider)
     }
 
-    //Tester la bonne définition du Singleton au moment du cast
-    @Test
-    fun DMfirstDefinitionTest() {
-        //assertTrue(true)
-        assertTrue(mdm.isDataInitialised())
-    }
 
     @Test
     fun DMcallProvideRelations() {
         verify(mockDataProvider).provideRelations(climat_collage_name);
     }
 
-    @Test
-    fun DMchangeCollage() {
-        mdm.changeCollage("other")
-        verify(mockDataProvider).provideRelations("other");
-
-    }
 
     //Tester dataManager.researchRelation() pour relation qui existe
     //Attention : Si le texte dans climat.json change : il faut adapter le test

@@ -2,7 +2,7 @@
 package com.micheladrien.fresquerappel.Data.managers
 
 import com.micheladrien.fresquerappel.Data.datas.*
-import com.micheladrien.fresquerappel.View.view.single.Single
+import com.micheladrien.fresquerappel.Data.datas.SingleCard
 import javax.inject.Inject
 
 class CollageDataManagerMain @Inject constructor(private val dataProvider: DataProvider) : CollageDataManager {
@@ -10,7 +10,7 @@ class CollageDataManagerMain @Inject constructor(private val dataProvider: DataP
 
 
    init{
-       changeCollage("Climat")
+       loadCollage("Climat")
    }
 
 
@@ -21,13 +21,13 @@ class CollageDataManagerMain @Inject constructor(private val dataProvider: DataP
     private var is_list_init: Boolean = false
 
 
-    override fun changeCollage(name: String) {
+    private fun loadCollage(name: String) {
         list = dataProvider.provideRelations(name)
         currentCollage = name
         is_list_init = true
     }
 
-    override fun isDataInitialised(): Boolean {
+    private fun isDataInitialised(): Boolean {
         return this.is_list_init
     }
 
@@ -46,11 +46,8 @@ class CollageDataManagerMain @Inject constructor(private val dataProvider: DataP
         )
     }
 
-    override fun researchSingle(number1: Int): Single {
+    override fun researchSingle(number1: Int): SingleCard {
         TODO("Not yet implemented")
     }
 
-    override fun getCurrentCollage() : String {
-        return currentCollage
-    }
 }

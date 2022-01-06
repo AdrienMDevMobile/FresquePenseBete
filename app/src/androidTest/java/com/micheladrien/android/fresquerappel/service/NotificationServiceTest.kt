@@ -1,4 +1,4 @@
-package com.micheladrien.android.fresquerappel.timerTest
+package com.micheladrien.android.fresquerappel.service
 
 import android.content.Context
 import android.content.Intent
