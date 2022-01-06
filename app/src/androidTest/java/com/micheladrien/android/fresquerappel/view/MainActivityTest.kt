@@ -27,11 +27,7 @@ class MainActivityTest {
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
-    /*
-    @get:Rule
-    val mainActivityTestRule : ActivityTestRule<Main_activity> = ActivityTestRule<Main_activity>(
-        Main_activity::class.java
-    ) */
+
 
     @Before
     fun set_up(){
@@ -49,14 +45,7 @@ class MainActivityTest {
         onView(withId(R.id.nav_view)).check(matches(isDisplayed()))
     }
 
-    /*
-    @Test
-    fun testOpenSingleFragment(){
-        onView(withId(R.id.nav_single)).perform(click())
-        onView(withId(R.id.tv_single_not_supported)).check(matches(isDisplayed()))
-        //sleep(2000)
 
-    } */
     @Test
     fun testOpenAboutFragment(){
         onView(withId(R.id.nav_about)).perform(click())

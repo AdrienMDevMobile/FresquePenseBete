@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.micheladrien.fresquerappel.Data.datas.CardsRelation
-import com.micheladrien.fresquerappel.Data.managers.DataProvider
+import com.micheladrien.fresquerappel.Data.managers.CollageDataProvider
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Assert.assertNotNull
@@ -18,7 +18,7 @@ import javax.inject.Inject
 
 @RunWith(AndroidJUnit4::class)
 @HiltAndroidTest
-class DataProviderJsonTest {
+class CollageDataProviderJsonTest {
 
 
     @Rule
@@ -32,7 +32,7 @@ class DataProviderJsonTest {
 
     private lateinit var context : Context
     @Inject
-    lateinit var jsonDataProvider : DataProvider
+    lateinit var jsonCollageDataProvider : CollageDataProvider
     private lateinit var list_of_relation : MutableList<CardsRelation>
 
     //Attention : Si le texte dans climat.json change : il faut adapter le test
@@ -41,7 +41,7 @@ class DataProviderJsonTest {
         hiltRule.inject()
         //context = ApplicationProvider.getApplicationContext()
         //jsonDataProvider = JsonDataProvider(context)
-        list_of_relation = jsonDataProvider.provideRelations("climat")
+        list_of_relation = jsonCollageDataProvider.provideRelations("climat")
     }
 
 

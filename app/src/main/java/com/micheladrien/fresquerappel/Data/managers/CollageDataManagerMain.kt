@@ -5,7 +5,7 @@ import com.micheladrien.fresquerappel.Data.datas.*
 import com.micheladrien.fresquerappel.Data.datas.SingleCard
 import javax.inject.Inject
 
-class CollageDataManagerMain @Inject constructor(private val dataProvider: DataProvider) : CollageDataManager {
+class CollageDataManagerMain @Inject constructor(private val collageDataProvider: CollageDataProvider) : CollageDataManager {
 
 
 
@@ -22,7 +22,7 @@ class CollageDataManagerMain @Inject constructor(private val dataProvider: DataP
 
 
     private fun loadCollage(name: String) {
-        list = dataProvider.provideRelations(name)
+        list = collageDataProvider.provideRelations(name)
         currentCollage = name
         is_list_init = true
     }

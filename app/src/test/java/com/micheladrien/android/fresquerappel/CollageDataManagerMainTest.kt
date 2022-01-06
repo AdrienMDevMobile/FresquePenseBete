@@ -4,10 +4,9 @@ import com.micheladrien.fresquerappel.Data.datas.CardsRelation
 import com.micheladrien.fresquerappel.Data.datas.RelationDirection
 import com.micheladrien.fresquerappel.Data.datas.RelationMandatory
 import com.micheladrien.fresquerappel.Data.managers.CollageDataManager
-import com.micheladrien.fresquerappel.Data.managers.DataProvider
+import com.micheladrien.fresquerappel.Data.managers.CollageDataProvider
 import com.micheladrien.fresquerappel.Data.managers.CollageDataManagerMain
 import org.junit.*
-import org.junit.Assert.assertTrue
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.Mockito
@@ -21,7 +20,7 @@ class CollageDataManagerMainTest() {
 
     //Set up la variable Context
     //private val context: Context = ApplicationProvider.getApplicationContext()
-    private val mockDataProvider: DataProvider = Mockito.mock(DataProvider::class.java)
+    private val mockCollageDataProvider: CollageDataProvider = Mockito.mock(CollageDataProvider::class.java)
     private lateinit var mdm : CollageDataManager
 
     private var climat_collage_name = "Climat"
@@ -39,15 +38,15 @@ class CollageDataManagerMainTest() {
                 "Mettez l'une sur l'autre."
             )
         )
-        `when`(mockDataProvider.provideRelations(climat_collage_name)).thenReturn(relationList)
+        `when`(mockCollageDataProvider.provideRelations(climat_collage_name)).thenReturn(relationList)
 
-        mdm = CollageDataManagerMain(mockDataProvider)
+        mdm = CollageDataManagerMain(mockCollageDataProvider)
     }
 
 
     @Test
     fun DMcallProvideRelations() {
-        verify(mockDataProvider).provideRelations(climat_collage_name);
+        verify(mockCollageDataProvider).provideRelations(climat_collage_name);
     }
 
 
