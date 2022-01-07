@@ -30,7 +30,7 @@ class CollageDataProviderJsonTest {
 
 
 
-    private lateinit var context : Context
+    //private lateinit var context : Context
     @Inject
     lateinit var jsonCollageDataProvider : CollageDataProvider
     private lateinit var list_of_relation : MutableList<CardsRelation>

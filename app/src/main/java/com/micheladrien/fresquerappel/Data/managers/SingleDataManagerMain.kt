@@ -13,6 +13,6 @@ class SingleDataManagerMain @Inject constructor(provider : SingleDataProvider) :
             if(it.number == num) return it
         }
 
-        return SingleCard("", 0, "", num)
+        return SingleCard("", num, 0, "")
     }
 }

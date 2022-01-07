@@ -4,6 +4,10 @@ import com.micheladrien.fresquerappel.Data.managers.CollageDataManager
 import com.micheladrien.fresquerappel.Data.providers.CollageDataProvider
 import com.micheladrien.fresquerappel.Data.providers.CollageDataProviderJson
 import com.micheladrien.fresquerappel.Data.managers.CollageDataManagerMain
+import com.micheladrien.fresquerappel.Data.managers.SingleDataManager
+import com.micheladrien.fresquerappel.Data.managers.SingleDataManagerMain
+import com.micheladrien.fresquerappel.Data.providers.SingleDataProvider
+import com.micheladrien.fresquerappel.Data.providers.SingleDataProviderJson
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -14,18 +18,29 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 abstract class AppModule {
 
-
     @Singleton
     @Binds
-    abstract fun bindDataManager(
+    abstract fun bindCollageDataManager(
         dataManager : CollageDataManagerMain
     ): CollageDataManager
 
     @Singleton
     @Binds
-    abstract fun bindDataProvider(
+    abstract fun bindCollageDataProvider(
         dataProvider : CollageDataProviderJson
     ): CollageDataProvider
+
+    @Singleton
+    @Binds
+    abstract fun bindSingleDataManager(
+        dataManager : SingleDataManagerMain
+    ) : SingleDataManager
+
+    @Singleton
+    @Binds
+    abstract fun bindSingleDataProvider(
+        dataProvider: SingleDataProviderJson
+    ) : SingleDataProvider
 
 
 }
