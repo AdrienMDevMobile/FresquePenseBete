@@ -8,11 +8,11 @@ class SingleDataManagerMain @Inject constructor(provider : SingleDataProvider) :
 
     private val singleList  = provider.provideSingles()
 
-    override fun getCard(num: Int): SingleCard {
+    override fun getCard(num: Int): SingleCard? {
         singleList.forEach{
             if(it.number == num) return it
         }
 
-        return SingleCard("", num, 0, "")
+        return null
     }
 }

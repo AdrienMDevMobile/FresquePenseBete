@@ -4,6 +4,8 @@ import com.micheladrien.fresquerappel.Data.datas.SingleCard
 import com.micheladrien.fresquerappel.Data.managers.SingleDataManager
 import com.micheladrien.fresquerappel.Data.managers.SingleDataManagerMain
 import com.micheladrien.fresquerappel.Data.providers.SingleDataProvider
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito
@@ -20,7 +22,7 @@ class SingleDataManagerTest {
     fun set_up(){
         val singleList = mutableListOf<SingleCard>()
         singleList.add(
-            SingleCard("Name1", 1, "Text1", 1)
+            SingleCard("Name1", 1,  1, "Text1")
         )
 
         `when`(mockedSingleDataProvider.provideSingles()).thenReturn(singleList)
@@ -36,16 +38,17 @@ class SingleDataManagerTest {
     @Test
     fun loadCard1(){
         var toTest = singleDataManager.getCard(1)
-        assert(toTest.name == "Name1")
-        assert(toTest.set == 1)
-        assert(toTest.text == "Text1")
+        assertNotNull(toTest)
+        toTest?.let {
+            assert(toTest.name == "Name1")
+            assert(toTest.set == 1)
+            assert(toTest.text == "Text1")
+        }
     }
 
     @Test
     fun loadCardDoesntExist(){
         var toTest = singleDataManager.getCard(9999999)
-        assert(toTest.name == "")
-        assert(toTest.set == 0)
-        assert(toTest.text == "")
+        assertNull(toTest)
     }
 }
