@@ -1,23 +1,18 @@
 package com.micheladrien.fresquerappel.View.views.single
 
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.micheladrien.fresquerappel.Data.providers.ImageProvider
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.View.viewmodels.single.SingleViewModel
 import com.micheladrien.fresquerappel.View.viewmodels.single.SingleViewModelImpl
-import com.micheladrien.fresquerappel.View.views.relation.RelSearchDialogFragment
 import com.micheladrien.fresquerappel.databinding.FragmentSingleBinding
 import dagger.hilt.android.AndroidEntryPoint
-import java.io.InputStream
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -28,7 +23,6 @@ class SingleCardFragment : Fragment() {
 
     private val singleViewModel: SingleViewModel by viewModels<SingleViewModelImpl>()
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,8 +31,6 @@ class SingleCardFragment : Fragment() {
 
         _binding = FragmentSingleBinding.inflate(inflater, container, false)
         val root = binding.root
-
-
 
 
         singleViewModel.cardNumber.observe(viewLifecycleOwner, {
@@ -68,35 +60,29 @@ class SingleCardFragment : Fragment() {
             singleViewModel.goToPreviousCard()
         }
 
-        /*
-        binding.cardNumberET.addTextChangedListener(TextWatcherCardId(this))
 
-*/
-
-            return root
-        }
+        return root
+    }
 
     override fun onStart() {
         super.onStart()
         activity?.setTitle(getString(R.string.menu_single))
+
+        binding.cardNumberET.setOnEditorActionListener(object : TextView.OnEditorActionListener {
+
+            override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
+
+                v?.text.toString().toInt().let {
+                    singleViewModel.goToCard(it)
+                }
+                return true
+            }
+        })
     }
 
-    protected fun onNewNumber(num: Int){
+    protected fun onNewNumber(num: Int) {
         singleViewModel.goToCard(num)
     }
 
-    class TextWatcherCardId(val fragment: SingleCardFragment) :
-        TextWatcher {
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            s?.toString()?.let { fragment.onNewNumber(it.toInt()) }
-        }
 
-        override fun afterTextChanged(s: Editable?) {
-        }
-
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-        }
-
-
-    }
 }
