@@ -1,13 +1,10 @@
 package com.micheladrien.fresquerappel.di
 
 import com.micheladrien.fresquerappel.Data.managers.CollageDataManager
-import com.micheladrien.fresquerappel.Data.providers.CollageDataProvider
-import com.micheladrien.fresquerappel.Data.providers.CollageDataProviderJson
 import com.micheladrien.fresquerappel.Data.managers.CollageDataManagerMain
 import com.micheladrien.fresquerappel.Data.managers.SingleDataManager
 import com.micheladrien.fresquerappel.Data.managers.SingleDataManagerMain
-import com.micheladrien.fresquerappel.Data.providers.SingleDataProvider
-import com.micheladrien.fresquerappel.Data.providers.SingleDataProviderJson
+import com.micheladrien.fresquerappel.Data.providers.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -41,6 +38,12 @@ abstract class AppModule {
     abstract fun bindSingleDataProvider(
         dataProvider: SingleDataProviderJson
     ) : SingleDataProvider
+
+    @Singleton
+    @Binds
+    abstract fun bindImageProvider(
+        imageProviderRaw: ImageProviderRaw
+    ) : ImageProvider
 
 
 }

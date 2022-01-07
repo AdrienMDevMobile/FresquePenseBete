@@ -1,14 +1,16 @@
 package com.micheladrien.fresquerappel.View.viewmodels.single
 
 import android.app.Application
+import android.graphics.Bitmap
 import androidx.lifecycle.MutableLiveData
 import com.micheladrien.fresquerappel.Data.managers.SingleDataManager
+import com.micheladrien.fresquerappel.Data.providers.ImageProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class SingleViewModelImpl @Inject constructor (dataManager: SingleDataManager) :
-    SingleViewModel(dataManager) {
+class SingleViewModelImpl @Inject constructor (dataManager: SingleDataManager, val imageProvider: ImageProvider, application: Application) :
+    SingleViewModel(dataManager, application) {
 
     //Is here to manage the navigations arrows
     private var currentNumber = 1
@@ -18,12 +20,14 @@ class SingleViewModelImpl @Inject constructor (dataManager: SingleDataManager) :
     private val _cardName = MutableLiveData<String>("")
     private val _explanation = MutableLiveData<String>("")
     private val _setInt = MutableLiveData<Int>(0)
+    private val _cardImage = MutableLiveData<Bitmap>()
 
     init {
         cardName = _cardName
         explanation = _explanation
         setInt = _setInt
         cardNumber = _cardNumber
+        cardImage = _cardImage
 
         goToCard(currentNumber)
     }
@@ -33,6 +37,9 @@ class SingleViewModelImpl @Inject constructor (dataManager: SingleDataManager) :
         _cardName.value = card.name
         _setInt.value = card.set
         _explanation.value = card.text
+
+        _cardImage.value = imageProvider.getCardImage(getApplication<Application>().applicationContext, currentNumber)
+
         changeNumber(num)
     }
 
