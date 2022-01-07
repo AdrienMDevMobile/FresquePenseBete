@@ -9,7 +9,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import androidx.test.uiautomator.*
 import com.micheladrien.android.fresquerappel.UITestUtilitaire.checkNotification
-import com.micheladrien.fresquerappel.View.view.Main_activity
+import com.micheladrien.fresquerappel.View.views.Main_activity
 import com.micheladrien.fresquerappel.View.tools.notification.NotServiceCompanion
 import com.micheladrien.fresquerappel.View.tools.notification.NotificationService
 import dagger.hilt.android.testing.HiltAndroidRule

@@ -3,6 +3,7 @@ package com.micheladrien.fresquerappel.Data.managers
 
 import com.micheladrien.fresquerappel.Data.datas.*
 import com.micheladrien.fresquerappel.Data.datas.SingleCard
+import com.micheladrien.fresquerappel.Data.providers.CollageDataProvider
 import javax.inject.Inject
 
 class CollageDataManagerMain @Inject constructor(private val collageDataProvider: CollageDataProvider) : CollageDataManager {

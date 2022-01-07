@@ -1,5 +1,3 @@
 package com.micheladrien.fresquerappel.Data.datas
 
-class SingleCard{
-
-}
+data class SingleCard(val name:String, val set:Int, val text:String, val number : Int)

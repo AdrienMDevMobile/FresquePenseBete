@@ -4,7 +4,7 @@ import com.micheladrien.fresquerappel.Data.datas.CardsRelation
 import com.micheladrien.fresquerappel.Data.datas.RelationDirection
 import com.micheladrien.fresquerappel.Data.datas.RelationMandatory
 import com.micheladrien.fresquerappel.Data.managers.CollageDataManager
-import com.micheladrien.fresquerappel.Data.managers.CollageDataProvider
+import com.micheladrien.fresquerappel.Data.providers.CollageDataProvider
 import com.micheladrien.fresquerappel.Data.managers.CollageDataManagerMain
 import org.junit.*
 import org.junit.runner.RunWith

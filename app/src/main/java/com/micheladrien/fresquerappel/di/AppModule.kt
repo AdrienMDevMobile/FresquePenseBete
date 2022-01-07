@@ -1,8 +1,8 @@
 package com.micheladrien.fresquerappel.di
 
 import com.micheladrien.fresquerappel.Data.managers.CollageDataManager
-import com.micheladrien.fresquerappel.Data.managers.CollageDataProvider
-import com.micheladrien.fresquerappel.Data.managers.CollageDataProviderJson
+import com.micheladrien.fresquerappel.Data.providers.CollageDataProvider
+import com.micheladrien.fresquerappel.Data.providers.CollageDataProviderJson
 import com.micheladrien.fresquerappel.Data.managers.CollageDataManagerMain
 import dagger.Binds
 import dagger.Module

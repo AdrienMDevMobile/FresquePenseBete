@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.micheladrien.fresquerappel.Data.datas.CardsRelation
-import com.micheladrien.fresquerappel.Data.managers.CollageDataProvider
+import com.micheladrien.fresquerappel.Data.providers.CollageDataProvider
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Assert.assertNotNull

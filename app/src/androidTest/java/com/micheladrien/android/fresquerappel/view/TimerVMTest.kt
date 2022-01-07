@@ -6,10 +6,10 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.rule.ActivityTestRule
 import com.micheladrien.android.fresquerappel.CustomCoroutineRule
 //import com.micheladrien.android.fresquerappel.CustomCoroutineRule
-import com.micheladrien.fresquerappel.View.view.Main_activity
+import com.micheladrien.fresquerappel.View.views.Main_activity
 import com.micheladrien.fresquerappel.Data.datas.TimerModel
-import com.micheladrien.fresquerappel.View.viewmodel.timer.TimerViewModel
-import com.micheladrien.fresquerappel.Data.managers.TimerProvider
+import com.micheladrien.fresquerappel.View.viewmodels.timer.TimerViewModel
+import com.micheladrien.fresquerappel.Data.providers.TimerProvider
 import com.micheladrien.fresquerappel.View.tools.notification.TimerSExecutor
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest

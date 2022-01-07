@@ -1,6 +1,6 @@
 package com.micheladrien.android.fresquerappel
 
-import com.micheladrien.fresquerappel.Data.managers.ImageProviderRaw
+import com.micheladrien.fresquerappel.Data.providers.ImageProviderRaw
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -8,7 +8,7 @@ import org.junit.runners.JUnit4
 
 @RunWith(JUnit4::class)
 class ImageProviderRawTest {
-    val toTest : ImageProviderRaw  = ImageProviderRaw()
+    val toTest : ImageProviderRaw = ImageProviderRaw()
 
     @Test
     fun testImageLocationName(){

@@ -1,7 +1,7 @@
 package com.micheladrien.fresquerappel.di
 
-import com.micheladrien.fresquerappel.Data.managers.TimerProviderRaw
-import com.micheladrien.fresquerappel.Data.managers.TimerProvider
+import com.micheladrien.fresquerappel.Data.providers.TimerProviderRaw
+import com.micheladrien.fresquerappel.Data.providers.TimerProvider
 import com.micheladrien.fresquerappel.View.tools.notification.MainTimerSExecutor
 import com.micheladrien.fresquerappel.View.tools.notification.TimerSExecutor
 import dagger.Binds
