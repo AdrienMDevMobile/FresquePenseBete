@@ -3,6 +3,46 @@
     "name": "Activités humaines",
     "num" : 1,
     "set": 1,
+    "text": "C'est par là que tout commence... C'est aussi par là que commence le 5ème rapport du GIEC, dans l'avant-propos de son résumé, il est mis en évidence que la science montre à présent avec 95 % de certitude que depuis le milieu du XXe siècle, l’activité humaine est la cause principale du réchauffement observé.\n\nCette carte peut être considérée...\n\n    soit comme la cause de l'ensemble des cartes secteurs économiques (Industrie, Utilisation des bâtiments, Transport, Agriculture),\n    soit comme un titre de l'ensemble de ces cartes (qui sont alors regroupées dans une grosse “patate“)."
+  },
+  {
+    "name" : "Industrie",
+    "num" : 2,
+    "set": 2,
+    "text": "Il s'agit de la fabrication de l'ensemble des biens de consommation. L'industrie regroupe un très grand nombre de secteurs industriels différents dont les plus importants en émissions de GES sont la papeterie, le ciment, l'acier, l'aluminium, la chimie. Pour réduire les émissions de l'industrie, la solution consiste à allonger la durée de vie des produits, voire à réduire leur consommation. "
+  },
+  {
+    "name" : "Utilisation des bâtiments",
+    "num" : 2,
+    "set": 2,
+    "text": "On parle ici de l'utilisation des bâtiments et non de leur construction (qui, elle, entre dans le secteur de l'industrie). Chauffage, climatisation, éclairage, électronique, etc. Le gros sujet, sous nos latitudes, c'est l'isolation thermique des bâtiments. En ce qui concerne la construction dans le neuf, il est important de construire des bâtiment bien isolés. Mais l'enjeu est limité car les normes dans le neuf sont bien plus contraignantes que par le passé et on ne construit chaque année qu'une petite partie (1%) du parc déjà construit. L'enjeu est donc beaucoup plus dans la rénovation thermique des bâtiments."
+  },
+  {
+    "name" : "Transport",
+    "num" :4,
+    "set": 2,
+    "text": "15%, c'est peu, mais cela varie beaucoup en fonction des pays et des modes de vie. Dans les pays occidentaux, la part du transport, et notamment celle de l'avion, peut représenter une très grosse partie de l'empreinte carbone de chacun. En fait, si vous prenez un ou quelques longs courriers dans l'année, cela constitue l'essentiel de votre bilan carbone. "
+  },
+  {
+    "name" : "",
+    "num" :5,
+    "set": 0,
     "text": ""
+  },
+
+  {
+    "name" : "Hausse de la température de l'eau",
+    "num" : 17,
+    "set": 3,
+    "text": "L'océan se réchauffe de l'ordre du dixième de degré en surface et encore moins en profondeur. Comment cela se fait-il alors qu'il absorbe 91% de l'énergie en excès sur la terre ? C'est parce qu'il est beaucoup plus gros que l'atmosphère. Il a une capacité calorifique beaucoup plus grande.\n\nPour mesurer cela, il faut se rappeler que l'océan couvre 71% de la surface de la terre et qu'il a une profondeur de 4000m en moyenne. L'atmosphère s'étend sur une plus grande hauteur, mais si on le ramenait à la même densité que l'eau, il ne mesurerait plus que 10m (c'est pour ça qu'on gagne un atmosphère de pression tous les 10m quand on fait de la plongée).\n\nL'eau se dilate très peu. Comment le réchauffement de l'océan de l'ordre d'un dixième de degré peut-il se traduire par un hausse du niveau de l'eau ? Une première réponse consiste à dire que l'océan fait 4000m de profondeur en moyenne, et donc une toute petite dilatation suffit à faire quelques centimètre.\n\nL'explication plus complète fait l'objet d'une fiche pratique."
+  },
+
+
+  {
+    "name" : "Perturbation du cycle de l'eau",
+    "num" : 20,
+    "set": 3,
+    "text": "Cette carte est importante. Elle matérialise à elle seule pourquoi on parlait autrefois de réchauffement climatique, puis maintenant de changement climatique, voire de dérèglement climatique.\n\nL'augmentation de température est en soi un problème, mais on voit sur la fresque, à la fin, que la perturbation du cycle de l'eau a beaucoup plus d'effets. Pour illustrer que l'évaporation a lieu à la surface de l'eau, poser les cartes 17-hausse de la température de l'eau et 21-hausse de la température sur la table, placer le bord inférieur de la carte 21 contre le bord supérieur de la carte 17, puis mettre la carte 20 à la frontière des deux, perpendiculairement, pour matérialiser la surface de l'eau (entre l'eau et l'air). "
+
   }
 ]

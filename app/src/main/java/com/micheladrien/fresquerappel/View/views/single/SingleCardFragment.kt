@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.micheladrien.fresquerappel.R
 import com.micheladrien.fresquerappel.View.viewmodels.single.SingleViewModel
+import com.micheladrien.fresquerappel.View.viewmodels.single.SingleViewModelImpl
 import com.micheladrien.fresquerappel.databinding.FragmentSingleBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,7 +18,7 @@ class SingleCardFragment : Fragment() {
     private var _binding: FragmentSingleBinding? = null
     private val binding get() = _binding!!
 
-    private val relationViewModel: SingleViewModel by viewModels()
+    private val singleViewModel: SingleViewModel by viewModels<SingleViewModelImpl>()
 
 
     override fun onCreateView(
@@ -28,6 +29,23 @@ class SingleCardFragment : Fragment() {
 
         _binding = FragmentSingleBinding.inflate(inflater, container, false)
         val root = binding.root
+
+        singleViewModel.cardNumber.observe(viewLifecycleOwner, {
+            binding.cardNumberET.setText(it.toString())
+        })
+
+        singleViewModel.cardName.observe(viewLifecycleOwner, {
+            binding.cardNameTV.setText(it)
+        })
+
+        singleViewModel.explanation.observe(viewLifecycleOwner, {
+            binding.cardTextTV.setText(it)
+        })
+
+        singleViewModel.setInt.observe(viewLifecycleOwner, {
+            binding.setNumberTV.setText(it.toString())
+        })
+
 
         return root
     }

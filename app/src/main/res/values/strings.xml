@@ -56,4 +56,6 @@
     <string name="timer_stop_toast">Les alarmes ont étés arrétées.</string>
     <string name="timer_error_toast">Une erreur c\'est produite.</string>
 
+    <string name="single_string_setNumber">Lot :</string>
+
 </resources>

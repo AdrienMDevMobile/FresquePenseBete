@@ -47,37 +47,37 @@
                 <TextView android:id="@+id/card_nameTV"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Activité humaine"
+                    android:text="Nom carte"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView android:id="@+id/lotTV"
+                <TextView android:id="@+id/setTV"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Lot : "
+                    android:text="@string/single_string_setNumber"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/card_nameTV" />
 
-                <TextView android:id="@+id/lot_numberTV"
+                <TextView android:id="@+id/set_numberTV"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="1"
+                    android:text="0"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    app:layout_constraintStart_toEndOf="@id/lotTV"
-                    app:layout_constraintTop_toTopOf="@id/lotTV" />
+                    app:layout_constraintStart_toEndOf="@id/setTV"
+                    app:layout_constraintTop_toTopOf="@id/setTV" />
 
                 <TextView android:id="@+id/card_textTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
                     android:paddingTop="8sp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel nibh scelerisque, ultrices augue et, consectetur magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc viverra varius dolor. Etiam dolor lorem, rutrum et ultrices ac, tempor at sapien. Vestibulum a viverra dolor. Vivamus sodales diam at lacus posuere placerat. Sed tristique ligula nec risus posuere tempus. Aliquam feugiat, dui sed porttitor gravida, nibh ante semper neque, a laoreet nisi risus ut ipsum. Mauris ac mauris dui. Sed ac elit sed massa egestas imperdiet condimentum in leo. Fusce posuere finibus interdum. Proin pharetra ex non odio ullamcorper, non fringilla eros sagittis. Aenean tristique justo vitae quam sagittis sodales. Donec lectus mi, vulputate a sodales ut, tempus vitae lectus. Suspendisse potenti. Fusce quis libero ac nisi sodales facilisis eu eu ex. In sed pretium mi, vitae auctor nulla. Ut ex erat, elementum tristique urna vitae, suscipit malesuada nisi. Maecenas aliquam ultricies est ornare elementum. Duis venenatis nibh a efficitur lobortis. Quisque diam massa, placerat sit amet purus nec, viverra congue nisi. Duis hendrerit metus sed viverra tempus. Fusce in tristique nibh, vel tristique lectus. Morbi varius pellentesque rutrum. Vivamus metus diam, egestas id sodales ut, fermentum at lectus. Duis rutrum cursus maximus. Cras non odio quis lacus bibendum feugiat. Donec blandit nisi vitae ante pellentesque finibus. Sed tortor odio, consequat nec nibh at, suscipit efficitur mi. Proin lectus tellus, congue ut diam vel, venenatis posuere justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel nibh scelerisque, ultrices augue et, consectetur magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc viverra varius dolor. Etiam dolor lorem, rutrum et ultrices ac, tempor at sapien. Vestibulum a viverra dolor. Vivamus sodales diam at lacus posuere placerat. Sed tristique ligula nec risus posuere tempus. Aliquam feugiat, dui sed porttitor gravida, nibh ante semper neque, a laoreet nisi risus ut ipsum. Mauris ac mauris dui. Sed ac elit sed massa egestas imperdiet condimentum in leo. Fusce posuere finibus interdum. Proin pharetra ex non odio ullamcorper, non fringilla eros sagittis. Aenean tristique justo vitae quam sagittis sodales. Donec lectus mi, vulputate a sodales ut, tempus vitae lectus. Suspendisse potenti. Fusce quis libero ac nisi sodales facilisis eu eu ex. In sed pretium mi, vitae auctor nulla. Ut ex erat, elementum tristique urna vitae, suscipit malesuada nisi. Maecenas aliquam ultricies est ornare elementum. Duis venenatis nibh a efficitur lobortis. Quisque diam massa, placerat sit amet purus nec, viverra congue nisi. Duis hendrerit metus sed viverra tempus. Fusce in tristique nibh, vel tristique lectus. Morbi varius pellentesque rutrum. Vivamus metus diam, egestas id sodales ut, fermentum at lectus. Duis rutrum cursus maximus. Cras non odio quis lacus bibendum feugiat. Donec blandit nisi vitae ante pellentesque finibus. Sed tortor odio, consequat nec nibh at, suscipit efficitur mi. Proin lectus tellus, congue ut diam vel, venenatis posuere justo."
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lot_numberTV" />
+                    app:layout_constraintTop_toBottomOf="@+id/set_numberTV" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
