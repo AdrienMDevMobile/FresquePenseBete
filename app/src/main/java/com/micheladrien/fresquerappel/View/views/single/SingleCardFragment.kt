@@ -1,10 +1,12 @@
 package com.micheladrien.fresquerappel.View.views.single
 
+import android.content.Context
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -60,13 +62,9 @@ class SingleCardFragment : Fragment() {
             singleViewModel.goToPreviousCard()
         }
 
-
-        return root
-    }
-
-    override fun onStart() {
-        super.onStart()
-        activity?.setTitle(getString(R.string.menu_single))
+        binding.cardNumberET.setOnClickListener {
+            binding.cardNumberET.setText("")
+        }
 
         binding.cardNumberET.setOnEditorActionListener(object : TextView.OnEditorActionListener {
 
@@ -75,13 +73,26 @@ class SingleCardFragment : Fragment() {
                 v?.text.toString().toInt().let {
                     singleViewModel.goToCard(it)
                 }
+
+                val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(v?.windowToken, 0)
+
                 return true
             }
         })
+
+
+        return root
     }
 
-    protected fun onNewNumber(num: Int) {
-        singleViewModel.goToCard(num)
+    override fun onStart() {
+        super.onStart()
+        activity?.setTitle(getString(R.string.menu_single))
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 

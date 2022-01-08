@@ -34,7 +34,7 @@ class SingleViewModelImpl @Inject constructor (dataManager: SingleDataManager, v
 
     override fun goToCard(num: Int) {
         var card = dataManager.getCard(num)
-        card?.let {
+        if(card !=null) {
             _cardName.value = card.name
             _setInt.value = card.set
             _explanation.value = card.text
@@ -42,6 +42,10 @@ class SingleViewModelImpl @Inject constructor (dataManager: SingleDataManager, v
             _cardImage.value = imageProvider.getCardImage(getApplication<Application>().applicationContext, num)
 
             changeNumber(num)
+        }
+        else {
+            //We make sure the view has the previous number.
+            changeNumber(currentNumber)
         }
 
     }

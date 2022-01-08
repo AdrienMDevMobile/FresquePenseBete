@@ -24,17 +24,96 @@
     "text": "15%, c'est peu, mais cela varie beaucoup en fonction des pays et des modes de vie. Dans les pays occidentaux, la part du transport, et notamment celle de l'avion, peut représenter une très grosse partie de l'empreinte carbone de chacun. En fait, si vous prenez un ou quelques longs courriers dans l'année, cela constitue l'essentiel de votre bilan carbone. "
   },
   {
-    "name" : "",
+    "name" : "Énergies Fossiles",
     "num" :5,
-    "set": 0,
+    "set": 1,
+    "text": "Il y a souvent un débat entre mettre les énergies fossiles avant ou après les activités humaines. C’est comme la poule et l’œuf : il n’y a pas de bonne réponse. C’est une question de dialectique. Il ne faut pas perdre de temps là-dessus.\n\nLe graphique représente les émissions mondiales de CO2 seul issues des énergies fossiles. La courbe en noir les émissions passées, et en couleur, les projections selon les 5 scenarii étudiés par le GIEC dans le 6è rapport (AR6).\n\nPour les 2 scénarii bleus (SSP1-1.9 et SSP1-2.6), les émissions envisagées doivent devenir nulles, respectivement en 2060 et 2080.\n\nLes énergies fossiles sont : charbon, pétrole, gaz naturel. "
+  },
+  {
+    "name" : "Déforestation",
+    "num" :6,
+    "set": 2,
+    "text": "La déforestation peut être considérée comme une activité humaine ou comme une conséquence de l'agriculture, ou encore les deux à la fois.\nAttention : le problème principal avec la déforestation, ce n'est pas que ça détruit des puits de carbone, c'est que ça émet du CO2 car 93% du bois déforesté est brulé sur place. C'est une différence entre flux et stock. "
+  },
+  {
+  "name" : "Emissions de CO2",
+  "num" :7,
+  "set": 1,
+  "text": "En couleur marron, les émissions liées à la déforestation.\n\nEn couleur grise, les émissions liées à à la combustion des énergies fossiles.\n\nL'échelle verticale est en Pg C/an (Peta grammes de carbone = 10 15 {\\displaystyle 10^{15}} {\\displaystyle 10^{15}} grammes par an), ce qui est la même chose que des Gt C /an (Giga tonnes de carbone par an). Pour convertir en CO2, il faut multiplier par 3.67.\n\nLa particularité de cette carte est qu'il n'y a pas l'échelle de temps. Cela peut servir d'indice pour l'associer à la carte Puit de carbone. "
+  },
+  {
+    "name" : "Agriculture",
+    "num" :8,
+    "set": 2,
+    "text": "L'agriculture utilise très peu d'énergie fossile, au regard des émissions d'autres GES dont elle est responsable. Elle est responsable de 80% de la déforestation. En effet, il faut des grandes surfaces pour cultiver, surtout pour nourrir les animaux d'élevage.\n\nL'agriculture est une activité humaine qui a commencé dès que le climat s'est stabilisé, au début du Néolithique il y a 10.000 ans, après la dernière déglaciation qui a elle-même duré 10.000 ans. Dès lors, l’impact de l’activité humaine sur son environnement n’a cessé de croître: il a domestiqué des espèces végétales (aujourd'hui, le riz domestiqué n’est plus capable de se reproduire sans l’intervention de l’homme), il a déforesté pour étendre les surfaces cultivées, privant les espèces animales de leur habitat naturel, et depuis la révolution verte (verte pour agricole, pas pour écologique !), il a commencé à utiliser des pesticides et des intrants nocifs pour l’environnement et pour lui-même.\n\nCette carte regroupe aussi les activités liées à l'aquaculture (production animale ou végétale en milieu aquatique). "
+  },
+  {
+    "name" : "Autres GES",
+    "num" :9,
+    "set": 2,
+    "text": "Les autres GES décrits ici sont le méthane et le protoxyde d'azote (ou oxyde nitreux, appelé aussi gaz hilarant).\n\nD'une manière générale, un gaz à effet de serre est un gaz qui a la particularité de pouvoir absorber les rayonnements infrarouges émis par la terre. Il s'agit des gaz qui ont plus de trois atomes par molécule, ou deux si ce sont deux atomes différents (ne sont donc pas des GES : O2, N2, ...).\n\nLes principaux gaz à effet de serre : H2O, CO2, CH4, N2O, O3 (ozone troposphérique), les HCFC (comme le fréon), les CFC, les HFC, le CF4, le SF6, le CF3-SF5.\n\nLes gaz fluorés (ceux qui contiennent la lettre F) sont utilisés comme réfrigérants (climatisation et chaînes du froid), extincteurs et dans certains procédés industriels et biens de consommation (comme certains dissolvants). Ils ne sont pas naturellement présents dans l’atmosphère.\n\n\nIl y a dégagement de méthane (CH4) dès qu'il y a une décomposition anaérobie (c’est-à-dire sans oxygène) :\n\n    dans la panse des vaches qu'on appelle aussi le rumen et qui donne son nom aux ruminants (dans le rumen, les bactéries \"digèrent\" la cellulose que la vache ne sait pas métaboliser, puis la vache régurgite cette herbe pour la mâcher et l'avaler pour de bon).\n    dans les rizières car elles sont couvertes d'eau, et la matière organique immergée ne reçoit pas d'oxygène quand elle se décompose.\n    dans les décharges de déchets, quand les tas sont trop grands pour que l'oxygène atteigne le fond du tas.\n\nLe méthane est aussi le composant principal du gaz naturel. Les fuites sur les gazoducs font donc aussi du méthane.\n\nLes principales sources d'émissions de méthane par les activités humaines (au niveau mondial) sont (chiffres 2003-2012) :\n\n    Énergies Fossiles (production et utilisation) : ~34% des émissions anthropiques de CH4dont :\n        ~1/3 venant du charbon\n        2/3 venant du gaz naturel et du pétrole\n    Ruminants et fumiers / lisiers : ~31% des émissions anthropiques de CH4 dont :\n        87% pour la fermentation entérique (éructation) ==> soit ~27% des émissions anthropiques de CH4 rien que pour ce poste\n        13% pour les fumiers et lisiers\n    Décharges et gestion des déchets : ~18% des émissions anthropiques de CH4\n    Rizières : ~9% des émissions anthropiques de CH4\n    Combustion de biomasse  : ~5% des émissions anthropiques de CH4\n    Combustion de biocarburant : ~3% des émissions anthropiques de CH4\n\nLe protoxyde d’azote (N2O) est principalement dû à l’utilisation d’engrais azotés agricoles, à la production d’aliments pour bétail et à certains procédés chimiques, comme la production d’acide nitrique. "
+  },
+  {
+    "name" : "Aérosols",
+    "num" :10,
+    "set": 3,
+    "text": "Cette carte mérite d'être supprimée la plupart du temps, sauf à ce que les participants aient un bon niveau, qu'ils aient du temps, et que l'animateur maîtrise le sujet.\nOn peut utiliser la carte n°13 pour expliquer cela : Les aérosols jouent principalement sur les flèches orange (ils augmentent la taille de la flèche \"Réflexion\" alors que l'effet de serre additionnel joue sur les flèches rouges (il augmente la taille de la flèche \"Effet de serre\" qui revient vers la terre). "
+  },
+  {
+    "name" : "Concentration en CO2",
+    "num" :11,
+    "set": 3,
+    "text": "Des mesures de CO2 ont lieu depuis 1958 à Hawaï, sur l'île de Big Island, sur les flans du volcan Mauna Loa. Elles ont été lancées par Charles Keeling. Dans le scénario bleu (2°C) elles augmentent jusqu'en 2040-2050 puis elles baissent car on a tellement diminué les émissions que les puits naturels n'absorbent plus. "
+  },
+  {
+    "name" : "Puits de carbone",
+    "num" :12,
+    "set": 2,
+    "text": "Le graphique original du GIEC représente à la fois les émissions de CO2 et les puits de carbone. La Fresque a choisi de le scinder en deux afin de montrer d'une part d'où vient le CO2 et d'autre part où il va. C'est pourquoi les deux cartes sont exactement symétriques : chaque année, le CO2 émis par l'homme doit aller quelque part. Tout le CO2 qui n'est pas absorbé par les puits de carbone demeure dans l'atmosphère.\n\nLe texte à l'arrière de la carte donne la répartition approximative des taux d'absorption. Les pourcentages plus détaillés sont de :\n\n    27.9% pour l'océan\n    28.8% pour la photosynthèse."
+  },
+  {
+    "name" : "Effet de serre additionnel",
+    "num" :13,
+    "set": 1,
+    "text": "Sur cette carte, on voit des flèches de deux couleurs :\n\n    Le orange pour l'énergie qui vient du soleil (UV, lumière visible et infrarouge de haute fréquence) et celle qui est réfléchie par effet albédo à la même fréquence. L'albédo est la capacité d'un corps à renvoyer la lumière (un corps noir a un albédo de 0, un miroir a un albédo de 1. La terre a un albédo moyen de 0,31).\n    Le rouge pour les infrarouges de basses fréquences, émis par la terre qui est moins chaude que le soleil, ou retenus par l'effet de serre.\n\nL'effet de serre repose sur le fait que ce ne soit pas le même rayonnement entrant que le rayonnement sortant.\n\nSur la droite, \"-18°C\", c'est la température qu'il ferait sur terre sans aucune effet de serre. \"15°C\", c'est la température réelle aujourd'hui.\n\nIl faisait \"14°C\" en 1850, c'est à dire avant que l'activité humaine ne produise cet effet de serre additionnel. En 2020, la température moyenne est d'environ 15.2°C. "
+  },
+  {
+    "name" : "Bilan énergétique",
+    "num" :14,
+    "set": 3,
+    "text": "Sur le graphique, on peut voir plusieurs couleurs qui représentent, du haut vers le bas :\n\n    En bleu clair, la couche supérieure de l'océan, entre 0 et 700m\n    En bleu foncé, la couche inférieure de l'océan, entre 700m et 2000m\n    En bleu très foncé, la couche inférieure de l'océan, en-dessous de 2000m\n    En gris, les différentes glaces\n    En orange, les sols (hors glace)\n    En violet, l'atmosphère\n\nLe pointillé représente simplement le total.\n\nL'échelle verticale est en Zetta Joules ( 10 21 {\\displaystyle 10^{21}} {\\displaystyle 10^{21}} joules). "
+  },
+  {
+    "name" : "Forçage radiatif",
+    "num" : 15,
+    "set": 3,
+    "text": "Sur le graphique principal, on voit les différentes composantes du forçage radiatif de 1750 à nos jours (en variation par rapport à la situation d'équilibre de 1750: forçage radiatif = 0) :\n\n    dans la partie du haut, les effets réchauffants (forçage radiatif positif)\n    dans la partie du bas, les effets refroidissants (forçage radiatif négatif)\n\nL'effet de serre (CO2 + Other WMGHG (autres GES) + Trop O3 (ozone troposphérique)) représente un forçage positif de 3 , 8 W / m 2 {\\displaystyle 3,8W/m^{2}} {\\displaystyle 3,8W/m^{2}} . Il est donc dans la partie supérieure du graphique.\n\nLes aérosols (Effet direct + effet indirect) et les volcans et le changement d'affectation des sols ont un effet refroidissant, et sont donc dans la partie inférieure du graphique.\n\nPour plus de détail sur ce graphique, voir le détail poste par poste en fin de page.\n\nLe graphe secondaire de droite représente le forçage radiatif sur deux siècles et demi (historique et projections). Dans le 6e rapport du GIEC, le forçage radiatif vaut 2.8 W / m 2 {\\displaystyle 2.8W/m^{2}} {\\displaystyle 2.8W/m^{2}}. Les valeurs du forçage en 2100 ont donné leur nom aux 5 scénarios du GIEC (SSP1-1.9 ; SSP1-2.6 ; SSP2-4.5 ; SSP3-7.0 ; SSP4-8.5). On retrouve les couleurs de ces scénarios dans les graphiques des cartes n°5, 11, 15, 21, 22 et 24.\n\nPour plus de détail sur ce graphique, voir la fiche thématique sur les scénarios RCP. "
+  },
+  {
+    "name" : "Fonte des glaciers",
+    "num" : 16,
+    "set": 3,
     "text": ""
   },
-
   {
     "name" : "Hausse de la température de l'eau",
     "num" : 17,
     "set": 3,
     "text": "L'océan se réchauffe de l'ordre du dixième de degré en surface et encore moins en profondeur. Comment cela se fait-il alors qu'il absorbe 91% de l'énergie en excès sur la terre ? C'est parce qu'il est beaucoup plus gros que l'atmosphère. Il a une capacité calorifique beaucoup plus grande.\n\nPour mesurer cela, il faut se rappeler que l'océan couvre 71% de la surface de la terre et qu'il a une profondeur de 4000m en moyenne. L'atmosphère s'étend sur une plus grande hauteur, mais si on le ramenait à la même densité que l'eau, il ne mesurerait plus que 10m (c'est pour ça qu'on gagne un atmosphère de pression tous les 10m quand on fait de la plongée).\n\nL'eau se dilate très peu. Comment le réchauffement de l'océan de l'ordre d'un dixième de degré peut-il se traduire par un hausse du niveau de l'eau ? Une première réponse consiste à dire que l'océan fait 4000m de profondeur en moyenne, et donc une toute petite dilatation suffit à faire quelques centimètre.\n\nL'explication plus complète fait l'objet d'une fiche pratique."
+  },
+  {
+    "name" : "Fonte de la banquise",
+    "num" :18,
+    "set": 1,
+    "text": "Le volume occupé par la glace sous la surface est exactement le même que celui de la glace une fois fondue. C'est le principe de la poussée d'Archimède.\n\nLa banquise se forme lorsque l'eau de mer est à une température inférieure à -1.8°C pendant une longue période. La banquise est salée lors de sa formation, puis s'adoucit avec le temps.\n\nLa banquise se distingue des calottes glaciaires par le fait que c'est une glace flottante.\n\nLes icebergs sont aussi de la glace flottante, mais viennent de l'avancée des calottes glaciaires, et qui sont de la glace d'eau douce.\n\nLes étendues de banquise sont principalement en arctique, et en périphérie du continent antarctique.\n\nIl faut distinguer la banquise saisonnière qui se forme en hiver et dégèle en été, de la banquise pérenne. Quand on parle de fonte de la banquise, cela fait référence à la banquise pérenne. "
+  },
+
+
+  {
+    "name" : "Fonte des calottes glaciaires",
+    "num" :19,
+    "set": 3,
+    "text": "On appellera ici calotte glaciaire (ou nappe glaciaire ou inlandsis) une masse de glace terrestre d’échelle continentale, suffisamment épaisse (entre 1600 et 6400m) pour recouvrir la majeure partie des formations rocheuses sous jacentes. Il n’existe actuellement que deux grandes nappes glaciaires, une au Groenland et une en Antarctique. \nOn parlera ici de fonte des calottes glaciaires lorsque la masse totale de glace a diminué sur la période considérée, quel·s que soi·en·t le·s processus en cause. "
   },
 
 
@@ -43,6 +122,142 @@
     "num" : 20,
     "set": 3,
     "text": "Cette carte est importante. Elle matérialise à elle seule pourquoi on parlait autrefois de réchauffement climatique, puis maintenant de changement climatique, voire de dérèglement climatique.\n\nL'augmentation de température est en soi un problème, mais on voit sur la fresque, à la fin, que la perturbation du cycle de l'eau a beaucoup plus d'effets. Pour illustrer que l'évaporation a lieu à la surface de l'eau, poser les cartes 17-hausse de la température de l'eau et 21-hausse de la température sur la table, placer le bord inférieur de la carte 21 contre le bord supérieur de la carte 17, puis mettre la carte 20 à la frontière des deux, perpendiculairement, pour matérialiser la surface de l'eau (entre l'eau et l'air). "
+  },
 
+  {
+    "name" : "Hausse de la température",
+    "num" :21,
+    "set": 1,
+    "text": "Sur le graphique principal, la zone grisée représente les observations de température, et la courbe noire représente la température donnée par les modèles (1850 à 2015).\n\nLes courbes en couleur représentent les projections pour les différents scénarios SSP envisagés (2015 à 2100).\n\nCe réchauffement est d'origine humaine, c'est ce que montre le graphique secondaire sur lequel est représenté les relevés de 1850 à 2020 (courbe noire), les données issues des modèles sans prendre en compte les facteurs anthropiques (courbes et zones bleues), et les données issues des modèles en prenant compte les facteurs anthropiques (courbe et zones rosées). La courbe noire est clairement dans la zone rosée, donc les modèles prenant compte les facteurs anthropiques sont représentatifs de la réalité.\n\nPar convention, on parle de réchauffement par rapport à la moyenne des températures 1850-1900 (appelé ère préindustrielle). Le réchauffement actuel par rapport à cette période est d'environ 1,2°C.\n\nCe réchauffement n'est pas du tout homogène : les terres émergées se réchauffent plus que l'air au-dessus des océans. Et la zone arctique se réchauffe plus que le reste du globe.\nRépartition géographique des hausses de températures pour le réchauffement actuel (1°C), et pour différents niveaux de réchauffement (1.5°C, 2°C et 4°C). \n\nAu rythme actuel de réchauffement, 0,2°C par décennie, le réchauffement atteindra 1,5°C entre 2030 et 2050 environ.\n\nCette carte peut jouer deux rôles :\n\n    Soit c'est la température de l'air, donc de l'atmosphère. C'est comme ça qu'il faut l'interpréter quand on a gardé les cartes 10, 14 et 15. Dans ce cas, la carte précédente est la 14 (Bilan énergétique).\n    Soit elle représente la température de la terre (et ça tombe bien parce que la définition de la température de la terre, c'est justement la température de l'air, au sol, en moyenne sur la surface de la terre). Dans ce cas, la carte précédente est la 13 (Effet de serre) et on peut faire un lien vers les cartes 16, 17, 18 et 19."
+  },
+
+  {
+    "name" : "Montée des eaux",
+    "num" :22,
+    "set": 1,
+    "text": "Il est important de noter que les prévisions concernant la hausse du niveau de l'eau sont très conservatrices. Certains phénomènes, qui sont compris d'un point de vu qualitatif, mais pas quantitatif, ne sont tout simplement pas chiffrés dans le rapport du GIEC.\n\nC'est le cas des moulins, par exemple. Ce sont des passages entre l'eau des lacs glaciaires à la surface des calottes et le socle rocheux. Une fois que l'eau s'introduit dans ces passages, elle vient lubrifier le contact entre le socle rocheux et la calotte glaciaire, ce qui facilite la dérive des glaciers vers la mer.\n\nLes chiffres concernant la montée des eaux seront donc très probablement revus à la hausse dans les prochains rapports. "
+  },
+
+  {
+    "name" : "Problèmes de calcification",
+    "num" : 23,
+    "set": 4,
+    "text": "La constitution du calcaire (calcification) est la réaction chimique suivante : Ca++ + 2HCO3- ⇔ CaCO3 + H2O + CO2\n\nElle nécessite la présence d'ions bicarbonate HCO3–. Or la quantité de ces ions dans l'eau dépend du pH : Dans l'eau, le dioxyde de carbone, l'acide carbonique, l'ion bicarbonate et l'ion carbonate sont en équilibre, en fonction du pH :\n\nCO2 + H2O ⇔ H2CO3 ⇔ H+ + HCO3– ⇔ 2 H+ + CO32–.\n\nL'ajout d'un acide déplace les équilibres vers la gauche.\n\nDit autrement, si le pH baisse, les ions bicarbonates sont en moins grande quantité. D'où la difficulté de fabriquer du calcaire pour les organisme qui en ont besoin. "
+  },
+
+  {
+    "name" : "Acidification de l'océan",
+    "num" : 24,
+    "set": 2,
+    "text": "L'acidification de l'océan est parfois appelée \"l'autre problème du carbone\". En effet, ce n'est pas à proprement parler une conséquence du changement climatique, mais une autre conséquence des émissions de CO2. "
+  },
+
+  {
+    "name" : "Biodiversité terrestre",
+    "num" : 25,
+    "set": 4,
+    "text": "Aujourd'hui, la biodiversité terrestre est avant tout mise à mal par d'autres facteurs que le climat : déforestation, disparition des habitats naturels, pesticides, pollutions diverses. Il n'empêche que le changement climatique va largement contribuer à la disparition des espèces dans les décennies à venir."
+  },
+  {
+    "name" : "Crues",
+    "num" : 26,
+    "set": 4,
+    "text": "Une crue est l'élévation du niveau d'un cours d'eau due aux précipitations ou à des fontes de neige ou de glace. Une crue est temporaire.\nSur la carte du monde représentée par régions (hexagones) (issue 6è rapport de synthèse du GIEC), les zones vertes subissent une augmentation des précipitations. Le nombre de points représente le degré de confiance dans la contribution humaine au changement observé :\n\n... : Haut\n\n..  : Moyen\n\n. : Faible"
+  },
+  {
+    "name" : "Biodiversité marine",
+    "num" : 27,
+    "set": 4,
+    "text": "Aujourd'hui, la biodiversité marine est plus mise en danger par la surpêche que par le changement climatique ou l'acidification. Mais à long terme, ces derniers vont considérablement augmenter leur pression. La FAO considère que dans le monde, entre 660 et 820 millions d'individus sont directement ou indirectement dépendant de la pêche et de l'aquaculture. Soit à peu près 10% de la population mondiale. "
+  },
+  {
+    "name" : "Vecteurs de maladie",
+    "num" : 28,
+    "set": 5,
+    "text": "Le problème n'est tant pas la prolifération des vecteurs de maladie que leur déplacement. Cette carte vient idéalement après la carte Biodiversité terrestre dans la mesure où les vecteurs de maladie sont une sous−partie de la biodiversité. "
+  },
+  {
+    "name" : "Ptéropodes et coccolithophores",
+    "num" : 29,
+    "set": 4,
+    "text": "C'est une carte qui fait beaucoup rire à cause de la difficulté à retenir ces noms. Apprenez-les par cœur, comme si c'était une évidence. \"Ça fait toujours bien dans les dîners en ville !\" "
+  },
+  {
+    "name" : "Sécheresses",
+    "num" : 30,
+    "set": 4,
+    "text": "Une sécheresse est une période de temps anormalement sec suffisamment longue pour causer un grave déséquilibre hydrologique. On peut parler de sécheresse agricole si l'on mesure l'humidité du sol ou de sécheresse météorologique dans le cas d'une baisse de précipitation. Une mégasécheresse est une sécheresse persistante et étendue, d’une durée très supérieure à la normale (en général, une décennie ou plus). Le manque de pluie et l'évaporation sur le sol sont les causes des sécheresses.\n\nSur la carte du monde représentée par régions (hexagones) (issue 6è rapport de synthèse du GIEC), les zones vertes subissent une diminution des sécheresses, les zones orange une augmentation. Le nombre de points représente le degré de confiance dans la contribution humaine au changement observé :\n\n... : Haut\n\n..  : Moyen\n\n. : Faible"
+  },
+  {
+    "name" : "Ressources en eau douce",
+    "num" : 31,
+    "set": 5,
+    "text": "Le gros sujet, c'est la disparition des glaciers. Ils servent de réservoirs d'eau douce sous forme solide et fondent (surtout en été, quand il fait chaud, ça tombe bien !) pour alimenter en aval l'irrigation des cultures. "
+  },
+  {
+    "name" : "Baisse des rendements agricoles",
+    "num" : 32,
+    "set": 5,
+    "text": "Voici l'une des plus grosses menaces pour l'humanité. Ce sont déjà des baisses de rendements agricoles qui ont amené à des conflits au Rwanda et en Syrie. "
+  },
+  {
+    "name" : "Submersions",
+    "num" : 33,
+    "set": 4,
+    "text": "Ne pas confondre avec les crues. Les submersions, c'est l'eau de la mer ou l'océan qui monte. Cette montée peut être exceptionnelle à cause d'événements climatiques extrêmes, ou permanente à cause de la montée des eaux. "
+  },
+  {
+    "name" : "Cyclones",
+    "num" : 34,
+    "set": 4,
+    "text": "Il n'y a pas plus de cyclones à cause du changement climatique, (du moins, on n'est pas encore en mesure de l'établir d'un point de vue statistique), mais on peut dire qu'ils sont plus violents.\nPour la carte en amont, on peut choisir soit la perturbation du cycle de l'eau, dans le sens où l'augmentation de la puissance des cyclones est une illustration de la perturbation du cycle de l'eau, soit la hausse de la température de l'eau, car on entend souvent dire que les cyclones s'alimentent de l'énergie des eaux chaudes des zones intertropicales. Il est moins logique de mettre les deux. "
+  },
+  {
+    "name" : "Incendies",
+    "num" : 35,
+    "set": 5,
+    "text": "Exemple de manifestation\n\n    En 2018, en Californie, 1 975 086 acres (799200 hectares, environ la Corse) ont brulé, pour un total de 8 000 incendies et 100 morts, mais la zone brulée a doublé en 2020 pour atteindre 1 635 300 hectares (plus grand que l'Ile-De-France). \nDans la saison 2019-2020, l'Australie a vu une surface totale de 17 millions d'hectares partir en fumée. Cette surface représente un tiers de la France.\n    Augmentation des feux de forêt au Mont Kilimandjaro.\n    Augmentation des feux de forêt au Portugal et en Grèce."
+  },
+  {
+    "name" : "Canicules",
+    "num" : 36,
+    "set": 5,
+    "text": ""
+  },
+  {
+    "name" : "Famine",
+    "num" :  37,
+    "set": 5,
+    "text": ""
+  },
+  {
+    "name" : "Santé humaine",
+    "num" : 38,
+    "set": 5,
+    "text": "C'est l'une des cartes qui peut être placée en dernier, comme LA conséquence ultime."
+  },
+  {
+    "name" : "Réfugiés climatiques",
+    "num" : 39,
+    "set": 5,
+    "text": "Afrique\n\nEn 2018 les événements climatiques extrêmes comme les sécheresses en Afghanistan, le cyclone Gita aux Iles Samoa, les inondations des Philippines sont liées à de nombreux déplacements de population. D’après le IDMC (Internal Displacement Monitoring Centre) on estime à plus de 20 millions de personnes par an le nombre de réfugiés climatiques sur la décennie 2008-2018.\n\nDe 2011 à 2012, mouvements transfrontaliers de Somaliens vers le Kenya et l’Ethiopie dans un contexte de sécheresse, d’insécurité alimentaire et de famine, alors que le conflit et la violence prévalent également dans le sud et le centre de la Somalie.\n\nEntre 1984 et 85 le gouvernement éthiopien a dû réinstaller plusieurs dizaines de milliers de personnes venant de régions étant frappées par la sécheresse.\nAsie et Pacifique\n\nSur les 10 pays ayant la plus grande part de leur population déplacée 7 sont des îles du Pacifique ou des Caraïbes.\n\nRapport du Parlement Européen : estime à 200 000 réfugiés climatiques au Bangladesh. \n\n\nMigration and Climate Change reports from the IOM (International Organization for Migration) des Nations Unies. :\n\n    les îles Cartaret en Papouasie Nouvelle Guinée,\n    les résidents du village Lateu à Vanuatu,\n    les déplacements des habitants de Shishmaref sur l’ise Sarichef en Alaska\n    les réfugiés liés à la submersion de l’ile Lohachara au cœur de la rivière Hooghly (un défluent du Ganges en Inde)\n\nPrécision : Pour l’instant ces quatre exemples restent débattables quant à leurs origines liées au réchauffement anthropogénique. Cependant, les événements futurs le sont de moins en moins à mesure que les effets vont en s’aggravant.\n\nUn habitant sur dix des îles Kiribati, Nauru et Tuvalu ont dû migrer à cause du changement climatique. \nEtats-Unis\n\nEn 2003 le service d’immigration des Etats Unis a temporairement (pendant 2 ans) élargi le statut des 80 000 réfugiés en provenance du Honduras ayant dû fuir l’ouragan Mitch. "
+  },
+  {
+    "name" : "Conflits armés",
+    "num" : 40,
+    "set": 5,
+    "text": "C'est la carte qui est prévue pour être placée en dernier, comme le laisse entendre le texte.\n\nOn est déjà en mesure de dire que le changement climatique a été l'une des causes de certains conflits comme au Rwanda ou en Syrie.\n\nDans un monde qui subit l'ensemble des conséquences décrites dans ce jeu, il est difficile d'imaginer qu'on puisse éviter des conflits armés.\n\nEn 2007, quand le GIEC a eu le Prix Nobel, c'était le Prix Nobel de la Paix. Et il y a de très bonnes raisons à ça."
+  },
+  {
+    "name" : "Permafrost",
+    "num" :41,
+    "set": 5,
+    "text": "Le permafrost, ou pergélisol en français, est un sol dont la température reste inférieure ou égale à 0°C pendant au moins deux années consécutives.\n\nLe Permafrost fait partie des boucles de rétroactions potentielles, des \"bombes climatiques\", qui, si elles se déclenchent, nous font perdre définitivement le contrôle sur le climat.\n\nLes thermokarst sont de véritables bioréacteurs au cœur du processus de relargage du carbone gelé : Lorsque le pergélisol dégèle, des morceaux de sol se détachent et tombent dans l’eau, apportant nutriments et carbone aux bactéries et au plancton présents dans la mer, qui les dégradent en CO2 (dans les couches d’eau proches de la surface) et en méthane ou CH4 (dans le fond privé d’oxygène)."
+  },
+  {
+    "name" : "Ralentissement du gulf stream",
+    "num" : 42,
+    "set": 5,
+    "text": "La circulation thermohaline, appelée aussi circulation océanique profonde, est la circulation océanique engendrée par les différences de densité de l'eau de mer, à l'origine de courants marins de profondeur. Ces différences de densité proviennent des écarts de température et de salinité des masses d'eau, d'où le terme de thermo — pour température — et halin — pour salinité. L’eau de mer est d’autant plus dense que sa température est basse et sa salinité élevée. Les scientifiques utilisent le terme de MOC pour Meridional Overturning Circulation (Circulation méridienne de retournement). Quand cela concerne uniquement l'atlantique, on parle de l'AMOC (Atlantic Meridional Overturning Circulation).\n\nLe Gulf Stream est un courant océanique de surface qui prend sa source entre la Floride et les Bahamas et se dilue dans l'océan Atlantique vers la longitude du Groenland. Il est une des composante de l'AMOC. "
   }
 ]
